@@ -1,0 +1,68 @@
+/*memberRegForm*/
+label {
+	display: inline-block;
+	width: 100px;
+	/*            border: 1px solid grey;*/
+}
+
+.regBox {
+	height: 25px;
+	width: 200px;
+}
+
+/*memberList*/
+
+table {
+	width: 1000px;
+	height: 80px;
+}
+
+tr, th, td {
+	border: solid silver 2px;
+	text-align: center;
+}
+
+th {
+	margin-left: 50px;
+}
+
+#modifyDiv {
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding-top: 10px;
+	height: 400px;
+	width: 250px;
+	background-color: aliceblue;
+	border: red 2px solid;
+}
+
+/* #regList > li {
+	list-style: none;
+	margin: 15px;
+}
+
+memberReg
+#memberReg > li {
+	list-style: none;
+	margin: 15px;
+}
+
+memberLoginForm
+#loginList > li {
+	list-style: none;
+	margin: 15px;
+}
+
+memberLogin
+#memberLoign > li {
+	list-style: none;
+	margin: 15px;
+}
+
+memberMypage
+#memberMypage  li {
+	list-style: none;
+	margin: 15px;
+} */
