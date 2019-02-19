@@ -9,4 +9,13 @@ public class MemberRegFormController {
 	public String getRegForm() {
 		return "member/regForm";
 	}
+	//Rest용 회원가입폼.
+	@RequestMapping("/rest/regForm")
+	public String getForm() {
+		return "restRegForm";
+	}
+	@RequestMapping("/rest/updateForm")
+	public String getUpdateForm() {
+		return "restUpdateForm";
+	}
 }

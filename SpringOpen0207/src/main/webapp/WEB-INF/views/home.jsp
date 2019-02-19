@@ -51,9 +51,15 @@
 			<li><a href="board/list">게시판</a></li>
             <li><a href="emp/list">사원리스트</a></li>
             <li><a href="emp/insert">사원등록</a></li>
-            <li><a href="rest/memberList">rest/memberList</a></li>
         </ul>
         <hr>
+        <ul>
+        	<li><label>REST 과제</label></li>
+        	<li><a href="rest/list">rest/list</a></li>
+            <li><a href="rest/test">rest/test(id)</a></li>
+			<li><a href="rest/regForm">rest/regForm</a></li>
+			<li><a href="rest/updateForm">rest/updateForm</a></li>
+        </ul>
     </nav>
     <article>
         <h2>메인화면</h2>

@@ -7,11 +7,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name="member-list")
+
 public class MemberList {
 	
-	@XmlElement(name="member")
 	private List<Member> memlist;
 	
 	public MemberList() {}

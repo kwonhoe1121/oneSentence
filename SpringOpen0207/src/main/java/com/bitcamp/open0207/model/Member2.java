@@ -1,27 +1,20 @@
 package com.bitcamp.open0207.model;
 
-public class Member {
+public class Member2 {
 	private int idx;
 	private String id;
 	private String email;
 	private String password;
 	private String name;
-	private String photo;
-	private String ckcode;
-	private int sit;
 	
-	public Member() {}
+	public Member2() {}
 	
-	public Member(int idx, String id, String email, String password, String name, String photo, String ckcode,
-			int sit) {
+	public Member2(int idx, String id, String email, String password, String name) {
 		this.idx = idx;
 		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.name = name;
-		this.photo = photo;
-		this.ckcode = ckcode;
-		this.sit = sit;
 	}
 
 	public int getIdx() {
@@ -54,31 +47,13 @@ public class Member {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-	
-	
-	public String getCkcode() {
-		return ckcode;
-	}
-	public void setCkcode(String ckcode) {
-		this.ckcode = ckcode;
-	}
-	public int getSit() {
-		return sit;
-	}
-	public void setSit(int sit) {
-		this.sit = sit;
-	}
+
 	@Override
 	public String toString() {
-		return "Member [idx=" + idx + ", id=" + id + ", email=" + email + ", password=" + password + ", name=" + name
-				+ ", photo=" + photo + ", ckcode=" + ckcode + ", sit=" + sit + "]";
+		return "Member2 [idx=" + idx + ", id=" + id + ", email=" + email + ", password=" + password + ", name=" + name
+				+ "]";
 	}
+	
 	
 
 }
