@@ -64,7 +64,7 @@
 				<td>이메일(아이디)</td><td>${result.email}</td>
 			</tr>
 			<tr>
-				<td>비밀번호</td><td>${result.password}</td>
+				<td>비밀번호</td><td>${password}</td>
 			</tr>
 			<tr>		
 				<td>사진</td><td>${result.photo}</td>	

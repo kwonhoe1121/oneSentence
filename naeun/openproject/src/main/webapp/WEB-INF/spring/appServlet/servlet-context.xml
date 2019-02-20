@@ -112,10 +112,12 @@
 		
 	<interceptors>
 		<interceptor>
-			<mapping path="/member/memberList"/>
-			<mapping path="/member/regForm"/>
-			<mapping path="/board/**"/>
-
+			<mapping path="/memberList"/>
+			<mapping path="/mypage"/>
+			<mapping path="/BoardList"/>
+			<mapping path="/Board"/>
+			<mapping path="/mypage"/>
+			
 			<beans:bean class="com.bitcamp.openp.interceptor.AuthCheckInterceptor"/>			
 		</interceptor>
 	</interceptors>

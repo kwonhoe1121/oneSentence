@@ -22,37 +22,10 @@ public class BoardListController {
 	
 	@RequestMapping("/BoardList")
 	public String getForm(HttpSession session, Model model, HttpServletRequest request) {
-		if(session.getAttribute("loginInfo") == null) {
-			return "redirect:/memberLogin";
-		}
 
-		else {
 			List<Board> boardlist = service.selectBoardList();
 			model.addAttribute("boardlist", boardlist);
 			
 			return "board/boardList";
 		}
 	}
-}
-
-
-
-
-
-
-// 
-//	@RequestMapping(method=RequestMethod.POST)
-//	public String memberReg(
-//			HttpServletRequest request,
-//			Model model,
-//			HttpSession session) {		
-//		
-//		List<Member> memberlist = service.selectMemberList();
-//		request.setAttribute("memberlist", memberlist);
-//		model.addAttribute("memberlist", memberlist);
-//		
-//		return "member/memberList";
-//	}
-	
-	
-
