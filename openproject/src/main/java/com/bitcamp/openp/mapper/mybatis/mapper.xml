@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bitcamp.openp.mapper.mybatis.mapper">
+
+	<!-- 로우삽입를 위한 sql등록 엘리먼트 -->
+	<insert id="insertMember"
+			parameterType="com.bitcamp.openp.model.Member">
+			
+		insert into member (email, encpw, name, photo, enccode)
+		 value ( #{email}, #{encpw}, #{name}, #{photo}, #{enccode})
+	
+	</insert>
+	
+	<select id="selectMemberByEmail"
+			resultType="com.bitcamp.openp.model.Member">
+			
+		select * from member where email=#{param}
+		
+	</select>
+	
+	<select id="selectMemberList"
+			resultType="com.bitcamp.openp.model.Member">
+			
+		select * from member
+		
+	</select>	
+	
+	
+	
+	<insert id="boardwrite"
+			parameterType="com.bitcamp.openp.model.Board">
+			
+		insert into board (bname, btitle, bcontent)
+		 value ( #{bname}, #{btitle}, #{bcontent})
+		 
+	</insert>
+	
+	
+	<select id="selectBoardList"
+			resultType="com.bitcamp.openp.model.Board">
+			
+		select * from board
+		
+	</select>	
+	
+		
+	<select id="mailCheck"
+			resultType="com.bitcamp.openp.model.Member">
+			
+		select * from member where enccode=#{param}
+		
+	</select>
+	
+	<update id="chkComplete"
+			parameterType="com.bitcamp.openp.model.Member">
+	
+		update member set emailchk="1" where enccode=#{param}
+	
+	</update>
+	
+</mapper>
