@@ -39,3 +39,25 @@ public class MypageController {
 
 	}
 }
+
+
+
+
+
+
+// 
+//	@RequestMapping(method=RequestMethod.POST)
+//	public String memberReg(
+//			HttpServletRequest request,
+//			Model model,
+//			HttpSession session) {		
+//		
+//		List<Member> memberlist = service.selectMemberList();
+//		request.setAttribute("memberlist", memberlist);
+//		model.addAttribute("memberlist", memberlist);
+//		
+//		return "member/memberList";
+//	}
+	
+	
+

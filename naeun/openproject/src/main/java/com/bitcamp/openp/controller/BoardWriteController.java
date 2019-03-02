@@ -22,7 +22,10 @@ public class BoardWriteController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String getForm(HttpSession session, Model model) {
-
+//		if(session.getAttribute("loginInfo") == null) {
+//			return "redirect:/memberLogin";
+//		}
+//		else {
 			String loginInfo = (String) session.getAttribute("loginInfo");
 			model.addAttribute("email", loginInfo);
 			return "board/writeForm";

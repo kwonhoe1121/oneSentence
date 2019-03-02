@@ -22,7 +22,11 @@ public class MemberListController {
 	
 	@RequestMapping("/memberList")
 	public String getMemberlist(HttpSession session, Model model, HttpServletRequest request) {
-
+//		if(session.getAttribute("loginInfo") == null) {
+//			return "redirect:/memberLogin";
+//		}
+//
+//		else {
 			List<Member> memberlist = service.selectMemberList();
 			model.addAttribute("memberlist", memberlist);
 			return "member/memberList";
