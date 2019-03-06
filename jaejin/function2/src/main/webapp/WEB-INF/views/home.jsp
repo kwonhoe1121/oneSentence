@@ -17,7 +17,8 @@
 		<ul>
 			<li><button id="login_btn">로그인</button></li>
 			<li><button id="register_btn">회원가입</button></li>
-			<li><button id="logout_btn">로그아웃</button></li>
+			<li><button id="logout_btn"><a href="<%=request.getContextPath()%>/user/logout">로그아웃</a></button></li>
+			<li><button id="like_btn"><a href="<%=request.getContextPath()%>/user/like">좋아요</a></button>
 		</ul>
 	</div>
 

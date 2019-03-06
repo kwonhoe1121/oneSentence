@@ -18,7 +18,7 @@ mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectUserByEmail"
 			resultType="com.one.sentence.vo.UserVo"
 	>
-		select userName, userEmail, userPassword from user_info where userEmail = #{param}
+		select userIdx, userName, userEmail, userPassword from user_info where userEmail = #{param}
 	</select>
 
 	<delete id="deleteUser">
@@ -33,17 +33,24 @@ mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 좋아요 표시 여부 확인, 없을 시 0 반환. -->
 	<select id="selectLikedSentence"
-			resultType="int"
+			parameterType="map"
+			resultType="Integer"
 	>
-		select likeIdx from liketo where userIdx=#{param} and oneSentenceIdx=#{param}
+		select likeIdx from liketo where userIdx=#{userIdx} and oneSentenceIdx=#{oneSentenceIdx}
 	</select>
 	
 	<!-- 좋아요 표시 -->
-	<insert id="">
-		insert into liketo (userIdx, oneSentenceIdx) value (#{param}, #{param})
+	<insert id="insertLikedSentence"
+			parameterType="map"
+	>
+		insert into liketo (userIdx, oneSentenceIdx) value (#{userIdx}, #{oneSentenceIdx})
 	</insert>
 	
+	<!-- 좋아요 표시 취소 -->
+	<delete id="deleteLikedSentence"
+			parameterType="map"
+	>
+		delete from liketo where userIdx=#{userIdx} and oneSentenceIdx=#{oneSentenceIdx}
+	</delete>
 	
-	
-
 </mapper>

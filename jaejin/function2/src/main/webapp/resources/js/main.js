@@ -26,4 +26,5 @@ $("#check_email").on("click", function() {
 //로그아웃 버튼이 눌렸을 때
 $("#logout_btn").on("click", function() {
     alert("로그아웃 버튼!!");
+    
 });

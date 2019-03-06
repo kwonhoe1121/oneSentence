@@ -47,7 +47,7 @@ public class LoginController {
 	}
 
 	// 로그아웃 controller
-	@RequestMapping("/logout")
+	@RequestMapping("user/logout")
 	public String requestLogout(HttpSession session) {
 
 		// 세션 종료.
