@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.one.sentence.mapper.jaejinMapper">
+
+	<insert id="insertUser"
+		parameterType="com.one.sentence.vo.UserVo"
+		useGeneratedKeys="true"
+		keyProperty="userIdx"
+		>
+		insert into user_info
+		(userName, userEmail, userPassword)
+		value ( #{userName}, #{userEmail}, #{userPassword} )
+	</insert>
+	
+	<select id="selectUserByEmail"
+			resultType="com.one.sentence.vo.UserVo"
+	>
+		select userName, userEmail, userPassword from user_info where userEmail = #{param}
+	</select>
+
+	<delete id="deleteUser">
+		delete from user_info where userIdx = #{userIdx}
+	</delete>
+	
+	<!-- 한문장 정보 가져오기 -->
+	<select id="selectOneSentence"
+			resultType="com.one.sentence.vo.OneSentence">
+		select * from one_sentence where oneSentenceIdx=#{param}
+	</select>
+	
+	<!-- 좋아요 표시 여부 확인, 없을 시 0 반환. -->
+	<select id="selectLikedSentence"
+			resultType="int"
+	>
+		select likeIdx from liketo where userIdx=#{param} and oneSentenceIdx=#{param}
+	</select>
+	
+	<!-- 좋아요 표시 -->
+	<insert id="">
+		insert into liketo (userIdx, oneSentenceIdx) value (#{param}, #{param})
+	</insert>
+	
+	
+	
+
+</mapper>
