@@ -40,7 +40,7 @@
 	>
 	select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
 	 o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u, liketo l
-	  where o.oneSentenceIdx=(select oneSentenceIdx from liketo where liketo.userIdx=${value}) and b.isbn=o.isbn and u.userIdx=o.userIdx
+	  where o.oneSentenceIdx in(select oneSentenceIdx from liketo where liketo.userIdx=${value}) and b.isbn=o.isbn and u.userIdx=o.userIdx
 	   group by o.oneSentenceIdx order by l.likeRegisteredTime	
 	</select>	
 	
