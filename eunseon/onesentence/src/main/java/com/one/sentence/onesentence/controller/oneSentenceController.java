@@ -28,6 +28,18 @@ public class oneSentenceController {
 	public String getForm() {
 		return "onesentence/insert";
 	}
+	
+	
+	//?????????????????
+	@RequestMapping("/facebook")
+	public String getFacebook(Model model) {
+		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
+		model.addAttribute("oneSentenceList", oneSentenceList);
+
+		
+		return "onesentence/one2";
+	}
+	
 
 	@RequestMapping(value = "/onesentence/insert", method = RequestMethod.POST)
 	public String insertOnesententce(HttpServletRequest request, @RequestParam("oneSentence") String oneSentence,
@@ -78,6 +90,18 @@ public class oneSentenceController {
 		return "onesentence/list";
 	}
 
+	@RequestMapping("/onesentence/one/{idx}")
+	public String selectOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model) {
+		System.out.println("idx받음");
+		ShowOnesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);
+		
+		model.addAttribute("onesentence", onesentence);
+		
+		return "onesentence/one";
+		
+	}
+	
+	
 	@RequestMapping("/onesentence/list/all")
 	public String selectOnesententceList(Model model) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
@@ -120,7 +144,7 @@ public class oneSentenceController {
 
 	@RequestMapping("/onesentence/popup/{idx}")
 	public String getUpdateForm(@PathVariable("idx") int idx, Model model) {
-		Onesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);
+		Onesentence onesentence = oneService.showOneSentenceModel(idx);
 		
 		model.addAttribute("onesentence", onesentence);
 		return "onesentence/popup";
@@ -129,7 +153,7 @@ public class oneSentenceController {
 	@RequestMapping("/onesentence/delete/{idx}")
 	public String deleteOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model) {
 
-		Onesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);
+		Onesentence onesentence = oneService.showOneSentenceModel(idx);
 		int userIdx = onesentence.getUserIdx();
 		oneService.downUserPoint(userIdx);
 
