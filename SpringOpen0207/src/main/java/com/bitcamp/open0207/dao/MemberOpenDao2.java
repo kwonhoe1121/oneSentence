@@ -9,9 +9,7 @@ import javax.inject.Inject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.bitcamp.open0207.model.Member;
 import com.bitcamp.open0207.model.Member2;
-import com.bitcamp.open0207.model.MemberVO;
 
 @Repository
 public class MemberOpenDao2 {
