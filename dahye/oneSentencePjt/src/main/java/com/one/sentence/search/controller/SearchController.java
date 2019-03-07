@@ -1,0 +1,32 @@
+package com.one.sentence.search.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.one.sentence.search.model.SearchModel;
+import com.one.sentence.search.service.SearchAladdinService;
+
+
+@Controller
+@RequestMapping("/search/{search}")
+public class SearchController {
+
+	@Autowired
+	private SearchAladdinService service;
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public String GetSearchgForm(@PathVariable String search, Model model) {
+		
+		List<SearchModel> items = service.Items;
+		model.addAttribute("items", items);
+		
+		return "search/searchResult";
+	}
+	
+}
