@@ -1,2 +1,0 @@
-# oneSentence
-Bitcamp Project

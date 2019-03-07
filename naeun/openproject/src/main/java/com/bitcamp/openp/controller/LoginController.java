@@ -47,13 +47,17 @@ public class LoginController {
 		String password = request.getParameter("password");
 	
 		String paramencpw = aes256.encrypt(password);
-
 		
 		Member member = service.selectMemberByEmail(email);	
 		String encpw = member.getEncpw();
 		String chk = member.getEmailchk();
-		
-		
+	
+		if(member != null) {
+			encpw = member.getEncpw();
+			chk = member.getEmailchk();
+		}
+
+
 		if(encpw!=null && encpw.equals(paramencpw)) {
 			if(chk!=null && chk.equals("1")) {
 				session.setAttribute("loginInfo", email);
@@ -63,11 +67,9 @@ public class LoginController {
 			else
 				return "mail/mailCheckFailed";
 		}
-
-		if(session.getAttribute("loginInfo") == null)
+		else
 			return "member/memberLoginFailed";
 
-		return "member/memberLoginFailed";
 
 	}
 	

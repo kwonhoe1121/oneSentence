@@ -22,18 +22,18 @@ public class BoardListController {
 	
 	@RequestMapping("/BoardList")
 	public String getForm(HttpSession session, Model model, HttpServletRequest request) {
-		if(session.getAttribute("loginInfo") == null) {
-			return "redirect:/memberLogin";
-		}
-
-		else {
+//		if(session.getAttribute("loginInfo") == null) {
+//			return "redirect:/memberLogin";
+//		}
+//
+//		else {
 			List<Board> boardlist = service.selectBoardList();
 			model.addAttribute("boardlist", boardlist);
 			
 			return "board/boardList";
 		}
 	}
-}
+
 
 
 
