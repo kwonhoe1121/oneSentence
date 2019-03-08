@@ -19,6 +19,44 @@ import org.xml.sax.helpers.ParserAdapter;
 import com.one.sentence.search.model.SearchModel;
 
 @Service
+public class SearchAladdinService {
+	
+	private static final String BASE_URL = "http://www.aladdin.co.kr/ttb/api/ItemSearch.aspx?";
+
+	public static String GetUrl(String searchWord) throws Exception {
+		Map<String,String> hm = new HashMap<String,String>();
+		hm.put("ttbkey", "ttbshin_oi1259001");
+		hm.put("Query", URLEncoder.encode(searchWord, "UTF-8"));
+		hm.put("Sort", "Accuracy");
+		hm.put("QueryType", "Keyword");
+		hm.put("MaxResults", "10");
+		hm.put("start", "1");
+		hm.put("SearchTarget", "Book");
+		hm.put("output", "xml");
+
+		StringBuffer sb = new StringBuffer();
+		Iterator<String> iter = hm.keySet().iterator();
+		while (iter.hasNext()) {
+			String key = iter.next();
+			String val  = hm.get(key);
+			sb.append(key).append("=").append(val).append("&");
+		}
+
+		return BASE_URL + sb.toString();
+	}
+
+	public  List<SearchModel> getSearchModel(String searchWord) throws Exception {
+		String url = GetUrl(searchWord);
+		SearchServiceHandler api = new SearchServiceHandler();
+		api.parseXml(url);
+		for(SearchModel item : api.Items){
+			System.out.println(item.cover + " : " + item.title + item.publisher + item.author + item.isbn + item.categoryName);
+		}
+		
+		return api.Items;
+	}
+}
+
 
 
 class SearchServiceHandler extends DefaultHandler {
@@ -94,40 +132,5 @@ class SearchServiceHandler extends DefaultHandler {
             ParserAdapter pa = new ParserAdapter(sp.getParser());
             pa.setContentHandler(this);
 			pa.parse(xmlUrl);
-	}
-}
-
-public class SearchAladdinService {
-	private static final String BASE_URL = "http://www.aladdin.co.kr/ttb/api/ItemSearch.aspx?";
-
-	public static String GetUrl(String searchWord) throws Exception {
-		Map<String,String> hm = new HashMap<String,String>();
-		hm.put("ttbkey", "ttbshin_oi1259001");
-		hm.put("Query", URLEncoder.encode(searchWord, "UTF-8"));
-		hm.put("Sort", "Accuracy");
-		hm.put("QueryType", "Keyword");
-		hm.put("MaxResults", "10");
-		hm.put("start", "1");
-		hm.put("SearchTarget", "Book");
-		hm.put("output", "xml");
-
-		StringBuffer sb = new StringBuffer();
-		Iterator<String> iter = hm.keySet().iterator();
-		while (iter.hasNext()) {
-			String key = iter.next();
-			String val  = hm.get(key);
-			sb.append(key).append("=").append(val).append("&");
-		}
-
-		return BASE_URL + sb.toString();
-	}
-
-	public static void main(String[] args) throws Exception {
-		String url = GetUrl(args[0]);
-		SearchServiceHandler api = new SearchServiceHandler();
-		api.parseXml(url);
-		for(SearchModel item : api.Items){
-			System.out.println(item.cover + " : " + item.title + item.publisher + item.author + item.isbn + item.categoryName);
-		}
 	}
 }
