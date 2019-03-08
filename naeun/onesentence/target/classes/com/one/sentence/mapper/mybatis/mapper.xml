@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.one.sentence.mapper.mybatis.mapper">
+
+
+	<select id="selectHashtagList"
+			resultType="java.lang.String">
+			
+			select hashtag, count(*) count
+			from (select oneSentenceIdx from liketo where userIdx = #{param}
+				  union all
+				  select oneSentenceIdx from one_sentence  where userIdx = #{param}) as pr1, hashtag
+			where pr1.oneSentenceIdx=hashtag.oneSentenceIdx
+		    group by hashtag
+			order by count desc, hashtag asc
+			limit 0,10;
+		
+	</select>	
+	
+	<select id="selectFollower"
+			resultType="com.one.sentence.following.model.Following">
+		select * from following where userIdx=#{userIdx} and followingUserIdx=#{followingUserIdx};
+	</select>
+	
+	<insert id="insertFollower">
+		insert into following(userIdx, followingUserIdx) values(#{userIdx}, #{followingUserIdx});
+	</insert>
+	
+	<delete id="deleteFollower">
+		delete from following where userIdx=#{userIdx} and followingUserIdx = #{followingUserIdx};
+	</delete>
+	
+
+	
+	
+	
+</mapper>
