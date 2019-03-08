@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class SearchDao implements ISearchDao{
+public class SearchUserDao implements ISearchUserDao{
 
 	@Inject
 	private SqlSessionTemplate sqlSession;

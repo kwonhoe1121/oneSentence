@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.one.sentence.search.dao.SearchDao;
+import com.one.sentence.search.dao.SearchUserDao;
 
 @Service
-public class SearchUserService {
+public class SearchUserService implements ISearchUserService{
 
 	@Autowired
-	private SearchDao dao;
+	private SearchUserDao dao;
 	
 	@Override
 	public List<String> selectUserList() {
