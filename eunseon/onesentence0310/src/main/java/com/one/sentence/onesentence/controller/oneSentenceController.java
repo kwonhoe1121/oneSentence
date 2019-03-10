@@ -94,7 +94,6 @@ public class oneSentenceController {
 		String uri = "/upload";
 		String dir = request.getSession().getServletContext().getRealPath(uri);
 		String fileName = file.getOriginalFilename();
-		System.out.println("파일명 : " + fileName);
 		System.out.println(dir + "\\" + fileName);
 
 		if (!file.isEmpty()) {
@@ -107,11 +106,7 @@ public class oneSentenceController {
 		} else {
 			System.out.println("파일이 없습니다.");
 		}
-
-		// GoogleVisionApi google = new GoogleVisionApi();
-		System.out.println(1);
 		String oneSentenceListByPhoto = GoogleVisionApi.getSentence(dir + "\\" + fileName);
-		System.out.println(2);
 		model.addAttribute("OneSentenceList", oneSentenceListByPhoto);
 		return "onesentence/chooseSentence";
 

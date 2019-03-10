@@ -18,11 +18,8 @@ import java.util.StringTokenizer;
 public class GoogleVisionApi {
 	
 public static String getSentence(String FileRoot) {
-		//String[] arr= {};
 		String result = "";
 		try {
-			//String FileRoot = "C:\\Users\\jaeho\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\onesentence\\upload\\책.jpg";
-			
 			List<AnnotateImageRequest> requests = new ArrayList<AnnotateImageRequest>();
 		
 			ByteString imgBytes = ByteString.readFrom(new FileInputStream(FileRoot));
@@ -44,21 +41,8 @@ public static String getSentence(String FileRoot) {
 			    	System.out.println("Text : ");
 			    	System.out.println("--------------");
 			    	result = res.getTextAnnotationsList().get(0).getDescription();
-			    	/*System.out.println(result);			    	
-			    	System.out.println("--------------");
-
-			    	StringTokenizer st = new StringTokenizer(result, ".");
-			    	System.out.println(st.countTokens());
-			    	arr= new String[st.countTokens()];
 			    	
-			    	for(int i=0;i<arr.length;i++) {
-			    		arr[i] = st.nextToken();
-			    		System.out.println(i+":"+arr[i]);
-			    	}
-			    	
-			    	*/
-			    }
-			    
+			    }    
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
