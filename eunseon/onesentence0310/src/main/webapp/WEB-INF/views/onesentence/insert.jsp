@@ -9,7 +9,6 @@
 </head>
 <body>
 <form method="post" action="./insert">
-
 		<ul>
 			<li>
 			<label for="isbn">isbn(안보임)</label>
@@ -23,12 +22,23 @@
 			<li>
 			<label for="oneSentence">한문장</label>
 			<input type="text" id="oneSentence" name="oneSentence"></li>
+			<li><a href="#" onclick="photo()" id="test" >사진에서 찾기</a></li>
 			<li>
 			<label for="hashtag">책에대한 해시태그</label>
 			<input type="text" id="hashtag" name="hashtag"></li>
-			
 			<li><input type="submit" value="작성" id="btn"></li>
 		</ul>
-</form>		
+</form>	
+
+<script>
+function photo(){
+	console.log("insert By photo Click");
+	var url="../onesentence/popupForPhoto";
+	var popupOption="width=700,height=600";
+	window.open(url,"사진으로 한문장찾기",popupOption);	
+}
+</script>
+
+	
 </body>
 </html>

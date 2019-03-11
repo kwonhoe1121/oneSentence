@@ -59,8 +59,7 @@ $().ready(function(d, s, id) {
 <script>
 
 function up(idx){
-	alert("test클릭");
-	alert(idx);	
+	alert("up클릭"+idx);
 	FB.ui({
 		method : 'share_open_graph',
 		action_type: 'og.shares',
@@ -69,7 +68,7 @@ function up(idx){
 				'og:url': 'http://127.0.0.1/sentence/onesentence/one/'+idx,
 				'og:title' : '한문장',
 				'og:description' : '한문장내용',
-				'og:image': 'https://www.your-domain.com/path/image.jpg'
+				'og:image': 'C:\\Users\\jaeho\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\onesentence\\upload\\책.jpg'
 			}
 		})
 	})
