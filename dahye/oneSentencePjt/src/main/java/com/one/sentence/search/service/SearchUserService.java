@@ -14,7 +14,7 @@ public class SearchUserService implements ISearchUserService{
 	private SearchUserDao dao;
 	
 	@Override
-	public List<String> selectUserList() {
-		return dao.selectUserList();
+	public List<String> selectUserList(String userName) {
+		return dao.selectUserList(userName);
 	}
 } 

@@ -17,8 +17,8 @@ public class SearchUserDao implements ISearchUserDao{
 	private String namespace="com.one.sentence.mapper.mapper";
 	
 	@Override
-	public List<String> selectUserList() {
-		return sqlSession.selectList(namespace+".selectUserList");
+	public List<String> selectUserList(String userName) {
+		return sqlSession.selectList(namespace+".selectUserList", userName);
 	}
 
 	

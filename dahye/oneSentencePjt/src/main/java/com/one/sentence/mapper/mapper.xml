@@ -5,7 +5,7 @@
 	
 	<select id="selectUserList"
 			resultType="java.lang.String">
-			select u.userName from user_info u where userName like '%#{param}%';
+			select userEmail from user_info u where userName like #{param};
 	</select>
 	
 

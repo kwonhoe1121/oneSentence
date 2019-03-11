@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface ISearchUserService {
 
-	public List<String> selectUserList();	
+	public List<String> selectUserList(String userName);	
 }

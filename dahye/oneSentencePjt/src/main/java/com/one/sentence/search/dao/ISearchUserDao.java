@@ -4,6 +4,6 @@ import java.util.List;
 
 interface ISearchUserDao {
 
-	public List<String> selectUserList();	
+	public List<String> selectUserList(String userName);	
 	
 }
