@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>도서 검색 결과가없습니다.</h1>
+<h1>검색 결과가없습니다.</h1>
 </body>
 </html>

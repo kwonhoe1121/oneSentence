@@ -19,7 +19,7 @@ import org.xml.sax.helpers.ParserAdapter;
 import com.one.sentence.search.model.SearchModel;
 
 @Service
-public class SearchAladdinService {
+public class SearchAladdinService2 {
 	
 	private static final String BASE_URL = "http://www.aladdin.co.kr/ttb/api/ItemSearch.aspx?";
 
@@ -27,7 +27,7 @@ public class SearchAladdinService {
 		Map<String,String> hm = new HashMap<String,String>();
 		hm.put("ttbkey", "ttbshin_oi1259001");
 		hm.put("Query", URLEncoder.encode(searchWord, "UTF-8"));
-		hm.put("Sort", "Accuracy");
+		hm.put("Sort", "SalesPoint");
 		hm.put("QueryType", "Keyword");
 		hm.put("MaxResults", "10");
 		hm.put("start", "1");
@@ -47,7 +47,7 @@ public class SearchAladdinService {
 
 	public  List<SearchModel> getSearchModel(String searchWord) throws Exception {
 		String url = GetUrl(searchWord);
-		SearchServiceHandlerone api = new SearchServiceHandlerone();
+		SearchServiceHandlertwo api = new SearchServiceHandlertwo();
 		api.parseXml(url);
 		for(SearchModel item : api.Items){
 			System.out.println(item.cover + " : " + item.title + item.publisher + item.author + item.isbn + item.categoryName);
@@ -59,13 +59,13 @@ public class SearchAladdinService {
 
 
 
-class SearchServiceHandlerone extends DefaultHandler {
+class SearchServiceHandlertwo extends DefaultHandler {
 	public List<SearchModel> Items;
 	private SearchModel currentItem;
 	private boolean inItemElement = false;
 	private String tempValue;
 
-	public SearchServiceHandlerone( ){
+	public SearchServiceHandlertwo( ){
 		Items = new ArrayList<SearchModel>();
 	}
 
@@ -93,7 +93,6 @@ class SearchServiceHandlerone extends DefaultHandler {
 		else if (localName.equals("pubDate")) {
 			tempValue = "";
 		}
-		
 		
 	}
 	
@@ -127,7 +126,6 @@ class SearchServiceHandlerone extends DefaultHandler {
 			else if (localName.equals("pubDate")) {
 				currentItem.pubDate = tempValue;
 			}
-			
 			
 		}
 	}

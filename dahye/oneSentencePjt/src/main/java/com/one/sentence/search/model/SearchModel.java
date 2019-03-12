@@ -8,7 +8,7 @@ public class SearchModel {
 	public String author;
 	public String isbn;
 	public String categoryName;
-
+	public String pubDate;
 	
 	public String getCover() {
 		return cover;
@@ -46,13 +46,19 @@ public class SearchModel {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	
+	public String getPubDate() {
+		return pubDate;
+	}
+	public void setPubDate(String pubDate) {
+		this.pubDate = pubDate;
+	}
 	
 	@Override
 	public String toString() {
 		return "SearchModel [cover=" + cover + ", title=" + title + ", publisher=" + publisher + ", author=" + author
-				+ ", isbn=" + isbn + ", categoryName=" + categoryName + "]";
+				+ ", isbn=" + isbn + ", categoryName=" + categoryName + ", startIndex=" + pubDate + "]";
 	}
+
 	
 	
 	

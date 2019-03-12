@@ -7,9 +7,8 @@ import javax.inject.Inject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public class SearchUserDao implements ISearchUserDao{
+public class SearchHashtagDao implements ISearchHashtagDao {
 
 	@Inject
 	private SqlSessionTemplate sqlSession;
@@ -17,9 +16,7 @@ public class SearchUserDao implements ISearchUserDao{
 	private String namespace="com.one.sentence.mapper.mapper";
 	
 	@Override
-	public List<String> selectUserList(String userName) {
-		return sqlSession.selectList(namespace+".selectUserList", userName);
+	public List<String> selectHashtagList(String hashtag) {
+		return sqlSession.selectList(namespace+ ".selectHashtagList", hashtag);
 	}
-
-	
 }
