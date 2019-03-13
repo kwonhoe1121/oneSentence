@@ -26,12 +26,12 @@
 <style>
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
-	src: url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_ttf.ttf')
+	src: url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_ttf.ttf');
 }
 
 @font-face {
 	font-family: 'BMHANNAAir_otf';
-	src: url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_otf.otf')
+	src: url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_otf.otf');
 }
 
 body {
