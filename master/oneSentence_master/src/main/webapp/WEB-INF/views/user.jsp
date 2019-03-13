@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 
 <meta charset="utf-8">
@@ -26,20 +25,28 @@
 <style>
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
-	src: url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_ttf.ttf')
+	src: url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_ttf.ttf');
 }
 
 @font-face {
 	font-family: 'BMHANNAAir_otf';
-	src: url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_otf.otf')
+	src: url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_otf.otf');
 }
 
 body {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
 </style>
+
+<script
+		src="<%=request.getContextPath()%>/resources/naeun/user/js/userpage.js"></script>
 </head>
 <body>
+<!-- userpage.js부분 가져오기 -->
+<%
+	String val="팔로잉";
+%>
+
 	<div id="search">검색창 들어갈 자리</div>
 
 	<!-- Page Content -->
@@ -58,10 +65,10 @@ body {
 				<div class="card-header" id="part2">
 					<i class="fa fa-user-circle fa-4x" aria-hidden="true"></i>
 					<h3 class="bold">김김김</h3>
-					<input type="submit" value="팔로우" class="btn btn-primary"
+					<input type="submit" value=<%=val %> class="btn btn-primary"
 						id="follow">
 					<h5>자기소개입니당(default="프로필이 없습니다.")</h5>
-					<input type="submit" value="수정" class="btn btn-primary">
+					<input type="submit" value="수정" class="btn btn-primary" id="update">
 				</div>
 
 				<h4 class="card-header" id="part3">
