@@ -61,7 +61,7 @@ body {
 					<input type="submit" value="팔로우" class="btn btn-primary"
 						id="follow">
 					<h5>자기소개입니당(default="프로필이 없습니다.")</h5>
-					<input type="submit" value="수정" class="btn btn-primary">
+					<input type="submit" value="수정" class="btn btn-primary" id="update">
 				</div>
 
 				<h4 class="card-header" id="part3">

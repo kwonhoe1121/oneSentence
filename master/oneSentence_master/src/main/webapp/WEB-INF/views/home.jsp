@@ -8,15 +8,19 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
-
-    <ul>
+	<ul>
 <!--         <li><a href="hashtagList">취향분석</a></li> -->
-        <li><a href="following">팔로잉</a></li>                
+		<li><a href="following">팔로잉</a></li>
+        <li><a href="user">회원페이지</a></li>                
     </ul>
+    
+    <h3>나은 test</h3>
+    <hr>
+    
+    
+    
+    
+    
+    
 </body>
 </html>
