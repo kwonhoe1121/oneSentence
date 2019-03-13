@@ -31,8 +31,10 @@
 
 <body>
 
+	<jsp:include page="include/mainHeader.jsp"></jsp:include>
+
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top">
+	<!-- 	<nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="#"><b>One Sentence</b></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -53,7 +55,7 @@
 				</ul>
 			</div>
 		</div>
-	</nav>
+	</nav> -->
 	<!-- Header -->
 	<header class="bg-white py-5 mb-5">
 		<div>

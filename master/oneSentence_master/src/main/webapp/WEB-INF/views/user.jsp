@@ -46,8 +46,9 @@ body {
 <%
 	String val="팔로잉";
 %>
+	<jsp:include page="include/mainHeader.jsp"></jsp:include>
 
-	<div id="search">검색창 들어갈 자리</div>
+	<!-- <div id="search">검색창 들어갈 자리</div> -->
 
 	<!-- Page Content -->
 	<div class="container">
