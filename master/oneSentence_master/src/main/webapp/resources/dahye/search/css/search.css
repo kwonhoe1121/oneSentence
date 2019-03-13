@@ -1,0 +1,95 @@
+* { margin: 0px; padding: 0px;}
+        
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+   
+}
+
+
+        
+
+        header {
+            margin-top: 1.5rem;
+        }
+        
+        
+        p {
+           margin: 0px; padding: 0px;
+        }
+        
+        .h2 {
+            font-family: 'Noto Sans KR', sans-serif;
+            padding: 0px 1rem 1rem 1.5rem;
+            font-size: 2rem;
+        
+        }
+        
+        .ptitle {
+            font-size: 1.4rem;
+        }
+        
+        .ptext_01 {
+            font-size: 1.3rem;
+        }
+     
+        .book_img {
+            
+            max-width: 100%
+            height:auto;
+    
+        }
+            
+.line {
+    width: 65rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+            
+        
+        .user_img {
+            width: 7rem;
+            height: 6rem;
+        }
+        .usertext {
+            margin-left: 10px;
+            font-size: 15px;
+        }
+
+    table {
+        margin-left: auto;
+        margin-right: auto;
+        }    
+        td {
+            text-align: center;
+            border: solid 1px silver; 
+            padding: 1rem;
+        }
+        .more {
+            font-size: 1.5rem;
+            color: crimson;
+            float: right;
+            font-family: 'Noto Sans KR', sans-serif;
+        
+    
+        }
+    .usertext {
+            margin-right: 14%;
+            font-family: 'Noto Sans KR', sans-serif;
+            }
+
+
+  
+
+
+.btn btn-primary leftLst{}
+.btn btn-primary rightLst{}
+.MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
+    .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+        .MultiCarousel .MultiCarousel-inner .item { float: left;}
+        .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; background:#f1f1f1; color:#666;}
+    .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; width: 40px; height: 40px; border-radius:50%;top:calc(50% - 50px); }
+    .MultiCarousel .leftLst { left:0; }
+    .MultiCarousel .rightLst { right:0; }
+    
+        .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { border : 0px; pointer-events: none; background:#ccc; }

@@ -571,7 +571,7 @@ pre code {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: auto
 }
 
 /* 수정 by 재진 */
@@ -606,6 +606,7 @@ pre code {
         max-width: 1140px
     }
 }
+
 /* 수정 by 재진 */
 @media (min-width:1200px) {
     .container2 {
@@ -4647,8 +4648,8 @@ input[type=submit].btn-block {
     padding: .25rem .75rem;
     font-size: 1.25rem;
     line-height: 1;
-    background-color: #458534;
-    border: 1px solid #458534;
+    background-color: transparent;
+    border: 1px solid transparent;
     border-radius: .25rem
 }
 
@@ -4963,7 +4964,7 @@ input[type=submit].btn-block {
 }
 
 .navbar-dark .navbar-brand {
-    color:#fff
+    color: #fff
 }
 
 .navbar-dark .navbar-brand:focus,
@@ -4992,8 +4993,8 @@ input[type=submit].btn-block {
 }
 
 .navbar-dark .navbar-toggler {
-    color: #fff;
-    border-color: #fff
+    color: rgba(255, 255, 255, .5);
+    border-color: rgba(255, 255, 255, .1)
 }
 
 .navbar-dark .navbar-toggler-icon {
@@ -6976,11 +6977,6 @@ button.bg-light:hover {
 
 .bg-dark {
     background-color: #343a40 !important
-}
-
-/* 추가 by 재진 */
-.bg-green {
-    background-color: #458534 !important
 }
 
 a.bg-dark:focus,

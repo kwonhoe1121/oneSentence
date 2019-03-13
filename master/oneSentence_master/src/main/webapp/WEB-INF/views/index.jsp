@@ -125,7 +125,7 @@
 	</section>
 
 	<!-- Footer -->
-	<footer class="py-5 bg-green">
+	<footer class="py-5 bg-success">
 		<div class="container">
 			<div class="container2">
 				<p class="m-0 text-center text-white">

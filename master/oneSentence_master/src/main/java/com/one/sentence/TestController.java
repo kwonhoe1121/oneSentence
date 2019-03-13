@@ -62,5 +62,28 @@ public class TestController {
 
 		return "user";
 	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String getMainHeader() {
+		
+		System.out.println("getMainHeader method");
+		
+		return "include/mainHeader";
+	}
 
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String getSearchPage() {
+		
+		System.out.println("getSearchPage()");
+		
+		return "search";
+	}
+	
+	@RequestMapping(value = "/searchMore", method = RequestMethod.GET)
+	public String getSearchMorePage() {
+		
+		System.out.println("getSearchMorePage method");
+		
+		return "searchMore";
+	}
 }
