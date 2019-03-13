@@ -9969,9 +9969,9 @@ a.text-dark:hover, a.text-dark:focus {
     top: 24.75rem;
     left: 5.8rem;
     padding: 0rem 0.3rem;
-    background-color: crimson;
+/*     background-color: crimson;
     color:white;
-    border:1px solid crimson;
+    border:1px solid crimson; */
     font-size: 1rem;  
 }
 
