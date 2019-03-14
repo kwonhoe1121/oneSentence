@@ -47,7 +47,7 @@
 <body>
 	<!-- userpage.js부분 가져오기 -->
 	<%
-		String val = "팔로우";
+		String val = "팔로잉";
 	%>
 	<%-- <jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
 
