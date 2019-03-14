@@ -6,8 +6,8 @@ public class OneSentence {
 	private String oneSentence;
 	private String page;
 	private String oneSentenceRegisteredTime;
-	private String userIdx;
-	private String isbn;
+	private int userIdx;
+	private int isbn;
 
 	public int getOneSentenceIdx() {
 		return oneSentenceIdx;
@@ -41,19 +41,19 @@ public class OneSentence {
 		this.oneSentenceRegisteredTime = oneSentenceRegisteredTime;
 	}
 
-	public String getUserIdx() {
+	public int getUserIdx() {
 		return userIdx;
 	}
 
-	public void setUserIdx(String userIdx) {
+	public void setUserIdx(int userIdx) {
 		this.userIdx = userIdx;
 	}
 
-	public String getIsbn() {
+	public int getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(String isbn) {
+	public void setIsbn(int isbn) {
 		this.isbn = isbn;
 	}
 
