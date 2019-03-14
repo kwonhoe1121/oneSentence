@@ -4,6 +4,7 @@ public class Hashtag {
 	private int hashtagIdx;
 	private String hashtag;
 	private int oneSentenceIdx;
+	
 	public int getHashtagIdx() {
 		return hashtagIdx;
 	}
