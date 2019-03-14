@@ -54,8 +54,10 @@
 
 	<select id="selectUserByEmail"
 		resultType="com.one.sentence.common.vo.UserVo">
-		select userIdx, userName,
+	<!-- 	select userIdx, userName,
 		userEmail, userPassword from
+		user_info where userEmail = #{param} -->
+		select * from
 		user_info where userEmail = #{param}
 	</select>
 

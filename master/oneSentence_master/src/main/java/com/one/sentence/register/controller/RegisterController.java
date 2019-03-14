@@ -32,14 +32,14 @@ public class RegisterController {
 	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
 	public String requestRegistration(UserVo user, Model model, HttpSession session) {
 		System.out.println(user + "등록 전");
-//체크체
+
 		if (service.registerUser(user) != -1) {
 			service.registerUser(user);
 			session.setAttribute("User", user);
 
 		}
 		System.out.println(user + "return 전");
-		return "home";
+		return "index";
 	}
 
 //	@RequestMapping(method = RequestMethod.GET)

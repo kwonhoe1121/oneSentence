@@ -65,9 +65,9 @@
 				<ul class="navbar-nav ml-auto">
 					<!-- 로그인, 회원가입 버튼. -->
 
-					<li class="nav-item"><a class="nav-link" href="#"><button
+					<li class="nav-item"><a class="nav-link" href="login"><button
 								class="btn navbar-btn">로그인</button></a></li>
-					<li class="nav-item"><a class="nav-link" href="#"><button
+					<li class="nav-item"><a class="nav-link" href="register"><button
 								class="btn btn-success navbar-btn">회원가입</button></a></li>
 				</ul>
 
