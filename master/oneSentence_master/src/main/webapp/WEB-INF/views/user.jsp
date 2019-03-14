@@ -42,7 +42,14 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 
+=======
+	<!-- userpage.js부분 가져오기 -->
+	<%
+		String val = "팔로잉";
+	%>
+>>>>>>> branch 'master' of https://github.com/kwonhoe1121/oneSentence.git
 	<%-- <jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
 
 	<!-- <div id="search"></div> -->
