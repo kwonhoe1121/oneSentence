@@ -1,4 +1,3 @@
-$( document ).ready(function() {
 
 //var flag1=false;
 //1. 팔로잉이 되어있는지 안되어있는지에 따라 버튼 색/내용 달라짐
@@ -44,6 +43,4 @@ $('#follow').click(function(){
     }
                        
           
-});
-
 });

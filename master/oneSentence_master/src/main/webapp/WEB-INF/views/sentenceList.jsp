@@ -42,7 +42,7 @@
 		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
 }
 
-body {
+* {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
 </style>

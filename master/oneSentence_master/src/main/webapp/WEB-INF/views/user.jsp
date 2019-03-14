@@ -36,7 +36,7 @@
 		url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_otf.otf');
 }
 
-body {
+* {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
 </style>
