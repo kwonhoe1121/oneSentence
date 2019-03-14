@@ -99,4 +99,35 @@ public class OnesentenceService implements IOnesentenceService {
 		return dao.findOneSentenceIdx(userIdx, isbn, oneSentence);
 	}
 
+	@Override
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, int isbn) {
+		// TODO Auto-generated method stub
+		return dao.selectOnesentenceByoneSentenceIdxAndIsbnMy(userIdx, isbn);
+	}
+
+	@Override
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, int isbn) {
+		// TODO Auto-generated method stub
+		return dao.selectOnesentenceByoneSentenceIdxAndIsbnFollowing(userIdx, isbn);
+	}
+
+	@Override
+	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1, int userIdx2,
+			int isbn) {
+		// TODO Auto-generated method stub
+		return dao.selectOnesentenceListByoneSentenceIdxAndIsbnOther(userIdx1, userIdx2, isbn);
+	}
+
+	@Override
+	public List<String> showHashtag(int oneSentenceIdx) {
+		// TODO Auto-generated method stub
+		return dao.selectHashtag(oneSentenceIdx);
+	}
+
+	@Override
+	public int showLikeTotal(int oneSentenceIdx) {
+		// TODO Auto-generated method stub
+		return dao.selectLikeTotal(oneSentenceIdx);
+	}
+
 }

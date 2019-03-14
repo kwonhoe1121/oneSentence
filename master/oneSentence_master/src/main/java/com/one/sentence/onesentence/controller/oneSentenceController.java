@@ -1,6 +1,7 @@
 package com.one.sentence.onesentence.controller;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -116,9 +117,20 @@ public class oneSentenceController {
 	public String selectOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model) {
 		System.out.println("idx받음");
 		ShowOnesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);
-
+		int oneSentenceIdx =onesentence.getOneSentenceIdx();
+		List<String> hashtagList = oneService.showHashtag(oneSentenceIdx);
+		String hashtag="";
+		Iterator<String> it = hashtagList.iterator();
+		while(it.hasNext()) {
+			hashtag += ("#"+ it.next()+" ");
+		}
+		onesentence.setHashtag(hashtag);
+		
+		int likeTotal = oneService.showLikeTotal(oneSentenceIdx);
+		onesentence.setLikeTotal(likeTotal);
+		
 		model.addAttribute("onesentence", onesentence);
-
+		
 		return "onesentence/one";
 
 	}

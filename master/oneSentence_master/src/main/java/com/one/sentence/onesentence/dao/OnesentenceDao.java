@@ -100,5 +100,40 @@ public class OnesentenceDao implements IOnesentenceDao{
 		return sqlSession.selectOne(namespace+".findOneSentenceIdx", map);
 	}
 
+	@Override
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, int isbn) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userIdx", userIdx);
+		map.put("isbn", isbn);
+		return sqlSession.selectOne(namespace+".selectOnesentenceByoneSentenceIdxAndIsbnMy", map);
+	}
+
+	@Override
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, int isbn) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userIdx", userIdx);
+		map.put("isbn", isbn);
+		return sqlSession.selectOne(namespace+".selectOnesentenceByoneSentenceIdxAndIsbnFollowing", map);
+	}
+
+	@Override
+	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1, int userIdx2, int isbn) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userIdx1", userIdx1);
+		map.put("userIdx2", userIdx2);
+		map.put("isbn", isbn);
+		return sqlSession.selectList(namespace+".selectOnesentenceByoneSentenceIdxAndIsbnOther", map);
+	}
+
+	@Override
+	public List<String> selectHashtag(int oneSentenceIdx) {
+		return sqlSession.selectList(namespace+".selectOnesentenceByoneSentenceIdxAndIsbnOther", oneSentenceIdx);
+	}
+
+	@Override
+	public int selectLikeTotal(int oneSentenceIdx) {
+		return sqlSession.selectOne(namespace+".selectLikeTotal", oneSentenceIdx);
+	}
+
 	
 }

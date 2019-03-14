@@ -14,6 +14,9 @@ public interface IOnesentenceDao {
 	public List<ShowOnesentence> selectOnesentenceList();
 	public List<ShowOnesentence> selectOnesentenceListByuserIdx(int userIdx);
 	public List<ShowOnesentence> selectOnesentenceListForLiketo(int userIdx);
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, int isbn);
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, int isbn);
+	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1,int userIdx2, int isbn);
 	
 	public ShowOnesentence selectOnesentenceByoneSentenceIdx(int oneSentenceIdx);
 	public OneSentence selectOnesentenceModel(int oneSentenceIdx);
@@ -28,4 +31,7 @@ public interface IOnesentenceDao {
 	
 	public int insertHashtag(Hashtag tag);
 	public int findOneSentenceIdx(int userIdx, int isbn, String oneSentence);
+	public List<String> selectHashtag(int oneSentenceIdx);
+	
+	public int selectLikeTotal(int oneSentenceIdx);
 }
