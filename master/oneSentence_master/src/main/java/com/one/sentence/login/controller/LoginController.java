@@ -18,17 +18,22 @@ public class LoginController {
 	@Inject
 	LoginService service;
 
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String requestLoginForm() {
+		return "login";
+	}
+	
 	// 세션 유무체크 interceptor에서 처리
 	// 로그인 안되어 있는 상태에서 아래 작업 수행
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
 	public String requestLogin(HttpSession session, Model model, @RequestParam("userEmail") String userEmail,
 			@RequestParam("userPassword") String userPassword) {
-		System.out.println("로그인체크");
+		System.out.println("로그인체크: " + userEmail + " " + userPassword);
 		// 이메일 체크
 		if (!service.isUser(userEmail)) {
 			model.addAttribute("isNotUser", "회원이 아닙니다.");
 			System.out.println("등록된 이메일 없음.");
-			return "home";
+			return "login";
 		}
 
 		// 유저 정보 가져오기.
@@ -38,13 +43,16 @@ public class LoginController {
 		if (!userPassword.equals(user.getUserPassword())) {
 			model.addAttribute("isNotPassword", "비밀번호가 다릅니다.");
 			System.out.println("비밀번호 불일치!");
-			return "home";
+			return "login";
 		}
 
 		// 로그인 완료
 		session.setAttribute("User", user);
+		
+		//viewpage 에서 nav 창 바꾸는데에 사용한다.
+		model.addAttribute("User", user);
 		System.out.println("로그인 완료");
-		return "home";
+		return "index";
 	}
 
 	// 로그아웃 controller
@@ -54,7 +62,7 @@ public class LoginController {
 		// 세션 종료.
 		session.invalidate();
 		System.out.println("로그아웃!");
-		return "home";
+		return "index";
 	}
 
 }

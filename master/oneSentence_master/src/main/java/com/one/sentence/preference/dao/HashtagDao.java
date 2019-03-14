@@ -14,7 +14,7 @@ public class HashtagDao implements IHashtagDao{
 	@Inject
 	private SqlSessionTemplate sqlSession;
 	
-	private String namespace="com.one.sentence.mapper.mybatis";	
+	private String namespace="com.one.sentence.mapper.Mapper";	
 	
 	@Override
 	public List<String> selectHashtagList(int userIdx) {

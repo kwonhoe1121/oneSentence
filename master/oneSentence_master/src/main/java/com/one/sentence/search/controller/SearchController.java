@@ -53,7 +53,7 @@ public class SearchController {
 			System.out.println("useritems" + useritems);
 			System.out.println("hashtagitems" + hashtagitems);
 			
-			return "search/searchresult";
+			return "/searchPage";
 		} else { // 검색결과가 하나도 존재하지 않을경우
 			System.out.println("검색결과없음");
 			return "search/searchfail";
