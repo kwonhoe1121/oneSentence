@@ -15,8 +15,12 @@ public class User_info {
 	public int getUserIdx() {
 		return userIdx;
 	}
-
-	
+	public void setUserIdx(int userIdx) {
+		this.userIdx = userIdx;
+	}
+	public String getUserEmail() {
+		return userEmail;
+	}
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}

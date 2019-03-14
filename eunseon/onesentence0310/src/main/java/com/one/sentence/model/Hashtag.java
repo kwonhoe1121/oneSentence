@@ -14,6 +14,15 @@ public class Hashtag {
 		return hashtag;
 	}
 	
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
+	}
+	public int getOneSentenceIdx() {
+		return oneSentenceIdx;
+	}
+	public void setOneSentenceIdx(int oneSentenceIdx) {
+		this.oneSentenceIdx = oneSentenceIdx;
+	}
 	@Override
 	public String toString() {
 		return "Hashtag [hashtagIdx=" + hashtagIdx + ", hashtag=" + hashtag + ", oneSentenceIdx=" + oneSentenceIdx
