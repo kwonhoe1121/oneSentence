@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class TestController {
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/indexPage", method = RequestMethod.GET)
 	public String getIndexPage() {
 
 		System.out.println("getIndexPage method");
@@ -15,7 +15,7 @@ public class TestController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
 	public String getLoginPage() {
 
 		System.out.println("getLoginPage method");
@@ -23,7 +23,7 @@ public class TestController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	@RequestMapping(value = "/registerPage", method = RequestMethod.GET)
 	public String getRegisterPage() {
 
 		System.out.println("getRegisterPage method");
@@ -31,7 +31,7 @@ public class TestController {
 		return "register";
 	}
 
-	@RequestMapping(value = "/contents", method = RequestMethod.GET)
+	@RequestMapping(value = "/contentsPage", method = RequestMethod.GET)
 	public String getContentsPage() {
 
 		System.out.println("getContentsPage method");
@@ -39,7 +39,7 @@ public class TestController {
 		return "contents";
 	}
 
-	@RequestMapping(value = "/preference", method = RequestMethod.GET)
+	@RequestMapping(value = "/preferencePage", method = RequestMethod.GET)
 	public String getPreferencePage() {
 
 		System.out.println("getPreferencePage method");
@@ -47,7 +47,7 @@ public class TestController {
 		return "preference";
 	}
 
-	@RequestMapping(value = "/sentenceList", method = RequestMethod.GET)
+	@RequestMapping(value = "/sentenceListPage", method = RequestMethod.GET)
 	public String getSentenceList() {
 
 		System.out.println("getSentenceList mehotd");
@@ -55,7 +55,7 @@ public class TestController {
 		return "sentenceList";
 	}
 
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/userPage", method = RequestMethod.GET)
 	public String getUserPage() {
 
 		System.out.println("getUserPage method");
@@ -63,7 +63,7 @@ public class TestController {
 		return "user";
 	}
 	
-	@RequestMapping(value = "/mainHeader", method = RequestMethod.GET)
+	@RequestMapping(value = "/mainHeaderPage", method = RequestMethod.GET)
 	public String getMainHeader() {
 		
 		System.out.println("getMainHeader method");
@@ -71,7 +71,7 @@ public class TestController {
 		return "include/mainHeader";
 	}
 
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@RequestMapping(value = "/searchPage", method = RequestMethod.GET)
 	public String getSearchPage() {
 		
 		System.out.println("getSearchPage()");
@@ -79,7 +79,7 @@ public class TestController {
 		return "search";
 	}
 	
-	@RequestMapping(value = "/searchMore", method = RequestMethod.GET)
+	@RequestMapping(value = "/searchMorePage", method = RequestMethod.GET)
 	public String getSearchMorePage() {
 		
 		System.out.println("getSearchMorePage method");
