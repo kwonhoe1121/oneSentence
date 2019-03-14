@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.one.sentence.mapper.Mapper">
-	<!-- **한문장 -->
-	<!-- 한문장삽입 -->
+	
+	<!-- 한문장 -->
 	<insert id="insertOnesentence"
 		parameterType="com.one.sentence.model.Onesentence"
 	>
@@ -10,87 +10,55 @@
 		 value (#{oneSentence},#{page},#{userIdx},#{isbn})
 	</insert>
 
-	<!-- 모든 한문장목록 -->
+	
 	<select id="selectOnesentenceList"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence"
 	>
 		  select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		   o.isbn, b.bookTitle, b.author, b.publisher,count(l.oneSentenceIdx) 
-		   from one_sentence o, book b, user_info u, liketo l
-		    where b.isbn=o.isbn and u.userIdx=o.userIdx and o.oneSentenceIdx=l.oneSentenceIdx
- 			group by o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc
+		   o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u
+		    where b.isbn=o.isbn and u.userIdx=o.userIdx
+ 			group by o.oneSentenceIdx order by o.oneSentenceRegisteredTime
  
 	</select>
 	
-	<!-- 내가 쓴 한문장목록 -->
 	<select id="selectOnesentenceListByuserIdx"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence"
 	>
 		select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		 o.isbn, b.bookTitle, b.author, b.publisher, count(l.oneSentenceIdx) from one_sentence o, book b, user_info u, liketo l
-		  where b.isbn=o.isbn and u.userIdx=o.userIdx and u.userIdx=#{value} and o.oneSentenceIdx=l.oneSentenceIdx
-		 group by o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc   
+		 o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u
+		  where b.isbn=o.isbn and u.userIdx=o.userIdx and u.userIdx=${value}
+		 group by o.oneSentenceIdx order by o.oneSentenceRegisteredTime
  
 	</select>
 	
-	<!-- 한문장idx로 한문장보기 -->
 	<select id="selectOnesentenceByoneSentenceIdx"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence"
 	>
 		select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		 o.isbn, b.bookTitle, b.author, b.publisher, count(l.oneSentenceIdx)
-         from one_sentence o, book b, user_info u, liketo l
-		  where o.oneSentenceIdx=#{value} and o.isbn=b.isbn and o.userIdx=u.userIdx;
+		 o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u
+		  where o.oneSentenceIdx=#{oneSentenceIdx} and o.isbn=b.isbn and o.userIdx=u.userIdx; 
 	</select>	
 	
-	<!-- 한문장idx로 sql한문장 찾기-->
 	<select id="selectOnesentenceModel"
 		resultType="com.one.sentence.model.Onesentence"
 	>
 		  select * from one_sentence where oneSentenceIdx=#{oneSentenceIdx}
 	</select>
 	
-	<!-- 좋아요한 한문장목록 -->
-	<select id="selectOnesentenceListForliketo"
+	
+	
+	<select id="selectOnesentenceForliketo"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence"
 	>
+
 	select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
 	 o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u, liketo l
-	  where o.oneSentenceIdx in(select oneSentenceIdx from liketo where userIdx=#{value}) and b.isbn=o.isbn and u.userIdx=o.userIdx
+	  where o.oneSentenceIdx=(select oneSentenceIdx from liketo where liketo.userIdx=${value}) and b.isbn=o.isbn and u.userIdx=o.userIdx
 	   group by o.oneSentenceIdx order by l.likeRegisteredTime
+ 
+	
 	</select>	
 	
-	<!-- 해당isbn에 해당하는 전체한문장 중(내것과 팔로잉유저를 제외한) 좋아요수가 가장 많은 순으로 #{num}개 -->
-	<select id="selectOnesentenceListByIsbnForliketo"
-		resultType="com.one.sentence.onesentence.model.ShowOnesentence"
-	>
-	select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		   o.isbn, b.bookTitle, b.author, b.publisher,count(l.oneSentenceIdx) from one_sentence o, book b, user_info u, liketo l
-		    where b.isbn=o.isbn and o.isbn=#{isbn} and u.userIdx=o.userIdx
-		     and o.oneSentenceIdx=l.oneSentenceIdx and o.oneSentenceIdx not in(#{oneSentenceIdx1},#{oneSentenceIdx2})
- 			group by o.oneSentenceIdx order by count(l.oneSentenceIdx) desc limit 0,#{limit};  
-	</select>
-	
-	<!-- 해당isbn에 해당하는 문장중 팔로잉한 유저들이 작성하고 그 중 좋아요 수가 가장많은 1개 -->
-	<select id="selectOnesentenceByIsbnForFollowing"
-		resultType="com.one.sentence.onesentence.model.ShowOnesentence"
-	>
-	select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		   o.isbn, b.bookTitle, b.author, b.publisher,count(l.oneSentenceIdx) from one_sentence o, book b, user_info u, liketo l
-		    where b.isbn=o.isbn and o.isbn=#{isbn} and u.userIdx=o.userIdx and o.oneSentenceIdx=l.oneSentenceIdx
-		     and u.userIdx in(select likeIdx from liketo where userIdx=#{userIdx})
- 			group by o.oneSentenceIdx order by count(l.oneSentenceIdx) limit 0,1;
-	</select>
-	
-	<!-- 해당isbn에 해당하는 문장중 내가 작성한 1개 -->
-	<select id="selectOnesentenceByIsbnForMe"
-		resultType="com.one.sentence.onesentence.model.ShowOnesentence"
-	>
-	select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		   o.isbn, b.bookTitle, b.author, b.publisher,count(l.oneSentenceIdx) from one_sentence o, book b, user_info u, liketo l
-		    where b.isbn=o.isbn and o.isbn=#{isbn} and u.userIdx=o.userIdx and o.oneSentenceIdx=l.oneSentenceIdx and u.userIdx=#{userIdx}
- 			group by o.oneSentenceIdx limit 0,1;
-	</select>
 	
 	<update id="updateOnesentence"
 		parameterType="com.one.sentence.model.Onesentence"
@@ -163,10 +131,5 @@
 		insert into hashtag (hashtag, oneSentenceIdx) value(#{hashtag}, #{oneSentenceIdx})
 		</insert>
 	
-	<select id="selectHashtagByOneSentenceIdx"
-		resultType = "java.lang.String"
-	>
-		select hashtag from hashtag where oneSentenceIdx=#{value} 
-	</select>
 	
 </mapper>
