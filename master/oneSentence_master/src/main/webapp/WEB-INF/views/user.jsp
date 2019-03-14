@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%-- <%@include file="include/mainHeader.jsp"%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,12 +26,14 @@
 <style>
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
-	src: url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_ttf.ttf');
+	src:
+		url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_ttf.ttf');
 }
 
 @font-face {
 	font-family: 'BMHANNAAir_otf';
-	src: url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_otf.otf');
+	src:
+		url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_otf.otf');
 }
 
 body {
@@ -39,16 +42,16 @@ body {
 </style>
 
 <script
-		src="<%=request.getContextPath()%>/resources/naeun/user/js/userpage.js"></script>
+	src="<%=request.getContextPath()%>/resources/naeun/user/js/userpage.js"></script>
 </head>
 <body>
-<!-- userpage.js부분 가져오기 -->
-<%
-	String val="팔로잉";
-%>
-	<jsp:include page="include/mainHeader.jsp"></jsp:include>
+	<!-- userpage.js부분 가져오기 -->
+	<%
+		String val = "팔로잉";
+	%>
+	<%-- <jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
 
-	<!-- <div id="search">검색창 들어갈 자리</div> -->
+	<!-- <div id="search"></div> -->
 
 	<!-- Page Content -->
 	<div class="container">
@@ -59,14 +62,15 @@ body {
 			<!-- Comments Form -->
 			<div class="card my-4">
 				<div class="card-header" id="part1">
-					<img id="img1" src="<%=request.getContextPath()%>/resources/naeun/user/img/9c7e52813cc7517492fb362d2f090d47.jpg">
+					<img id="img1"
+						src="<%=request.getContextPath()%>/resources/naeun/user/img/9c7e52813cc7517492fb362d2f090d47.jpg">
 					<i class="fa fa-cog fa-2x" aria-hidden="true"><a href="#"></a></i>
 				</div>
 
 				<div class="card-header" id="part2">
 					<i class="fa fa-user-circle fa-4x" aria-hidden="true"></i>
 					<h3 class="bold">김김김</h3>
-					<input type="submit" value=<%=val %> class="btn btn-primary"
+					<input type="submit" value=<%=val%> class="btn btn-primary"
 						id="follow">
 					<h5>자기소개입니당(default="프로필이 없습니다.")</h5>
 					<input type="submit" value="수정" class="btn btn-primary" id="update">
