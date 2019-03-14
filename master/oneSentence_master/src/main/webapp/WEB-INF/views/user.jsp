@@ -14,8 +14,9 @@
 <title>user page</title>
 
 <!-- Bootstrap core CSS -->
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/naeun/user/vendor/bootstrap/css/bootstrap.css">
+<link
+	href="<%=request.getContextPath()%>/resources/naeun/user/vendor/bootstrap/css/bootstrap.css"
+	rel="stylesheet">
 <!-- Custom styles for this template -->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -42,14 +43,8 @@
 
 </head>
 <body>
-<<<<<<< HEAD
-
-=======
 	<!-- userpage.js부분 가져오기 -->
-	<%
-		String val = "팔로잉";
-	%>
->>>>>>> branch 'master' of https://github.com/kwonhoe1121/oneSentence.git
+
 	<%-- <jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
 
 	<!-- <div id="search"></div> -->
@@ -71,7 +66,7 @@
 				<div class="card-header" id="part2">
 					<i class="fa fa-user-circle fa-4x" aria-hidden="true"></i>
 					<h3 class="bold">김김김</h3>
-					<input type="submit" value="${followingstate}" class="btn btn-primary"
+					<input type="submit" value=<%=(String) request.getAttribute("followingstate") %> class="btn btn-primary"
 						id="follow">
 					<h5>자기소개입니당(default="프로필이 없습니다.")</h5>
 					<input type="submit" value="수정" class="btn btn-primary" id="update">

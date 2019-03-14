@@ -57,8 +57,7 @@
 		</div>
 	</nav> -->
 	<!-- Header -->
-	<header class="bg-white">
-	<!-- "py-5" -->
+	<header class="bg-white py-5 mb-5">
 		<div>
 			<img
 				src="<%=request.getContextPath()%>/resources/eunseon/contents/img/contents.jpg"
@@ -139,7 +138,7 @@
 						<span
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
 							#흰둥이</span> <span
-							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: crimson"><i
+							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
 							class="fa fa-heart"> 11</i></span>
 					</div>
 				</div>
@@ -179,7 +178,7 @@
 						<span
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
 							#흰둥이</span> <span
-							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: crimson"><i
+							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
 							class="fa fa-heart"> 11</i></span>
 					</div>
 				</div>
@@ -219,7 +218,7 @@
 						<span
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
 							#흰둥이</span> <span
-							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: crimson"><i
+							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
 							class="fa fa-heart"> 11</i></span>
 					</div>
 				</div>
@@ -259,7 +258,7 @@
 						<span
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
 							#흰둥이</span> <span
-							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: crimson"><i
+							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
 							class="fa fa-heart"> 11</i></span>
 					</div>
 				</div>
@@ -299,7 +298,7 @@
 						<span
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
 							#흰둥이</span> <span
-							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: crimson"><i
+							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
 							class="fa fa-heart"> 11</i></span>
 					</div>
 				</div>
