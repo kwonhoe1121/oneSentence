@@ -1,0 +1,42 @@
+.newdiv{
+	background-color:white;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+	padding: 1.5rem;
+	margin-bottom:1.5rem;
+}
+.divmodal {
+    
+    float: right;
+    padding-top: -0.5rem;
+    right: -0.4rem;
+}
+
+.divmodal div {
+    width: 35px;
+    background-color: #3b5998;
+    height: 35px;
+    border-radius: 100%;
+    margin: 1vw;
+
+}
+
+.divmodal a {
+    font-weight: bold;
+    line-height: 35px;
+    font-size: 15px;
+    color: white;
+}
+.eventA{
+	float:right;
+	color:darkgray;
+}
+.hashtag{
+	color:cadetblue;
+	font-size:0.9rem;
+	padding-left:1.5rem;
+}
+.like{
+	 color:crimson;float:right;font-size:0.8rem;
+	 padding-right:1rem;
+}

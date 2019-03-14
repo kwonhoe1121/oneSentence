@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%-- <%@include file="include/mainHeader.jsp"%> --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +32,7 @@
 </head>
 <body>
 
-	<%-- <jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
+	<%-- 	<jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
 
 	<div class="all">
 		<h2 class="h2">

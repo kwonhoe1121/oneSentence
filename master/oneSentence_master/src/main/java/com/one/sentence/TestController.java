@@ -63,7 +63,7 @@ public class TestController {
 		return "user";
 	}
 	
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	@RequestMapping(value = "/mainHeader", method = RequestMethod.GET)
 	public String getMainHeader() {
 		
 		System.out.println("getMainHeader method");

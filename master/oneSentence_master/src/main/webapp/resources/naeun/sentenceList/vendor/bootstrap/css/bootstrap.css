@@ -577,7 +577,7 @@ pre code {
 
 .row {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: -15px;
@@ -2005,7 +2005,7 @@ textarea.form-control {
 
 .form-row {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: -5px;
@@ -2302,7 +2302,7 @@ textarea.form-control {
 
 .form-inline {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   -ms-flex-align: center;
@@ -2316,7 +2316,7 @@ textarea.form-control {
 @media (min-width: 576px) {
   .form-inline label {
     display: -ms-flexbox;
-    display: flex;
+    /*display: flex;*/
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: center;
@@ -2325,7 +2325,7 @@ textarea.form-control {
   }
   .form-inline .form-group {
     display: -ms-flexbox;
-    display: flex;
+    /*display: flex;*/
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     -ms-flex-flow: row wrap;
@@ -2348,7 +2348,7 @@ textarea.form-control {
   }
   .form-inline .form-check {
     display: -ms-flexbox;
-    display: flex;
+    /*display: flex;*/
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: center;
@@ -3325,7 +3325,7 @@ input[type="button"].btn-block {
 
 .btn-toolbar {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -ms-flex-pack: start;
@@ -3426,7 +3426,7 @@ input[type="button"].btn-block {
 .input-group {
   position: relative;
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -ms-flex-align: stretch;
@@ -3484,7 +3484,7 @@ input[type="button"].btn-block {
 
 .input-group > .custom-file {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-align: center;
   align-items: center;
 }
@@ -3503,7 +3503,7 @@ input[type="button"].btn-block {
 .input-group-prepend,
 .input-group-append {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
 }
 
 .input-group-prepend .btn,
@@ -3538,7 +3538,7 @@ input[type="button"].btn-block {
 
 .input-group-text {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-align: center;
   align-items: center;
   padding: 0.375rem 0.75rem;
@@ -4073,7 +4073,7 @@ input[type="button"].btn-block {
 
 /*.nav {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding-left: 0;
@@ -4168,7 +4168,7 @@ input[type="button"].btn-block {
 .navbar {
   position: relative;
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -ms-flex-align: center;
@@ -4181,7 +4181,7 @@ input[type="button"].btn-block {
 .navbar > .container,
 .navbar > .container-fluid {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -ms-flex-align: center;
@@ -4206,7 +4206,7 @@ input[type="button"].btn-block {
 
 .navbar-nav {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-direction: column;
   flex-direction: column;
   padding-left: 0;
@@ -4576,10 +4576,10 @@ input[type="button"].btn-block {
 
 .card1 {
   position: relative;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
+
+  
+  -ms-flex-direction: row;
+  flex-direction: row;
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
@@ -4591,10 +4591,8 @@ input[type="button"].btn-block {
 
 .card {
   position: relative;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  -ms-flex-direction: row;
+  flex-direction: row;
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
@@ -4712,9 +4710,9 @@ input[type="button"].btn-block {
 
 .card-deck {
   display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  /*display: flex;*/
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .card-deck .card {
@@ -4730,11 +4728,11 @@ input[type="button"].btn-block {
   }
   .card-deck .card {
     display: -ms-flexbox;
-    display: flex;
+    /* /*display: flex;*/ */
     -ms-flex: 1 0 0%;
     flex: 1 0 0%;
-    -ms-flex-direction: column;
-    flex-direction: column;
+    -ms-flex-direction: row;
+    flex-direction: row;
     margin-right: 15px;
     margin-bottom: 0;
     margin-left: 15px;
@@ -4743,9 +4741,9 @@ input[type="button"].btn-block {
 
 .card-group {
   display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  /* /*display: flex;*/ */
+  -ms-flex-direction: row;
+  flex-direction:row;
 }
 
 .card-group > .card {
@@ -4865,7 +4863,7 @@ input[type="button"].btn-block {
 
 .breadcrumb {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding: 0.75rem 1rem;
@@ -4900,7 +4898,7 @@ input[type="button"].btn-block {
 
 .pagination {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   padding-left: 0;
   list-style: none;
   border-radius: 0.25rem;
@@ -5283,7 +5281,7 @@ a.badge-dark:hover, a.badge-dark:focus {
 
 .progress {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   height: 1rem;
   overflow: hidden;
   font-size: 0.75rem;
@@ -5293,7 +5291,7 @@ a.badge-dark:hover, a.badge-dark:focus {
 
 .progress-bar {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-direction: column;
   flex-direction: column;
   -ms-flex-pack: center;
@@ -5323,7 +5321,7 @@ a.badge-dark:hover, a.badge-dark:focus {
 
 .media {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-align: start;
   align-items: flex-start;
 }
@@ -5335,7 +5333,7 @@ a.badge-dark:hover, a.badge-dark:focus {
 
 .list-group {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-direction: column;
   flex-direction: column;
   padding-left: 0;
@@ -5613,7 +5611,7 @@ a.close.disabled {
 
 .toast-header {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-align: center;
   align-items: center;
   padding: 0.25rem 0.75rem;
@@ -5676,7 +5674,7 @@ a.close.disabled {
 
 .modal-dialog-centered {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-align: center;
   align-items: center;
   min-height: calc(100% - (0.5rem * 2));
@@ -5691,7 +5689,7 @@ a.close.disabled {
 .modal-content {
   position: relative;
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
@@ -5723,7 +5721,7 @@ a.close.disabled {
 
 .modal-header {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-align: start;
   align-items: flex-start;
   -ms-flex-pack: justify;
@@ -5753,7 +5751,7 @@ a.close.disabled {
 
 .modal-footer {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-align: center;
   align-items: center;
   -ms-flex-pack: end;
@@ -6199,7 +6197,7 @@ a.close.disabled {
   bottom: 0;
   z-index: 1;
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-align: center;
   align-items: center;
   -ms-flex-pack: center;
@@ -6259,7 +6257,7 @@ a.close.disabled {
   left: 0;
   z-index: 15;
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-pack: center;
   justify-content: center;
   padding-left: 0;
@@ -7893,6 +7891,7 @@ button.bg-dark:focus {
 .my-4
  {
   margin-top: 1.5rem !important;
+
 }
 
 .mr-4,
@@ -7904,6 +7903,12 @@ button.bg-dark:focus {
 .my-4
 {
   margin-bottom: 1.5rem !important;
+}
+.my-4{
+	    background-color:white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding: 1.5rem;
 }
 
 .ml-4,
