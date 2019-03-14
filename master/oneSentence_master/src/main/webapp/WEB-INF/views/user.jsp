@@ -37,18 +37,17 @@
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
 </style>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-<script
-		src="<%=request.getContextPath()%>/resources/naeun/user/js/userpage.js"></script>
 </head>
 <body>
 <!-- userpage.js부분 가져오기 -->
 <%
 	String val="팔로잉";
 %>
-	<jsp:include page="include/mainHeader.jsp"></jsp:include>
+<%-- 	<jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
 
-	<!-- <div id="search">검색창 들어갈 자리</div> -->
+	 <div id="search">검색창 들어갈 자리</div> 
 
 	<!-- Page Content -->
 	<div class="container">
@@ -110,7 +109,6 @@
 	<!-- Bootstrap core JavaScript -->
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/user/vendor/jquery/jquery.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script
