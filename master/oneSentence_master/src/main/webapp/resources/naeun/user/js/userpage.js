@@ -1,7 +1,7 @@
 
 //var flag1=false;
 //1. 팔로잉이 되어있는지 안되어있는지에 따라 버튼 색/내용 달라짐
-if($('#follow').value=='팔로잉'){
+if($('#follow').val()=='팔로잉'){
     $('#follow').css({'backgroundColor' : 'white',
         			  'color' : 'black',
         			  'border' : '1px solid silver'
