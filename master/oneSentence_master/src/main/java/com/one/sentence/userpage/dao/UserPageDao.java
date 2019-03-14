@@ -13,7 +13,7 @@ public class UserPageDao implements IUserPageDao{
 	@Inject
 	private SqlSessionTemplate sqlSession;
 	
-	private String namespace="com.one.sentence.mapper.mybatis";
+	private String namespace="com.one.sentence.mapper.Mapper";
 
 	@Override
 	public UserVo selectUser_infoByuserIdx(int userIdx) {

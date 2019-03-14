@@ -14,7 +14,7 @@ public class SearchUserDao implements ISearchUserDao{
 	@Inject
 	private SqlSessionTemplate sqlSession;
 	
-	private String namespace="com.one.sentence.mapper.mapper";
+	private String namespace="com.one.sentence.mapper.Mapper";
 	
 	@Override
 	public List<String> selectUserList(String userName) {

@@ -11,7 +11,7 @@
 	<ul>
 <!--         <li><a href="hashtagList">취향분석</a></li> -->
 		<li><a href="following">팔로잉</a></li>
-        <li><a href="userpage/4">회원페이지</a></li>                
+        <li><a href="userpage/4">4번의 user 페이지</a></li>                
     </ul>
     
     <h3>나은 test</h3>

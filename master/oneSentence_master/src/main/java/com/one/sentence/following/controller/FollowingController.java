@@ -21,8 +21,6 @@ public class FollowingController {
 		
 		System.out.println("userIdx="+request.getParameter("userIdx"));
 			//service.unfollowing(following);
-
-
 			//service.startFollowing(following);			
 
 		return "preference";

@@ -23,8 +23,12 @@ public class UserPageController {
 	
 	@RequestMapping("/userpage/{userIdx}")
 	public String CheckFollowingState(Model model, @PathVariable("userIdx") int userIdx) {
-		// userIdx=4의 userpage
-		// loginid=3이 팔로우 하려고 할 때
+		// 1. 본인의 유저페이지에 들어갈 경우 (userIdx와 loginId가 같은 경우)
+		// 팔로잉 상태 알아보는 과정(아래의 과정) 필요 없음 (지금은 user.js로만 구현)
+		
+		// 2. 타인의 유저페이지에 들어갈 경우	
+		// (ex. loginid=3이고 userIdx=4번의 유저페이지에 들어갈 때)
+		// 둘의 팔로잉 상태에 따라 팔로잉 버튼의 value와 css가 달라짐
 
 		UserVo uservo = uservice.showUser_infoByuserIdx(userIdx);
 		model.addAttribute("uservo", uservo);

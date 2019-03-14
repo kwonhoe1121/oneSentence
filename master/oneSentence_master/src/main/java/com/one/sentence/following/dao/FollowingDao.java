@@ -14,7 +14,7 @@ public class FollowingDao implements IFollowingDao{
 	@Inject
 	private SqlSessionTemplate sqlSession;
 	
-	private String namespace="com.one.sentence.mapper.mybatis";
+	private String namespace="com.one.sentence.mapper.Mapper";
 	
 	@Override
 	public Following selectFollower(Following following) {
