@@ -19,13 +19,12 @@ public class FollowingController {
 	
 	@RequestMapping("/userpage")
 	public String CheckFollowingState(Model model) {
-		// userIdx=2의 userpage
+		// userIdx=1의 userpage
 		// loginid=3이 팔로우 하려고 할 때
-		
-		
+			
 		Following following = new Following();
 		following.setUserIdx(3);
-		following.setFollowingUserIdx(4);
+		following.setFollowingUserIdx(1);
 		
 		Object followingstate = service.checkFollowingState(following);
 
