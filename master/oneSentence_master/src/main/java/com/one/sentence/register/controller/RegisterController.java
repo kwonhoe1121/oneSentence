@@ -23,6 +23,11 @@ public class RegisterController {
 
 	@Inject
 	RegisterService service;
+	
+	@RequestMapping(value = "register", method = RequestMethod.GET)
+	public String requestRegisterForm() {
+		return "register";
+	}
 
 	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
 	public String requestRegistration(UserVo user, Model model, HttpSession session) {

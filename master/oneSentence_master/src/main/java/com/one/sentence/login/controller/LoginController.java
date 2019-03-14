@@ -18,6 +18,11 @@ public class LoginController {
 	@Inject
 	LoginService service;
 
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String requestLoginForm() {
+		return "login";
+	}
+	
 	// 세션 유무체크 interceptor에서 처리
 	// 로그인 안되어 있는 상태에서 아래 작업 수행
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
