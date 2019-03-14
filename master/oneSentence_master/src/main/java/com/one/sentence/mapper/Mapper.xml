@@ -209,7 +209,31 @@
 
 
 	<!-- 다혜 매퍼 -->
+	
+	<select id="selectUserList"
+			resultType="java.lang.String">
+			select u.userName from user_info u where userName like #{param};
+	</select>
+	
+	<select id="selectHashtagList"
+			resultType="com.one.sentence.search.model.SearchHashtagModel">
+			select u.userName, o.oneSentence, o.page, o.oneSentenceRegisteredTime, b.bookTitle, b.author, b.publisher
+			from user_info u, one_sentence o, book b, hashtag h 
+			where u.userIdx=o.userIdx and o.isbn=b.isbn and o.oneSentenceIdx=h.oneSentenceIdx 
+			and hashtag like #{param} order by o.oneSentenceRegisteredTime;
+	</select>
+	
+	<select id="selectFollowingNewsList"
+			resultType="com.one.sentence.search.model.SearchHashtagModel">
+			select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
+    		o.isbn, b.bookTitle, b.author, b.publisher
+			from book b, user_info u,one_sentence o, (
+			select followingUserIdx
+			from following
+			where userIdx=#{userIdx}) sb
+			where b.isbn=o.isbn and u.userIdx=o.userIdx and o.userIdx=sb.followingUserIdx order by o.oneSentenceRegisteredTime;
 
+	</select>
 
 
 

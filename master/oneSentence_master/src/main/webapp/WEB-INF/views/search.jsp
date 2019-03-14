@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>  	
 <%-- <%@include file="include/mainHeader.jsp"%> --%>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +36,14 @@
 
 	<%-- 	<jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
 
+<header>
+	<div class="test">
+	    <form method="get">
+		    <input type="search" class="search"  placeholder="도서제목,저자,출판사,사용자를 검색하세요." id="searchbox" name="search">
+		    <input type="submit" class="search" id="searchbtn" value="검색">
+	    </form>
+	</div>   
+</header>
 	<div class="all">
 		<h2 class="h2">
 			<strong>통합 검색 결과</strong><a href=""><span class="more"><strong>더보기</strong></span></a>
@@ -367,6 +377,20 @@
 		<h2 class="h2">
 			<strong>한문장 검색결과</strong><a href=""><span class="more"><strong>더보기</strong></span></a>
 		</h2>
+		
+		    <table>
+		    <c:forEach items="${items}" var="b">
+		    <tr>
+		    <td><img src="${b.cover }"></td>
+		    <td>${b.title }</td>
+		    <td>${b.author }</td>
+		    <td>${b.publisher }</td>
+		    <td>${b.pubDate }</td>
+		    </tr>
+		    </c:forEach>
+		    </table>
+		
+		
 		<table>
 			<tr>
 				<td>이름</td>
