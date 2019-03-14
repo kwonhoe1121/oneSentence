@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.one.sentence.model.Hashtag;
-import com.one.sentence.co
+import com.one.sentence.common.vo.OneSentence;
 import com.one.sentence.onesentence.model.Book;
 import com.one.sentence.onesentence.model.GoogleVisionApi;
 import com.one.sentence.onesentence.model.ShowOnesentence;
