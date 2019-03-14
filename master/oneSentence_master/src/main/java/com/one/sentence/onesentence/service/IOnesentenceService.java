@@ -30,7 +30,7 @@ public interface IOnesentenceService {
 	
 	public void makeHashtag(Hashtag tag);
 	public int findOneSentenceIdx(int userIdx, int isbn, String oneSentence);
-	public List<String> showHashtag(int oneSentenceIdx);
+	public List<String> showHashtagList(int oneSentenceIdx);
 	
 	public int showLikeTotal(int oneSentenceIdx);
 	

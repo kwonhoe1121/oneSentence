@@ -119,9 +119,9 @@ public class OnesentenceService implements IOnesentenceService {
 	}
 
 	@Override
-	public List<String> showHashtag(int oneSentenceIdx) {
+	public List<String> showHashtagList(int oneSentenceIdx) {
 		// TODO Auto-generated method stub
-		return dao.selectHashtag(oneSentenceIdx);
+		return dao.selectHashtagList(oneSentenceIdx);
 	}
 
 	@Override

@@ -118,7 +118,7 @@ public class oneSentenceController {
 		System.out.println("idx받음");
 		ShowOnesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);
 		int oneSentenceIdx =onesentence.getOneSentenceIdx();
-		List<String> hashtagList = oneService.showHashtag(oneSentenceIdx);
+		List<String> hashtagList = oneService.showHashtagList(oneSentenceIdx);
 		String hashtag="";
 		Iterator<String> it = hashtagList.iterator();
 		while(it.hasNext()) {

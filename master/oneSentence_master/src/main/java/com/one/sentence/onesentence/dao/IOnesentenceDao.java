@@ -31,7 +31,7 @@ public interface IOnesentenceDao {
 	
 	public int insertHashtag(Hashtag tag);
 	public int findOneSentenceIdx(int userIdx, int isbn, String oneSentence);
-	public List<String> selectHashtag(int oneSentenceIdx);
+	public List<String> selectHashtagList(int oneSentenceIdx);
 	
 	public int selectLikeTotal(int oneSentenceIdx);
 }

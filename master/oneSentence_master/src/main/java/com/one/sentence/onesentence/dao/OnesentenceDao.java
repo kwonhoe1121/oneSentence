@@ -126,8 +126,8 @@ public class OnesentenceDao implements IOnesentenceDao{
 	}
 
 	@Override
-	public List<String> selectHashtag(int oneSentenceIdx) {
-		return sqlSession.selectList(namespace+".selectOnesentenceByoneSentenceIdxAndIsbnOther", oneSentenceIdx);
+	public List<String> selectHashtagList(int oneSentenceIdx) {
+		return sqlSession.selectList(namespace+".selectHashtagList", oneSentenceIdx);
 	}
 
 	@Override
