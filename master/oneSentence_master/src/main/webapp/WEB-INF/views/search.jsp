@@ -12,6 +12,10 @@
 	href="<%=request.getContextPath()%>/resources/dahye/search/css/bootstrap.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR"
 	rel="stylesheet">
+
+<link
+	href="<%=request.getContextPath()%>/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -34,7 +38,7 @@
 </head>
 <body>
 
-	<%-- 	<jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
+	<%-- <%@include file="include/mainHeader.jsp"%> --%>
 
 	<header>
 		<div class="test">

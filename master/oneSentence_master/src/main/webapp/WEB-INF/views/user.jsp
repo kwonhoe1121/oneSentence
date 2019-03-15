@@ -46,7 +46,7 @@
 <body>
 	<!-- userpage.js부분 가져오기 -->
 
-	<%-- <jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
+	<%-- <%@include file="include/mainHeader.jsp"%> --%>
 
 	<!-- <div id="search"></div> -->
 

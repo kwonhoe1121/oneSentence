@@ -56,6 +56,7 @@
 		<c:redirect url="${referer}"/>
 	</c:if> --%>
 
+
 	<form class="form-signin"
 		action="<%=request.getContextPath()%>/user/register" method="POST">
 		<img class="mb-4"
