@@ -60,7 +60,7 @@ public class PreferenceController {
 		int userIdx = Integer.parseInt(request.getParameter("userIdx"));
 		//int userIdx = 2;
 		
-		List<String> hashtaglist = service.genrePreference(userIdx);
+		List<String> hashtaglist = service.userPreference(userIdx);
 		
 		//System.out.println(hashtaglist.size());
 		

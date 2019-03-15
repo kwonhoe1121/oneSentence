@@ -3,7 +3,7 @@
 <mapper namespace="com.one.sentence.mapper.Mapper">
 
 	<!-- 나은 매퍼 -->
-	<select id="selectHashtagList" resultType="java.lang.String">
+	<select id="selectHashtagListByPreference" resultType="java.lang.String">
 
 		select hashtag,
 		count(*) count

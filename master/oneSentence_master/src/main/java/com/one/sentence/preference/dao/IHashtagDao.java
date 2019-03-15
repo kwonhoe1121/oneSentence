@@ -5,6 +5,6 @@ import java.util.List;
 
 interface IHashtagDao {
 	
-	public List<String> selectHashtagList(int userIdx);
+	public List<String> selectHashtagListByPreference(int userIdx);
 	
 }
