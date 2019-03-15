@@ -26,6 +26,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<!-- 파일업로드 설정파일 -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="defaultEncoding">
@@ -33,6 +34,20 @@
 		</beans:property>
 	</beans:bean>
 
+	<!-- Interceptor 등록 -->
+	<!-- <interceptors>
+		<interceptor>
+			<mapping path="/user/**" />
+			<exclude-mapping path="/member/memberReg" />
+			<exclude-mapping path="/member/memberRegForm" />
+			<exclude-mapping path="/member/memberLogin" />
+			<exclude-mapping path="/member/memberLoginForm" />
+			<exclude-mapping path="/member/memberModify"/>
+			<exclude-mapping path="/member/memberModifyForm"/>
+			<beans:bean
+				class="com.one.sentence.login.interceptor.LoginIntercepter" />
+		</interceptor>
+	</interceptors> -->
 
 	<!-- 데이터베이스 설정 -->
 	<!-- DataSource, JDBCTemplate, Dao(자동 설정 : @Repository) -->

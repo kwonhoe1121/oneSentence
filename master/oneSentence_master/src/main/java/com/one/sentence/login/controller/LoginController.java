@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,12 @@ public class LoginController {
 	LoginService service;
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String requestLoginForm() {
+	public String requestLoginForm(@RequestHeader String referer, HttpSession session) {
+		
+		System.out.println("referer: " + referer);
+		//로그인 성공하면 이전 페이지로 이동하기위함.
+		session.setAttribute("referer", referer);
+		
 		return "login";
 	}
 	
@@ -27,7 +33,7 @@ public class LoginController {
 	// 로그인 안되어 있는 상태에서 아래 작업 수행
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
 	public String requestLogin(HttpSession session, Model model, @RequestParam("userEmail") String userEmail,
-			@RequestParam("userPassword") String userPassword) {
+			@RequestParam("userPassword") String userPassword, @RequestHeader String referer) {
 		System.out.println("로그인체크: " + userEmail + " " + userPassword);
 		// 이메일 체크
 		if (!service.isUser(userEmail)) {
@@ -47,12 +53,14 @@ public class LoginController {
 		}
 
 		// 로그인 완료
-		session.setAttribute("User", user);
 		
 		//viewpage 에서 nav 창 바꾸는데에 사용한다.
-		model.addAttribute("User", user);
+//		model.addAttribute("User", user);
 		System.out.println("로그인 완료");
-		return "index";
+//		System.out.println(referer);
+//		model.addAttribute("referer", referer);
+		session.setAttribute("User", user);
+		return "login";
 	}
 
 	// 로그아웃 controller
@@ -62,7 +70,7 @@ public class LoginController {
 		// 세션 종료.
 		session.invalidate();
 		System.out.println("로그아웃!");
-		return "index";
+		return "login";
 	}
 
 }
