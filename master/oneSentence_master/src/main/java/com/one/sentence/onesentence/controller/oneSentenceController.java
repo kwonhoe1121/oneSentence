@@ -28,27 +28,32 @@ public class oneSentenceController {
 	@Inject
 	OnesentenceService oneService;
 
-	@RequestMapping(value = "/onesentence/insert", method = RequestMethod.GET)
-	public String getForm() {
+	@RequestMapping(value = "/onesentence/insertForm")
+	public String getForm(HttpServletRequest request) {
 		return "onesentence/insert";
 
 	}
 
 	@RequestMapping(value = "/onesentence/insert", method = RequestMethod.POST)
 	public String insertOnesententce(HttpServletRequest request, @RequestParam("oneSentence") String oneSentence,
-			@RequestParam("isbn") int isbn, @RequestParam("page") String page, @RequestParam("userIdx") int userIdx,
-			@RequestParam("hashtag") String hashtag, Model model) {
-
-		System.out.println(isbn + ":" + page + ":" + oneSentence + ":" + userIdx);
-
+			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx,
+			@RequestParam("isbn") String isbns,
+			@RequestParam("hashtag") String hashtag, Model model
+			) {	
+		System.out.println(page + "ff:" + oneSentence + ":" + userIdx);
+		int isbn=1;
+		if(isbns!=null) {
+		isbn = Integer.parseInt(isbns);
+		}
+		
+		System.out.println(isbn+1);
 		if (oneService.showBookByisbn(isbn) == null) {
 
 			Book book = new Book();
-			// String author = request.getParameter("author");
-			String author = "권재진";
-			String bookGenre = "공포소설";
-			String bookTitle = "한지민";
-			String publisher = "비트출판사";
+			String author = (String)request.getParameter("author");
+			String bookGenre = (String)request.getParameter("bookGenre");
+			String bookTitle = (String)request.getParameter("bookTitle");
+			String publisher = (String)request.getParameter("publisher");
 
 			book.setIsbn(isbn);
 			book.setAuthor(author);
@@ -64,11 +69,10 @@ public class oneSentenceController {
 		onesentence.setPage(page);
 		onesentence.setUserIdx(userIdx);
 
-		oneService.upUserPoint(userIdx); // 유저포인트 올려준다.
+		oneService.upUserPoint(userIdx);
 
 		oneService.makeOneSentence(onesentence);
 
-		// 해시태그 부여를 위해 유저입력값을 이용하여 해당 한문장의 index를 가져온다.
 		int oneSentenceIdx = oneService.findOneSentenceIdx(userIdx, isbn, oneSentence);
 
 		Hashtag tag = new Hashtag();
@@ -105,7 +109,7 @@ public class oneSentenceController {
 			}
 
 		} else {
-			System.out.println("파일이 없습니다.");
+			System.out.println("error");
 		}
 		String oneSentenceListByPhoto = GoogleVisionApi.getSentence(dir + "\\" + fileName);
 		model.addAttribute("OneSentenceList", oneSentenceListByPhoto);
@@ -115,7 +119,6 @@ public class oneSentenceController {
 
 	@RequestMapping("/onesentence/one/{idx}")
 	public String selectOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model) {
-		System.out.println("idx받음");
 		ShowOnesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);
 		int oneSentenceIdx =onesentence.getOneSentenceIdx();
 		List<String> hashtagList = oneService.showHashtagList(oneSentenceIdx);

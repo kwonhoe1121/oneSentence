@@ -29,6 +29,23 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
 	src="<%=request.getContextPath()%>/resources/eunseon/contents/js/contents.js"></script>
+<style>
+@font-face {
+	font-family: 'BMHANNAAir_ttf';
+	src:
+		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
+}
+
+@font-face {
+	font-family: 'BMHANNAAir_otf';
+	src:
+		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
+}
+
+* {
+	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
+}
+</style>
 </head>
 
 <body>
@@ -47,14 +64,26 @@
 				src="<%=request.getContextPath()%>/resources/eunseon/contents/img/contents.jpg"
 				width="150rem" height="200rem">
 			<div id="d" class="bg-white">
+			
 				<ul>
 					<li><b style="font-size: 1.2rem">채식주의자</b></li>
-					<li>한강 / 소설</li>
+					<li>한강</li>
+					<li>창비</li>
 					<hr>
-					<li><button id="btn1">
+					<li>
+					<form action="./onesentence/insertForm" method="POST">
+						<input type="text" name="isbn" value="97883598">
+						<input type="text" name="author" value="한강">
+						<input type="text" name="publisher" value="창비">
+						<input type="text" name="bookTitle" value="채식주의자">
+						<input type="text" name="bookGenre" value="드라마">
+					<button id="btn1" type="submit">
 							<b style="color: white"> + 코멘트작성&nbsp;&nabla;</b>
-						</button></li>
+					</button>
+					</form>
+					</li>
 				</ul>
+				
 			</div>
 		</div>
 	</header>
@@ -63,14 +92,14 @@
 	<div class="container" style="padding-bottom: 1.5rem;">
 
 		<div class="row"
-			style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-			<div class="col-md-12 mb-5">
+			style="border-top-left-radius: 10px; border-top-right-radius: 10px;" id="basicData">
+			<div class="col-md-12 mb-5" >
 				<br> &nbsp;&nbsp;&nbsp; <b style="font-size: 1.2rem">기본정보</b> <a
 					href="#" class="a1"><b>더보기</b></a>
 				<hr>
 				<ul>
 					<li>채식주의자</li>
-					<li>한강 / 소설</li>
+					<li>한강</li>
 					<li>2007/ 대한민국/ 247p</li>
 					<br>
 					<li>

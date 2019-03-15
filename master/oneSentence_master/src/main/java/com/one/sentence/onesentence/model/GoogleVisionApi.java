@@ -36,9 +36,6 @@ public static String getSentence(String FileRoot) {
 			    	if (res.hasError()) {
 			    		System.out.printf("Error: %s\n", res.getError().getMessage());
 			    	}
-		
-			    	System.out.println("Text : ");
-			    	System.out.println("--------------");
 			    	result = res.getTextAnnotationsList().get(0).getDescription();
 			    	
 			    }    
