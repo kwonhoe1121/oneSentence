@@ -66,8 +66,8 @@
 				<div class="card-header" id="part2">
 					<i class="fa fa-user-circle fa-4x" aria-hidden="true"></i>
 					<h3 class="bold">${uservo.userName}</h3>
-						<input type="submit" value=${followingstate } class="btn btn-primary" id="follow">
-
+						<input type="submit" value="${followingstate}" class="btn btn-primary" id="follow">
+						<input type="hidden" value="${flag}" id="flag">
 					<h5>${uservo.userIntroduction}</h5>
 					<input type="submit" value="수정" class="btn btn-primary" id="update">
 				</div>
