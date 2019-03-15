@@ -52,7 +52,7 @@
 <body class="text-center">
 
 	<!-- 회원가입 완료시 이전 페이지로 이동 후 자동 로그인 -->
-<%-- 	<c:if test="${User ne null}">
+	<%-- 	<c:if test="${User ne null}">
 		<c:redirect url="${referer}"/>
 	</c:if> --%>
 

@@ -27,9 +27,9 @@ public class UserPageController {
 
 		UserVo uservo = uservice.showUser_infoByuserIdx(userIdx);
 		model.addAttribute("uservo", uservo);
-		
+
 		UserVo user = (UserVo) session.getAttribute("User");
-		
+
 		// 실제로는 session에서 받아올 예정
 		int loginUserIdx = user.getUserIdx();
 

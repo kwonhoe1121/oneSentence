@@ -31,12 +31,14 @@
 <style>
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
-	src: url("<%=request.getContextPath()%>/resources/naeun/preference/font/BMHANNAAir_ttf.ttf");
+	src:
+		url("<%=request.getContextPath()%>/resources/naeun/preference/font/BMHANNAAir_ttf.ttf");
 }
 
 @font-face {
 	font-family: 'BMHANNAAir_otf';
-	src: url("<%=request.getContextPath()%>/resources/naeun/preference/font/BMHANNAAir_otf.otf");
+	src:
+		url("<%=request.getContextPath()%>/resources/naeun/preference/font/BMHANNAAir_otf.otf");
 }
 
 * {
@@ -52,7 +54,8 @@
 		<div class="col-lg-8">
 			<!-- Comments Form -->
 			<div class="card1 my-4">
-				<div class="backgroundimg" style="background-image: url('<%=request.getContextPath()%>/resources/naeun/preference/img/6d0a9dce557e7f6e96b0456ff3994329.jpg')">
+				<div class="backgroundimg"
+					style="background-image: url('<%=request.getContextPath()%>/resources/naeun/preference/img/6d0a9dce557e7f6e96b0456ff3994329.jpg')">
 					<h3 class="logo">One Sentence</h3>
 					<h6 class="logo">취향분석</h6>
 					<br> <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>

@@ -3,14 +3,17 @@
 <mapper namespace="com.one.sentence.mapper.Mapper">
 
 	<!-- 나은 매퍼 -->
-	<select id="selectHashtagListByPreference" resultType="java.lang.String">
+	<select id="selectHashtagListByPreference"
+		resultType="java.lang.String">
 
 		select hashtag,
 		count(*) count
-		from (select oneSentenceIdx from liketo where userIdx =
+		from (select oneSentenceIdx
+		from liketo where userIdx =
 		#{param}
 		union all
-		select oneSentenceIdx from one_sentence where userIdx
+		select oneSentenceIdx from
+		one_sentence where userIdx
 		= #{param}) as pr1,
 		hashtag
 		where
@@ -53,9 +56,8 @@
 
 	<select id="selectUserByEmail"
 		resultType="com.one.sentence.common.vo.UserVo">
-	<!-- 	select userIdx, userName,
-		userEmail, userPassword from
-		user_info where userEmail = #{param} -->
+		<!-- select userIdx, userName, userEmail, userPassword from user_info where 
+			userEmail = #{param} -->
 		select * from
 		user_info where userEmail = #{param}
 	</select>
@@ -105,72 +107,101 @@
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
 		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u
+		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
+		b, user_info u
 		where b.isbn=o.isbn and u.userIdx=o.userIdx
-		group by o.oneSentenceIdx order by o.oneSentenceRegisteredTime
+		group by
+		o.oneSentenceIdx order by o.oneSentenceRegisteredTime
 
 	</select>
 	<select id="selectOnesentenceListByuserIdx"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
-		select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u
-		 where b.isbn=o.isbn and u.userIdx=o.userIdx and u.userIdx=#{userIdx}
-		group by o.oneSentenceIdx order by o.oneSentenceRegisteredTime
+		select o.userIdx,u.userName,
+		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
+		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
+		b, user_info u
+		where b.isbn=o.isbn and u.userIdx=o.userIdx and
+		u.userIdx=#{userIdx}
+		group
+		by o.oneSentenceIdx order by
+		o.oneSentenceRegisteredTime
 
 	</select>
 	<select id="selectOnesentenceByoneSentenceIdx"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
-		select o.userIdx,u.userName,o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		 o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u 
-		where b.isbn=o.isbn and u.userIdx=o.userIdx and o.oneSentenceIdx=#{oneSentenceIdx}
+		select
+		o.userIdx,u.userName,o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
+		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
+		b, user_info u
+		where b.isbn=o.isbn and u.userIdx=o.userIdx and
+		o.oneSentenceIdx=#{oneSentenceIdx}
 	</select>
 	<select id="selectOnesentenceModel"
 		resultType="com.one.sentence.common.vo.OneSentence">
-		select * from one_sentence where oneSentenceIdx=#{oneSentenceIdx}
+		select * from one_sentence where
+		oneSentenceIdx=#{oneSentenceIdx}
 	</select>
 	<select id="selectOnesentenceForliketo"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
-		 o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		 o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
-		 b, user_info u, liketo l
-		 where o.oneSentenceIdx in(select oneSentenceIdx from liketo where
-		 liketo.userIdx=#{userIdx}) and b.isbn=o.isbn and u.userIdx=o.userIdx 
-		 group by o.oneSentenceIdx order by l.likeRegisteredTime
+		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
+		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
+		b, user_info u, liketo l
+		where o.oneSentenceIdx in(select
+		oneSentenceIdx from liketo where
+		liketo.userIdx=#{userIdx}) and
+		b.isbn=o.isbn and u.userIdx=o.userIdx
+		group by o.oneSentenceIdx order
+		by l.likeRegisteredTime
 	</select>
 	<select id="selectOnesentenceByoneSentenceIdxAndIsbnMy"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
 		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,o.isbn,
-		 b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u,liketo l
-		 where b.isbn=o.isbn and u.userIdx=o.userIdx and l.oneSentenceIdx=o.oneSentenceIdx
-		  and u.userIdx=#{userIdx} and o.isbn=#{isbn}
-		 group by o.oneSentenceIdx order by count(l.oneSentenceIdx) desc limit 0,1;
+		b.bookTitle, b.author, b.publisher from one_sentence o, book b,
+		user_info u,liketo l
+		where b.isbn=o.isbn and u.userIdx=o.userIdx and
+		l.oneSentenceIdx=o.oneSentenceIdx
+		and u.userIdx=#{userIdx} and
+		o.isbn=#{isbn}
+		group by o.oneSentenceIdx order by
+		count(l.oneSentenceIdx) desc limit 0,1;
 	</select>
 	<select id="selectOnesentenceByoneSentenceIdxAndIsbnFollowing"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
 		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u,liketo l
-		 where b.isbn=o.isbn and u.userIdx=o.userIdx and l.oneSentenceIdx=o.oneSentenceIdx 
-		 and u.userIdx in(select followingUserIdx from following where userIdx=#{userIdx})
-		  and o.isbn=#{isbn}
-        group by o.oneSentenceIdx order by count(l.oneSentenceIdx) desc limit 0,1
+		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
+		b, user_info u,liketo l
+		where b.isbn=o.isbn and u.userIdx=o.userIdx and
+		l.oneSentenceIdx=o.oneSentenceIdx
+		and u.userIdx in(select
+		followingUserIdx from following where
+		userIdx=#{userIdx})
+		and
+		o.isbn=#{isbn}
+		group by o.oneSentenceIdx order by
+		count(l.oneSentenceIdx) desc limit 0,1
 	</select>
 	<select id="selectOnesentenceListByoneSentenceIdxAndIsbnOther"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
-		 o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-		 o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book b, user_info u,liketo l
-		 where b.isbn=o.isbn and u.userIdx=o.userIdx and l.oneSentenceIdx=o.oneSentenceIdx 
-		  and u.userIdx not in(#{userIdx1},#{userIdx2})  and o.isbn=#{isbn}
-        group by o.oneSentenceIdx order by count(l.oneSentenceIdx) desc limit 0,5;
+		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
+		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
+		b, user_info u,liketo l
+		where b.isbn=o.isbn and u.userIdx=o.userIdx and
+		l.oneSentenceIdx=o.oneSentenceIdx
+		and u.userIdx not
+		in(#{userIdx1},#{userIdx2}) and o.isbn=#{isbn}
+		group by
+		o.oneSentenceIdx order by count(l.oneSentenceIdx) desc limit 0,5;
 	</select>
-	
+
 	<update id="updateOnesentence"
 		parameterType="com.one.sentence.common.vo.OneSentence">
 		update one_sentence
-		set oneSentence=#{oneSentence}, page=#{page}, isbn=#{isbn}
+		set oneSentence=#{oneSentence},
+		page=#{page}, isbn=#{isbn}
 		where oneSentenceIdx='${oneSentenceIdx}'
 	</update>
 	<delete id="deleteOnesentence"
@@ -181,15 +212,19 @@
 	<!-- 해시태그 부여를 위해 한문장의 idx를 받아옴 -->
 	<select id="findOneSentenceIdx" resultType="Integer">
 		select
-		oneSentenceIdx from one_sentence where userIdx='${userIdx}' and
-		isbn='${isbn}' and oneSentence like '${oneSentence}'
+		oneSentenceIdx
+		from one_sentence where userIdx='${userIdx}' and
+		isbn='${isbn}' and
+		oneSentence like '${oneSentence}'
 	</select>
 	<!-- 책 -->
 	<insert id="insertBook"
 		parameterType="com.one.sentence.onesentence.model.Book">
 		insert into
-		book (isbn,bookTitle,bookGenre,author,publisher)
-		value (#{isbn},#{bookTitle},#{bookGenre},#{author},#{publisher})
+		book
+		(isbn,bookTitle,bookGenre,author,publisher)
+		value
+		(#{isbn},#{bookTitle},#{bookGenre},#{author},#{publisher})
 	</insert>
 
 	<select id="selectBookByisbn"
@@ -206,63 +241,79 @@
 	<update id="updateUser_info"
 		parameterType="com.one.sentence.common.vo.UserVo">
 		update user_info set
-		userPassword=#{userPassword}, userName=#{userName},
+		userPassword=#{userPassword},
+		userName=#{userName},
 		userIntroduction=#{userIntroduction}
-		where userIdx='${userIdx}'
+		where
+		userIdx='${userIdx}'
 	</update>
 	<!-- 한문장작성시 user point +1 -->
 	<update id="upUserPoint"
 		parameterType="com.one.sentence.common.vo.UserVo">
 		update user_info set
-		userPoint=userPoint+1 where userIdx=${value}
+		userPoint=userPoint+1 where
+		userIdx=${value}
 	</update>
 	<!-- 한문장삭제시 user point -1 -->
 	<update id="downUserPoint"
 		parameterType="com.one.sentence.common.vo.UserVo">
 		update user_info set
-		userPoint=userPoint-1 where userIdx=${value}
+		userPoint=userPoint-1 where
+		userIdx=${value}
 	</update>
 	<!-- 한문장작성시 hashtag 넣어줌 -->
 	<insert id="insertHashtag"
 		parameterType="com.one.sentence.common.vo.Hashtag">
 		insert into hashtag
-		(hashtag, oneSentenceIdx) value(#{hashtag}, #{oneSentenceIdx})
+		(hashtag, oneSentenceIdx)
+		value(#{hashtag}, #{oneSentenceIdx})
 	</insert>
 	<select id="selectHashtagListForOneSentence"
 		resultType="java.lang.String">
-		select hashtag from hashtag where oneSentenceIdx=#{oneSentenceIdx}
+		select hashtag from hashtag where
+		oneSentenceIdx=#{oneSentenceIdx}
 	</select>
 	<!-- 좋아요수 가져오기 -->
-	<select id="selectLikeTotal"
-		resultType="Integer"
-		>
-		select count(*) from liketo where oneSentenceIdx=#{oneSentenceIdx}
+	<select id="selectLikeTotal" resultType="Integer">
+		select
+		count(*) from
+		liketo where oneSentenceIdx=#{oneSentenceIdx}
 	</select>
 
 	<!-- 다혜 매퍼 -->
-	
-	<select id="selectUserList"
-			resultType="java.lang.String">
-			select u.userName from user_info u where userName like #{param};
+
+	<select id="selectUserList" resultType="java.lang.String">
+		select u.userName from
+		user_info u where userName like #{param};
 	</select>
-	
+
 	<select id="selectHashsearchList"
-			resultType="com.one.sentence.search.model.SearchHashtagModel">
-			select u.userName, o.oneSentence, o.page, o.oneSentenceRegisteredTime, b.bookTitle, b.author, b.publisher
-			from user_info u, one_sentence o, book b, hashtag h 
-			where u.userIdx=o.userIdx and o.isbn=b.isbn and o.oneSentenceIdx=h.oneSentenceIdx 
-			and hashtag like #{param} order by o.oneSentenceRegisteredTime;
+		resultType="com.one.sentence.search.model.SearchHashtagModel">
+		select u.userName, o.oneSentence, o.page,
+		o.oneSentenceRegisteredTime,
+		b.bookTitle, b.author, b.publisher
+		from
+		user_info u, one_sentence o, book b, hashtag h
+		where
+		u.userIdx=o.userIdx and o.isbn=b.isbn and
+		o.oneSentenceIdx=h.oneSentenceIdx
+		and hashtag like #{param} order by
+		o.oneSentenceRegisteredTime;
 	</select>
-	
+
 	<select id="selectFollowingNewsList"
-			resultType="com.one.sentence.search.model.SearchHashtagModel">
-			select o.userIdx,u.userName, o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
-    		o.isbn, b.bookTitle, b.author, b.publisher
-			from book b, user_info u,one_sentence o, (
-			select followingUserIdx
-			from following
-			where userIdx=#{userIdx}) sb
-			where b.isbn=o.isbn and u.userIdx=o.userIdx and o.userIdx=sb.followingUserIdx order by o.oneSentenceRegisteredTime;
+		resultType="com.one.sentence.search.model.SearchHashtagModel">
+		select o.userIdx,u.userName,
+		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
+		o.isbn, b.bookTitle, b.author, b.publisher
+		from book b, user_info
+		u,one_sentence o, (
+		select followingUserIdx
+		from following
+		where
+		userIdx=#{userIdx}) sb
+		where b.isbn=o.isbn and u.userIdx=o.userIdx and
+		o.userIdx=sb.followingUserIdx order by o.oneSentenceRegisteredTime;
 
 	</select>
 

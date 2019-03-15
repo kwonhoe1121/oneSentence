@@ -54,9 +54,9 @@
 
 	<!-- 로그인 완료 후 이전 페이지로 이동 -->
 	<c:if test="${User ne null}">
-		<c:redirect url="${referer}"/>		
+		<c:redirect url="${referer}" />
 	</c:if>
-	
+
 	<form class="form-signin"
 		action="<%=request.getContextPath()%>/user/login" method="POST">
 		<img class="mb-4"

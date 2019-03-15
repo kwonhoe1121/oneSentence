@@ -36,9 +36,9 @@
 	<%-- <c:if test="${referer ne null }">
 		<c:redirect url="${referer}" />
 	</c:if> --%>
-	
+
 	<%-- <jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
-	
+
 	<!-- Navigation -->
 	<!-- 로그인 전 -->
 	<c:if test="${User eq null}">
@@ -79,7 +79,8 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="#"><button
 									class="btn navbar-btn">추천</button></a></li>&nbsp;&nbsp;&nbsp;
-						<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/userpage/${User.userIdx}"><button
+						<li class="nav-item"><a class="nav-link"
+							href="<%=request.getContextPath() %>/userpage/${User.userIdx}"><button
 									class="btn btn-success navbar-btn">마이페이지</button></a></li>
 					</ul>
 				</div>
@@ -102,22 +103,20 @@
 	<!-- Content section -->
 	<section class="py-5">
 		<!-- 검색 엔진 -->
-		<div class="container" style="position: relative; top: -65px">
+		<div class="container" style="position: relative; top: -65px;">
 			<div class="container2">
-				<!-- 				<div class="searchBox">
-					<form>
-						<input type="text" placeholder="검색어 입력" value="">
-						<button type="submit"></button>
-					</form>
-				</div> -->
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search">
-					<div class="input-group-btn">
-						<button class="btn btn-default" type="submit">
-							<i class="glyphicon glyphicon-search"></i>
-						</button>
+				<form class="form-signin"
+					action="<%=request.getContextPath()%>/search/query" method="GET">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search"
+							name="query">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search" name="query"></i>
+							</button>
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 
