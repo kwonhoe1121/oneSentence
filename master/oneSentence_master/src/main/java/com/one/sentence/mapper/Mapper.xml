@@ -229,7 +229,7 @@
 		insert into hashtag
 		(hashtag, oneSentenceIdx) value(#{hashtag}, #{oneSentenceIdx})
 	</insert>
-	<select id="selectHashtagList"
+	<select id="selectHashtagListForOneSentence"
 		resultType="java.lang.String">
 		select hashtag from hashtag where oneSentenceIdx=#{oneSentenceIdx}
 	</select>
