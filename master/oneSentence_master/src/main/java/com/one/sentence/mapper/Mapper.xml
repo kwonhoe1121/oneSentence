@@ -229,10 +229,10 @@
 		insert into hashtag
 		(hashtag, oneSentenceIdx) value(#{hashtag}, #{oneSentenceIdx})
 	</insert>
-	<select id="selectHashtagList"
+<!-- 	<select id="selectHashtagList"
 		resultType="java.lang.String">
 		select hashtag from hashtag where oneSentenceIdx=#{oneSentenceIdx}
-	</select>
+	</select> -->
 	<!-- 좋아요수 가져오기 -->
 	<select id="selectLikeTotal"
 		resultType="Integer"
@@ -242,7 +242,7 @@
 
 	<!-- 다혜 매퍼 -->
 	
-	<select id="selectUserList"
+<!-- 	<select id="selectUserList"
 			resultType="java.lang.String">
 			select u.userName from user_info u where userName like #{param};
 	</select>
@@ -265,7 +265,7 @@
 			where userIdx=#{userIdx}) sb
 			where b.isbn=o.isbn and u.userIdx=o.userIdx and o.userIdx=sb.followingUserIdx order by o.oneSentenceRegisteredTime;
 
-	</select>
+	</select> -->
 
 
 

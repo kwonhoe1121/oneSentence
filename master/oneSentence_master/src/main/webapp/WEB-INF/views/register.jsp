@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
 
@@ -43,24 +44,33 @@
 }
 </style>
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/resources/jaejin/css/signin.css"
+<link
+	href="<%=request.getContextPath()%>/resources/jaejin/css/signin.css"
 	rel="stylesheet">
 </head>
 
 <body class="text-center">
-	<form class="form-signin" action="<%=request.getContextPath()%>/user/register" method="POST">
+
+	<!-- 회원가입 완료시 이전 페이지로 이동 후 자동 로그인 -->
+<%-- 	<c:if test="${User ne null}">
+		<c:redirect url="${referer}"/>
+	</c:if> --%>
+
+	<form class="form-signin"
+		action="<%=request.getContextPath()%>/user/register" method="POST">
 		<img class="mb-4"
-			src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png" alt=""
-			width="72" height="72">
+			src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png"
+			alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">회원가입</h1>
 		<label for="inputName" class="sr-only">User name</label> <input
-			type="text" id="inputName" name="userName" class="form-control" placeholder="이름"
-			required autofocus><br> <label for="inputEmail"
-			class="sr-only">Email address</label> <input type="email"
-			id="inputEmail" name="userEmail" class="form-control" placeholder="이메일" required
-			autofocus><br> <label for="inputPassword"
-			class="sr-only">Password</label> <input type="password"
-			id="inputPassword" name="userPassword" class="form-control" placeholder="비밀번호" required><br>
+			type="text" id="inputName" name="userName" class="form-control"
+			placeholder="이름" required autofocus><br> <label
+			for="inputEmail" class="sr-only">Email address</label> <input
+			type="email" id="inputEmail" name="userEmail" class="form-control"
+			placeholder="이메일" required autofocus><br> <label
+			for="inputPassword" class="sr-only">Password</label> <input
+			type="password" id="inputPassword" name="userPassword"
+			class="form-control" placeholder="비밀번호" required><br>
 		<!-- <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me
@@ -68,7 +78,7 @@
         </div> -->
 		<button class="btn btn-lg btn-success btn-block" type="submit">회원가입</button>
 		<p class="mt-5 mb-3 text-muted">
-			이미 가입하셨나요? <a href="#">로그인</a>
+			이미 가입하셨나요? <a href="<%=request.getContextPath()%>/login">로그인</a>
 		</p>
 	</form>
 

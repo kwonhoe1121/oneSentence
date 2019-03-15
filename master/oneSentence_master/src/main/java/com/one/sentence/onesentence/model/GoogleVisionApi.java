@@ -1,5 +1,9 @@
 package com.one.sentence.onesentence.model;
 
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.cloud.vision.v1.AnnotateImageRequest;
 import com.google.cloud.vision.v1.AnnotateImageResponse;
 import com.google.cloud.vision.v1.BatchAnnotateImagesResponse;
@@ -8,11 +12,6 @@ import com.google.cloud.vision.v1.Feature.Type;
 import com.google.cloud.vision.v1.Image;
 import com.google.cloud.vision.v1.ImageAnnotatorClient;
 import com.google.protobuf.ByteString;
-
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
 
 
 public class GoogleVisionApi {

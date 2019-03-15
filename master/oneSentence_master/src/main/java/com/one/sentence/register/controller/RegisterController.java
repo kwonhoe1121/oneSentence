@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,9 +24,14 @@ public class RegisterController {
 
 	@Inject
 	RegisterService service;
-	
+
 	@RequestMapping(value = "register", method = RequestMethod.GET)
-	public String requestRegisterForm() {
+	public String requestRegisterForm(HttpSession session, @RequestHeader String referer) {
+
+		System.out.println("referer: " + referer);
+
+		session.setAttribute("referer", referer);
+
 		return "register";
 	}
 
@@ -35,11 +41,14 @@ public class RegisterController {
 
 		if (service.registerUser(user) != -1) {
 			service.registerUser(user);
+			session.setAttribute("complete", true);
+			//자동로그인
 			session.setAttribute("User", user);
-
+			return "index";
 		}
+
 		System.out.println(user + "return 전");
-		return "index";
+		return "register";
 	}
 
 //	@RequestMapping(method = RequestMethod.GET)
