@@ -14,8 +14,8 @@ public class SearchHashtagService implements ISearchHashtagService{
 	private SearchHashtagDao dao;
 	
 	@Override
-	public List<String> selectHashtagList(String hashtag) {
-		return dao.selectHashtagList(hashtag);
+	public List<String> selectHashsearchList(String hashtag) {
+		return dao.selectHashsearchList(hashtag);
 	}
 	
 }

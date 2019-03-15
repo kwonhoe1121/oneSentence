@@ -4,6 +4,6 @@ import java.util.List;
 
 interface ISearchHashtagDao {
 
-	public List<String> selectHashtagList(String hashtag);	
+	public List<String> selectHashsearchList(String hashtag);	
 	
 }

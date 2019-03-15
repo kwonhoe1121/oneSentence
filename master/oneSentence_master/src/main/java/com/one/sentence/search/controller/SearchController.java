@@ -39,7 +39,7 @@ public class SearchController {
 		List<SearchModel> items = service.getSearchModel(query);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);
 		List<String> useritems = serviceUser.selectUserList( '%'+request.getParameter("search")+'%');
-		List<String> hashtagitems = serviceHashtag.selectHashtagList('%'+request.getParameter("search")+'%');
+		List<String> hashtagitems = serviceHashtag.selectHashsearchList('%'+request.getParameter("search")+'%');
 
 	
 		if (items.size()!=0 || useritems.size()!=0 || hashtagitems.size()!=0) {

@@ -247,7 +247,7 @@
 			select u.userName from user_info u where userName like #{param};
 	</select>
 	
-	<select id="selectHashtagList"
+	<select id="selectHashsearchList"
 			resultType="com.one.sentence.search.model.SearchHashtagModel">
 			select u.userName, o.oneSentence, o.page, o.oneSentenceRegisteredTime, b.bookTitle, b.author, b.publisher
 			from user_info u, one_sentence o, book b, hashtag h 
