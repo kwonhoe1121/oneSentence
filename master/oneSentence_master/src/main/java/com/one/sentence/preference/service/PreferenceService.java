@@ -14,8 +14,8 @@ public class PreferenceService implements IPreferenceService{
 	private HashtagDao dao;
 	
 	@Override
-	public List<String> genrePreference(int userIdx) {
-		return dao.selectHashtagList(userIdx);
+	public List<String> userPreference(int userIdx) {
+		return dao.selectHashtagListByPreference(userIdx);
 	}
 
 

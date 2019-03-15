@@ -16,7 +16,7 @@ public class SearchHashtagDao implements ISearchHashtagDao {
 	private String namespace="com.one.sentence.mapper.Mapper";
 	
 	@Override
-	public List<String> selectHashtagList(String hashtag) {
-		return sqlSession.selectList(namespace+ ".selectHashtagList", hashtag);
+	public List<String> selectHashsearchList(String hashtag) {
+		return sqlSession.selectList(namespace+ ".selectHashsearchList", hashtag);
 	}
 }

@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface ISearchHashtagService {
 
-	public List<String> selectHashtagList(String hashtag);	
+	public List<String> selectHashsearchList(String hashtag);	
 }

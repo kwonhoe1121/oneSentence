@@ -17,8 +17,8 @@ public class HashtagDao implements IHashtagDao{
 	private String namespace="com.one.sentence.mapper.Mapper";	
 	
 	@Override
-	public List<String> selectHashtagList(int userIdx) {
-		return sqlSession.selectList(namespace+".selectHashtagList", userIdx);
+	public List<String> selectHashtagListByPreference(int userIdx) {
+		return sqlSession.selectList(namespace+".selectHashtagListByPreference", userIdx);
 	}
 		
 }

@@ -4,5 +4,5 @@ import java.util.List;
 
 
 interface IPreferenceService {
-	public List<String> genrePreference(int userIdx);	
+	public List<String> userPreference(int userIdx);	
 }

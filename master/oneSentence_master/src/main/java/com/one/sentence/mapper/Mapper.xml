@@ -3,7 +3,7 @@
 <mapper namespace="com.one.sentence.mapper.Mapper">
 
 	<!-- 나은 매퍼 -->
-	<select id="selectHashtagList" resultType="java.lang.String">
+	<select id="selectHashtagListByPreference" resultType="java.lang.String">
 
 		select hashtag,
 		count(*) count
@@ -229,7 +229,7 @@
 		insert into hashtag
 		(hashtag, oneSentenceIdx) value(#{hashtag}, #{oneSentenceIdx})
 	</insert>
-<!-- 	<select id="selectHashtagList"
+	<select id="selectHashtagListForOneSentence"
 		resultType="java.lang.String">
 		select hashtag from hashtag where oneSentenceIdx=#{oneSentenceIdx}
 	</select> -->
@@ -247,7 +247,7 @@
 			select u.userName from user_info u where userName like #{param};
 	</select>
 	
-	<select id="selectHashtagList"
+	<select id="selectHashsearchList"
 			resultType="com.one.sentence.search.model.SearchHashtagModel">
 			select u.userName, o.oneSentence, o.page, o.oneSentenceRegisteredTime, b.bookTitle, b.author, b.publisher
 			from user_info u, one_sentence o, book b, hashtag h 
