@@ -25,13 +25,19 @@ public class UserPageController {
 	@RequestMapping("/userpage/{userIdx}")
 	public String CheckFollowingState(Model model, @PathVariable("userIdx") int userIdx, HttpSession session) {
 
+		//유저페이지 계정 정보 가져옴
 		UserVo uservo = uservice.showUser_infoByuserIdx(userIdx);
 		model.addAttribute("uservo", uservo);
 
+		//loginInfo
 		UserVo user = (UserVo) session.getAttribute("User");
-
-		// 실제로는 session에서 받아올 예정
-		int loginUserIdx = user.getUserIdx();
+		if(user==null) {
+			model.addAttribute("loginIdx", "로그인필요");
+			return "user";
+		}
+		else {
+			model.addAttribute("loginIdx", user);			
+			int loginUserIdx = user.getUserIdx();
 
 		// 1. 본인의 유저페이지에 들어갈 경우 (userIdx와 loginId가 같은 경우)
 		// 팔로잉 상태 알아보는 과정(아래의 과정) 필요 없음 (지금은 user.js로만 구현)
@@ -59,6 +65,7 @@ public class UserPageController {
 			}
 
 			return "user";
+		}
 		}
 	}
 }
