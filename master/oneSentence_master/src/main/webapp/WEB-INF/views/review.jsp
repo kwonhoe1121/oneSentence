@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>sentenceList page</title>
+<title>review page</title>
 <!-- Bootstrap core CSS -->
 <link
 	href="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/bootstrap/css/bootstrap.css"

@@ -19,7 +19,7 @@
 </head>
 <body>
 
-	<jsp:include page="include/mainHeader.jsp"></jsp:include>
+	<%@include file="include/mainHeader.jsp"%>
 
 	<i class="fa fa-book fa-3x" aria-hidden="true"></i>
 	<h1>도서 더보기</h1>

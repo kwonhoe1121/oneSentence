@@ -62,28 +62,36 @@ public class TestController {
 
 		return "user";
 	}
-	
+
 	@RequestMapping(value = "/mainHeaderPage", method = RequestMethod.GET)
 	public String getMainHeader() {
-		
+
 		System.out.println("getMainHeader method");
-		
+
 		return "include/mainHeader";
 	}
 
 	@RequestMapping(value = "/searchPage", method = RequestMethod.GET)
 	public String getSearchPage() {
-		
+
 		System.out.println("getSearchPage()");
-		
+
 		return "search";
 	}
-	
+
 	@RequestMapping(value = "/searchMorePage", method = RequestMethod.GET)
 	public String getSearchMorePage() {
-		
+
 		System.out.println("getSearchMorePage method");
-		
+
 		return "searchMore";
+	}
+
+	@RequestMapping(value = "/review", method = RequestMethod.GET)
+	public String getReviewPage() {
+
+		System.out.println("getReviewPage method");
+
+		return "review";
 	}
 }

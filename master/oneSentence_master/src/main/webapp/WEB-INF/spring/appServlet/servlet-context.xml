@@ -35,19 +35,20 @@
 	</beans:bean>
 
 	<!-- Interceptor 등록 -->
-	<!-- <interceptors>
+	<interceptors>
 		<interceptor>
-			<mapping path="/user/**" />
-			<exclude-mapping path="/member/memberReg" />
+			<mapping path="/login" />
+			<mapping path="/user/login" />
+			<!-- <exclude-mapping path="/member/memberReg" />
 			<exclude-mapping path="/member/memberRegForm" />
 			<exclude-mapping path="/member/memberLogin" />
 			<exclude-mapping path="/member/memberLoginForm" />
 			<exclude-mapping path="/member/memberModify"/>
-			<exclude-mapping path="/member/memberModifyForm"/>
+			<exclude-mapping path="/member/memberModifyForm"/> -->
 			<beans:bean
 				class="com.one.sentence.login.interceptor.LoginIntercepter" />
 		</interceptor>
-	</interceptors> -->
+	</interceptors>
 
 	<!-- 데이터베이스 설정 -->
 	<!-- DataSource, JDBCTemplate, Dao(자동 설정 : @Repository) -->
