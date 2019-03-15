@@ -41,7 +41,7 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="#"><button
 									class="btn navbar-btn">추천</button></a></li>&nbsp;&nbsp;&nbsp;
-						<li class="nav-item"><a class="nav-link" href="#"><button
+						<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/userpage/${User.userIdx}"><button
 									class="btn btn-success navbar-btn">마이페이지</button></a></li>
 					</ul>
 				</div>
