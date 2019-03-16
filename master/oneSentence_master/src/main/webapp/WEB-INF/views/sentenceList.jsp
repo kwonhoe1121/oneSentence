@@ -48,6 +48,16 @@
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+$().ready(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=302606807116615";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+</script>
 </head>
 <body>
 
@@ -68,17 +78,16 @@
 						${onesentence.userName}</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
 				<center>
 					<div class="divmodal">
-						<div class="my">
-							<a href="#"><i class="fa fa-reply icon"></i></a>
-						</div>
-						<!--수정-->
-						<div class="my">
-							<a href=""><i class="fa fa-remove icon"></i></a>
-						</div>
-						<!--삭제-->
 						<div class="all">
-							<a href="#"><i class="fa fa-send-o icon"></i></a>
+							<a href="#" onclick="share(${onesentence.oneSentenceIdx})" id="share"><i class="fa fa-send-o icon"></i></a>
 						</div>
+						<div class="my">
+							<a href="#" id="updateBtn" onclick="updateClick(${onesentence.oneSentenceIdx})"><i class="fa fa-reply icon"></i></a>
+						</div>
+						<div class="my">
+							<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}" id="deleteBtn"><i class="fa fa-remove icon"></i></a>
+						</div>
+						
 					</div>
 				</center>
 				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
@@ -102,8 +111,31 @@
 		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist2.js"></script>
-
-
+	<%-- <script
+		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist3.js"></script> --%>
+	<script>
+	    function share(idx){
+	    	FB.ui({
+	    		method : 'share_open_graph',
+	    		action_type: 'og.shares',
+	    		action_properties: JSON.stringify({
+	    			object:{ 
+	    				'og:url': 'http://127.0.0.1/sentence/onesentence/one/'+idx,
+	    				'og:title' : '한문장',
+	    				'og:description' : '한문장내용',
+	    				'og:image': 'C:\\Users\\jaeho\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\onesentence\\upload\\책.jpg'
+	    			}
+	    		})
+	    	})
+	    };
+	    function updateClick(idx){
+	    	var url="../../onesentence/popup/"+idx;
+	    	var popupOption="width=700,height=600";
+	    	window.open(url,"한문장수정하기",popupOption);	
+	    }
+	
+	
+	</script>
 </body>
 
 </html>

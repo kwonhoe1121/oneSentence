@@ -1,11 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<title>한문장 리스트</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>sentenceList page</title>
+<!-- Bootstrap core CSS -->
+<link
+	href="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/bootstrap/css/bootstrap.css"
+	rel="stylesheet">
+<!-- Custom styles for this template -->
+<link
+	href="<%=request.getContextPath()%>/resources/naeun/sentenceList/css/sentenceList.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/resources/naeun/sentenceList/css/sentenceList2.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
+<link rel="stylesheet prefetch"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<style>
+@font-face {
+	font-family: 'BMHANNAAir_ttf';
+	src:
+		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
+}
+
+@font-face {
+	font-family: 'BMHANNAAir_otf';
+	src:
+		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
+}
+
+* {
+	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 $().ready(function(d, s, id) {
@@ -19,76 +59,78 @@ $().ready(function(d, s, id) {
 </script>
 </head>
 <body>
-	<table border="1">
-			<tr>
-				<td>작성자번호</td> 
-				<td>작성자이름</td>
-				<td>한문장번호</td>
-				<td>한문장</td>
-				<td>페이지</td>
-				<td>작성시간</td>
-				<td>isbn</td>
-				<td>책제목</td>
-				<td>저자</td>
-				<td>출판사</td>
-				<td>해시코드</td>
-				<td>좋아요</td>
-				<td>수정,삭제</td>
-				<td>공유</td>
-			</tr>
-				<tr>
-					<td>${onesentence.userIdx}</td>
-					<td>${onesentence.userName}</td>
-					<td>${onesentence.oneSentenceIdx}</td>
-					<td>${onesentence.oneSentence}</td>
-					<td>${onesentence.page}</td>
-					<td>${onesentence.oneSentenceRegisteredTime}</td>
-					<td>${onesentence.isbn}</td>
-					<td>${onesentence.bookTitle}</td>
-					<td>${onesentence.author}</td>
-					<td>${onesentence.publisher}</td>
-					<td>${onesentence.hashtag}</td>
-					<td>${onesentence.likeTotal}</td>
-					 <td><a href="#" id="updateBtn" onclick="updateClick(${onesentence.oneSentenceIdx})">수정</a>
-					 &nbsp;<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}" id="deleteBtn">삭제</a></td>
-					 <td><a href="#" onclick="up(${onesentence.oneSentenceIdx})" id="test" >공유</a></td>
-				</tr>
-		</table>
 
-<script>
-function updateClick(idx){
-	console.log("수정Click");
-	var url="../../onesentence/popup/"+idx;
-	var popupOption="width=700,height=600";
-	window.open(url,"한문장수정하기",popupOption);	
-}
+	<%-- <%@include file="include/mainHeader.jsp"%> --%>
 
-function up(idx){
-	alert("test클릭");
-	alert(idx);	
-	FB.ui({
-		method : 'share_open_graph',
-		action_type: 'og.shares',
-		action_properties: JSON.stringify({
-			object:{ 
-				'og:url': 'http://127.0.0.1/sentence/onesentence/one/'+idx,
-				'og:title' : '한문장',
-				'og:description' : '한문장내용',
-				'og:image': 'https://www.your-domain.com/path/image.jpg'
-			}
-		})
-	})
-};
+	<!-- Page Content -->
+	<div class="container">
+		<!-- Post Content Column -->
+		<div class="col-lg-8">
+			<!-- Comments Form -->
 
-
-/* function pop_close(){
-    opener.location.reload();
-    window.close();
-} */
-
-
-</script>		
 		
-		
+			<div class="newdiv">
+				<span style="color: darkgray; padding-right: 1rem">${onesentence.oneSentenceIdx}</span>
+				<!--한문장번호-->
+				<a href="#" style="color: black"><i class="fa fa-user icon">
+						${onesentence.userName}</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
+				<center>
+					<div class="divmodal">
+						<div class="all">
+							<a href="#" onclick="share(${onesentence.oneSentenceIdx})" id="share"><i class="fa fa-send-o icon"></i></a>
+						</div>
+						<div class="my">
+							<a href="#" id="updateBtn" onclick="updateClick(${onesentence.oneSentenceIdx})"><i class="fa fa-reply icon"></i></a>
+						</div>
+						<div class="my">
+							<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}" id="deleteBtn"><i class="fa fa-remove icon"></i></a>
+						</div>
+						
+					</div>
+				</center>
+				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
+				 <span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}.</span><br> <span
+					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray">${onesentence.bookTitle},
+						${onesentence.author}, ${onesentence.publisher}, ${onesentence.page} 에서.. </i></span><br>
+				<hr>
+				<span class="hashtag">${onesentence.hashtag}</span> <span class="like"><i
+					class="fa fa-heart"> ${onesentence.likeTotal}</i></span>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script
+		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist2.js"></script>
+	<script>
+	    function share(idx){
+	    	FB.ui({
+	    		method : 'share_open_graph',
+	    		action_type: 'og.shares',
+	    		action_properties: JSON.stringify({
+	    			object:{ 
+	    				'og:url': 'http://127.0.0.1/sentence/onesentence/one/'+idx,
+	    				'og:title' : '한문장',
+	    				'og:description' : '한문장내용',
+	    				'og:image': 'C:\\Users\\jaeho\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\onesentence\\upload\\책.jpg'
+	    			}
+	    		})
+	    	})
+	    };
+	    function updateClick(idx){
+	    	var url="../../onesentence/popup/"+idx;
+	    	var popupOption="width=700,height=600";
+	    	window.open(url,"한문장수정하기",popupOption);	
+	    }
+	
+	
+	</script>
 </body>
+
 </html>

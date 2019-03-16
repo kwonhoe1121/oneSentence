@@ -3,7 +3,6 @@ $().ready(function () {
     $('.my').hide();
     $('.all').hide();
     $('.eventA').on('click', function () {
-    	alert("dd");
         var $this = $(this);
         $('.my').hide();
         $('.all').hide();

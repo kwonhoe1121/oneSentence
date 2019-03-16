@@ -100,7 +100,7 @@ public class oneSentenceController {
 
 		model.addAttribute("oneSentenceList", oneSentenceList);
 
-		return "onesentence/list";
+		return "sentenceList";
 	}
 
 	@RequestMapping("/onesentence/popupForPhoto")
@@ -218,7 +218,7 @@ public class oneSentenceController {
 			hash = "";
 		}
 		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "onesentence/list";
+		return "sentenceList";
 
 	}
 
@@ -270,6 +270,6 @@ public class oneSentenceController {
 			hash = "";
 		}
 		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "onesentence/list";
+		return "sentenceList";
 	}
 }

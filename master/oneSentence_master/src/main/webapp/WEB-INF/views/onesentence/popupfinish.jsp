@@ -57,18 +57,20 @@
 	rel="stylesheet">
 <link rel="stylesheet prefetch"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">	
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 
-<body class="text-center">
+<body class="text-center" style="display:block">
 <img class="mb-4"
 			src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png"
-			alt="" width="72" height="72">
-	<h1>한문장이 등록되었습니다.</h1>
+			alt="" width="72" height="72"><br>
+	<h1>한문장이 등록되었습니다.</h1><br>
 	<a href="#" id="close">닫기</a>
 
 </body>
 <script>
 	$('#close').on('click', function() {
+		console.log("닫기");
 		opener.parent.location.reload();
 		window.close();
 	});
