@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 <meta charset="utf-8">
@@ -59,12 +59,13 @@
 		<div class="col-lg-8">
 			<!-- Comments Form -->
 
-			<!-- <div class="my-4"> -->
+		
+			<c:forEach items="${oneSentenceList}" var="onesentence">
 			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">1</span>
+				<span style="color: darkgray; padding-right: 1rem">${onesentence.oneSentenceIdx}</span>
 				<!--한문장번호-->
 				<a href="#" style="color: black"><i class="fa fa-user icon">
-						신짱구2</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
+						${onesentence.userName}</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
 				<center>
 					<div class="divmodal">
 						<div class="my">
@@ -80,247 +81,15 @@
 						</div>
 					</div>
 				</center>
-				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
-					23:10</span><br> <span style="padding-left: 2rem; font-size: 1.5rem;">Lorem
-					ipsum dolor sit amet, consectetur adipisicing elit.</span><br> <span
-					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
-						한강, 창비, p128 에서.. </i></span><br>
+				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
+				 <span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}.</span><br> <span
+					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray">${onesentence.bookTitle},
+						${onesentence.author}, ${onesentence.publisher}, ${onesentence.page} 에서.. </i></span><br>
 				<hr>
-				<span class="hashtag">#봉미선 #흰둥이</span> <span class="like"><i
-					class="fa fa-heart"> 11</i></span>
+				<span class="hashtag">${onesentence.hashtag}</span> <span class="like"><i
+					class="fa fa-heart"> ${onesentence.likeTotal}</i></span>
 			</div>
-			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">1</span>
-				<!--한문장번호-->
-				<a href="#" style="color: black"><i class="fa fa-user icon">
-						신짱구2</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
-				<center>
-					<div class="divmodal">
-						<div class="my">
-							<a href="#"><i class="fa fa-reply icon"></i></a>
-						</div>
-						<!--수정-->
-						<div class="my">
-							<a href=""><i class="fa fa-remove icon"></i></a>
-						</div>
-						<!--삭제-->
-						<div class="all">
-							<a href="#"><i class="fa fa-send-o icon"></i></a>
-						</div>
-					</div>
-				</center>
-				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
-					23:10</span><br> <span style="padding-left: 2rem; font-size: 1.5rem;">Lorem
-					ipsum dolor sit amet, consectetur adipisicing elit.</span><br> <span
-					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
-						한강, 창비, p128 에서.. </i></span><br>
-				<hr>
-				<span class="hashtag">#봉미선 #흰둥이</span> <span class="like"><i
-					class="fa fa-heart"> 11</i></span>
-			</div>
-			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">1</span>
-				<!--한문장번호-->
-				<a href="#" style="color: black"><i class="fa fa-user icon">
-						신짱구2</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
-				<center>
-					<div class="divmodal">
-						<div class="my">
-							<a href="#"><i class="fa fa-reply icon"></i></a>
-						</div>
-						<!--수정-->
-						<div class="my">
-							<a href=""><i class="fa fa-remove icon"></i></a>
-						</div>
-						<!--삭제-->
-						<div class="all">
-							<a href="#"><i class="fa fa-send-o icon"></i></a>
-						</div>
-					</div>
-				</center>
-				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
-					23:10</span><br> <span style="padding-left: 2rem; font-size: 1.5rem;">Lorem
-					ipsum dolor sit amet, consectetur adipisicing elit.</span><br> <span
-					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
-						한강, 창비, p128 에서.. </i></span><br>
-				<hr>
-				<span class="hashtag">#봉미선 #흰둥이</span> <span class="like"><i
-					class="fa fa-heart"> 11</i></span>
-			</div>
-			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">1</span>
-				<!--한문장번호-->
-				<a href="#" style="color: black"><i class="fa fa-user icon">
-						신짱구2</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
-				<center>
-					<div class="divmodal">
-						<div class="my">
-							<a href="#"><i class="fa fa-reply icon"></i></a>
-						</div>
-						<!--수정-->
-						<div class="my">
-							<a href=""><i class="fa fa-remove icon"></i></a>
-						</div>
-						<!--삭제-->
-						<div class="all">
-							<a href="#"><i class="fa fa-send-o icon"></i></a>
-						</div>
-					</div>
-				</center>
-				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
-					23:10</span><br> <span style="padding-left: 2rem; font-size: 1.5rem;">Lorem
-					ipsum dolor sit amet, consectetur adipisicing elit.</span><br> <span
-					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
-						한강, 창비, p128 에서.. </i></span><br>
-				<hr>
-				<span class="hashtag">#봉미선 #흰둥이</span> <span class="like"><i
-					class="fa fa-heart"> 11</i></span>
-			</div>
-			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">1</span>
-				<!--한문장번호-->
-				<a href="#" style="color: black"><i class="fa fa-user icon">
-						신짱구2</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
-				<center>
-					<div class="divmodal">
-						<div class="my">
-							<a href="#"><i class="fa fa-reply icon"></i></a>
-						</div>
-						<!--수정-->
-						<div class="my">
-							<a href=""><i class="fa fa-remove icon"></i></a>
-						</div>
-						<!--삭제-->
-						<div class="all">
-							<a href="#"><i class="fa fa-send-o icon"></i></a>
-						</div>
-					</div>
-				</center>
-				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
-					23:10</span><br> <span style="padding-left: 2rem; font-size: 1.5rem;">Lorem
-					ipsum dolor sit amet, consectetur adipisicing elit.</span><br> <span
-					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
-						한강, 창비, p128 에서.. </i></span><br>
-				<hr>
-				<span class="hashtag">#봉미선 #흰둥이</span> <span class="like"><i
-					class="fa fa-heart"> 11</i></span>
-			</div>
-			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">1</span>
-				<!--한문장번호-->
-				<a href="#" style="color: black"><i class="fa fa-user icon">
-						신짱구2</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
-				<center>
-					<div class="divmodal">
-						<div class="my">
-							<a href="#"><i class="fa fa-reply icon"></i></a>
-						</div>
-						<!--수정-->
-						<div class="my">
-							<a href=""><i class="fa fa-remove icon"></i></a>
-						</div>
-						<!--삭제-->
-						<div class="all">
-							<a href="#"><i class="fa fa-send-o icon"></i></a>
-						</div>
-					</div>
-				</center>
-				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
-					23:10</span><br> <span style="padding-left: 2rem; font-size: 1.5rem;">Lorem
-					ipsum dolor sit amet, consectetur adipisicing elit.</span><br> <span
-					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
-						한강, 창비, p128 에서.. </i></span><br>
-				<hr>
-				<span class="hashtag">#봉미선 #흰둥이</span> <span class="like"><i
-					class="fa fa-heart"> 11</i></span>
-			</div>
-			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">1</span>
-				<!--한문장번호-->
-				<a href="#" style="color: black"><i class="fa fa-user icon">
-						신짱구2</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
-				<center>
-					<div class="divmodal">
-						<div class="my">
-							<a href="#"><i class="fa fa-reply icon"></i></a>
-						</div>
-						<!--수정-->
-						<div class="my">
-							<a href=""><i class="fa fa-remove icon"></i></a>
-						</div>
-						<!--삭제-->
-						<div class="all">
-							<a href="#"><i class="fa fa-send-o icon"></i></a>
-						</div>
-					</div>
-				</center>
-				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
-					23:10</span><br> <span style="padding-left: 2rem; font-size: 1.5rem;">Lorem
-					ipsum dolor sit amet, consectetur adipisicing elit.</span><br> <span
-					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
-						한강, 창비, p128 에서.. </i></span><br>
-				<hr>
-				<span class="hashtag">#봉미선 #흰둥이</span> <span class="like"><i
-					class="fa fa-heart"> 11</i></span>
-			</div>
-			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">1</span>
-				<!--한문장번호-->
-				<a href="#" style="color: black"><i class="fa fa-user icon">
-						신짱구2</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
-				<center>
-					<div class="divmodal">
-						<div class="my">
-							<a href="#"><i class="fa fa-reply icon"></i></a>
-						</div>
-						<!--수정-->
-						<div class="my">
-							<a href=""><i class="fa fa-remove icon"></i></a>
-						</div>
-						<!--삭제-->
-						<div class="all">
-							<a href="#"><i class="fa fa-send-o icon"></i></a>
-						</div>
-					</div>
-				</center>
-				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
-					23:10</span><br> <span style="padding-left: 2rem; font-size: 1.5rem;">Lorem
-					ipsum dolor sit amet, consectetur adipisicing elit.</span><br> <span
-					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
-						한강, 창비, p128 에서.. </i></span><br>
-				<hr>
-				<span class="hashtag">#봉미선 #흰둥이</span> <span class="like"><i
-					class="fa fa-heart"> 11</i></span>
-			</div>
-			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">1</span>
-				<!--한문장번호-->
-				<a href="#" style="color: black"><i class="fa fa-user icon">
-						신짱구2</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
-				<center>
-					<div class="divmodal">
-						<div class="my">
-							<a href="#"><i class="fa fa-reply icon"></i></a>
-						</div>
-						<!--수정-->
-						<div class="my">
-							<a href=""><i class="fa fa-remove icon"></i></a>
-						</div>
-						<!--삭제-->
-						<div class="all">
-							<a href="#"><i class="fa fa-send-o icon"></i></a>
-						</div>
-					</div>
-				</center>
-				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
-					23:10</span><br> <span style="padding-left: 2rem; font-size: 1.5rem;">Lorem
-					ipsum dolor sit amet, consectetur adipisicing elit.</span><br> <span
-					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
-						한강, 창비, p128 에서.. </i></span><br>
-				<hr>
-				<span class="hashtag">#봉미선 #흰둥이</span> <span class="like"><i
-					class="fa fa-heart"> 11</i></span>
-			</div>
+			</c:forEach>
 		</div>
 	</div>
 

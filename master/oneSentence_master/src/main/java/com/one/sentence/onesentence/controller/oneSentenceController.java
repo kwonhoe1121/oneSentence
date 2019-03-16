@@ -36,24 +36,16 @@ public class oneSentenceController {
 
 	@RequestMapping(value = "/onesentence/insert", method = RequestMethod.POST)
 	public String insertOnesententce(HttpServletRequest request, @RequestParam("oneSentence") String oneSentence,
-			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx,
-			@RequestParam("isbn") String isbns,
-			@RequestParam("hashtag") String hashtag, Model model
-			) {	
-		System.out.println(page + "ff:" + oneSentence + ":" + userIdx);
-		int isbn=1;
-		if(isbns!=null) {
-		isbn = Integer.parseInt(isbns);
-		}
-		
-		System.out.println(isbn+1);
+			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx, @RequestParam("isbn") long isbn,
+			Model model) {
+
 		if (oneService.showBookByisbn(isbn) == null) {
 
 			Book book = new Book();
-			String author = (String)request.getParameter("author");
-			String bookGenre = (String)request.getParameter("bookGenre");
-			String bookTitle = (String)request.getParameter("bookTitle");
-			String publisher = (String)request.getParameter("publisher");
+			String author = (String) request.getParameter("author");
+			String bookGenre = (String) request.getParameter("bookGenre");
+			String bookTitle = (String) request.getParameter("bookTitle");
+			String publisher = (String) request.getParameter("publisher");
 
 			book.setIsbn(isbn);
 			book.setAuthor(author);
@@ -74,14 +66,38 @@ public class oneSentenceController {
 		oneService.makeOneSentence(onesentence);
 
 		int oneSentenceIdx = oneService.findOneSentenceIdx(userIdx, isbn, oneSentence);
+		String hashtag1 = (String) request.getParameter("hashtag1");
+		String hashtag2 = (String) request.getParameter("hashtag2");
 
-		Hashtag tag = new Hashtag();
-		tag.setHashtag(hashtag);
-		tag.setOneSentenceIdx(oneSentenceIdx);
-
-		oneService.makeHashtag(tag);
+		if (!(hashtag1 == null||hashtag1.equals(""))) {
+			Hashtag tag = new Hashtag();
+			tag.setHashtag(hashtag1);
+			tag.setOneSentenceIdx(oneSentenceIdx);
+			oneService.makeHashtag(tag);
+			if (!(hashtag2 == null||hashtag2.equals(""))) {
+				tag.setHashtag(hashtag2);
+				tag.setOneSentenceIdx(oneSentenceIdx);
+				oneService.makeHashtag(tag);
+			}
+		}
 
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash = "";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
+		}
+
 		model.addAttribute("oneSentenceList", oneSentenceList);
 
 		return "onesentence/list";
@@ -120,20 +136,20 @@ public class oneSentenceController {
 	@RequestMapping("/onesentence/one/{idx}")
 	public String selectOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model) {
 		ShowOnesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);
-		int oneSentenceIdx =onesentence.getOneSentenceIdx();
+		int oneSentenceIdx = onesentence.getOneSentenceIdx();
 		List<String> hashtagList = oneService.showHashtagList(oneSentenceIdx);
-		String hashtag="";
+		String hashtag = "";
 		Iterator<String> it = hashtagList.iterator();
-		while(it.hasNext()) {
-			hashtag += ("#"+ it.next()+" ");
+		while (it.hasNext()) {
+			hashtag += ("#" + it.next() + " ");
 		}
 		onesentence.setHashtag(hashtag);
-		
+
 		int likeTotal = oneService.showLikeTotal(oneSentenceIdx);
 		onesentence.setLikeTotal(likeTotal);
-		
+
 		model.addAttribute("onesentence", onesentence);
-		
+
 		return "onesentence/one";
 
 	}
@@ -141,22 +157,66 @@ public class oneSentenceController {
 	@RequestMapping("/onesentence/list/all")
 	public String selectOnesententceList(Model model) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash = "";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
+		}
 		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "onesentence/list";
+		return "sentenceList";
 	}
 
 	@RequestMapping("/onesentence/list/{idx}")
 	public String selectOnesententceListByuserIdx(@PathVariable("idx") int idx, Model model) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByuserIdx(idx);
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash = "";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
+		}
 		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "onesentence/list";
+		return "sentenceList";
 
 	}
 
 	@RequestMapping("/onesentence/liketo/{idx}")
 	public String selectOnesententceListForLiketo(@PathVariable("idx") int idx, Model model) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListForLiketo(idx);
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash = "";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
 
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
+		}
 		model.addAttribute("oneSentenceList", oneSentenceList);
 		return "onesentence/list";
 
@@ -170,8 +230,7 @@ public class oneSentenceController {
 		int oneSentenceIdx = Integer.parseInt(one);
 
 		String page = (String) request.getParameter("page");
-		int isbn = Integer.parseInt((String) request.getParameter("isbn"));
-
+		long isbn = Long.parseLong((String) request.getParameter("isbn"));
 		oneService.changeOneSentence(oneSentenceIdx, oneSentence, page, isbn);
 
 		return "onesentence/popupfinish";
@@ -195,6 +254,21 @@ public class oneSentenceController {
 		oneService.removeOneSentence(idx);
 
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash = "";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
+		}
 		model.addAttribute("oneSentenceList", oneSentenceList);
 		return "onesentence/list";
 	}

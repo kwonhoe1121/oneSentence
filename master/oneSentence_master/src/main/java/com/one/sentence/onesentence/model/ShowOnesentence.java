@@ -3,13 +3,13 @@ package com.one.sentence.onesentence.model;
 import java.util.Date;
 
 public class ShowOnesentence {
-	private int userIdx; // ����� ����
+	private int userIdx; // 占쏙옙占쏙옙占� 占쏙옙占쏙옙
 	private String userName;
 	private int oneSentenceIdx;
 	private String oneSentence;
 	private String page;
 	private Date oneSentenceRegisteredTime;
-	private int isbn; // ����� ����
+	private long isbn; // 占쏙옙占쏙옙占� 占쏙옙占쏙옙
 	private String bookTitle;
 	private String author;
 	private String publisher;
@@ -19,10 +19,25 @@ public class ShowOnesentence {
 	public ShowOnesentence() {
 	}
 
+	
 	public ShowOnesentence(int userIdx, String userName, int oneSentenceIdx, String oneSentence, String page,
-			Date oneSentenceRegisteredTime, int isbn, String bookTitle, String author, String publisher, String hashtag,
+			Date oneSentenceRegisteredTime, long isbn, String bookTitle, String author, String publisher) {
+		this.userIdx = userIdx;
+		this.userName = userName;
+		this.oneSentenceIdx = oneSentenceIdx;
+		this.oneSentence = oneSentence;
+		this.page = page;
+		this.oneSentenceRegisteredTime = oneSentenceRegisteredTime;
+		this.isbn = isbn;
+		this.bookTitle = bookTitle;
+		this.author = author;
+		this.publisher = publisher;
+	}
+
+
+	public ShowOnesentence(int userIdx, String userName, int oneSentenceIdx, String oneSentence, String page,
+			Date oneSentenceRegisteredTime, long isbn, String bookTitle, String author, String publisher, String hashtag,
 			int likeTotal) {
-		super();
 		this.userIdx = userIdx;
 		this.userName = userName;
 		this.oneSentenceIdx = oneSentenceIdx;
@@ -61,11 +76,11 @@ public class ShowOnesentence {
 		this.userIdx = userIdx;
 	}
 
-	public int getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
 	}
 

@@ -15,21 +15,21 @@ public interface IOnesentenceService {
 	public ShowOnesentence showOneSentenceByoneSentenceIdx(int oneSentenceIdx);
 	public OneSentence showOneSentenceModel(int oneSentenceIdx);
 	
-	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, int isbn);
-	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, int isbn);
-	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1,int userIdx2, int isbn);
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, long isbn);
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, long isbn);
+	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1,int userIdx2, long isbn);
 	
-	public void changeOneSentence(int oneSentenceIdx, String oneSentence, String page, int isbn);
+	public void changeOneSentence(int oneSentenceIdx, String oneSentence, String page, long isbn);
 	public int removeOneSentence(int oneSentenceIdx);
 	
 	public void makeBook(Book book); 
-	public Book showBookByisbn(int isbn);
+	public Book showBookByisbn(long isbn);
 	
 	public void upUserPoint(int userIdx);
 	public void downUserPoint(int userIdx);
 	
 	public void makeHashtag(Hashtag tag);
-	public int findOneSentenceIdx(int userIdx, int isbn, String oneSentence);
+	public int findOneSentenceIdx(int userIdx, long isbn, String oneSentence);
 	public List<String> showHashtagList(int oneSentenceIdx);
 	
 	public int showLikeTotal(int oneSentenceIdx);

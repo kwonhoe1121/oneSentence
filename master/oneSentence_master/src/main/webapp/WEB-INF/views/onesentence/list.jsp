@@ -1,6 +1,8 @@
+<%@page import="com.one.sentence.onesentence.service.OnesentenceService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +33,8 @@ $().ready(function(d, s, id) {
 				<td>책제목</td>
 				<td>저자</td>
 				<td>출판사</td>
+				<td>해시태그</td>
+				<td>좋아요</td>
 				<td>수정,삭제</td>
 				<td>공유</td>
 			</tr>
@@ -46,6 +50,8 @@ $().ready(function(d, s, id) {
 					<td>${onesentence.bookTitle}</td>
 					<td>${onesentence.author}</td>
 					<td>${onesentence.publisher}</td>
+					<td>${onesentence.hashtag}</td>
+					<td>${onesentence.likeTotal}</td>
 					 <td><a href="#" id="updateBtn" onclick="updateClick(${onesentence.oneSentenceIdx})">수정</a>
 					 &nbsp;<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}" id="deleteBtn">삭제</a></td>
   <td>

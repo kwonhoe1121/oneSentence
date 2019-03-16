@@ -84,11 +84,13 @@
 			placeholder="한문장을 입력해주세요" required autofocus>
 			<a href="#" onclick="photo()" id="findAtPhoto"><i class="fa fa-camera icon">
 							    사진에서 찾기</i></a><br><br>
-		<label for="hashtag" class="sr-only">Hashtag</label> 
+		<label for="hashtag1" class="sr-only">Hashtag</label> 
 		<input
-			type="text" id="hashtag" name="hashtag" class="form-control"
-			placeholder="#해시태그" required autofocus><br>
-
+			type="text" id="hashtag1" name="hashtag1" class="form-control"
+			placeholder="#해시태그" ><br>
+		<input
+			type="text" id="hashtag2" name="hashtag2" class="form-control"
+			placeholder="#해시태그"><br>
 		<button class="btn btn-lg btn-success btn-block" type="submit">작성완료</button>
 	</form>
 

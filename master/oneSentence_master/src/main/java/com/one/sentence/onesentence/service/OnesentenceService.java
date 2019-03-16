@@ -52,7 +52,7 @@ public class OnesentenceService implements IOnesentenceService {
 	}
 
 	@Override
-	public void changeOneSentence(int oneSentenceIdx,String oneSentence, String page, int isbn) {
+	public void changeOneSentence(int oneSentenceIdx,String oneSentence, String page, long isbn) {
 		System.out.println(isbn);
 	
 		dao.updateOneSentence(oneSentenceIdx,oneSentence,page,isbn);
@@ -72,7 +72,7 @@ public class OnesentenceService implements IOnesentenceService {
 	}
 
 	@Override
-	public Book showBookByisbn(int isbn) {
+	public Book showBookByisbn(long isbn) {
 		return dao.selectBookByisbn(isbn);
 	}
 
@@ -95,38 +95,33 @@ public class OnesentenceService implements IOnesentenceService {
 	}
 
 	@Override
-	public int findOneSentenceIdx(int userIdx, int isbn, String oneSentence) {
+	public int findOneSentenceIdx(int userIdx, long isbn, String oneSentence) {
 		return dao.findOneSentenceIdx(userIdx, isbn, oneSentence);
 	}
 
 	@Override
-	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, int isbn) {
-		// TODO Auto-generated method stub
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, long isbn) {
 		return dao.selectOnesentenceByoneSentenceIdxAndIsbnMy(userIdx, isbn);
 	}
 
 	@Override
-	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, int isbn) {
-		// TODO Auto-generated method stub
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, long isbn) {
 		return dao.selectOnesentenceByoneSentenceIdxAndIsbnFollowing(userIdx, isbn);
 	}
 
 	@Override
 	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1, int userIdx2,
-			int isbn) {
-		// TODO Auto-generated method stub
+			long isbn) {
 		return dao.selectOnesentenceListByoneSentenceIdxAndIsbnOther(userIdx1, userIdx2, isbn);
 	}
 
 	@Override
 	public List<String> showHashtagList(int oneSentenceIdx) {
-		// TODO Auto-generated method stub
 		return dao.selectHashtagList(oneSentenceIdx);
 	}
 
 	@Override
 	public int showLikeTotal(int oneSentenceIdx) {
-		// TODO Auto-generated method stub
 		return dao.selectLikeTotal(oneSentenceIdx);
 	}
 

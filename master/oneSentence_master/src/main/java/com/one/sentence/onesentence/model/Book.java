@@ -1,15 +1,15 @@
 package com.one.sentence.onesentence.model;
 
 public class Book {
-	private int isbn;
+	private long isbn;
 	private String bookTitle;
 	private String bookGenre;
 	private String author;
 	private String publisher; 
-	public int getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(int isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
 	}
 	public String getBookTitle() {

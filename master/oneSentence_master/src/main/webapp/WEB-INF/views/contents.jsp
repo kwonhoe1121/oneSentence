@@ -72,7 +72,7 @@
 					<hr>
 					<li>
 					<form action="./onesentence/insertForm" method="POST">
-						<input type="text" name="isbn" value="97883598">
+						<input type="text" name="isbn" value="8936433598">
 						<input type="text" name="author" value="한강">
 						<input type="text" name="publisher" value="창비">
 						<input type="text" name="bookTitle" value="채식주의자">
