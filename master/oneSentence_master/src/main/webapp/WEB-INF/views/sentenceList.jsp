@@ -111,8 +111,7 @@ $().ready(function(d, s, id) {
 		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist2.js"></script>
-	<%-- <script
-		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist3.js"></script> --%>
+
 	<script>
 	    function share(idx){
 	    	FB.ui({
