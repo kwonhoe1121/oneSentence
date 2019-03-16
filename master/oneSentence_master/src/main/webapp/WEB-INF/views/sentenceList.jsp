@@ -68,7 +68,7 @@ $().ready(function(d, s, id) {
 		<!-- Post Content Column -->
 		<div class="col-lg-8">
 			<!-- Comments Form -->
-
+			<input type="text" id = "session" value="${User.userIdx}" hidden="true">
 
 			<c:forEach items="${oneSentenceList}" var="onesentence">
 				<div class="newdiv" hidden="true">
@@ -77,6 +77,7 @@ $().ready(function(d, s, id) {
 					<a href="#" style="color: black"><i class="fa fa-user icon">
 							${onesentence.userName}</i></a> <span class="eventA"><i
 						class="fa fa-ellipsis-v icon"></i></span>
+						<input type="text" class="userIdx" value="${onesentence.userIdx}" hidden="true">
 					<center>
 						<div class="divmodal">
 							<div class="all">

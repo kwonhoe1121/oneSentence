@@ -5,10 +5,12 @@ $().ready(function () {
         var $this = $(this);
         $('.my').hide();
         $('.all').hide();
-        if (true) { /*여기에서 해당문장의 userIdx와 session의 userIdx를 비교한다.*/
-            $this.next().find('.my').show();
+        var k = $this.next().val();         
+        var session = $('#session').val();
+        if (session==k) { /*여기에서 해당문장의 userIdx와 session의 userIdx를 비교한다.*/
+            $this.next().next().find('.my').show();
         }
-        $this.next().find('.all').show();
+        $this.next().next().find('.all').show();
     });
 
     $(document).mouseup(function (e) {
