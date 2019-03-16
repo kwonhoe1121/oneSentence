@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>prference page</title>
+<title>preference page</title>
 
 <!-- Bootstrap core CSS -->
 <link
@@ -86,25 +86,25 @@
 				<div id="hashtag" class="card-body"
 					style="width: 20rem; height: 13rem;">
 					<span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(40px, 0px) rotate(0deg);">남주혁
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(40px, 0px) rotate(0deg);">${hashtaglist[0]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(120px, 25px) rotate(0deg);">한감자
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(120px, 25px) rotate(0deg);">${hashtaglist[1]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 96px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(205px, 15px) rotate(0deg);">감자처리기사
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 96px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(205px, 15px) rotate(0deg);">${hashtaglist[2]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(5px, 50px) rotate(0deg);">오이디은선
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(5px, 50px) rotate(0deg);">${hashtaglist[3]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(180px, 55px) rotate(0deg);">부트스트랩
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(180px, 55px) rotate(0deg);">${hashtaglist[4]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 128px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(45px, 75px) rotate(0deg);">감자
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 128px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(45px, 75px) rotate(0deg);">${hashtaglist[5]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(30px, 105px) rotate(0deg);">인생책
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(30px, 105px) rotate(0deg);">${hashtaglist[6]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(210px, 88px) rotate(0deg);">다혜의스펀지화법
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(210px, 88px) rotate(0deg);">${hashtaglist[7]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(130px, 120px) rotate(0deg);">감자의조퇴
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(130px, 120px) rotate(0deg);">${hashtaglist[8]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(160px, 148px) rotate(0deg);">css시러
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(170px, 150px) rotate(0deg);">${hashtaglist[9]}
 					</span>
 				</div>
 			</div>

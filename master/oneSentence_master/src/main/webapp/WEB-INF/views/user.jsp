@@ -75,7 +75,7 @@
 				</div>
 
 				<h4 class="card-header" id="part3">
-					<a href="#">취향분석(링크)</a>
+					<a href="preference/${uservo.userIdx }">취향분석(링크)</a>
 				</h4>
 				<div class="card-header" id="part4">
 					<h4 class="bold">
