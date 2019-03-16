@@ -8,16 +8,19 @@
 <title>Home</title>
 </head>
 <body>
+	<h3>나은 test</h3>
 	<ul>
 		<li><a href="hashtagList">취향분석</a></li>
 		<li><a href="following">팔로잉</a></li>
 		<li><a href="userpage/2">2번의 user 페이지</a></li>
-		<li><a href="contentsPage">contents 페이지</a></li>
 	</ul>
 
-	<h3>나은 test</h3>
 	<hr>
-	<hr>
+	
+	<h3>은선 test. 나은 자리 넘어오지 말기</h3>
+	<ul>
+		<li><a href="contentsPage">contents 페이지</a></li>
+	</ul>
 
 
 
