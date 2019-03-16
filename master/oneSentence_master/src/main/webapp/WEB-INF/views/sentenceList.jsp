@@ -69,35 +69,45 @@ $().ready(function(d, s, id) {
 		<div class="col-lg-8">
 			<!-- Comments Form -->
 
-		
+
 			<c:forEach items="${oneSentenceList}" var="onesentence">
-			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">${onesentence.oneSentenceIdx}</span>
-				<!--한문장번호-->
-				<a href="#" style="color: black"><i class="fa fa-user icon">
-						${onesentence.userName}</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
-				<center>
-					<div class="divmodal">
-						<div class="all">
-							<a href="#" onclick="share(${onesentence.oneSentenceIdx})" id="share"><i class="fa fa-send-o icon"></i></a>
+				<div class="newdiv" hidden="true">
+					<span style="color: darkgray; padding-right: 1rem">${onesentence.oneSentenceIdx}</span>
+					<!--한문장번호-->
+					<a href="#" style="color: black"><i class="fa fa-user icon">
+							${onesentence.userName}</i></a> <span class="eventA"><i
+						class="fa fa-ellipsis-v icon"></i></span>
+					<center>
+						<div class="divmodal">
+							<div class="all">
+								<a href="#" onclick="share(${onesentence.oneSentenceIdx})"
+									id="share"><i class="fa fa-send-o icon"></i></a>
+							</div>
+							<div class="my">
+								<a href="#" id="updateBtn"
+									onclick="updateClick(${onesentence.oneSentenceIdx})"><i
+									class="fa fa-reply icon"></i></a>
+							</div>
+							<div class="my">
+								<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}"
+									id="deleteBtn"><i class="fa fa-remove icon"></i></a>
+							</div>
+
 						</div>
-						<div class="my">
-							<a href="#" id="updateBtn" onclick="updateClick(${onesentence.oneSentenceIdx})"><i class="fa fa-reply icon"></i></a>
-						</div>
-						<div class="my">
-							<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}" id="deleteBtn"><i class="fa fa-remove icon"></i></a>
-						</div>
-						
-					</div>
-				</center>
-				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
-				 <span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}.</span><br> <span
-					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray">${onesentence.bookTitle},
-						${onesentence.author}, ${onesentence.publisher}, ${onesentence.page} 에서.. </i></span><br>
-				<hr>
-				<span class="hashtag">${onesentence.hashtag}</span> <span class="like"><i
-					class="fa fa-heart"> ${onesentence.likeTotal}</i></span>
-			</div>
+					</center>
+					<span
+						style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
+					<span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}.</span><br>
+					<span
+						style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray">${onesentence.bookTitle},
+						${onesentence.author}, ${onesentence.publisher},
+						${onesentence.page} 에서.. </i>
+					</span><br>
+					<hr>
+					<span class="hashtag">${onesentence.hashtag}</span> <span
+						class="like"><i class="fa fa-heart">
+							${onesentence.likeTotal}</i></span>
+				</div>
 			</c:forEach>
 		</div>
 	</div>
@@ -108,32 +118,50 @@ $().ready(function(d, s, id) {
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist.js"></script>
-	<script
 		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist2.js"></script>
-
 	<script>
-	    function share(idx){
-	    	FB.ui({
-	    		method : 'share_open_graph',
-	    		action_type: 'og.shares',
-	    		action_properties: JSON.stringify({
-	    			object:{ 
-	    				'og:url': 'http://127.0.0.1/sentence/onesentence/one/'+idx,
-	    				'og:title' : '한문장',
-	    				'og:description' : '한문장내용',
-	    				'og:image': 'C:\\Users\\jaeho\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\onesentence\\upload\\책.jpg'
-	    			}
-	    		})
-	    	})
-	    };
-	    function updateClick(idx){
-	    	var url="../../onesentence/popup/"+idx;
-	    	var popupOption="width=700,height=600";
-	    	window.open(url,"한문장수정하기",popupOption);	
-	    }
+	 
+		var newdiv = document.getElementsByClassName('newdiv');
+		newdiv[0].hidden = false;
+		newdiv[1].hidden = false;
+		newdiv[2].hidden = false;
+		newdiv[3].hidden = false;
+		newdiv[4].hidden = false;
+		newdiv[5].hidden = false;
+		var k =5;
+		$(window).scroll(function() {
+	    	 if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+	    		 newdiv[++k].hidden=false;
+	            
+	        }
+	    })   
+	   
+		
+			function share(idx) {
+				FB.ui({
+				method : 'share_open_graph',
+				action_type : 'og.shares',
+				action_properties : JSON
+						.stringify({
+							object : {
+								'og:url' : 'http://127.0.0.1/sentence/onesentence/one/'
+										+ idx,
+								'og:title' : '한문장',
+								'og:description' : '한문장내용',
+								'og:image' : 'C:\\Users\\jaeho\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\onesentence\\upload\\책.jpg'
+							}
+						})
+				})
+			}
+
+			function updateClick(idx) {
+				var url = "../../onesentence/popup/" + idx;
+				var popupOption = "width=700,height=600";
+				window.open(url, "한문장수정하기", popupOption);
+			}
+	    
 	
-	
+ 
 	</script>
 </body>
 

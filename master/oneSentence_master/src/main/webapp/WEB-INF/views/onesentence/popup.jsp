@@ -61,7 +61,7 @@
 
 <body class="text-center">
 	<form class="form-signin"
-		action="./insert" method="POST">
+		action="../update" method="POST">
 		<img class="mb-4"
 			src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72">
@@ -70,20 +70,15 @@
 		<input class="hidden" type="text" id="oneSentenceIdx" name="oneSentenceIdx" value="${onesentence.oneSentenceIdx}">
 		
 		<label for="page" class="sr-only">Page</label> 
-		
 		<input
 			type="text" id="page" name="page" class="form-control"
-			placeholder="페이지" required autofocus><br> 
+			value="${onesentence.page}" ><br> 
 		<label
 			for="oneSentence" class="sr-only">OneSentence</label> <input
 			type="text" id="oneSentence" name="oneSentence" class="form-control"
-			 value="${onesentence.oneSentence}"" required autofocus>
-			<a href="#" onclick="photo()" id="findAtPhoto"><i class="fa fa-camera icon">
-							    사진에서 찾기</i></a><br><br>
-		<label for="page" class="sr-only">Page</label> 
-		<input
-			type="text" id="page" name="page" class="form-control"
-			value="${onesentence.page}" ><br>
+			 value="${onesentence.oneSentence}" required autofocus>
+			<br><br>
+		
 		<button class="btn btn-lg btn-success btn-block" type="submit">수정완료</button>
 	</form>
 

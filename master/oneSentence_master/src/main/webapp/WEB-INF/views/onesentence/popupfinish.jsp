@@ -65,7 +65,7 @@
 			src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72"><br>
 	<h1>한문장이 등록되었습니다.</h1><br>
-	<a href="#" id="close">닫기</a>
+	<a href="#" id="close" style="font-size:2rem">닫기</a>
 
 </body>
 <script>

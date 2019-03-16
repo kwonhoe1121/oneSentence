@@ -111,7 +111,7 @@
 		b, user_info u
 		where b.isbn=o.isbn and u.userIdx=o.userIdx
 		group by
-		o.oneSentenceIdx order by o.oneSentenceRegisteredTime
+		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc
 
 	</select>
 	<select id="selectOnesentenceListByuserIdx"
@@ -124,7 +124,7 @@
 		u.userIdx=#{userIdx}
 		group
 		by o.oneSentenceIdx order by
-		o.oneSentenceRegisteredTime
+		o.oneSentenceRegisteredTime desc
 
 	</select>
 	<select id="selectOnesentenceByoneSentenceIdx"
@@ -152,7 +152,7 @@
 		liketo.userIdx=#{userIdx}) and
 		b.isbn=o.isbn and u.userIdx=o.userIdx
 		group by o.oneSentenceIdx order
-		by l.likeRegisteredTime
+		by l.likeRegisteredTime desc
 	</select>
 	<select id="selectOnesentenceByoneSentenceIdxAndIsbnMy"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
