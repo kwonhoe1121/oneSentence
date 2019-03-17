@@ -118,7 +118,6 @@
 		src="<%=request.getContextPath()%>/resources/naeun/user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/user/js/userpage.js"></script>
-
 </body>
 </html>
 

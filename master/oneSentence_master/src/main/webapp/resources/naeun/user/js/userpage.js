@@ -75,3 +75,10 @@ $('#follow').click(function(){
     });
 		
 });
+$('#update').click(function(){
+	console.log("수정Click");
+	var idx = $('#userIdx').val();
+	var url="../profile/popup/"+idx;
+	var popupOption="width=700,height=600";
+	window.open(url,"user update",popupOption);
+});

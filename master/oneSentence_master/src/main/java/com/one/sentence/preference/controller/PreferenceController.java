@@ -59,7 +59,7 @@ public class PreferenceController {
 		}
 		
 		model.addAttribute("hashtaglist", hashtaglist);
-		
+		model.addAttribute("userIdx",userIdx);
 		return "preference";
 		}
 	

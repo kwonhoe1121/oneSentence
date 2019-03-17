@@ -42,6 +42,23 @@
 		font-size: 3.5rem;
 	}
 }
+@font-face {
+	font-family: 'BMHANNAAir_ttf';
+	src:
+		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
+}
+
+@font-face {
+	font-family: 'BMHANNAAir_otf';
+	src:
+		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
+}
+
+* {
+
+font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
+	}
+	
 #findAtPhoto{
 	color:darkgrey;
 	font-size:0.8rem;

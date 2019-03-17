@@ -194,8 +194,9 @@ public class oneSentenceController {
 			showOneSentence.setHashtag(hash);
 			hash = "";
 		}
+		model.addAttribute("userIdx", idx);
 		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "sentenceList";
+		return "sentenceList_preference";
 
 	}
 
@@ -217,8 +218,9 @@ public class oneSentenceController {
 			showOneSentence.setHashtag(hash);
 			hash = "";
 		}
+		model.addAttribute("userIdx", idx);
 		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "sentenceList";
+		return "sentenceList_preference";
 
 	}
 

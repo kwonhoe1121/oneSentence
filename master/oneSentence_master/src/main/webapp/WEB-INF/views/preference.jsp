@@ -77,7 +77,7 @@
 			</div>
 			<div class="card my-4">
 				<h4 class="card-header">
-					<a href="#">나의 히스토리(링크)</a>
+					<a href="../../onesentence/list/${userIdx}">나의 히스토리(링크)</a>
 				</h4>
 				<div class="card-body"></div>
 			</div>
