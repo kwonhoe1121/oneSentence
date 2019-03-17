@@ -11,6 +11,7 @@
 	<h3>나은 test</h3>
 	<ul>
 		<li><a href="userpage/2">2번의 user 페이지</a></li>
+		<li><a href="loginPage">로그인 폼</a></li>
 	</ul>
 
 	<hr>

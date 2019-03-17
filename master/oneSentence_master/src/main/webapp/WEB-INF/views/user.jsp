@@ -70,6 +70,7 @@
 					<input type="submit" value="${followingstate}" class="btn btn-primary" id="follow"> 
 					<input type="hidden" value="${flag}" id="flag">
 					<input type="hidden" value="${loginIdx}" id="loginIdx">
+					<input type="hidden" value="${uservo.userIdx}" id="userIdx">
 					<h5>${uservo.userIntroduction}</h5>
 					<input type="submit" value="수정" class="btn btn-primary" id="update">
 				</div>
