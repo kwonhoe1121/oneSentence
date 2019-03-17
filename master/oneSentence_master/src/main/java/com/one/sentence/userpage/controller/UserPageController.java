@@ -35,13 +35,13 @@ public class UserPageController {
 			model.addAttribute("loginIdx", "로그인필요");
 			return "user";
 		}
-		else {
-			model.addAttribute("loginIdx", user);			
-			int loginUserIdx = user.getUserIdx();
+		else {			
+			int loginIdx = user.getUserIdx();
+			model.addAttribute("loginIdx", loginIdx);
 
 		// 1. 본인의 유저페이지에 들어갈 경우 (userIdx와 loginId가 같은 경우)
 		// 팔로잉 상태 알아보는 과정(아래의 과정) 필요 없음 (지금은 user.js로만 구현)
-		if (loginUserIdx == userIdx) {
+		if (loginIdx == userIdx) {
 			model.addAttribute("flag", "same");
 			model.addAttribute("followingstate", "");
 			return "user";
@@ -53,7 +53,7 @@ public class UserPageController {
 			// 둘의 팔로잉 상태에 따라 팔로잉 버튼의 value와 css가 달라짐
 
 			Following following = new Following();
-			following.setUserIdx(loginUserIdx);
+			following.setUserIdx(loginIdx);
 			following.setFollowingUserIdx(userIdx);
 
 			Object followingstate = service.checkFollowingState(following);

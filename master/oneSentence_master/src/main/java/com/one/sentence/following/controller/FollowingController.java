@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.one.sentence.following.model.Following;
 import com.one.sentence.following.service.FollowingService;
 
 
@@ -16,13 +18,23 @@ public class FollowingController {
 	@Autowired
 	FollowingService service = new FollowingService();
 	
-	@RequestMapping("/following")
+	//userpage.js에서 ajax로 보냄
+	@RequestMapping("/userpage/following")
+	@ResponseBody
 	public String ClickFollowingButton(Model model, HttpServletRequest request) {
+		int userIdx = Integer.parseInt(request.getParameter("userIdx"));
+		int loginIdx = Integer.parseInt(request.getParameter("loginIdx"));
+		int follow = Integer.parseInt(request.getParameter("follow"));
 		
-		System.out.println("userIdx="+request.getParameter("userIdx"));
-			//service.unfollowing(following);
-			//service.startFollowing(following);			
+		Following following = new Following();
+		following.setUserIdx(loginIdx);
+		following.setFollowingUserIdx(userIdx);
+		
+		if(follow==1)
+			service.startFollowing(following);
+		else
+			service.unfollowing(following);			
 
-		return "preference";
+		return "";
 		}
 	}

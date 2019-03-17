@@ -70,12 +70,13 @@
 					<input type="submit" value="${followingstate}" class="btn btn-primary" id="follow"> 
 					<input type="hidden" value="${flag}" id="flag">
 					<input type="hidden" value="${loginIdx}" id="loginIdx">
+					<input type="hidden" value="${uservo.userIdx}" id="userIdx">
 					<h5>${uservo.userIntroduction}</h5>
 					<input type="submit" value="수정" class="btn btn-primary" id="update">
 				</div>
 
 				<h4 class="card-header" id="part3">
-					<a href="#">취향분석(링크)</a>
+					<a href="preference/${uservo.userIdx }">취향분석(링크)</a>
 				</h4>
 				<div class="card-header" id="part4">
 					<h4 class="bold">
