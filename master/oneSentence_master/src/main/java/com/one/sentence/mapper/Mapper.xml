@@ -192,7 +192,7 @@
 		where b.isbn=o.isbn and u.userIdx=o.userIdx and
 		l.oneSentenceIdx=o.oneSentenceIdx
 		and u.userIdx not
-		in(#{userIdx1},#{userIdx2}) and o.isbn=#{isbn}
+		in(#{userIdx1},#{userIdx2}) and o.isbn=#{isbn})
 		group by
 		o.oneSentenceIdx order by count(l.oneSentenceIdx) desc limit 0,5;
 	</select>
