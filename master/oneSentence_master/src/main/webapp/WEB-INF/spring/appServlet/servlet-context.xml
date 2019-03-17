@@ -39,16 +39,32 @@
 		<interceptor>
 			<mapping path="/login" />
 			<mapping path="/user/login" />
-			<!-- <exclude-mapping path="/member/memberReg" />
-			<exclude-mapping path="/member/memberRegForm" />
-			<exclude-mapping path="/member/memberLogin" />
-			<exclude-mapping path="/member/memberLoginForm" />
-			<exclude-mapping path="/member/memberModify"/>
-			<exclude-mapping path="/member/memberModifyForm"/> -->
+			<!-- <exclude-mapping path="/member/memberReg" /> <exclude-mapping path="/member/memberRegForm" 
+				/> <exclude-mapping path="/member/memberLogin" /> <exclude-mapping path="/member/memberLoginForm" 
+				/> <exclude-mapping path="/member/memberModify"/> <exclude-mapping path="/member/memberModifyForm"/> -->
 			<beans:bean
 				class="com.one.sentence.login.interceptor.LoginIntercepter" />
 		</interceptor>
 	</interceptors>
+
+	<beans:bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<beans:property name="host" value="smtp.gmail.com" />
+		<beans:property name="port" value="587" /><!-- 465 or 25 -->
+		<beans:property name="username"
+			value="kwonhoe1121@gmail.com" />
+		<beans:property name="password" value="!Gjj16758389" />
+		<beans:property name="defaultEncoding" value="utf-8" />
+		<beans:property name="javaMailProperties">
+			<beans:props>
+				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
+				<beans:prop key="mail.smtp.auth">true</beans:prop>
+				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+				<beans:prop key="mail.debug">true</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
 
 	<!-- 데이터베이스 설정 -->
 	<!-- DataSource, JDBCTemplate, Dao(자동 설정 : @Repository) -->

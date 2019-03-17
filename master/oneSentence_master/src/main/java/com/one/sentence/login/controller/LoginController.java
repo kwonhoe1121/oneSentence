@@ -1,5 +1,9 @@
 package com.one.sentence.login.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -8,8 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.one.sentence.common.service.SecurityService;
 import com.one.sentence.common.vo.UserVo;
 import com.one.sentence.login.service.LoginService;
 
@@ -17,7 +21,10 @@ import com.one.sentence.login.service.LoginService;
 public class LoginController {
 
 	@Inject
-	LoginService service;
+	private LoginService service;
+	
+	@Inject
+	private SecurityService securityService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String requestLoginForm(@RequestHeader String referer, HttpSession session) {
@@ -32,22 +39,24 @@ public class LoginController {
 	// 세션 유무체크 interceptor에서 처리
 	// 로그인 안되어 있는 상태에서 아래 작업 수행
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
-	public String requestLogin(HttpSession session, Model model, @RequestParam("userEmail") String userEmail,
-			@RequestParam("userPassword") String userPassword) {
-		System.out.println("로그인체크: " + userEmail + " " + userPassword);
+	public String requestLogin(HttpSession session, Model model, UserVo user) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
+		System.out.println("로그인체크: " + user.getUserEmail() + " " + user.getUserPassword());
 
+		//user 정보 암호화- 입력 파라미터를 UserVo로 바꾸자.
+		UserVo encrytInputUser = securityService.encryptUserInfo(user);
+				
 		// 이메일 체크
-		if (!service.isUser(userEmail)) {
+		if (!service.isUser(encrytInputUser.getUserEmail())) {
 			model.addAttribute("isNotUser", "회원이 아닙니다.");
 			System.out.println("등록된 이메일 없음.");
 			return "login";
 		}
 
 		// 유저 정보 가져오기.
-		UserVo user = service.selectUser(userEmail);
+		UserVo registeredUser = service.selectUser(encrytInputUser.getUserEmail());
 
 		// 비밀번호 체크
-		if (!userPassword.equals(user.getUserPassword())) {
+		if (!encrytInputUser.getUserPassword().equals(registeredUser.getUserPassword())) {
 			model.addAttribute("isNotPassword", "비밀번호가 다릅니다.");
 			System.out.println("비밀번호 불일치!");
 			return "login";
@@ -55,7 +64,7 @@ public class LoginController {
 
 		// 로그인 완료
 		System.out.println("로그인 완료");
-		session.setAttribute("User", user);
+		session.setAttribute("User", registeredUser);
 
 		// 회원가입 창에서 넘어 왔을 경우 Index 페이지로 이동.
 		String referer = (String) session.getAttribute("referer");

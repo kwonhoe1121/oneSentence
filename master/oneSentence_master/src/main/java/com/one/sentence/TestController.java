@@ -94,4 +94,13 @@ public class TestController {
 
 		return "review";
 	}
+	
+	@RequestMapping(value = "/mailPage", method = RequestMethod.GET)
+	public String getMailPage() {
+		
+		System.out.println("getMailPage method");
+		
+		return "include/mail";
+	}
+	
 }

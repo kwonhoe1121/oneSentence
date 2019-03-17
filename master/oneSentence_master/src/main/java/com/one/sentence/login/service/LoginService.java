@@ -11,10 +11,14 @@ import com.one.sentence.login.dao.LoginDao;
 public class LoginService implements ILoginService {
 
 	@Inject
-	LoginDao dao;
+	private LoginDao dao;
+
+//	@Inject
+//	private SecurityService securityService;
 
 	@Override
 	public boolean isUser(String email) {
+
 		if (dao.selectUserByEmail(email) != null) {
 			return true;
 		}
