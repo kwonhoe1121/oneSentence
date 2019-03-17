@@ -35,6 +35,11 @@ public class MailSenderController {
 		userEmail = securityService.encryptUserEmail(userEmail);
 		System.out.println("암호화: " + userEmail);
 		
+		//유저 이메일이 존재하지 않으면
+		if(!loginService.isUser(userEmail)) {
+			return "mail";
+		}
+		
 		UserVo user = loginService.selectUser(userEmail);
 		System.out.println("유저정보: " + user);
 		
