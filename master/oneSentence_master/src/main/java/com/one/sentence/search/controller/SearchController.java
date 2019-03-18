@@ -56,7 +56,7 @@ public class SearchController {
 			return "/search";
 		} else { // 검색결과가 하나도 존재하지 않을경우
 			System.out.println("검색결과없음");
-			return "login";
+			return "/search/searchFail";
 		}
 	}
 
@@ -68,4 +68,6 @@ public class SearchController {
 		model.addAttribute("items", items);
 		return "/searchMore";
 	}
+	
+	
 }
