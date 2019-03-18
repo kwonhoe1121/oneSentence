@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +36,7 @@
 			</p>
 			<p class="ptext_01">${b.author }</p>
 			<p class="ptext_01">${b.publisher }</p>
-			<p class="ptext_01">${b.pubDate }</p>
+			<p class="ptext_01"><c:out value="${fn:substring(b.pubDate,5,16)}"/></p>
 		
 			<hr>
 		</div>

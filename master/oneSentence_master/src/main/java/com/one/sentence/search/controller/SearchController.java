@@ -89,7 +89,11 @@ public class SearchController {
 	
 	
 	@RequestMapping(value="/contents")
-	public String getContentsBook(HttpServletRequest request, Model model) {
+	public String getContentsBook(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+		
+		
+		
+		
 		
 		return "/contents";
 	}
