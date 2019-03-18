@@ -1,5 +1,7 @@
 package com.one.sentence.common.vo;
 
+import java.util.List;
+
 public class OneSentence {
 
 	private int oneSentenceIdx;
@@ -8,6 +10,8 @@ public class OneSentence {
 	private String oneSentenceRegisteredTime;
 	private int userIdx;
 	private long isbn;
+
+	private List<OneSentence> oneSentenceList;
 
 	public int getOneSentenceIdx() {
 		return oneSentenceIdx;
@@ -55,6 +59,14 @@ public class OneSentence {
 
 	public void setIsbn(long isbn) {
 		this.isbn = isbn;
+	}
+
+	public List<OneSentence> getOneSentenceList() {
+		return oneSentenceList;
+	}
+
+	public void setOneSentenceList(List<OneSentence> oneSentenceList) {
+		this.oneSentenceList = oneSentenceList;
 	}
 
 	@Override

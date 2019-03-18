@@ -8,8 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.one.sentence.common.vo.OneSentence;
@@ -22,14 +20,15 @@ public class LikeController {
 	@Inject
 	LikeService service;
 
-	@RequestMapping(value = "/user/like", method = RequestMethod.GET)
-	public String getLikeView() {
-
-		return "/like/like";
-	}
+//	@RequestMapping(value = "/user/like", method = RequestMethod.GET)
+//	public String getLikeView() {
+//
+//		return "/like/like";
+//	}
 
 	// ajax로 좋아요 버튼 클릭해서 서버에 요청.
 	@PostMapping("/user/clickLike")
+//	@ResponseBody
 	public String requestPushLikedButton(HttpSession session, @RequestBody OneSentence oneSentence) {
 
 		// 세션에서 회원 정보를 얻는다.
@@ -56,5 +55,10 @@ public class LikeController {
 
 		return "repush like button!";
 	}
+	
+	//유저가 좋아요 표시한 문장인지 확인
+//	@PostMapping("/user/isLiked")
+//	@ResponseBody
+//	public List<OneSentence> isLikedSentences(@RequestBody )
 
 }

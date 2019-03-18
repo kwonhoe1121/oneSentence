@@ -68,7 +68,7 @@ $().ready(function(d, s, id) {
 		<!-- Post Content Column -->
 		<div class="col-lg-8">
 			<!-- Comments Form -->
-			<input type="text" id = "session" value="${User.userIdx}" hidden="true">
+			<input type="text" id="session" value="${User.userIdx}" hidden="true">
 
 			<c:forEach items="${oneSentenceList}" var="onesentence">
 				<div class="newdiv" hidden="true">
@@ -76,8 +76,8 @@ $().ready(function(d, s, id) {
 					<!--한문장번호-->
 					<a href="#" style="color: black"><i class="fa fa-user icon">
 							${onesentence.userName}</i></a> <span class="eventA"><i
-						class="fa fa-ellipsis-v icon"></i></span>
-						<input type="text" class="userIdx" value="${onesentence.userIdx}" hidden="true">
+						class="fa fa-ellipsis-v icon"></i></span> <input type="text"
+						class="userIdx" value="${onesentence.userIdx}" hidden="true">
 					<center>
 						<div class="divmodal">
 							<div class="all">
@@ -121,7 +121,8 @@ $().ready(function(d, s, id) {
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
-	 
+		showLikedSentenceStatus();
+			
 		var newdiv = document.getElementsByClassName('newdiv');
 		newdiv[0].hidden = false;
 		newdiv[1].hidden = false;
@@ -161,7 +162,76 @@ $().ready(function(d, s, id) {
 				window.open(url, "한문장수정하기", popupOption);
 			}
 	    
-	
+		/* click like button  */
+		$(".like").on("click", function (data){
+			
+			alert("like button click!!");
+			console.log(data);
+			/* var $this = $("this"); */
+			/* oneSentenceIdx 값 가져오기. */
+			var oneSentenceIdx = $(this).parent("div").find("span").html();
+			//좋아요 카운트
+			var likeCnt = $(this).find("i")[0].innerText;
+			console.log(oneSentenceIdx);
+		    //하트 아이콘 변경. & count 증가.
+			console.log($(this).find("i")[0].innerText);
+		   	
+		    if($(this).find("i")[0].className === "fa fa-heart") {
+				$(this).find("i")[0].className = "fa fa-heart-o";
+				//하트 개수 감소.
+				if(likeCnt !== "0") {				
+					likeCnt = likeCnt - 1;
+				}
+				$(this).find("i")[0].innerText = likeCnt;
+			} else {
+				$(this).find("i")[0].className = "fa fa-heart";
+				//하트 개수 증가.
+				likeCnt = Number(likeCnt) + 1;
+				console.log(likeCnt);
+				$(this).find("i")[0].innerText = "";
+				$(this).find("i")[0].innerText = likeCnt;
+			}
+			
+			//ajax처리 해서 서버 요청.
+			 $.ajax({
+	        	type: "POST",
+	       		url: "<%=request.getContextPath()%>/user/clickLike",
+	       		data: JSON.stringify({
+	            "oneSentenceIdx": oneSentenceIdx
+		        }),
+		        dataType: "text",
+		        contentType: "application/json; charset=UTf-8",
+		        success: function (data) {
+		            console.log("좋아요 요청 성공!");
+		            // alert("좋아요 클릭 반영 성공!!");
+		            
+		            //좋아요 아이콘 이미지 토글로 변경시킨다.
+		        },
+		        error: function () {
+		            console.log("에러발생!!")
+		            // alert("에러발생!!");
+		        }
+		    })
+			
+		});
+		
+		/* like status in oneSentence */
+		function showLikedSentenceStatus() {
+
+			console.log($(".newdiv").find(".oneSentenceIdx"));
+			console.log($(".newdiv").children());
+
+			var oneSentenceIdxs = [];
+			
+			//oneSentenceIdx값 모두 가져다가 서버로 넘긴다. (배열에 담아서)
+		
+			//controller에서 현재 로그인한 유저가 좋아요한 기록이 있는지 확인한다
+		
+			//좋아요 기록이 있는 oneSentenceIdx 값만 다시 view페이지로 넘긴다.
+		
+			//서버로 부터 받은 oneSentenceIdx 문장에다가 하트표시한다.(반복문)
+			
+		}
  
 	</script>
 </body>
