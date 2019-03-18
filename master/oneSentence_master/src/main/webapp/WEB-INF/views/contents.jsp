@@ -147,7 +147,7 @@
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
 							#흰둥이</span> <span
 							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
-							class="fa fa-heart"> 11</i></span>
+							class="fa fa-heart-o"> 11</i></span>
 					</div>
 				</div>
 			</div>
@@ -187,7 +187,7 @@
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
 							#흰둥이</span> <span
 							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
-							class="fa fa-heart"> 11</i></span>
+							class="fa fa-heart-o"> 11</i></span>
 					</div>
 				</div>
 			</div>
@@ -227,7 +227,7 @@
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
 							#흰둥이</span> <span
 							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
-							class="fa fa-heart"> 11</i></span>
+							class="fa fa-heart-o"> 11</i></span>
 					</div>
 				</div>
 			</div>
@@ -267,7 +267,7 @@
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
 							#흰둥이</span> <span
 							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
-							class="fa fa-heart"> 11</i></span>
+							class="fa fa-heart-o"> 11</i></span>
 					</div>
 				</div>
 			</div>
@@ -307,7 +307,7 @@
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
 							#흰둥이</span> <span
 							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
-							class="fa fa-heart"> 11</i></span>
+							class="fa fa-heart-o"> 11</i></span>
 					</div>
 				</div>
 			</div>

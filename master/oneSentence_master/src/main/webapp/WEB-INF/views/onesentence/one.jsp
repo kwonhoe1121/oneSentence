@@ -94,7 +94,7 @@ $().ready(function(d, s, id) {
 						${onesentence.author}, ${onesentence.publisher}, ${onesentence.page} 에서.. </i></span><br>
 				<hr>
 				<span class="hashtag">${onesentence.hashtag}</span> <span class="like"><i
-					class="fa fa-heart"> ${onesentence.likeTotal}</i></span>
+					class="fa fa-heart-o"> ${onesentence.likeTotal}</i></span>
 			</div>
 		</div>
 	</div>

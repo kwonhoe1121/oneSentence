@@ -68,7 +68,8 @@ public class oneSentenceController {
 		int oneSentenceIdx = oneService.findOneSentenceIdx(userIdx, isbn, oneSentence);
 		String hashtag1 = (String) request.getParameter("hashtag1");
 		String hashtag2 = (String) request.getParameter("hashtag2");
-
+		String hashtag3 = (String) request.getParameter("hashtag3");
+		
 		if (!(hashtag1 == null||hashtag1.equals(""))) {
 			Hashtag tag = new Hashtag();
 			tag.setHashtag(hashtag1);
@@ -78,6 +79,11 @@ public class oneSentenceController {
 				tag.setHashtag(hashtag2);
 				tag.setOneSentenceIdx(oneSentenceIdx);
 				oneService.makeHashtag(tag);
+				if (!(hashtag3 == null||hashtag3.equals(""))) {
+					tag.setHashtag(hashtag3);
+					tag.setOneSentenceIdx(oneSentenceIdx);
+					oneService.makeHashtag(tag);
+				}
 			}
 		}
 

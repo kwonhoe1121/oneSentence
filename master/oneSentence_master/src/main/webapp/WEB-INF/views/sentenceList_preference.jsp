@@ -112,7 +112,7 @@ $().ready(function(d, s, id) {
 					</span><br>
 					<hr>
 					<span class="hashtag">${onesentence.hashtag}</span> <span
-						class="like"><i class="fa fa-heart">
+						class="like"><i class="fa fa-heart-o">
 							${onesentence.likeTotal}</i></span>
 				</div>
 			</c:forEach>

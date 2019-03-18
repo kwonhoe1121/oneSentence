@@ -88,7 +88,7 @@ font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 		<input class="hidden" type="text" id="publisher" name="publisher" value="<%=request.getParameter("publisher") %>">
 		<input class="hidden" type="text" id="bookTitle" name="bookTitle" value="<%=request.getParameter("bookTitle") %>">
 		<input class="hidden" type="text" id="bookGenre" name="bookGenre" value="<%=request.getParameter("bookGenre") %>">
-		<input class="hidden" type="text" id="userIdx" name="userIdx" value="2"><!-- 세션받아오기 -->
+		<input class="hidden" type="text" id="userIdx" name="userIdx" value="${User.userIdx}"><!-- 세션받아오기 -->
 		
 		<label for="page" class="sr-only">Page</label> 
 		
@@ -108,6 +108,9 @@ font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 		<input
 			type="text" id="hashtag2" name="hashtag2" class="form-control"
 			placeholder="#해시태그"><br>
+		<input
+			type="text" id="hashtag3" name="hashtag3" class="form-control"
+			placeholder="#해시태그"><br>	
 		<button class="btn btn-lg btn-success btn-block" type="submit">작성완료</button>
 	</form>
 
@@ -118,12 +121,13 @@ font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 $().ready(function(){
 $('.hidden').hide();
 	
-	function photo(){
+	
+$('#findAtPhoto').on('click',function(){
 	console.log("insert By photo Click");
 	var url="../onesentence/popupForPhoto";
 	var popupOption="width=600,height=600";
-	window.open(url,"사진으로 한문장찾기",popupOption);	
-} 
+	window.open(url,"사진으로 한문장찾기",popupOption);
+});
 
 
 });
