@@ -57,10 +57,8 @@
 
 </head>
 <body>
-	<!-- userpage.js부분 가져오기 -->
 
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
-
 	<!-- <div id="search"></div> -->
 
 	<!-- Page Content -->
@@ -97,7 +95,7 @@
 				</h4>
 				<div class="card-header" id="part4">
 					<h4 class="bold">
-						<a href="#">친구소식(링크)</a>
+						<a href="followingnews/${uservo.userIdx }">친구소식(링크)</a>
 					</h4>
 					<h5>팔로우 한 친구들의 소식을 받아볼 수 있습니다.</h5>
 				</div>
