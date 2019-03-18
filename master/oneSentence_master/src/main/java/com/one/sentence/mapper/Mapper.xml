@@ -114,6 +114,29 @@
 		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc
 
 	</select>
+	
+	<select id="selectOnesentenceListByIsbn"
+		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
+		select o.userIdx,u.userName,
+		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
+		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
+		b, user_info u,liketo l
+		where b.isbn=o.isbn and u.userIdx=o.userIdx  and o.isbn =#{isbn} and o.oneSentenceIdx=l.oneSentenceIdx
+		 group by o.oneSentenceIdx order by count(l.oneSentenceIdx) desc
+	</select>
+	<select id="selectOnesentenceListByIsbnWithoutlike"
+		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
+		select o.userIdx,u.userName,
+		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,o.isbn,
+		b.bookTitle, b.author, b.publisher,count(l.oneSentenceIdx) from one_sentence o, book b,
+		user_info u,liketo l
+		where b.isbn=o.isbn and u.userIdx=o.userIdx and
+		 o.oneSentenceIdx not in(select oneSentenceIdx from liketo)
+		and o.isbn=#{isbn}
+		group by o.oneSentenceIdx order by
+		o.oneSentenceRegisteredTime desc
+	</select>
+	
 	<select id="selectOnesentenceListByuserIdx"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
@@ -125,8 +148,12 @@
 		group
 		by o.oneSentenceIdx order by
 		o.oneSentenceRegisteredTime desc
-
 	</select>
+	
+	
+	
+	
+	
 	<select id="selectOnesentenceByoneSentenceIdx"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select

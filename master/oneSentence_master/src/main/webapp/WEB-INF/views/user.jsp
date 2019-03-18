@@ -40,6 +40,19 @@
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
+#settingDiv{
+	background-color: darkolivegreen;
+	width:4rem;
+	height:3rem;
+	text-align:center;
+	top:3.5rem;
+	margin-right:1rem;
+	position:absolute;
+	right:-0.5rem;
+}
+#settingDiv a{
+	color: white;
+}
 </style>
 
 </head>
@@ -61,7 +74,11 @@
 				<div class="card-header" id="part1">
 					<img id="img1"
 						src="<%=request.getContextPath()%>/resources/naeun/user/img/9c7e52813cc7517492fb362d2f090d47.jpg">
-					<i class="fa fa-cog fa-2x" aria-hidden="true"><a href="#"></a></i>
+					<a href="#" onclick="setting()"><i class="fa fa-cog fa-2x" aria-hidden="true"></i></a>
+					<div id="settingDiv" aria-hidden="true">
+						<a  href="../user/logout">로그아웃</a><br>
+						<a  href="#">회원탈퇴</a>
+					</div>
 				</div>
 
 				<div class="card-header" id="part2">
@@ -118,6 +135,19 @@
 		src="<%=request.getContextPath()%>/resources/naeun/user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/user/js/userpage.js"></script>
+	<script>
+	$('#settingDiv').hide();
+	function setting(){
+		$('#settingDiv').show();
+	}
+	$(document).mouseup(function (e) {
+		console.log('ff');
+        var container = $('#settingDiv');
+        if (container.has(e.target).length === 0) {
+            container.hide();
+        }
+    })
+	</script>	
 </body>
 </html>
 

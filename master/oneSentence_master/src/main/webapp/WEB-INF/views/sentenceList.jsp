@@ -142,14 +142,13 @@ $().ready(function(d, s, id) {
 				FB.ui({
 				method : 'share_open_graph',
 				action_type : 'og.shares',
-				action_properties : JSON
-						.stringify({
+				action_properties : JSON.stringify({
 							object : {
 								'og:url' : 'http://127.0.0.1/sentence/onesentence/one/'
 										+ idx,
 								'og:title' : '한문장',
 								'og:description' : '한문장내용',
-								'og:image' : 'C:\\Users\\jaeho\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\onesentence\\upload\\책.jpg'
+								'og:image' : 'http://image.kmib.co.kr/online_image/2018/0906/611211110012661971_2.jpg'
 							}
 						})
 				})

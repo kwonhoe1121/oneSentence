@@ -11,6 +11,8 @@ public interface IOnesentenceService {
 	public void makeOneSentence(OneSentence onesentence);
 	public List<ShowOnesentence> showOneSentenceList();
 	public List<ShowOnesentence> showOneSentenceListByuserIdx(int userIdx);
+	public List<ShowOnesentence> showOneSentenceListByIsbn(long isbn);
+	public List<ShowOnesentence> showOneSentenceListByIsbnWithoutlike(long isbn);
 	public List<ShowOnesentence> showOneSentenceListForLiketo(int userIdx); 
 	public ShowOnesentence showOneSentenceByoneSentenceIdx(int oneSentenceIdx);
 	public OneSentence showOneSentenceModel(int oneSentenceIdx);
