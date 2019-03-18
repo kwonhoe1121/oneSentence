@@ -29,7 +29,7 @@ public class SearchAladdinService {
 		hm.put("Query", URLEncoder.encode(searchWord, "UTF-8"));
 		hm.put("Sort", "Accuracy");
 		hm.put("QueryType", "Keyword");
-		hm.put("MaxResults", "10");
+		hm.put("MaxResults", "100");
 		hm.put("start", "1");
 		hm.put("SearchTarget", "Book");
 		hm.put("output", "xml");
@@ -50,7 +50,7 @@ public class SearchAladdinService {
 		SearchServiceHandlerone api = new SearchServiceHandlerone();
 		api.parseXml(url);
 		for(SearchModel item : api.Items){
-			System.out.println(item.cover + " : " + item.title + item.publisher + item.author + item.isbn + item.categoryName);
+			System.out.println(item.cover + " : " + item.title + item.publisher + item.author + item.isbn + item.categoryName + item.toc + item.fullDescription + item.itemPage);
 		}
 		
 		return api.Items;
@@ -93,6 +93,15 @@ class SearchServiceHandlerone extends DefaultHandler {
 		else if (localName.equals("pubDate")) {
 			tempValue = "";
 		}
+		else if (localName.equals("toc")) {
+			tempValue = "";
+		}
+		else if (localName.equals("fullDescription")) {
+			tempValue = "";
+		}
+		else if (localName.equals("itemPage")) {
+			tempValue = "";
+		}
 		
 		
 	}
@@ -126,6 +135,15 @@ class SearchServiceHandlerone extends DefaultHandler {
 			}
 			else if (localName.equals("pubDate")) {
 				currentItem.pubDate = tempValue;
+			}
+			else if (localName.equals("toc")) {
+				currentItem.toc = tempValue;
+			}
+			else if (localName.equals("fullDescription")) {
+				currentItem.fullDescription = tempValue;
+			}
+			else if (localName.equals("itemPage")) {
+				currentItem.itemPage = tempValue;
 			}
 			
 			
