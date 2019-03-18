@@ -70,7 +70,7 @@ $().ready(function(d, s, id) {
 
 		
 			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">${onesentence.oneSentenceIdx}</span>
+				<span style="color: darkgray; padding-right: 1rem"  class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>
 				<!--한문장번호-->
 				<a href="#" style="color: black"><i class="fa fa-user icon">
 						${onesentence.userName}</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
