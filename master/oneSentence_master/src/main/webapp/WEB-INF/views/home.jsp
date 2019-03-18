@@ -20,7 +20,10 @@
 	<ul>
 		<li><a href="contentsPage">contents 페이지</a></li>
 	</ul>
-
+	<h3>다혜 test</h3>
+	<ul>
+	<li><a href="indexPage">메인 검색페이지</a></li>
+	</ul>
 
 
 

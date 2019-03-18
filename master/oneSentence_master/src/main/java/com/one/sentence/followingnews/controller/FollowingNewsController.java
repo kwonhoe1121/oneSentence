@@ -14,7 +14,7 @@ import com.one.sentence.followingnews.service.FollowingNewsService;
 import com.one.sentence.search.model.SearchModel;
 
 @Controller
-@RequestMapping("followingnews")
+@RequestMapping("/followingnews/news")
 public class FollowingNewsController {
 
 	@Autowired
@@ -22,7 +22,7 @@ public class FollowingNewsController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String GetFollowingNewsForm() {
-		return "followingnews/followingnewshome";
+		return "/followingnews/news";
 	}
 	
 	

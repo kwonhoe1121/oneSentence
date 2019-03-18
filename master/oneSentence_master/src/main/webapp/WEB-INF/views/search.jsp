@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@ page session="false"%>
 <%-- <%@include file="include/mainHeader.jsp"%> --%>
@@ -57,7 +57,7 @@
 					 <a href="../contents">
 						<div class="item">
 							<div class="pad15">
-										 <c:out value="${fn:substring(b.pubDate,13,4)}"/>
+										 
 									
 	   										<img src="${b.cover}" >
 	   								
@@ -66,7 +66,7 @@
 											</p>
 											<p class="ptext_01">${b.author }</p>
 											<p class="ptext_01">${b.publisher }</p>
-											<p class="ptext_01">${b.pubDate }</p>
+											<p class="ptext_01"><c:out value="${fn:substring(b.pubDate,5,16)}"/></p>
 					
 	
 							</div>
@@ -115,7 +115,7 @@
 								</p>
 								<p class="ptext_01">${b2.author }</p>
 								<p class="ptext_01">${b2.publisher }</p>
-								<p class="ptext_01">${b2.pubDate }</p>
+								<p class="ptext_01"><c:out value="${fn:substring(b2.pubDate,5,16)}"/></p>
 								
 							</div>
 						</div>
@@ -159,7 +159,7 @@
 		</h2>
 
 
-
+	<c:forEach items="${hashtagitems }" var="hashtagitems">
 		<table>
 		
 			<tr>
@@ -180,6 +180,7 @@
 				<td>128p</td>
 			</tr>
 		</table>
+	</c:forEach>
 	</div>
 
 </body>
