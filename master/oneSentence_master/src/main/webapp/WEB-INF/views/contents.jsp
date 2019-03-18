@@ -112,7 +112,7 @@
 				&nbsp;&nbsp;&nbsp;<span style="font-size: 1rem">목차</span><a href="#"
 					class="a1"><b>더보기</b></a>
 				<hr>
-				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> <a href="#"
+				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> <a href="./onesentence/list/contents/8936433598"
 					class="a1"><b>더보기</b></a>
 			</div>
 		</div>

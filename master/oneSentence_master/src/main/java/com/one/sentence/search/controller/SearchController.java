@@ -69,14 +69,23 @@ public class SearchController {
 		return "/search/searchMore";
 	}
 	
-//	@RequestMapping(value="/searchMore")
-//	public String getSearchMoreTwo(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
-//		
-//		List<SearchModel> itemstwo = service.getSearchModel(query);
-//		
-//		model.addAttribute("itemstwo", itemstwo);
-//		return "/searchMore";
-//	}
+	@RequestMapping(value="/search/searchMoreBest")
+	public String getSearchMoreBest(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+		
+		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);
+		
+		model.addAttribute("itemstwo", itemstwo);
+		return "/search/searchMoreBest";
+	}
+	
+	@RequestMapping(value="/search/searchMoreUser")
+	public String getSearchMoreUser(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+		
+		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
+		
+		model.addAttribute("useritems", useritems);
+		return "/search/searchMoreUser";
+	}
 	
 	
 	@RequestMapping(value="/contents")

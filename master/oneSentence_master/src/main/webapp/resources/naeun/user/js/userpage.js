@@ -3,6 +3,7 @@ if($('#loginIdx').val()=="로그인필요"){
 	$('#follow').hide();
 	$('#update').hide();
 	$('.fa-cog').hide();
+	$('#settingDiv').hide();
 } else{ // 2. 로그인 했을 경우
 	
 	// 2-1.login id랑 userpage의 user가 같으면(=자신의 유저페이지 들어갔을때=flag:true) 팔로우x/수정o/설정o
@@ -82,3 +83,4 @@ $('#update').click(function(){
 	var popupOption="width=700,height=600";
 	window.open(url,"user update",popupOption);
 });
+

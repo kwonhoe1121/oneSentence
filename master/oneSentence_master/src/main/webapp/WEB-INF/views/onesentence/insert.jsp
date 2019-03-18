@@ -123,7 +123,8 @@ $('.hidden').hide();
 	var url="../onesentence/popupForPhoto";
 	var popupOption="width=600,height=600";
 	window.open(url,"사진으로 한문장찾기",popupOption);	
-}
+} 
+
 
 });
 </script>

@@ -138,6 +138,16 @@ public class OnesentenceDao implements IOnesentenceDao{
 
 	}
 
+	@Override
+	public List<ShowOnesentence> selectOnesentenceListByIsbn(long isbn) {
+		return sqlSession.selectList(namespace+".selectOnesentenceListByIsbn", isbn);
+	}
+
+	@Override
+	public List<ShowOnesentence> selectOnesentenceListByIsbnWithoutlike(long isbn) {
+		return sqlSession.selectList(namespace+".selectOnesentenceListByIsbnWithoutlike", isbn);
+	}
+
 	
 
 	
