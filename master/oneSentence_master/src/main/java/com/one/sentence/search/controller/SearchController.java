@@ -39,8 +39,8 @@ public class SearchController {
 		System.out.println("query: " + query);
 		List<SearchModel> items = service.getSearchModel(query);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);
-		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("search") + '%');
-		List<String> hashtagitems = serviceHashtag.selectHashsearchList('%' + request.getParameter("search") + '%');
+		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
+		List<String> hashtagitems = serviceHashtag.selectHashsearchList('%' + request.getParameter("query") + '%');
 
 		if (items.size() != 0 || useritems.size() != 0 || hashtagitems.size() != 0) {
 			model.addAttribute("items", items);
@@ -60,4 +60,12 @@ public class SearchController {
 		}
 	}
 
+	@RequestMapping(value="/searchMore/query")
+	public String getContentsBook(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+		
+		List<SearchModel> items = service.getSearchModel(query);
+		
+		model.addAttribute("items", items);
+		return "/searchMore";
+	}
 }

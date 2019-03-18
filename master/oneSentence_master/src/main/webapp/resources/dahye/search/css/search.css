@@ -50,6 +50,7 @@ body {
         .user_img {
             width: 6rem;
             height: 5rem;
+            margin-bottom: 1.5rem;
         }
         .usertext {
             margin-left: 7px;
