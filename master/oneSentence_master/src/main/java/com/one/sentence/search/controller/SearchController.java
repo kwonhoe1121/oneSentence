@@ -39,8 +39,8 @@ public class SearchController {
 		System.out.println("query: " + query);
 		List<SearchModel> items = service.getSearchModel(query);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);
-		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("search") + '%');
-		List<String> hashtagitems = serviceHashtag.selectHashsearchList('%' + request.getParameter("search") + '%');
+		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
+		List<String> hashtagitems = serviceHashtag.selectHashsearchList('%' + request.getParameter("query") + '%');
 
 		if (items.size() != 0 || useritems.size() != 0 || hashtagitems.size() != 0) {
 			model.addAttribute("items", items);
@@ -56,8 +56,33 @@ public class SearchController {
 			return "/search";
 		} else { // 검색결과가 하나도 존재하지 않을경우
 			System.out.println("검색결과없음");
-			return "login";
+			return "/search/searchFail";
 		}
 	}
 
+	@RequestMapping(value="/search/searchMore")
+	public String getSearchMore(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+		
+		List<SearchModel> items = service.getSearchModel(query);
+		
+		model.addAttribute("items", items);
+		return "/search/searchMore";
+	}
+	
+//	@RequestMapping(value="/searchMore")
+//	public String getSearchMoreTwo(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+//		
+//		List<SearchModel> itemstwo = service.getSearchModel(query);
+//		
+//		model.addAttribute("itemstwo", itemstwo);
+//		return "/searchMore";
+//	}
+	
+	
+	@RequestMapping(value="/contents")
+	public String getContentsBook(HttpServletRequest request, Model model) {
+		
+		return "/contents";
+	}
+	
 }
