@@ -1,13 +1,18 @@
 package com.one.sentence.liketo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.one.sentence.common.vo.OneSentence;
@@ -19,12 +24,6 @@ public class LikeController {
 
 	@Inject
 	LikeService service;
-
-//	@RequestMapping(value = "/user/like", method = RequestMethod.GET)
-//	public String getLikeView() {
-//
-//		return "/like/like";
-//	}
 
 	// ajax로 좋아요 버튼 클릭해서 서버에 요청.
 	@PostMapping("/user/clickLike")
@@ -55,10 +54,42 @@ public class LikeController {
 
 		return "repush like button!";
 	}
+
+	// 유저가 좋아요 표시한 문장인지 확인
+	@GetMapping("/user/isLiked")
+	@ResponseBody
+	public List<Integer> isLikedSentences(@RequestParam(value = "oneSentenceIdx[]") Integer[] oneSentenceIdx,
+			HttpSession session) {
+		System.out.println("들어왔나?");
+
+		// 세션에서 회원정보 가져온다.
+		UserVo user = (UserVo) session.getAttribute("User");
+		System.out.println("로그인 하고 있는 유저 정보!" + user);
+
+		Map<String, Integer> mapIdx = new HashMap<>();
+		List<Integer> likedOneSentenceIdx = new ArrayList<>();
+		
+//		for(Integer idx : oneSentenceIdx) {
+//			System.out.println(idx);
+//		}
+		System.out.println(oneSentenceIdx.length);
 	
-	//유저가 좋아요 표시한 문장인지 확인
-//	@PostMapping("/user/isLiked")
-//	@ResponseBody
-//	public List<OneSentence> isLikedSentences(@RequestBody )
+		// 모든 oneSentenceIdx 와 로그인한 userIdx로 확인 후
+		// likedOneSentenceIdx 에 넣는다.
+		for (int i = 0; i < oneSentenceIdx.length; i++) {
+			
+			mapIdx.put("userIdx", user.getUserIdx());
+			mapIdx.put("oneSentenceIdx", oneSentenceIdx[i]);
+			
+			//좋아요 클릭되어있으면
+			if (service.isLikedTheSentence(mapIdx)) {
+				likedOneSentenceIdx.add(oneSentenceIdx[i]);
+			}
+		}
+		
+		System.out.println(likedOneSentenceIdx);
+		
+		return likedOneSentenceIdx;
+	}
 
 }

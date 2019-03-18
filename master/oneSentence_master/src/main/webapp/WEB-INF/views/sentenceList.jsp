@@ -72,7 +72,8 @@ $().ready(function(d, s, id) {
 
 			<c:forEach items="${oneSentenceList}" var="onesentence">
 				<div class="newdiv" hidden="true">
-					<span style="color: darkgray; padding-right: 1rem" class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>
+					<span style="color: darkgray; padding-right: 1rem"
+						class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>
 					<!--한문장번호-->
 					<a href="#" style="color: black"><i class="fa fa-user icon">
 							${onesentence.userName}</i></a> <span class="eventA"><i
@@ -121,6 +122,7 @@ $().ready(function(d, s, id) {
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
+	
 		showLikedSentenceStatus();
 			
 		var newdiv = document.getElementsByClassName('newdiv');
@@ -218,12 +220,51 @@ $().ready(function(d, s, id) {
 		function showLikedSentenceStatus() {
 
 			console.log($(".newdiv").find(".oneSentenceIdx"));
-			console.log($(".newdiv").children());
-
-			var oneSentenceIdxs = [];
+			/* console.log($(".newdiv")); */
+			
+			//oneSentenceIdx 값 모두 가져오기.
+			var oneSentenceIdx = [];
+		 	for(var i = 0; i < $(".newdiv").find(".oneSentenceIdx").length; i += 1) {
+				oneSentenceIdx[i] = $(".newdiv").find(".oneSentenceIdx")[i].innerText;
+			}
+			console.log(oneSentenceIdx);
+			
+			var requestData = {"oneSentenceIdx" : oneSentenceIdx}
 			
 			//oneSentenceIdx값 모두 가져다가 서버로 넘긴다. (배열에 담아서)
 		
+			$.ajax({
+				type: "GET",
+				url: "<%=request.getContextPath()%>/user/isLiked",
+				data: requestData,
+				dataType: "json",
+				contentType: "application/json; charset=UTf-8",
+				success: function(data) {
+					console.log("좋아요 상태 확인 요청 성공!");
+					console.log(data);
+					//div 객체 모두 가져온다.
+					console.log(newdiv);
+					var newdiv = $(".newdiv"); 
+				/* 	newdiv[0].childNodes[26].firstChild.className = "fa fa-heart"; */
+					// 반복문 돌려서 oneSentenceIdx 값과 data의 값을 비교한다.
+  					for(var i = 0; i < newdiv.length; i += 1) {
+						console.log(newdiv[i].childNodes[1].innerText);
+					 	for(var j = 0; j < data.length; j += 1){
+							//일치하면 하트 색깔 바꾼다.
+							if(Number(newdiv[i].childNodes[1].innerText) === Number(data[j])) {
+								newdiv[i].childNodes[26].firstChild.className = "fa fa-heart";
+								/* break; */
+							}			
+						}
+					} 
+					
+				},
+				error: function(error) {
+					console.log("에러발생: " + error);
+				}
+				
+			})
+			
 			//controller에서 현재 로그인한 유저가 좋아요한 기록이 있는지 확인한다
 		
 			//좋아요 기록이 있는 oneSentenceIdx 값만 다시 view페이지로 넘긴다.
