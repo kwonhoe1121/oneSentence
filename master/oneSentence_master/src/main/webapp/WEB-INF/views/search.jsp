@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%@ page session="false"%>
-<%-- <%@include file="include/mainHeader.jsp"%>
+<%-- <%@include file="include/mainHeader.jsp"%> --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +45,7 @@
 	
 	<div class="all">
 		<h2 class="h2">
-			<strong>통합 검색 결과</strong><a href="../searchMore"><span class="more"><strong>더보기</strong></span></a>
+			<strong>통합 검색 결과</strong><a href="../searchMore?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
 		</h2>
 
 		<div class="container">
@@ -89,7 +89,7 @@
 
 	<div class="book_lank">
 		<h2 class="h2">
-			<strong>인기순</strong><a href=""><span class="more"><strong>더보기</strong></span></a>
+			<strong>인기순</strong><a href="../search/searchMore?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
 		</h2>
 		<div class="container">
 			<div class="row">

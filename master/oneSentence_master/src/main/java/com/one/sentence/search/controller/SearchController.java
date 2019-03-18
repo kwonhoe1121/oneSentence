@@ -60,14 +60,29 @@ public class SearchController {
 		}
 	}
 
-	@RequestMapping(value="/searchMore/query")
-	public String getContentsBook(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+	@RequestMapping(value="/search/searchMore")
+	public String getSearchMore(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
 		
 		List<SearchModel> items = service.getSearchModel(query);
 		
 		model.addAttribute("items", items);
-		return "/searchMore";
+		return "/search/searchMore";
 	}
 	
+//	@RequestMapping(value="/searchMore")
+//	public String getSearchMoreTwo(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+//		
+//		List<SearchModel> itemstwo = service.getSearchModel(query);
+//		
+//		model.addAttribute("itemstwo", itemstwo);
+//		return "/searchMore";
+//	}
+	
+	
+	@RequestMapping(value="/contents")
+	public String getContentsBook(HttpServletRequest request, Model model) {
+		
+		return "/contents";
+	}
 	
 }
