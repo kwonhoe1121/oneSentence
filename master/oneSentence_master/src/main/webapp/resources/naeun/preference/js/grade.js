@@ -6,11 +6,11 @@ var $countMySentences = $('#countMySentences').val();
 
 var i;
 
-for(i=0; i<$grade; i++){	
-document.getElementById('grade').innerHTML += green;
-}
-for(i=0; i<5-$grade; i++){
-document.getElementById('grade').innerHTML += lightgray;
-}	
+for(i=0; i<$grade; i++)	
+	document.getElementById('grade').innerHTML += green;
+
+for(i=0; i<5-$grade; i++)
+	document.getElementById('grade').innerHTML += lightgray;
+	
 
 document.getElementById('grade').innerHTML += '<br><br><h6>한문장 상위 '+$percent+'%! (총 '+$countMySentences+'개의 문장)</h6>';
