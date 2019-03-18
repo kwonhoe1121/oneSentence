@@ -19,24 +19,27 @@
 </head>
 <body>
 
-	<%@include file="include/mainHeader.jsp"%>
 
 	<i class="fa fa-book fa-3x" aria-hidden="true"></i>
 	<h1>도서 더보기</h1>
 	<hr>
 	<div class="bookmore">
+	<c:forEach items="${items}" var="b">
 		<div class="book_div">
+		
 			<img
-				src="<%=request.getContextPath()%>/resources/dahye/search/img/book1.jpg"
+				src="${b.cover}"
 				alt="book_1" class="img-fluid img-rounded book_img">
 			<p class="ptitle">
-				<strong>강아지와고양이</strong>
+				<strong>${b.title }</strong>
 			</p>
-			<p class="ptext_01">김철수</p>
-			<p class="ptext_01">강아지출판사</p>
-			<p class="ptext_01">2019</p>
+			<p class="ptext_01">${b.author }</p>
+			<p class="ptext_01">${b.publisher }</p>
+			<p class="ptext_01">${b.pubDate }</p>
+		
 			<hr>
 		</div>
+		</c:forEach>
 		<div class="book_div">
 			<img
 				src="<%=request.getContextPath()%>/resources/dahye/search/img/book1.jpg"
