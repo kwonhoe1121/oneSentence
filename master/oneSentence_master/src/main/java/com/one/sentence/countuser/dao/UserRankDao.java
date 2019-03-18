@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class CountUserDao implements ICountUserDao{
+public class UserRankDao implements IUserRankDao{
 
 	@Inject
 	private SqlSessionTemplate sqlSession;
@@ -15,8 +15,13 @@ public class CountUserDao implements ICountUserDao{
 	private String namespace="com.one.sentence.mapper.Mapper";
 
 	@Override
-	public int selectUserGrade(float percent) {
-		return sqlSession.selectOne(namespace+".selectUserGrade", percent);
+	public int countAllUsers() {
+		return sqlSession.selectOne(namespace+".countAllUsers");
+	}
+
+	@Override
+	public int selectUserRank(int userIdx) {
+		return sqlSession.selectOne(namespace+".selectUserRank", userIdx);
 	}
 
 	

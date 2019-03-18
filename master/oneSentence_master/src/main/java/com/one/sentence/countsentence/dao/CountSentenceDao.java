@@ -19,5 +19,10 @@ public class CountSentenceDao implements ICountSentenceDao{
 		return sqlSession.selectOne(namespace+".countAllSentences");
 	}
 
+	@Override
+	public int countSentenceByUserIdx(int userIdx) {
+		return sqlSession.selectOne(namespace+".countSentenceByUserIdx", userIdx);
+	}
+
 	
 }

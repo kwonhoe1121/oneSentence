@@ -16,8 +16,10 @@ public class CountSentenceService implements ICountSentenceService {
 		return dao.countAllSentences();
 	}
 
-
-
+	@Override
+	public int countSentenceByUserIdx(int userIdx) {
+		return dao.countSentenceByUserIdx(userIdx);
+	}
 
 	
 }

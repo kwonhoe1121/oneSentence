@@ -42,7 +42,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.one.sentence.common.vo.UserVo;
-import com.one.sentence.countuser.service.CountUserService;
+import com.one.sentence.countsentence.service.CountSentenceService;
+import com.one.sentence.countuser.service.UserRankService;
 import com.one.sentence.preference.service.PreferenceService;
 import com.one.sentence.userpage.service.UserPageService;
 
@@ -56,7 +57,10 @@ public class PreferenceController {
 	UserPageService uservice;
 	
 	@Autowired
-	CountUserService cservice;
+	UserRankService rservice;
+	
+	@Autowired
+	CountSentenceService cservice;
 	
 	@RequestMapping("/userpage/preference/{userIdx}")
 	public String GetHashtaglist(Model model, HttpServletRequest request, @PathVariable("userIdx") int userIdx) {
@@ -73,6 +77,34 @@ public class PreferenceController {
 		UserVo uservo = uservice.showUser_infoByuserIdx(userIdx);
 		model.addAttribute("uservo", uservo);
 		
+		int countAllUsers = rservice.countAllUsers();
+		int userRank = rservice.selectUserRank(userIdx);
+		int percent = Math.round(((float)userRank/countAllUsers)*100);
+		model.addAttribute("percent", percent);
+		
+		if(percent<=10) {
+			model.addAttribute("grade", "5");
+			model.addAttribute("comment", "최고의 경지에 도달한 한문장 유저군요. 당신은 진정한 한문장 매니아!");
+		}
+		else if(percent<=30) {
+			model.addAttribute("grade", "4");
+			model.addAttribute("comment", "한문장 등록 상위권 돌파! 대단합니다!");
+		}
+		else if(percent<=50) {
+			model.addAttribute("grade", "3");
+			model.addAttribute("comment", "한문장의 매력을 알게되셨군요! 축하합니다!");
+		}
+		else if(percent<=70) {
+			model.addAttribute("grade", "2");
+			model.addAttribute("comment", "프로 한문장 유저의 고지가 저 앞에 보입니다!");
+		}
+		else if(percent<=100) {
+			model.addAttribute("grade", "1");
+			model.addAttribute("comment", "한문장을 더 많이 등록해서 다른 유저들과 함께 감상하세요!");
+		}
+		
+		int countMySentences = cservice.countSentenceByUserIdx(userIdx);
+		model.addAttribute("countMySentences", countMySentences);
 		
 		return "preference";
 		}

@@ -46,12 +46,26 @@
 		from one_sentence;
 	</select>
 
-	<select id="selectUserGrade"
+	<select id="countAllUsers"
 		resultType="int">
-		select round(count(userIdx)*#{percent})
-		from user_info
-		order by userPoint desc;
+		select count(*)
+		from user_info;
 	</select>
+	
+	<select id="selectUserRank"
+		resultType="int">
+		select count(*)
+		from user_info
+		where userPoint >= (select userPoint from user_info where userIdx=#{userIdx});
+	</select>
+
+	<select id="countSentenceByUserIdx"
+		resultType="int">
+		select count(*)
+		from one_sentence
+		where userIdx=#{userIdx};
+	</select>
+
 
 
 
