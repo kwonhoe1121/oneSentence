@@ -57,7 +57,6 @@
 
 </head>
 <body>
-
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
 	<!-- <div id="search"></div> -->
 
