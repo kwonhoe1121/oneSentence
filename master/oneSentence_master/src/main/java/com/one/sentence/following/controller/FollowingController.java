@@ -16,7 +16,7 @@ import com.one.sentence.following.service.FollowingService;
 public class FollowingController {
 
 	@Autowired
-	FollowingService service = new FollowingService();
+	FollowingService service;
 	
 	//userpage.js에서 ajax로 보냄
 	@RequestMapping("/userpage/following")

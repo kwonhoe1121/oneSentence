@@ -111,7 +111,7 @@
 		<div class="container">
 
 			<p class="m-0 text-center" id="footer1">
-				지금까지 <i class="fa fa-star" aria-hidden="true"></i> 100개의 문장이 쌓였어요!
+				지금까지 <i class="fa fa-star" aria-hidden="true"></i> ${countAllSentences }개의 문장이 쌓였어요!
 			</p>
 			<br>
 			<p class="m-0 text-center">

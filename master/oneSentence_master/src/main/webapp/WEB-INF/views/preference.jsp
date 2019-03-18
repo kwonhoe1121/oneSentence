@@ -59,21 +59,17 @@
 					<h3 class="logo">One Sentence</h3>
 					<h6 class="logo">취향분석</h6>
 					<br> <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
-					<h5 class="logo">이름</h5>
+					<h5 class="logo">${uservo.userName}</h5>
 				</div>
 			</div>
 			<div class="card my-4">
 				<h4 class="card-header">등록한 한 문장 수</h4>
+				 <input type="hidden" value="${grade}" id="usergrade">
+				 <input type="hidden" value="${percent}" id="percent">
+				 <input type="hidden" value="${countMySentences}" id="countMySentences">
 				<div id="grade">
-					<i class="fa fa-book fa-3x" aria-hidden="true"></i> &nbsp; <i
-						class="fa fa-book fa-3x" aria-hidden="true"></i> &nbsp; <i
-						class="fa fa-book fa-3x" aria-hidden="true"></i> &nbsp; <i
-						class="fa fa-book fa-3x" aria-hidden="true"></i> &nbsp; <i
-						class="fa fa-book fa-3x" aria-hidden="true"></i><br> <br>
-					<h6>한문장 상위 10%! (총 @@개의 문장)</h6>
 				</div>
-				<h5 class="card-body" id="comment">한문장 등록을 정말 많이 하셨군요! 당신은 한문장
-					그 자체!</h5>
+				<h5 class="card-body" id="comment">${comment}</h5>
 			</div>
 			<div class="card my-4">
 				<h4 class="card-header">
@@ -117,7 +113,8 @@
 		src="<%=request.getContextPath()%>/resources/naeun/preference/vendor/jquery/jquery.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/preference/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	<script
+		src="<%=request.getContextPath()%>/resources/naeun/preference/js/grade.js"></script>
 </body>
 
 </html>
