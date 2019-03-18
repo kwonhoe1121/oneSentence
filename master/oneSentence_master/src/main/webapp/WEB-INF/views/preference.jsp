@@ -59,7 +59,7 @@
 					<h3 class="logo">One Sentence</h3>
 					<h6 class="logo">취향분석</h6>
 					<br> <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
-					<h5 class="logo">이름</h5>
+					<h5 class="logo">${uservo.userName}</h5>
 				</div>
 			</div>
 			<div class="card my-4">

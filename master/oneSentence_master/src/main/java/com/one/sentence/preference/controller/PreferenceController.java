@@ -41,13 +41,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.one.sentence.common.vo.UserVo;
+import com.one.sentence.countuser.service.CountUserService;
 import com.one.sentence.preference.service.PreferenceService;
+import com.one.sentence.userpage.service.UserPageService;
 
 @Controller
 public class PreferenceController {
 
 	@Autowired
-	PreferenceService service = new PreferenceService();
+	PreferenceService service;
+	
+	@Autowired
+	UserPageService uservice;
+	
+	@Autowired
+	CountUserService cservice;
 	
 	@RequestMapping("/userpage/preference/{userIdx}")
 	public String GetHashtaglist(Model model, HttpServletRequest request, @PathVariable("userIdx") int userIdx) {
@@ -60,6 +69,11 @@ public class PreferenceController {
 		
 		model.addAttribute("hashtaglist", hashtaglist);
 		model.addAttribute("userIdx",userIdx);
+		
+		UserVo uservo = uservice.showUser_infoByuserIdx(userIdx);
+		model.addAttribute("uservo", uservo);
+		
+		
 		return "preference";
 		}
 	

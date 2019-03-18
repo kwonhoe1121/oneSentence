@@ -39,6 +39,20 @@
 		delete from following where userIdx=#{userIdx} and
 		followingUserIdx = #{followingUserIdx};
 	</delete>
+	
+	<select id="countAllSentences"
+		resultType="int">
+		select count(*)
+		from one_sentence;
+	</select>
+
+	<select id="selectUserGrade"
+		resultType="int">
+		select round(count(userIdx)*#{percent})
+		from user_info
+		order by userPoint desc;
+	</select>
+
 
 
 	<!-- 재진 매퍼 -->
