@@ -14,6 +14,8 @@ public interface IOnesentenceDao {
 	public List<ShowOnesentence> selectOnesentenceList();
 	public List<ShowOnesentence> selectOnesentenceListByuserIdx(int userIdx);
 	public List<ShowOnesentence> selectOnesentenceListForLiketo(int userIdx);
+	public List<ShowOnesentence> selectOnesentenceListByIsbn(long isbn);  
+	public List<ShowOnesentence> selectOnesentenceListByIsbnWithoutlike(long isbn);
 	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, long isbn);
 	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, long isbn);
 	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1,int userIdx2, long isbn);

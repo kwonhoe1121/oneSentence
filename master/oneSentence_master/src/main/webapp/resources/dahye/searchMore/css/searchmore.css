@@ -22,6 +22,29 @@ h1 {
 }
 
 
+
+.user_img {
+	  width: 4rem;
+      height: 3rem;
+}
+
+.line {
+	margin-left : 1rem;
+}
+
+
+.usertext {
+	font-size: 15px;
+	margin-left : 1.8%;
+	font-family: 'Noto Sans KR', sans-serif;
+	
+}
+
+.imgline {
+	height: 3.3rem;
+}
+
+
 .titlehr {
     margin-bottom: 2.5rem;
 }

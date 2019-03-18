@@ -78,7 +78,7 @@ $().ready(function(d, s, id) {
 
 			<c:forEach items="${oneSentenceList}" var="onesentence">
 				<div class="newdiv" hidden="true">
-					<span style="color: darkgray; padding-right: 1rem">${onesentence.oneSentenceIdx}</span>
+					<span style="color: darkgray; padding-right: 1rem" class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>
 					<!--한문장번호-->
 					<a href="#" style="color: black"><i class="fa fa-user icon">
 							${onesentence.userName}</i></a> <span class="eventA"><i
@@ -112,7 +112,7 @@ $().ready(function(d, s, id) {
 					</span><br>
 					<hr>
 					<span class="hashtag">${onesentence.hashtag}</span> <span
-						class="like"><i class="fa fa-heart">
+						class="like"><i class="fa fa-heart-o">
 							${onesentence.likeTotal}</i></span>
 				</div>
 			</c:forEach>

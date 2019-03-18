@@ -68,7 +68,8 @@ public class oneSentenceController {
 		int oneSentenceIdx = oneService.findOneSentenceIdx(userIdx, isbn, oneSentence);
 		String hashtag1 = (String) request.getParameter("hashtag1");
 		String hashtag2 = (String) request.getParameter("hashtag2");
-
+		String hashtag3 = (String) request.getParameter("hashtag3");
+		
 		if (!(hashtag1 == null||hashtag1.equals(""))) {
 			Hashtag tag = new Hashtag();
 			tag.setHashtag(hashtag1);
@@ -78,6 +79,11 @@ public class oneSentenceController {
 				tag.setHashtag(hashtag2);
 				tag.setOneSentenceIdx(oneSentenceIdx);
 				oneService.makeHashtag(tag);
+				if (!(hashtag3 == null||hashtag3.equals(""))) {
+					tag.setHashtag(hashtag3);
+					tag.setOneSentenceIdx(oneSentenceIdx);
+					oneService.makeHashtag(tag);
+				}
 			}
 		}
 
@@ -176,6 +182,32 @@ public class oneSentenceController {
 		return "sentenceList";
 	}
 
+	@RequestMapping("/onesentence/list/contents/{isbn}")
+	public String selectOnesententceListByIsbn(@PathVariable("isbn") long isbn, Model model) {
+		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByIsbn(isbn);
+		List<ShowOnesentence> oneSentenceList2 = oneService.showOneSentenceListByIsbnWithoutlike(isbn);
+		oneSentenceList.addAll(oneSentenceList2);
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash = "";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
+		}
+		model.addAttribute("oneSentenceList", oneSentenceList);
+		return "sentenceList";
+
+	}
+	
+	
 	@RequestMapping("/onesentence/list/{idx}")
 	public String selectOnesententceListByuserIdx(@PathVariable("idx") int idx, Model model) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByuserIdx(idx);

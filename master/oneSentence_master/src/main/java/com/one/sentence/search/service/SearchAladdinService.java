@@ -33,7 +33,7 @@ public class SearchAladdinService {
 		hm.put("start", "1");
 		hm.put("SearchTarget", "Book");
 		hm.put("output", "xml");
-
+	
 		StringBuffer sb = new StringBuffer();
 		Iterator<String> iter = hm.keySet().iterator();
 		while (iter.hasNext()) {
@@ -50,7 +50,7 @@ public class SearchAladdinService {
 		SearchServiceHandlerone api = new SearchServiceHandlerone();
 		api.parseXml(url);
 		for(SearchModel item : api.Items){
-			System.out.println(item.cover + " : " + item.title + item.publisher + item.author + item.isbn + item.categoryName);
+			System.out.println(item.cover + " : " + item.title + item.publisher + item.author + item.isbn + item.categoryName + item.description);
 		}
 		
 		return api.Items;
@@ -93,6 +93,10 @@ class SearchServiceHandlerone extends DefaultHandler {
 		else if (localName.equals("pubDate")) {
 			tempValue = "";
 		}
+		else if (localName.equals("description")) {
+			tempValue = "";
+		}
+
 		
 		
 	}
@@ -127,6 +131,10 @@ class SearchServiceHandlerone extends DefaultHandler {
 			else if (localName.equals("pubDate")) {
 				currentItem.pubDate = tempValue;
 			}
+			else if (localName.equals("description")) {
+				currentItem.description = tempValue;
+			}
+
 			
 			
 		}

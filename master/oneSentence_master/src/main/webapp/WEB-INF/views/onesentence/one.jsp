@@ -70,7 +70,7 @@ $().ready(function(d, s, id) {
 
 		
 			<div class="newdiv">
-				<span style="color: darkgray; padding-right: 1rem">${onesentence.oneSentenceIdx}</span>
+				<span style="color: darkgray; padding-right: 1rem"  class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>
 				<!--한문장번호-->
 				<a href="#" style="color: black"><i class="fa fa-user icon">
 						${onesentence.userName}</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
@@ -94,7 +94,7 @@ $().ready(function(d, s, id) {
 						${onesentence.author}, ${onesentence.publisher}, ${onesentence.page} 에서.. </i></span><br>
 				<hr>
 				<span class="hashtag">${onesentence.hashtag}</span> <span class="like"><i
-					class="fa fa-heart"> ${onesentence.likeTotal}</i></span>
+					class="fa fa-heart-o"> ${onesentence.likeTotal}</i></span>
 			</div>
 		</div>
 	</div>

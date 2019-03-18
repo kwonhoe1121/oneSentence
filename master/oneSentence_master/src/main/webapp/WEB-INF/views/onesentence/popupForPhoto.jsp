@@ -62,7 +62,7 @@
 			alt="" width="72" height="72">
 		<h6>사진을 업로드 해주세요</h6>
 		<input type="file" id="photo" name="photo"><br><br>
-		<button class="btn btn-lg btn-success btn-block" type="submit">작성완료</button>
+		<button class="btn btn-lg btn-success btn-block" type="submit">사진선택</button>
 	</form>
 </body>
 

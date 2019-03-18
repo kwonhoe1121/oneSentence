@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.one.sentence.common.vo.UserVo;
+import com.one.sentence.countsentence.service.CountSentenceService;
 import com.one.sentence.following.model.Following;
 import com.one.sentence.following.service.FollowingService;
 import com.one.sentence.userpage.service.UserPageService;
@@ -20,7 +21,10 @@ public class UserPageController {
 	UserPageService uservice;
 
 	@Autowired
-	FollowingService service = new FollowingService();
+	FollowingService service;
+	
+	@Autowired
+	CountSentenceService cservice;
 
 	@RequestMapping("/userpage/{userIdx}")
 	public String CheckFollowingState(Model model, @PathVariable("userIdx") int userIdx, HttpSession session) {
@@ -29,6 +33,10 @@ public class UserPageController {
 		UserVo uservo = uservice.showUser_infoByuserIdx(userIdx);
 		model.addAttribute("uservo", uservo);
 
+		//footer 한문장 사이트에 등록된 문장 개수
+		int countAllSentences = cservice.countAllSentences();
+		model.addAttribute("countAllSentences", countAllSentences);
+		
 		//loginInfo
 		UserVo user = (UserVo) session.getAttribute("User");
 		if(user==null) {

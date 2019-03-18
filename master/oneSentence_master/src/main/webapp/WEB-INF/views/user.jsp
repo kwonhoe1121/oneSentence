@@ -40,14 +40,25 @@
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
+#settingDiv{
+	background-color: darkolivegreen;
+	width:4rem;
+	height:3rem;
+	text-align:center;
+	top:3.5rem;
+	margin-right:1rem;
+	position:absolute;
+	right:-0.5rem;
+}
+#settingDiv a{
+	color: white;
+}
 </style>
 
 </head>
 <body>
-	<!-- userpage.js부분 가져오기 -->
 
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
-
 	<!-- <div id="search"></div> -->
 
 	<!-- Page Content -->
@@ -61,7 +72,11 @@
 				<div class="card-header" id="part1">
 					<img id="img1"
 						src="<%=request.getContextPath()%>/resources/naeun/user/img/9c7e52813cc7517492fb362d2f090d47.jpg">
-					<i class="fa fa-cog fa-2x" aria-hidden="true"><a href="#"></a></i>
+					<a href="#" onclick="setting()"><i class="fa fa-cog fa-2x" aria-hidden="true"></i></a>
+					<div id="settingDiv" aria-hidden="true">
+						<a  href="../user/logout">로그아웃</a><br>
+						<a  href="#">회원탈퇴</a>
+					</div>
 				</div>
 
 				<div class="card-header" id="part2">
@@ -80,7 +95,7 @@
 				</h4>
 				<div class="card-header" id="part4">
 					<h4 class="bold">
-						<a href="#">친구소식(링크)</a>
+						<a href="followingnews/${uservo.userIdx }">친구소식(링크)</a>
 					</h4>
 					<h5>팔로우 한 친구들의 소식을 받아볼 수 있습니다.</h5>
 				</div>
@@ -94,7 +109,7 @@
 		<div class="container">
 
 			<p class="m-0 text-center" id="footer1">
-				지금까지 <i class="fa fa-star" aria-hidden="true"></i> 100개의 문장이 쌓였어요!
+				지금까지 <i class="fa fa-star" aria-hidden="true"></i> ${countAllSentences }개의 문장이 쌓였어요!
 			</p>
 			<br>
 			<p class="m-0 text-center">
@@ -118,6 +133,19 @@
 		src="<%=request.getContextPath()%>/resources/naeun/user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/naeun/user/js/userpage.js"></script>
+	<script>
+	$('#settingDiv').hide();
+	function setting(){
+		$('#settingDiv').show();
+	}
+	$(document).mouseup(function (e) {
+		console.log('ff');
+        var container = $('#settingDiv');
+        if (container.has(e.target).length === 0) {
+            container.hide();
+        }
+    })
+	</script>	
 </body>
 </html>
 

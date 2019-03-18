@@ -125,4 +125,14 @@ public class OnesentenceService implements IOnesentenceService {
 		return dao.selectLikeTotal(oneSentenceIdx);
 	}
 
+	@Override
+	public List<ShowOnesentence> showOneSentenceListByIsbn(long isbn) {
+		return dao.selectOnesentenceListByIsbn(isbn);
+	}
+
+	@Override
+	public List<ShowOnesentence> showOneSentenceListByIsbnWithoutlike(long isbn) {
+		return dao.selectOnesentenceListByIsbnWithoutlike(isbn);
+	}
+
 }
