@@ -37,6 +37,12 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/dahye/search/js/bootstrap.js"></script>
 
+<style>
+	a:link { color: black; text-decoration: none;}
+	a:visited { color: black; text-decoration: none;}
+	a:hover { color: black; text-decoration: none;}
+</style>
+
 </head>
 <body>
 
@@ -151,6 +157,7 @@
 		</h2>
 		
 		<div class="line">
+<%-- 		
 		 	<c:forEach items="${useritems }" var="userSearch"></a>
 <!-- 		 	<div class="userdiv" style="float: left;"> -->
 			<img
@@ -159,10 +166,10 @@
 				class="<%=request.getContextPath()%>/resources/dahye/search/img-circle user_img">
 				
 			<span class="usertext">${userSearch }</span>
-<<<<<<< HEAD
+
 			</div>
-=======
-			 </c:forEach> --%>
+			 </c:forEach>
+ --%>
 			 
 			 	<c:forEach items="${userInfo}" var="userSearch">
 			<img
@@ -171,7 +178,7 @@
 				class="${pageContext.request.contextPath}/resources/dahye/search/img-circle user_img">
 				
 			<span class="usertext"><a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }">${userSearch.userName}</a></span>
->>>>>>> 19a31c22e13f1180142f463eabba53e55fa544a2
+
 			 </c:forEach>
 			 </div>
 			 </c:when>
