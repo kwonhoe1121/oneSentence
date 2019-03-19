@@ -40,6 +40,7 @@
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
+/* 
 #settingDiv{
 	background-color: darkolivegreen;
 	width:4rem;
@@ -53,13 +54,32 @@
 #settingDiv a{
 	color: white;
 }
+ */
+ 
+#settingDiv{
+	background-color: darkolivegreen;
+	width:4rem;
+	height:3rem;
+	text-align:center;
+	top:3.5rem;
+	margin-right:1rem;
+	position:absolute;
+	right:-0.5rem;
+}
+#settingDiv a{
+	color: white;
+}
+
+ 
 </style>
 
 </head>
 <body>
 
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
-	<!-- <div id="search"></div> -->
+	 <div id="search">
+	 	<i class="fa fa-home fa-2x" aria-hidden="true"></i>
+	 </div>
 
 	<!-- Page Content -->
 	<div class="container">
