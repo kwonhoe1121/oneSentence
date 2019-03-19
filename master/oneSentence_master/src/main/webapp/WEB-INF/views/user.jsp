@@ -40,44 +40,14 @@
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
-/* 
-#settingDiv{
-	background-color: darkolivegreen;
-	width:4rem;
-	height:3rem;
-	text-align:center;
-	top:3.5rem;
-	margin-right:1rem;
-	position:absolute;
-	right:-0.5rem;
-}
-#settingDiv a{
-	color: white;
-}
- */
- 
-#settingDiv{
-	background-color: darkolivegreen;
-	width:4rem;
-	height:3rem;
-	text-align:center;
-	top:3.5rem;
-	margin-right:1rem;
-	position:absolute;
-	right:-0.5rem;
-}
-#settingDiv a{
-	color: white;
-}
-
  
 </style>
 
 </head>
 <body>
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
-	 <div id="search">
-	 	<i class="fa fa-home fa-2x" aria-hidden="true"></i>
+	 <div id="header">
+	 	<a href="../indexPage"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
 	 </div>
 
 	<!-- Page Content -->
@@ -93,10 +63,11 @@
 						src="${pageContext.request.contextPath}/resources/naeun/user/img/9c7e52813cc7517492fb362d2f090d47.jpg">
 					<a href="#" onclick="setting()"><i class="fa fa-cog fa-2x" aria-hidden="true"></i></a>
 					<div id="settingDiv" aria-hidden="true">
-						<a  href="../user/logout">로그아웃</a><br>
-						<a  href="#">회원탈퇴</a>
+						<a href="../user/logout">로그아웃</a>
+						<a href="#">회원탈퇴</a>
 					</div>
 				</div>
+			
 
 				<div class="card-header" id="part2">
 					<i class="fa fa-user-circle fa-4x" aria-hidden="true"></i>
@@ -120,8 +91,8 @@
 				</div>
 			</div>
 		</div>
+		</div>
 
-	</div>
 
 	<!-- Footer  -->
 	<footer class="py-5 bg-dark">
