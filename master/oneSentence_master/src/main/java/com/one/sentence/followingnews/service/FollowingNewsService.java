@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.one.sentence.followingnews.dao.FollowingNewsDao;
-import com.one.sentence.search.model.SearchModel;
+import com.one.sentence.onesentence.model.ShowOnesentence;
+
 
 @Service
 public class FollowingNewsService implements IFollowingNewsService {
@@ -15,7 +16,7 @@ public class FollowingNewsService implements IFollowingNewsService {
 	private FollowingNewsDao dao;
 	
 	@Override
-	public List<SearchModel> selectFollowingNewsList(String followingnews) {
-		return dao.selectFollowingNewsList(followingnews);
+	public List<ShowOnesentence> selectOneSentenceListForFollowing(int userIdx) {
+		return dao.selectOneSentenceListForFollowing(userIdx);
 	}
 }
