@@ -14,25 +14,25 @@ public interface IOnesentenceDao {
 	public List<ShowOnesentence> selectOnesentenceList();
 	public List<ShowOnesentence> selectOnesentenceListByuserIdx(int userIdx);
 	public List<ShowOnesentence> selectOnesentenceListForLiketo(int userIdx);
-	public List<ShowOnesentence> selectOnesentenceListByIsbn(long isbn);  
-	public List<ShowOnesentence> selectOnesentenceListByIsbnWithoutlike(long isbn);
-	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, long isbn);
-	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, long isbn);
-	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1,int userIdx2, long isbn);
+	public List<ShowOnesentence> selectOnesentenceListByIsbn(String isbn);  
+	public List<ShowOnesentence> selectOnesentenceListByIsbnWithoutlike(String isbn);
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, String isbn);
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, String isbn);
+	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1,int userIdx2, String isbn);
 	
 	public ShowOnesentence selectOnesentenceByoneSentenceIdx(int oneSentenceIdx);
 	public OneSentence selectOnesentenceModel(int oneSentenceIdx);
-	public int updateOneSentence(int oneSentenceIdx,String oneSentence, String page, long isbn);
+	public int updateOneSentence(int oneSentenceIdx,String oneSentence, String page, String isbn);
 	public int deleteOnesentence(int oneSentenceIdx);
 	
 	public int insertBook(Book book);
-	public Book selectBookByisbn(long isbn);
+	public Book selectBookByisbn(String isbn);
 	
 	public int upUserPoint(int userIdx);
 	public int downUserPoint(int userIdx);
 	
 	public int insertHashtag(Hashtag tag);
-	public int findOneSentenceIdx(int userIdx, long isbn, String oneSentence);
+	public int findOneSentenceIdx(int userIdx, String isbn, String oneSentence);
 	public List<String> selectHashtagList(int oneSentenceIdx);
 	
 	public int selectLikeTotal(int oneSentenceIdx);

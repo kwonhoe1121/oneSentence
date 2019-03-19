@@ -36,7 +36,7 @@ public class oneSentenceController {
 
 	@RequestMapping(value = "/onesentence/insert", method = RequestMethod.POST)
 	public String insertOnesententce(HttpServletRequest request, @RequestParam("oneSentence") String oneSentence,
-			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx, @RequestParam("isbn") long isbn,
+			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx, @RequestParam("isbn") String isbn,
 			Model model) {
 
 		if (oneService.showBookByisbn(isbn) == null) {
@@ -183,7 +183,7 @@ public class oneSentenceController {
 	}
 
 	@RequestMapping("/onesentence/list/contents/{isbn}")
-	public String selectOnesententceListByIsbn(@PathVariable("isbn") long isbn, Model model) {
+	public String selectOnesententceListByIsbn(@PathVariable("isbn") String isbn, Model model) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByIsbn(isbn);
 		List<ShowOnesentence> oneSentenceList2 = oneService.showOneSentenceListByIsbnWithoutlike(isbn);
 		oneSentenceList.addAll(oneSentenceList2);
@@ -264,7 +264,7 @@ public class oneSentenceController {
 		int oneSentenceIdx = Integer.parseInt(one);
 
 		String page = (String) request.getParameter("page");
-		long isbn = Long.parseLong((String) request.getParameter("isbn"));
+		String isbn = (String) request.getParameter("isbn");
 		oneService.changeOneSentence(oneSentenceIdx, oneSentence, page, isbn);
 
 		return "onesentence/popupfinish";

@@ -44,7 +44,7 @@ public class OnesentenceDao implements IOnesentenceDao{
 	}
 	
 	@Override
-	public int updateOneSentence(int oneSentenceIdx,String oneSentence, String page, long isbn) {
+	public int updateOneSentence(int oneSentenceIdx,String oneSentence, String page, String isbn) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("oneSentenceIdx", oneSentenceIdx);
 		map.put("oneSentence", oneSentence);
@@ -73,7 +73,7 @@ public class OnesentenceDao implements IOnesentenceDao{
 	}
 
 	@Override
-	public Book selectBookByisbn(long isbn) {
+	public Book selectBookByisbn(String isbn) {
 		return sqlSession.selectOne(namespace+".selectBookByisbn",isbn);
 	}
 
@@ -94,7 +94,7 @@ public class OnesentenceDao implements IOnesentenceDao{
 
 
 	@Override
-	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, long isbn) {
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, String isbn) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userIdx", userIdx);
 		map.put("isbn", isbn);
@@ -102,7 +102,7 @@ public class OnesentenceDao implements IOnesentenceDao{
 	}
 
 	@Override
-	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, long isbn) {
+	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, String isbn) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userIdx", userIdx);
 		map.put("isbn", isbn);
@@ -110,7 +110,7 @@ public class OnesentenceDao implements IOnesentenceDao{
 	}
 
 	@Override
-	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1, int userIdx2, long isbn) {
+	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1, int userIdx2, String isbn) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userIdx1", userIdx1);
 		map.put("userIdx2", userIdx2);
@@ -129,7 +129,7 @@ public class OnesentenceDao implements IOnesentenceDao{
 	}
 
 	@Override
-	public int findOneSentenceIdx(int userIdx, long isbn, String oneSentence) {
+	public int findOneSentenceIdx(int userIdx, String isbn, String oneSentence) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userIdx", userIdx);
 		map.put("isbn", isbn);
@@ -139,12 +139,12 @@ public class OnesentenceDao implements IOnesentenceDao{
 	}
 
 	@Override
-	public List<ShowOnesentence> selectOnesentenceListByIsbn(long isbn) {
+	public List<ShowOnesentence> selectOnesentenceListByIsbn(String isbn) {
 		return sqlSession.selectList(namespace+".selectOnesentenceListByIsbn", isbn);
 	}
 
 	@Override
-	public List<ShowOnesentence> selectOnesentenceListByIsbnWithoutlike(long isbn) {
+	public List<ShowOnesentence> selectOnesentenceListByIsbnWithoutlike(String isbn) {
 		return sqlSession.selectList(namespace+".selectOnesentenceListByIsbnWithoutlike", isbn);
 	}
 

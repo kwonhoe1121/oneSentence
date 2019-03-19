@@ -9,7 +9,7 @@ public class ShowOnesentence {
 	private String oneSentence;
 	private String page;
 	private Date oneSentenceRegisteredTime;
-	private long isbn; // 占쏙옙占쏙옙占� 占쏙옙占쏙옙
+	private String isbn; // 占쏙옙占쏙옙占� 占쏙옙占쏙옙
 	private String bookTitle;
 	private String author;
 	private String publisher;
@@ -21,7 +21,7 @@ public class ShowOnesentence {
 
 	
 	public ShowOnesentence(int userIdx, String userName, int oneSentenceIdx, String oneSentence, String page,
-			Date oneSentenceRegisteredTime, long isbn, String bookTitle, String author, String publisher) {
+			Date oneSentenceRegisteredTime, String isbn, String bookTitle, String author, String publisher) {
 		this.userIdx = userIdx;
 		this.userName = userName;
 		this.oneSentenceIdx = oneSentenceIdx;
@@ -36,7 +36,7 @@ public class ShowOnesentence {
 
 
 	public ShowOnesentence(int userIdx, String userName, int oneSentenceIdx, String oneSentence, String page,
-			Date oneSentenceRegisteredTime, long isbn, String bookTitle, String author, String publisher, String hashtag,
+			Date oneSentenceRegisteredTime, String isbn, String bookTitle, String author, String publisher, String hashtag,
 			int likeTotal) {
 		this.userIdx = userIdx;
 		this.userName = userName;
@@ -76,11 +76,11 @@ public class ShowOnesentence {
 		this.userIdx = userIdx;
 	}
 
-	public long getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(long isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
