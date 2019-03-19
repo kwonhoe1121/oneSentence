@@ -22,7 +22,7 @@ public class LoginController {
 
 	@Inject
 	private LoginService service;
-	
+
 	@Inject
 	private SecurityService securityService;
 
@@ -39,12 +39,14 @@ public class LoginController {
 	// 세션 유무체크 interceptor에서 처리
 	// 로그인 안되어 있는 상태에서 아래 작업 수행
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
-	public String requestLogin(HttpSession session, Model model, UserVo user) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
+	public String requestLogin(HttpSession session, Model model, UserVo user)
+			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		System.out.println("로그인체크: " + user.getUserEmail() + " " + user.getUserPassword());
 
-		//user 정보 암호화- 입력 파라미터를 UserVo로 바꾸자.
+		// user 정보 암호화- 입력 파라미터를 UserVo로 바꾸자.
 		UserVo encrytInputUser = securityService.encryptUserInfo(user);
-				
+		System.out.println("암호화된 유저 정보: " + encrytInputUser);
+		System.out.println("isUser: " + service.isUser(encrytInputUser.getUserEmail()));
 		// 이메일 체크
 		if (!service.isUser(encrytInputUser.getUserEmail())) {
 			model.addAttribute("isNotUser", "회원이 아닙니다.");
@@ -54,6 +56,7 @@ public class LoginController {
 
 		// 유저 정보 가져오기.
 		UserVo registeredUser = service.selectUser(encrytInputUser.getUserEmail());
+		System.out.println("registeredUser: " + registeredUser);
 
 		// 비밀번호 체크
 		if (!encrytInputUser.getUserPassword().equals(registeredUser.getUserPassword())) {
@@ -68,8 +71,11 @@ public class LoginController {
 
 		// 회원가입 창에서 넘어 왔을 경우 Index 페이지로 이동.
 		String referer = (String) session.getAttribute("referer");
+		//다시 생각해보기 책보고 다시 해보기.
 		System.out.println("referer(/user/login): " + referer);
-		if (referer.equals("http://localhost:8090/sentence/register")) {
+		if (referer.equals("http://localhost:8090/sentence/register")
+				|| referer.equals("http://localhost:8090/sentence/user/logout")
+				|| referer.equals("http://localhost:8090/sentence/user/withdraw")) {
 			return "index";
 		}
 
@@ -83,7 +89,7 @@ public class LoginController {
 		// 세션 종료.
 		session.invalidate();
 		System.out.println("로그아웃!");
-		return "login";
+		return "index";
 	}
 
 }

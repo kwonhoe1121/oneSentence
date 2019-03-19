@@ -8,6 +8,6 @@ public interface IRegisterDao {
 
 	public UserVo selectUserByEmail(String email);
 
-	public int deleteUser(UserVo user);
+	public int updateEmailStatus(UserVo user);
 
 }

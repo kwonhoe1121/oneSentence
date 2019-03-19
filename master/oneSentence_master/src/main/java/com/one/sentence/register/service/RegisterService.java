@@ -31,7 +31,7 @@ public class RegisterService implements IRegisterService {
 
 	@Override
 	public int withdrawUser(UserVo user) {
-		dao.deleteUser(user);
+		dao.updateEmailStatus(user);
 		return 0;
 	}
 

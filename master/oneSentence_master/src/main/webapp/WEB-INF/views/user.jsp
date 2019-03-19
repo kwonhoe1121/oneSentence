@@ -74,8 +74,8 @@
 						src="${pageContext.request.contextPath}/resources/naeun/user/img/9c7e52813cc7517492fb362d2f090d47.jpg">
 					<a href="#" onclick="setting()"><i class="fa fa-cog fa-2x" aria-hidden="true"></i></a>
 					<div id="settingDiv" aria-hidden="true">
-						<a  href="../user/logout">로그아웃</a><br>
-						<a  href="#">회원탈퇴</a>
+						<a  href="${pageContext.request.contextPath}/user/logout">로그아웃</a><br>
+						<a  href="${pageContext.request.contextPath}/user/withdraw">회원탈퇴</a>
 					</div>
 				</div>
 

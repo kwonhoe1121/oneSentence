@@ -91,20 +91,29 @@
 
 	<select id="selectUserByEmail"
 		resultType="com.one.sentence.common.vo.UserVo">
-		<!-- select userIdx, userName, userEmail, userPassword from user_info where 
+	<!-- 	select userIdx, userName, userEmail, userPassword from user_info where 
 			userEmail = #{param} -->
-		select * from
-		user_info where userEmail = #{param}
+		<!-- select * from user_info where userEmail = #{param} -->
+		<![CDATA[ select * 
+		from user_info 
+		where userEmail = #{param} and emailStatus <> '2'
+		]]>
 	</select>
 
-	<delete id="deleteUser">
-		delete from user_info where userIdx = #{userIdx}
+	<delete id="updateEmailStatus"
+			parameterType="com.one.sentence.common.vo.UserVo">
+		<!-- delete from user_info where userIdx = #{userIdx} -->
+		update user_info 
+		set emailStatus = '2' 
+		where userIdx = #{userIdx}
 	</delete>
 
 	<!-- 한문장 정보 가져오기 -->
 	<select id="selectOneSentence"
 		resultType="com.one.sentence.common.vo.OneSentence">
-		select * from one_sentence where oneSentenceIdx=#{param}
+		select * 
+		from one_sentence 
+		where oneSentenceIdx=#{param}
 	</select>
 
 	<!-- 좋아요 표시 여부 확인, 없을 시 0 반환. -->
