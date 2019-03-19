@@ -139,13 +139,22 @@
 			<strong>사용자</strong><a href="../search/searchMoreUser?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
 		</h2>
 		<div class="line">
-		 	<c:forEach items="${useritems }" var="userSearch">
+<%-- 		 	<c:forEach items="${useritems }" var="userSearch">
 			<img
 				src="<%=request.getContextPath()%>/resources/dahye/search/img/userimgpng.png"
 				alt="user_1"
 				class="<%=request.getContextPath()%>/resources/dahye/search/img-circle user_img">
 				
 			<span class="usertext">${userSearch }</span>
+			 </c:forEach> --%>
+			 
+			 	<c:forEach items="${userInfo}" var="userSearch">
+			<img
+				src="<%=request.getContextPath()%>/resources/dahye/search/img/userimgpng.png"
+				alt="user_1"
+				class="<%=request.getContextPath()%>/resources/dahye/search/img-circle user_img">
+				
+			<span class="usertext"><a href="<%=request.getContextPath()%>/userpage/${userSearch.userIdx }">${userSearch.userName}</a></span>
 			 </c:forEach>
 			 
 		</div>
