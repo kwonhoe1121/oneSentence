@@ -45,7 +45,7 @@
 </style>
 <!-- Custom styles for this template -->
 <link
-	href="<%=request.getContextPath()%>/resources/jaejin/css/signin.css"
+	href="${pageContext.request.contextPath}/resources/jaejin/css/signin.css"
 	rel="stylesheet">
 </head>
 
@@ -58,9 +58,9 @@
 
 
 	<form class="form-signin"
-		action="<%=request.getContextPath()%>/user/register" method="POST">
+		action="${pageContext.request.contextPath}/user/register" method="POST">
 		<img class="mb-4"
-			src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png"
+			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">회원가입</h1>
 		<label for="inputName" class="sr-only">User name</label> <input
@@ -79,7 +79,7 @@
         </div> -->
 		<button class="btn btn-lg btn-success btn-block" type="submit">회원가입</button>
 		<p class="mt-5 mb-3 text-muted">
-			이미 가입하셨나요? <a href="<%=request.getContextPath()%>/login">로그인</a>
+			이미 가입하셨나요? <a href="${pageContext.request.contextPath}/login">로그인</a>
 		</p>
 	</form>
 

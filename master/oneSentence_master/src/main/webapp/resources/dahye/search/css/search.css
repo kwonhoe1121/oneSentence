@@ -105,7 +105,18 @@ body {
         #searchbox {width: 50rem; height: 3rem;}
         #searchbtn {width: 6rem; height: 3rem;}
   
+  	.onesentenfail {
+  		margin-bottom : 8rem;
+  	}
+  	
+  	.booksearchfail {
+  		margin-top : 3rem;
+  	}
 
+/* 	.userdiv {
+		    width: 18rem;
+            height: 8rem;
+	} */
 
 .btn btn-primary leftLst{}
 .btn btn-primary rightLst{}

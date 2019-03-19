@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form action="<%=request.getContextPath() %>/mail/send" method="POST">
+	<form action="${pageContext.request.contextPath}/mail/send" method="POST">
 		이메일: <input type="text" name="userEmail"><br>
 		<input type="submit" value="메일전송">	
 	</form>

@@ -7,7 +7,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 		<div class="container">
 			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/indexPage">한문장</a>
+				href="${pageContext.request.contextPath}/indexPage">한문장</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 		<div class="container">
 			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/indexPage">한문장</a>
+				href="${pageContext.request.contextPath}/indexPage">한문장</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -39,10 +39,10 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/onesentence/list/all"><button
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/onesentence/list/all"><button
 								class="btn navbar-btn">추천</button></a></li>&nbsp;&nbsp;&nbsp;
 					<li class="nav-item"><a class="nav-link"
-						href="<%=request.getContextPath() %>/userpage/${User.userIdx}"><button
+						href="${pageContext.request.contextPath}/userpage/${User.userIdx}"><button
 								class="btn btn-success navbar-btn">마이페이지</button></a></li>
 				</ul>
 			</div>

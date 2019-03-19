@@ -10,6 +10,8 @@ public class SearchModel {
 	public String categoryName;
 	public String pubDate;
 	public String description;
+
+	
 	
 	public String getCover() {
 		return cover;
