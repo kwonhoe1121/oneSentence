@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.one.sentence.common.vo.UserVo;
+
 
 @Repository
 public class SearchUserDao implements ISearchUserDao{
@@ -19,6 +21,11 @@ public class SearchUserDao implements ISearchUserDao{
 	@Override
 	public List<String> selectUserList(String userName) {
 		return sqlSession.selectList(namespace+".selectUserList", userName);
+	}
+
+	@Override
+	public List<UserVo> selectUserByUserName(String userName) {
+		return sqlSession.selectList(namespace+".selectUserByUserName", userName);
 	}
 
 	

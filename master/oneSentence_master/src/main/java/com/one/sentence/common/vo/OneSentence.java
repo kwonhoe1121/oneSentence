@@ -9,7 +9,7 @@ public class OneSentence {
 	private String page;
 	private String oneSentenceRegisteredTime;
 	private int userIdx;
-	private long isbn;
+	private String isbn;
 
 	private List<OneSentence> oneSentenceList;
 
@@ -53,11 +53,11 @@ public class OneSentence {
 		this.userIdx = userIdx;
 	}
 
-	public long getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(long isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 

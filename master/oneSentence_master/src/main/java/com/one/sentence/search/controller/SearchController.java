@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.one.sentence.common.vo.UserVo;
 import com.one.sentence.search.model.SearchModel;
 import com.one.sentence.search.service.SearchAladdinService;
 import com.one.sentence.search.service.SearchAladdinService2;
@@ -40,12 +41,14 @@ public class SearchController {
 		List<SearchModel> items = service.getSearchModel(query);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);
 		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
+		List<UserVo> userInfo = serviceUser.selectUserByUserName('%' + request.getParameter("query") + '%');
 		List<String> hashtagitems = serviceHashtag.selectHashsearchList('%' + request.getParameter("query") + '%');
 
-		if (items.size() != 0 || useritems.size() != 0 || hashtagitems.size() != 0) {
+		if (items.size() != 0 || useritems.size() != 0 || hashtagitems.size() != 0 || userInfo.size() != 0) {
 			model.addAttribute("items", items);
 			model.addAttribute("itemtwo", itemstwo);
 			model.addAttribute("useritems", useritems);
+			model.addAttribute("userInfo", userInfo);
 			model.addAttribute("hashtagitems", hashtagitems);
 			System.out.println("검색완료");
 			System.out.println("items" + items);

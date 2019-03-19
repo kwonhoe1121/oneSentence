@@ -159,7 +159,7 @@
 				class="<%=request.getContextPath()%>/resources/dahye/search/img-circle user_img">
 				
 			<span class="usertext">${userSearch }</span>
-		<!-- 	</div> -->
+			</div>
 			 </c:forEach>
 			 </div>
 			 </c:when>
