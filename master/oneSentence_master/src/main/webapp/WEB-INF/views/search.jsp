@@ -11,12 +11,12 @@
 <meta charset="UTF-8">
 <title>search page</title>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/dahye/search/css/bootstrap.css">
+	href="${pageContext.request.contextPath}/resources/dahye/search/css/bootstrap.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR"
 	rel="stylesheet">
 
 <link
-	href="<%=request.getContextPath()%>/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -26,16 +26,16 @@
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/dahye/search/css/search.css">
+	href="${pageContext.request.contextPath}/resources/dahye/search/css/search.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/dahye/search/js/bootstrap.min.js"></script>
+	src="${pageContext.request.contextPath}/resources/dahye/search/js/bootstrap.min.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/dahye/search/js/util.js"></script>
+	src="${pageContext.request.contextPath}/resources/dahye/search/js/util.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/dahye/search/js/search.js"></script>
+	src="${pageContext.request.contextPath}/resources/dahye/search/js/search.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/dahye/search/js/bootstrap.js"></script>
+	src="${pageContext.request.contextPath}/resources/dahye/search/js/bootstrap.js"></script>
 
 </head>
 <body>
@@ -159,7 +159,19 @@
 				class="<%=request.getContextPath()%>/resources/dahye/search/img-circle user_img">
 				
 			<span class="usertext">${userSearch }</span>
+<<<<<<< HEAD
 			</div>
+=======
+			 </c:forEach> --%>
+			 
+			 	<c:forEach items="${userInfo}" var="userSearch">
+			<img
+				src="${pageContext.request.contextPath}/resources/dahye/search/img/userimgpng.png"
+				alt="user_1"
+				class="${pageContext.request.contextPath}/resources/dahye/search/img-circle user_img">
+				
+			<span class="usertext"><a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }">${userSearch.userName}</a></span>
+>>>>>>> 19a31c22e13f1180142f463eabba53e55fa544a2
 			 </c:forEach>
 			 </div>
 			 </c:when>

@@ -48,7 +48,7 @@
 </style>
 <!-- Custom styles for this template -->
 <link
-	href="<%=request.getContextPath()%>/resources/jaejin/css/signin.css"
+	href="${pageContext.request.contextPath}/resources/jaejin/css/signin.css"
 	rel="stylesheet">
 <link rel="stylesheet prefetch"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">	
@@ -58,7 +58,7 @@
 	<form class="form-signin"
 		action="getSentence" method="POST" enctype="multipart/form-data">
 		<img class="mb-4"
-			src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png"
+			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72">
 		<h6>사진을 업로드 해주세요</h6>
 		<input type="file" id="photo" name="photo"><br><br>

@@ -16,7 +16,7 @@
 
 <!-- Bootstrap core CSS -->
 <link
-	href="<%=request.getContextPath()%>/resources/naeun/user/vendor/bootstrap/css/bootstrap.css"
+	href="${pageContext.request.contextPath}/resources/naeun/user/vendor/bootstrap/css/bootstrap.css"
 	rel="stylesheet">
 <!-- Custom styles for this template -->
 <link rel="stylesheet"
@@ -28,13 +28,13 @@
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
 	src:
-		url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_ttf.ttf');
+		url('${pageContext.request.contextPath}/resources/naeun/user/font/BMHANNAAir_ttf.ttf');
 }
 
 @font-face {
 	font-family: 'BMHANNAAir_otf';
 	src:
-		url('<%=request.getContextPath()%>/resources/naeun/user/font/BMHANNAAir_otf.otf');
+		url('${pageContext.request.contextPath}/resources/naeun/user/font/BMHANNAAir_otf.otf');
 }
 
 * {
@@ -71,7 +71,7 @@
 			<div class="card my-4">
 				<div class="card-header" id="part1">
 					<img id="img1"
-						src="<%=request.getContextPath()%>/resources/naeun/user/img/9c7e52813cc7517492fb362d2f090d47.jpg">
+						src="${pageContext.request.contextPath}/resources/naeun/user/img/9c7e52813cc7517492fb362d2f090d47.jpg">
 					<a href="#" onclick="setting()"><i class="fa fa-cog fa-2x" aria-hidden="true"></i></a>
 					<div id="settingDiv" aria-hidden="true">
 						<a  href="../user/logout">로그아웃</a><br>
@@ -127,12 +127,12 @@
 
 	<!-- Bootstrap core JavaScript -->
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/user/vendor/jquery/jquery.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/user/vendor/jquery/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/user/js/userpage.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/user/js/userpage.js"></script>
 	<script>
 	$('#settingDiv').hide();
 	function setting(){
