@@ -75,7 +75,6 @@
 
 </head>
 <body>
-
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
 	 <div id="search">
 	 	<i class="fa fa-home fa-2x" aria-hidden="true"></i>
