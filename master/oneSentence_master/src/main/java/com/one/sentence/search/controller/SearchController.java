@@ -83,9 +83,11 @@ public class SearchController {
 	
 	@RequestMapping(value="/search/searchMoreUser")
 	public String getSearchMoreUser(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+		List<UserVo> userInfo = serviceUser.selectUserByUserName('%' + request.getParameter("query") + '%');
+		model.addAttribute("userInfo", userInfo);
 		
 		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
-		
+
 		model.addAttribute("useritems", useritems);
 		return "/search/searchMoreUser";
 	}

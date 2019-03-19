@@ -2,9 +2,9 @@ package com.one.sentence.followingnews.dao;
 
 import java.util.List;
 
-import com.one.sentence.search.model.SearchModel;
+import com.one.sentence.onesentence.model.ShowOnesentence;
 
 public interface IFollowingNewsDao {
 
-	public List<SearchModel> selectFollowingNewsList(String followingnews);
+	public List<ShowOnesentence> selectOneSentenceListForFollowing(int userIdx);
 }

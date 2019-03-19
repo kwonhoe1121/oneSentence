@@ -40,6 +40,7 @@
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
+/* 
 #settingDiv{
 	background-color: darkolivegreen;
 	width:4rem;
@@ -53,13 +54,31 @@
 #settingDiv a{
 	color: white;
 }
+ */
+ 
+#settingDiv{
+	background-color: darkolivegreen;
+	width:4rem;
+	height:3rem;
+	text-align:center;
+	top:3.5rem;
+	margin-right:1rem;
+	position:absolute;
+	right:-0.5rem;
+}
+#settingDiv a{
+	color: white;
+}
+
+ 
 </style>
 
 </head>
 <body>
-
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
-	<!-- <div id="search"></div> -->
+	 <div id="search">
+	 	<i class="fa fa-home fa-2x" aria-hidden="true"></i>
+	 </div>
 
 	<!-- Page Content -->
 	<div class="container">
@@ -95,7 +114,7 @@
 				</h4>
 				<div class="card-header" id="part4">
 					<h4 class="bold">
-						<a href="followingnews/${uservo.userIdx }">친구소식(링크)</a>
+						<a href="../followingnews/news/${uservo.userIdx }">친구소식(링크)</a>
 					</h4>
 					<h5>팔로우 한 친구들의 소식을 받아볼 수 있습니다.</h5>
 				</div>
