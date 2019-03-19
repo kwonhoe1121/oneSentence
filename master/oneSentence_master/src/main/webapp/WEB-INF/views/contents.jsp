@@ -139,7 +139,7 @@
 							style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
 							23:10</span><br> <span
 							style="padding-left: 2rem; font-size: 1.5rem;">Lorem ipsum
-							dolor sit amet, consectetur adipisicing elit.</span><br> <span
+							dolor sit amet, consectetur adipisicing elit</span><br> <span
 							style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
 								한강, 창비, p128 에서.. </i></span><br>
 						<hr>
