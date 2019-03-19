@@ -37,6 +37,12 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/dahye/search/js/bootstrap.js"></script>
 
+<style>
+	 a:link { color: black; text-decoration: none;}
+ 	a:visited { color: black; text-decoration: none;}
+ 	a:hover { color: black; text-decoration: none;}
+</style>
+
 </head>
 <body>
 

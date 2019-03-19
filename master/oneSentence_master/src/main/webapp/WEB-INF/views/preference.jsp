@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,29 +77,29 @@
 				<div class="card-body"></div>
 			</div>
 			<div class="card my-4">
-				<h4 class="card-header">도서 선호태그</h4>
+				<h4 class="card-header">한문장 선호태그</h4>
 				<div id="hashtag" class="card-body"
-					style="width: 20rem; height: 13rem;">
+					style="width: 24rem; height: 15rem;">
 					<span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(40px, 0px) rotate(0deg);">${hashtaglist[0]}
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(40px, 0px) rotate(0deg);">#${hashtaglist[0]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(120px, 25px) rotate(0deg);">${hashtaglist[1]}
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 96px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(230px, 13px) rotate(0deg);">#${hashtaglist[2]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 96px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(205px, 15px) rotate(0deg);">${hashtaglist[2]}
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(120px, 25px) rotate(0deg);">#${hashtaglist[1]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(5px, 50px) rotate(0deg);">${hashtaglist[3]}
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(5px, 50px) rotate(0deg);">#${hashtaglist[3]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(180px, 55px) rotate(0deg);">${hashtaglist[4]}
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(190px, 58px) rotate(0deg);">#${hashtaglist[4]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 128px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(45px, 75px) rotate(0deg);">${hashtaglist[5]}
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 128px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(40px, 88px) rotate(0deg);">#${hashtaglist[5]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(30px, 105px) rotate(0deg);">${hashtaglist[6]}
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(230px, 99px) rotate(0deg);">#${hashtaglist[7]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(210px, 88px) rotate(0deg);">${hashtaglist[7]}
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(100px, 130px) rotate(0deg);">#${hashtaglist[6]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(130px, 120px) rotate(0deg);">${hashtaglist[8]}
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(255px, 144px) rotate(0deg);">#${hashtaglist[8]}
 					</span> <span
-						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(170px, 150px) rotate(0deg);">${hashtaglist[9]}
+						style="position: absolute; font-size: 17px; font-weight: bold; line-height: 23px; color: crimson; width: 64px; text-align: center; white-space: nowrap; transform-origin: center bottom; transform: translate(60px, 175px) rotate(0deg);">#${hashtaglist[9]}
 					</span>
 				</div>
 			</div>
