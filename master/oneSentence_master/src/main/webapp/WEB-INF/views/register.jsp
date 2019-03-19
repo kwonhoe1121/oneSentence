@@ -86,7 +86,42 @@
 	<!-- bootstrap core JavaScript   -->
 	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script> -->
+	<script src="https://code.jquery.com/jquery-1.10.0.js"></script>
+	<script type="text/javascript">
+	//email focusout
+	$("#inputEmail").on("focusout", function() {
+		/* alert("userEmail focusout"); */
+		var userEmail = $("#inputEmail").val();
+		console.log(userEmail);
 
+		$.ajax({
+			type : "POST",
+			url : "${pageContext.request.contextPath}/users/emailCheck",
+			data : JSON.stringify({
+				"userEmail" : userEmail
+			}),
+			dataType : "json",
+			contentType : "application/json; charset=UTf-8",
+			success : function(data) {
+				console.log(data);
+				console.log(data.emailCheck);
+				console.log($("#inputEmail"));
+				if(data.overrapedEmail === "이메일 중복입니다." || data.overrapedEmail === "이메일 사용 가능합니다.") {
+					$("#inputEmail").after("<div id='emailCheck'>" + data.overrapedEmail + "</div>");
+				}
+			},
+			error : function(error) {
+				console.log("에러발생: " + error);
+			}
+
+		});
+	});
+	//다시 focusin시 삭제.
+	$("#inputEmail").on("focusin", function() {
+		$("#emailCheck").remove();	
+	});
+	
+	</script>
 </body>
 
 </html>
