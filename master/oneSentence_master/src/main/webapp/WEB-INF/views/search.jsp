@@ -41,8 +41,10 @@
 <body>
 
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
-
 	
+	<c:choose>
+	<c:when test="${fn:length(items) > 0 }">
+
 	<div class="all">
 		<h2 class="h2">
 			<strong>통합 검색 결과</strong><a href="../search/searchMore?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
@@ -59,7 +61,8 @@
 							<div class="pad15">
 										 
 									
-	   										<img src="${b.cover}" >
+	   										<img src="${b.cover}" 
+	   										alt="book_1" class="img-fluid img-rounded book_img" >
 	   								
 		   									<p class="ptitle">
 											<strong>${b.title }</strong>
@@ -109,7 +112,7 @@
 							<div class="pad15">
 								<img
 									src="${b2.cover }"
-									alt="book_1" class="img-fluid img-rounded book_img">
+									alt="book_1" class="img-fluid img-rounded book_img" >
 								<p class="ptitle">
 									<strong>${b2.title }</strong>
 								</p>
@@ -132,26 +135,44 @@
 		</div>
 		<hr>
 	</div>
+	</c:when>
+	<c:otherwise>
+	<h3 class="booksearchfail">도서 조회결과가 없습니다.</h3>
+	<hr>
+	</c:otherwise>
+	</c:choose>
 
-	
+	<c:choose>
+
+	<c:when test="${fn:length(useritems) > 0 }">
 	<div class="user_search">
 		<h2 class="h2">
 			<strong>사용자</strong><a href="../search/searchMoreUser?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
 		</h2>
+		
 		<div class="line">
-		 	<c:forEach items="${useritems }" var="userSearch">
+		 	<c:forEach items="${useritems }" var="userSearch"></a>
+<!-- 		 	<div class="userdiv" style="float: left;"> -->
 			<img
 				src="<%=request.getContextPath()%>/resources/dahye/search/img/userimgpng.png"
 				alt="user_1"
 				class="<%=request.getContextPath()%>/resources/dahye/search/img-circle user_img">
 				
 			<span class="usertext">${userSearch }</span>
+		<!-- 	</div> -->
 			 </c:forEach>
-			 
+			 </div>
+			 </c:when>
+			 <c:otherwise>
+			 		<h3>사용자 조회된 결과가 없습니다.</h3>
+			 </c:otherwise>
+			</c:choose> 
 		</div>
 	</div>
 	<hr>
 	
+	<c:choose>
+	<c:when test="${fn:length(hashtagitems) > 0 }">
 	<div class="hashtagsearch">
 
 		<h2 class="h2">
@@ -181,7 +202,13 @@
 			</tr>
 		</table>
 	</c:forEach>
+	</c:when>
+	<c:otherwise>
+	<h3 class="onesentenfail">한문장 조회결과가 없습니다.</h3>
+	</c:otherwise>
+	</c:choose>
 	</div>
-
+	
+	
 </body>
 </html>
