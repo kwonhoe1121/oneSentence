@@ -1,17 +1,19 @@
 package com.one.sentence.followingnews.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.one.sentence.followingnews.service.FollowingNewsService;
-import com.one.sentence.search.model.SearchModel;
+import com.one.sentence.onesentence.model.ShowOnesentence;
+import com.one.sentence.onesentence.service.OnesentenceService;
 
 @Controller
 @RequestMapping("/followingnews/news")
@@ -20,28 +22,30 @@ public class FollowingNewsController {
 	@Autowired
 	private FollowingNewsService FollowingNewsservice;
 	
-	@RequestMapping(method=RequestMethod.GET)
-	public String GetFollowingNewsForm() {
-		return "/followingnews/news";
-	}
+	@Inject
+	private OnesentenceService oneService;
 	
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public String getFollowingNewsList(HttpServletRequest request, Model model) {
-		String followingNewsquery = request.getParameter("userIdx");
-		
-		List<SearchModel> followingNewsitems = FollowingNewsservice.selectFollowingNewsList(followingNewsquery);
-		
-		if (followingNewsitems.size() !=0) {
-			model.addAttribute("followingNewsitems", followingNewsitems);
-			System.out.println("친구 한문장 : " + followingNewsitems);
-			
-			return "followingnews/followingnewslist";
+	@RequestMapping("/{userIdx}")
+	public String selectOneSentenceListForFollowing(@PathVariable("userIdx") int userIdx, Model model){
+		List<ShowOnesentence> oneSentenceList = FollowingNewsservice.selectOneSentenceListForFollowing(userIdx);
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash="";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
 		}
-		
-		return "followingnews/followingnewsfail";
-		
+		model.addAttribute("oneSentenceList", oneSentenceList);
+		return "sentenceList";
 	}
-	
 	
 }

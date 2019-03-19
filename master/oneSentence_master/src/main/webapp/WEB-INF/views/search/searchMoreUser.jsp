@@ -16,14 +16,18 @@
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
 
-
+<style>
+	a:link { color: black; text-decoration: none;}
+	a:visited { color: black; text-decoration: none;}
+	a:hover { color: black; text-decoration: none;}
+</style>
 </head>
 <body>
 
 	<h1>사용자</h1>
 	<hr>
 	
-	<c:forEach items="${useritems }" var="userSearch">
+<%-- 	<c:forEach items="${useritems }" var="userSearch">
 	<div class="user_search">
 		<div class="line">
 		 	<div class="imgline">
@@ -38,8 +42,26 @@
 		</div>
 	</div>
 	<hr>
-	</c:forEach>
+	</c:forEach> --%>
+
 	
+	 	<c:forEach items="${userInfo }" var="userSearch">
+	<div class="user_search">
+		<div class="line">
+		 	<div class="imgline">
+			<img
+				src="<%=request.getContextPath()%>/resources/dahye/search/img/userimgpng.png"
+				alt="user_1"
+				class="<%=request.getContextPath()%>/resources/dahye/search/img-circle user_img">
+			</div>
+			<span class="usertext"><a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }">${userSearch.userName}</a></span>
+				 
+		</div>
+	</div>
+	<hr>
+	</c:forEach>
+
+	 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/dahye/searchMore/js/searchmore.js"></script>

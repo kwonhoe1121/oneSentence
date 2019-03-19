@@ -40,26 +40,15 @@
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
-#settingDiv{
-	background-color: darkolivegreen;
-	width:4rem;
-	height:3rem;
-	text-align:center;
-	top:3.5rem;
-	margin-right:1rem;
-	position:absolute;
-	right:-0.5rem;
-}
-#settingDiv a{
-	color: white;
-}
 </style>
 
 </head>
 <body>
-
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
-	<!-- <div id="search"></div> -->
+	<div id="header">
+		<a href="../indexPage"><i class="fa fa-home fa-2x"
+			aria-hidden="true"></i></a>
+	</div>
 
 	<!-- Page Content -->
 	<div class="container">
@@ -72,20 +61,24 @@
 				<div class="card-header" id="part1">
 					<img id="img1"
 						src="${pageContext.request.contextPath}/resources/naeun/user/img/9c7e52813cc7517492fb362d2f090d47.jpg">
-					<a href="#" onclick="setting()"><i class="fa fa-cog fa-2x" aria-hidden="true"></i></a>
+					<a href="#" onclick="setting()"><i class="fa fa-cog fa-2x"
+						aria-hidden="true"></i></a>
 					<div id="settingDiv" aria-hidden="true">
-						<a  href="${pageContext.request.contextPath}/user/logout">로그아웃</a><br>
-						<a  href="${pageContext.request.contextPath}/user/withdraw">회원탈퇴</a>
+						<a href="${pageContext.request.contextPath}/user/logout">로그아웃</a><br>
+						<a href="${pageContext.request.contextPath}/user/withdraw">회원탈퇴</a>
+
 					</div>
 				</div>
+
 
 				<div class="card-header" id="part2">
 					<i class="fa fa-user-circle fa-4x" aria-hidden="true"></i>
 					<h3 class="bold">${uservo.userName}</h3>
-					<input type="submit" value="${followingstate}" class="btn btn-primary" id="follow"> 
-					<input type="hidden" value="${flag}" id="flag">
-					<input type="hidden" value="${loginIdx}" id="loginIdx">
-					<input type="hidden" value="${uservo.userIdx}" id="userIdx">
+					<input type="submit" value="${followingstate}"
+						class="btn btn-primary" id="follow"> <input type="hidden"
+						value="${flag}" id="flag"> <input type="hidden"
+						value="${loginIdx}" id="loginIdx"> <input type="hidden"
+						value="${uservo.userIdx}" id="userIdx">
 					<h5>${uservo.userIntroduction}</h5>
 					<input type="submit" value="수정" class="btn btn-primary" id="update">
 				</div>
@@ -95,21 +88,22 @@
 				</h4>
 				<div class="card-header" id="part4">
 					<h4 class="bold">
-						<a href="followingnews/${uservo.userIdx }">친구소식(링크)</a>
+						<a href="../followingnews/news/${uservo.userIdx }">친구소식(링크)</a>
 					</h4>
 					<h5>팔로우 한 친구들의 소식을 받아볼 수 있습니다.</h5>
 				</div>
 			</div>
 		</div>
-
 	</div>
+
 
 	<!-- Footer  -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
 
 			<p class="m-0 text-center" id="footer1">
-				지금까지 <i class="fa fa-star" aria-hidden="true"></i> ${countAllSentences }개의 문장이 쌓였어요!
+				지금까지 <i class="fa fa-star" aria-hidden="true"></i>
+				${countAllSentences }개의 문장이 쌓였어요!
 			</p>
 			<br>
 			<p class="m-0 text-center">
@@ -134,18 +128,18 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/naeun/user/js/userpage.js"></script>
 	<script>
-	$('#settingDiv').hide();
-	function setting(){
-		$('#settingDiv').show();
-	}
-	$(document).mouseup(function (e) {
-		console.log('ff');
-        var container = $('#settingDiv');
-        if (container.has(e.target).length === 0) {
-            container.hide();
-        }
-    })
-	</script>	
+		$('#settingDiv').hide();
+		function setting() {
+			$('#settingDiv').show();
+		}
+		$(document).mouseup(function(e) {
+			console.log('ff');
+			var container = $('#settingDiv');
+			if (container.has(e.target).length === 0) {
+				container.hide();
+			}
+		})
+	</script>
 </body>
 </html>
 

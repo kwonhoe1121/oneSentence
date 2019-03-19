@@ -9920,12 +9920,17 @@ a.text-dark:hover, a.text-dark:focus {
 .bold{
     font-weight: bold;
 }
-#search{
-    padding:1.5rem 0;
-    background-color:#fff;
+#header{
+    height:4rem;
     text-align: center;
-    border-bottom: 1px solid silver;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.7rem;
+}
+.fa-home{
+	position:absolute;
+	top:1.2rem;
+	left:1.8rem;
+	font-weight:bold;
+	font-size:2.3rem;	
 }
 
 .fa-cog{
@@ -9955,10 +9960,26 @@ a.text-dark:hover, a.text-dark:focus {
     top: 24.75rem;
     left: 5.8rem;
     padding: 0rem 0.3rem;
-/*     background-color: crimson;
-    color:white;
-    border:1px solid crimson; */
     font-size: 1rem;  
 }
+
+#settingDiv{
+	background-color: black;
+	width:6rem;
+	height:5rem;
+	text-align:center;
+	top:3.5rem;
+	margin-right:1rem;
+	position:absolute;
+	right:-0.5rem;
+	opacity:0.7;
+	padding:1rem;
+}
+#settingDiv a{
+	color: lightgray;
+	font-size:1.2rem;
+}
+
+#settingDiv	a:hover { color: white; text-decoration: none;}
 
 /*# sourceMappingURL=bootstrap.css.map */

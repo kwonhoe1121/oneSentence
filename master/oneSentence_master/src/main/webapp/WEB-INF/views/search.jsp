@@ -37,6 +37,12 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/dahye/search/js/bootstrap.js"></script>
 
+<style>
+	a:link { color: black; text-decoration: none;}
+	a:visited { color: black; text-decoration: none;}
+	a:hover { color: black; text-decoration: none;}
+</style>
+
 </head>
 <body>
 
@@ -56,20 +62,21 @@
 					id="MultiCarousel" data-interval="1000">
 					<div class="MultiCarousel-inner">
 					<c:forEach items="${items}" var="b">
-					 <a href="../contents">
+					 
+					 
 						<div class="item">
 							<div class="pad15">
-										 
-									
+										 	<a href="../contents/${b.isbn }" id="books">
+											<input type="text" name="bookId" value="${b.isbn }" >
 	   										<img src="${b.cover}" 
-	   										alt="book_1" class="img-fluid img-rounded book_img" >
+	   										alt="book_1" class="img-fluid img-rounded book_img" name="books" >
 	   								
-		   									<p class="ptitle">
+		   									<p class="ptitle" name="books">
 											<strong>${b.title }</strong>
 											</p>
-											<p class="ptext_01">${b.author }</p>
-											<p class="ptext_01">${b.publisher }</p>
-											<p class="ptext_01"><c:out value="${fn:substring(b.pubDate,5,16)}"/></p>
+											<p class="ptext_01" name="books">${b.author }</p>
+											<p class="ptext_01" name="books">${b.publisher }</p>
+											<p class="ptext_01" name="books"><c:out value="${fn:substring(b.pubDate,5,16)}"/></p>
 					
 	
 							</div>
@@ -151,6 +158,7 @@
 		</h2>
 		
 		<div class="line">
+<%-- 		
 		 	<c:forEach items="${useritems }" var="userSearch"></a>
 <!-- 		 	<div class="userdiv" style="float: left;"> -->
 			<img
@@ -159,10 +167,10 @@
 				class="<%=request.getContextPath()%>/resources/dahye/search/img-circle user_img">
 				
 			<span class="usertext">${userSearch }</span>
-<<<<<<< HEAD
+
 			</div>
-=======
-			 </c:forEach> --%>
+			 </c:forEach>
+ --%>
 			 
 			 	<c:forEach items="${userInfo}" var="userSearch">
 			<img
@@ -171,7 +179,7 @@
 				class="${pageContext.request.contextPath}/resources/dahye/search/img-circle user_img">
 				
 			<span class="usertext"><a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }">${userSearch.userName}</a></span>
->>>>>>> 19a31c22e13f1180142f463eabba53e55fa544a2
+
 			 </c:forEach>
 			 </div>
 			 </c:when>

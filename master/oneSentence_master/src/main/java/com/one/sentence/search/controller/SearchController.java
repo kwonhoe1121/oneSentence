@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -83,21 +84,28 @@ public class SearchController {
 	
 	@RequestMapping(value="/search/searchMoreUser")
 	public String getSearchMoreUser(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+		List<UserVo> userInfo = serviceUser.selectUserByUserName('%' + request.getParameter("query") + '%');
+		model.addAttribute("userInfo", userInfo);
 		
 		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
-		
+
 		model.addAttribute("useritems", useritems);
 		return "/search/searchMoreUser";
 	}
 	
 	
-	@RequestMapping(value="/contents")
-	public String getContentsBook(HttpServletRequest request, Model model, String isbn) throws Exception {
+	@RequestMapping(value="/contents/{isbn}")
+	public String getContentsBook(HttpServletRequest request, Model model,@PathVariable("isbn") String isbn) throws Exception {
 		
-		List<SearchModel> items = service.getSearchModel(isbn);
+		//String books = (String)request.getParameter("bookId");
+		
+		System.out.println(isbn);
+//		List<SearchModel> bookitems = service.getSearchModel(query);
+//		List<SearchModel> books = service.getSearchModel(bookId);
 		
 		
-//		model.addAttribute("items", items);
+//		model.addAttribute("book items", bookitems);
+		//model.addAttribute("books", books);
 		return "/contents";
 	}
 	
