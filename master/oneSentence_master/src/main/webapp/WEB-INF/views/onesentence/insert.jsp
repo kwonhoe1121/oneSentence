@@ -45,13 +45,13 @@
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
 	src:
-		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
+		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
 }
 
 @font-face {
 	font-family: 'BMHANNAAir_otf';
 	src:
-		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
+		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
 }
 
 * {
@@ -69,7 +69,7 @@ font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 </style>
 <!-- Custom styles for this template -->
 <link
-	href="<%=request.getContextPath()%>/resources/jaejin/css/signin.css"
+	href="${pageContext.request.contextPath}/resources/jaejin/css/signin.css"
 	rel="stylesheet">
 <link rel="stylesheet prefetch"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">	
@@ -80,7 +80,7 @@ font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 	<form class="form-signin"
 		action="./insert" method="POST">
 		<img class="mb-4"
-			src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png"
+			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">한문장 작성</h1>
 		<input class="hidden" type="text" id="isbn" name="isbn" value="<%=request.getParameter("isbn") %>">

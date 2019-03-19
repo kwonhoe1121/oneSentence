@@ -17,29 +17,29 @@
 
 <!-- Bootstrap core CSS -->
 <link
-	href="<%=request.getContextPath()%>/resources/eunseon/contents/vendor/bootstrap/css/bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link
-	href="<%=request.getContextPath()%>/resources/eunseon/contents/css/contents.css"
+	href="${pageContext.request.contextPath}/resources/eunseon/contents/css/contents.css"
 	rel="stylesheet">
 <link rel="stylesheet prefetch"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
-	src="<%=request.getContextPath()%>/resources/eunseon/contents/js/contents.js"></script>
+	src="${pageContext.request.contextPath}/resources/eunseon/contents/js/contents.js"></script>
 <style>
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
 	src:
-		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
+		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
 }
 
 @font-face {
 	font-family: 'BMHANNAAir_otf';
 	src:
-		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
+		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
 }
 
 * {
@@ -56,12 +56,12 @@
 	<header class="bg-white">
 		<div>
 			<img
-				src="<%=request.getContextPath()%>/resources/eunseon/contents/img/contents.jpg"
+				src="${pageContext.request.contextPath}/resources/eunseon/contents/img/contents.jpg"
 				width="100%" height="300rem" style="filter: blur(5px)">
 		</div>
 		<div id="d2" class="container">
 			<img id="photo"
-				src="<%=request.getContextPath()%>/resources/eunseon/contents/img/contents.jpg"
+				src="${pageContext.request.contextPath}/resources/eunseon/contents/img/contents.jpg"
 				width="150rem" height="200rem">
 			<div id="d" class="bg-white">
 			
@@ -174,9 +174,9 @@
 
 	<!-- Bootstrap core JavaScript -->
 	<script
-		src="<%=request.getContextPath()%>/resources/eunseon/contents/vendor/jquery/jquery.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/jquery/jquery.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/eunseon/contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

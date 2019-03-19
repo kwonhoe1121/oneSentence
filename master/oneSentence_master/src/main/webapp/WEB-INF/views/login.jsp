@@ -46,7 +46,7 @@
 </style>
 <!-- Custom styles for this template -->
 <link
-	href="<%=request.getContextPath()%>/resources/jaejin/css/signin.css"
+	href="${pageContext.request.contextPath}/resources/jaejin/css/signin.css"
 	rel="stylesheet">
 </head>
 
@@ -58,9 +58,9 @@
 	</c:if>
 
 	<form class="form-signin"
-		action="<%=request.getContextPath()%>/user/login" method="POST">
+		action="${pageContext.request.contextPath}/user/login" method="POST">
 		<img class="mb-4"
-			src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png"
+			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">로그인</h1>
 		<label for="inputEmail" class="sr-only">Email address</label> <input
@@ -76,8 +76,8 @@
         </div> -->
 		<button class="btn btn-lg btn-success btn-block" type="submit">로그인</button>
 		<p class="mt-5 mb-3 text-muted">
-			<a href="<%=request.getContextPath()%>/mailPage">비밀번호를 잃어버리셨나요?</a> <br>
-			<br> 계정이 없으신가요? <a href="<%=request.getContextPath()%>/register">회원가입</a>
+			<a href="${pageContext.request.contextPath}/mailPage">비밀번호를 잃어버리셨나요?</a> <br>
+			<br> 계정이 없으신가요? <a href="${pageContext.request.contextPath}/register">회원가입</a>
 		</p>
 	</form>
 	<!-- bootstrap core JavaScript   -->

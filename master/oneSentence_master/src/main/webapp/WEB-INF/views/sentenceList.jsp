@@ -14,14 +14,14 @@
 <title>sentenceList page</title>
 <!-- Bootstrap core CSS -->
 <link
-	href="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/bootstrap/css/bootstrap.css"
+	href="${pageContext.request.contextPath}/resources/naeun/sentenceList/vendor/bootstrap/css/bootstrap.css"
 	rel="stylesheet">
 <!-- Custom styles for this template -->
 <link
-	href="<%=request.getContextPath()%>/resources/naeun/sentenceList/css/sentenceList.css"
+	href="${pageContext.request.contextPath}/resources/naeun/sentenceList/css/sentenceList.css"
 	rel="stylesheet">
 <link
-	href="<%=request.getContextPath()%>/resources/naeun/sentenceList/css/sentenceList2.css"
+	href="${pageContext.request.contextPath}/resources/naeun/sentenceList/css/sentenceList2.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -34,13 +34,13 @@
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
 	src:
-		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
+		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
 }
 
 @font-face {
 	font-family: 'BMHANNAAir_otf';
 	src:
-		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
+		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
 }
 
 * {
@@ -116,11 +116,11 @@ $().ready(function(d, s, id) {
 
 	<!-- Bootstrap core JavaScript -->
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/jquery/jquery.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/vendor/jquery/jquery.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist2.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
 	
 		showLikedSentenceStatus();
@@ -166,7 +166,7 @@ $().ready(function(d, s, id) {
 		/* click like button  */
 		$(".like").on("click", function (data){
 			
-			alert("like button click!!");
+			/* alert("like button click!!"); */
 			console.log(data);
 			/* var $this = $("this"); */
 			/* oneSentenceIdx 값 가져오기. */
@@ -196,7 +196,7 @@ $().ready(function(d, s, id) {
 			//ajax처리 해서 서버 요청.
 			 $.ajax({
 	        	type: "POST",
-	       		url: "<%=request.getContextPath()%>/user/clickLike",
+	       		url: "${pageContext.request.contextPath}/user/clickLike",
 	       		data: JSON.stringify({
 	            "oneSentenceIdx": oneSentenceIdx
 		        }),
@@ -227,7 +227,7 @@ $().ready(function(d, s, id) {
 		 	for(var i = 0; i < $(".newdiv").find(".oneSentenceIdx").length; i += 1) {
 				oneSentenceIdx[i] = $(".newdiv").find(".oneSentenceIdx")[i].innerText;
 			}
-			console.log(oneSentenceIdx);
+			/* console.log(oneSentenceIdx); */
 			
 			var requestData = {"oneSentenceIdx" : oneSentenceIdx}
 			
@@ -235,20 +235,20 @@ $().ready(function(d, s, id) {
 		
 			$.ajax({
 				type: "GET",
-				url: "<%=request.getContextPath()%>/user/isLiked",
+				url: "${pageContext.request.contextPath}/user/isLiked",
 				data: requestData,
 				dataType: "json",
 				contentType: "application/json; charset=UTf-8",
 				success: function(data) {
 					console.log("좋아요 상태 확인 요청 성공!");
-					console.log(data);
+					/* console.log(data); */
 					//div 객체 모두 가져온다.
-					console.log(newdiv);
+					/* console.log(newdiv); */
 					var newdiv = $(".newdiv"); 
 				/* 	newdiv[0].childNodes[26].firstChild.className = "fa fa-heart"; */
 					// 반복문 돌려서 oneSentenceIdx 값과 data의 값을 비교한다.
   					for(var i = 0; i < newdiv.length; i += 1) {
-						console.log(newdiv[i].childNodes[1].innerText);
+						/* console.log(newdiv[i].childNodes[1].innerText); */
 					 	for(var j = 0; j < data.length; j += 1){
 							//일치하면 하트 색깔 바꾼다.
 							if(Number(newdiv[i].childNodes[1].innerText) === Number(data[j])) {

@@ -16,12 +16,12 @@
 
 <!-- Bootstrap core CSS -->
 <link
-	href="<%=request.getContextPath()%>/resources/naeun/preference/vendor/bootstrap/css/bootstrap.css"
+	href="${pageContext.request.contextPath}/resources/naeun/preference/vendor/bootstrap/css/bootstrap.css"
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link
-	href="<%=request.getContextPath()%>/resources/naeun/preference/css/preference.css"
+	href="${pageContext.request.contextPath}/resources/naeun/preference/css/preference.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -32,13 +32,13 @@
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
 	src:
-		url("<%=request.getContextPath()%>/resources/naeun/preference/font/BMHANNAAir_ttf.ttf");
+		url("${pageContext.request.contextPath}/resources/naeun/preference/font/BMHANNAAir_ttf.ttf");
 }
 
 @font-face {
 	font-family: 'BMHANNAAir_otf';
 	src:
-		url("<%=request.getContextPath()%>/resources/naeun/preference/font/BMHANNAAir_otf.otf");
+		url("${pageContext.request.contextPath}/resources/naeun/preference/font/BMHANNAAir_otf.otf");
 }
 
 * {
@@ -55,7 +55,7 @@
 			<!-- Comments Form -->
 			<div class="card1 my-4">
 				<div class="backgroundimg"
-					style="background-image: url('<%=request.getContextPath()%>/resources/naeun/preference/img/6d0a9dce557e7f6e96b0456ff3994329.jpg')">
+					style="background-image: url('${pageContext.request.contextPath}/resources/naeun/preference/img/6d0a9dce557e7f6e96b0456ff3994329.jpg')">
 					<h3 class="logo">One Sentence</h3>
 					<h6 class="logo">취향분석</h6>
 					<br> <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
@@ -64,11 +64,10 @@
 			</div>
 			<div class="card my-4">
 				<h4 class="card-header">등록한 한 문장 수</h4>
-				 <input type="hidden" value="${grade}" id="usergrade">
-				 <input type="hidden" value="${percent}" id="percent">
-				 <input type="hidden" value="${countMySentences}" id="countMySentences">
-				<div id="grade">
-				</div>
+				<input type="hidden" value="${grade}" id="usergrade"> <input
+					type="hidden" value="${percent}" id="percent"> <input
+					type="hidden" value="${countMySentences}" id="countMySentences">
+				<div id="grade"></div>
 				<h5 class="card-body" id="comment">${comment}</h5>
 			</div>
 			<div class="card my-4">
@@ -110,11 +109,11 @@
 
 	<!-- Bootstrap core JavaScript -->
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/preference/vendor/jquery/jquery.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/preference/vendor/jquery/jquery.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/preference/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/preference/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/preference/js/grade.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/preference/js/grade.js"></script>
 </body>
 
 </html>
