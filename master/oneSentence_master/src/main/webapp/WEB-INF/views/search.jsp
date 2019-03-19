@@ -62,12 +62,12 @@
 					id="MultiCarousel" data-interval="1000">
 					<div class="MultiCarousel-inner">
 					<c:forEach items="${items}" var="b">
-					 <a href="../contents?bookId=${param.bookId }" id="books">
+					 
 					 
 						<div class="item">
 							<div class="pad15">
-										 
-											<input type="hidden" name="bookId" value="${b.isbn }">
+										 	<a href="../contents/${b.isbn }" id="books">
+											<input type="text" name="bookId" value="${b.isbn }" >
 	   										<img src="${b.cover}" 
 	   										alt="book_1" class="img-fluid img-rounded book_img" name="books" >
 	   								

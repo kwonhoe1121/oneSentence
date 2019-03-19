@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -93,15 +94,18 @@ public class SearchController {
 	}
 	
 	
-	@RequestMapping(value="/contents")
-	public String getContentsBook(HttpServletRequest request, Model model, @RequestParam ("bookId") String bookId) throws Exception {
+	@RequestMapping(value="/contents/{isbn}")
+	public String getContentsBook(HttpServletRequest request, Model model,@PathVariable("isbn") String isbn) throws Exception {
 		
+		//String books = (String)request.getParameter("bookId");
+		
+		System.out.println(isbn);
 //		List<SearchModel> bookitems = service.getSearchModel(query);
-		List<SearchModel> books = service.getSearchModel(bookId);
+//		List<SearchModel> books = service.getSearchModel(bookId);
 		
 		
-//		model.addAttribute("bookitems", bookitems);
-		model.addAttribute("books", books);
+//		model.addAttribute("book items", bookitems);
+		//model.addAttribute("books", books);
 		return "/contents";
 	}
 	
