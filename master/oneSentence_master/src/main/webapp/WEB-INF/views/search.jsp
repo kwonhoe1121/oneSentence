@@ -56,20 +56,21 @@
 					id="MultiCarousel" data-interval="1000">
 					<div class="MultiCarousel-inner">
 					<c:forEach items="${items}" var="b">
-					 <a href="../contents">
+					 <a href="../contents?bookId=${param.bookId }" id="books">
+					 
 						<div class="item">
 							<div class="pad15">
 										 
-									
+											<input type="hidden" name="bookId" value="${b.isbn }">
 	   										<img src="${b.cover}" 
-	   										alt="book_1" class="img-fluid img-rounded book_img" >
+	   										alt="book_1" class="img-fluid img-rounded book_img" name="books" >
 	   								
-		   									<p class="ptitle">
+		   									<p class="ptitle" name="books">
 											<strong>${b.title }</strong>
 											</p>
-											<p class="ptext_01">${b.author }</p>
-											<p class="ptext_01">${b.publisher }</p>
-											<p class="ptext_01"><c:out value="${fn:substring(b.pubDate,5,16)}"/></p>
+											<p class="ptext_01" name="books">${b.author }</p>
+											<p class="ptext_01" name="books">${b.publisher }</p>
+											<p class="ptext_01" name="books"><c:out value="${fn:substring(b.pubDate,5,16)}"/></p>
 					
 	
 							</div>
