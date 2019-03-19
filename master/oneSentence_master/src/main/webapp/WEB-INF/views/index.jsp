@@ -16,17 +16,17 @@
 
 <!-- Bootstrap core CSS -->
 <link
-	href="<%=request.getContextPath()%>/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link
-	href="<%=request.getContextPath()%>/resources/jaejin/css/full-width-pics.css"
+	href="${pageContext.request.contextPath}/resources/jaejin/css/full-width-pics.css"
 	rel="stylesheet">
 
 <!-- Custom Styles by jaejin -->
 <link
-	href="<%=request.getContextPath()%>/resources/jaejin/css/custom.css"
+	href="${pageContext.request.contextPath}/resources/jaejin/css/custom.css"
 	rel="stylesheet">
 </head>
 
@@ -45,7 +45,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 				<a class="navbar-brand"
-					href="<%=request.getContextPath()%>/indexPage">한문장</a>
+					href="${pageContext.request.contextPath}/indexPage">한문장</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 				<a class="navbar-brand"
-					href="<%=request.getContextPath()%>/indexPage">한문장</a>
+					href="${pageContext.request.contextPath}/indexPage">한문장</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -78,10 +78,10 @@
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link"
-							href="<%=request.getContextPath()%>/onesentence/list/all"><button
+							href="${pageContext.request.contextPath}/onesentence/list/all"><button
 									class="btn navbar-btn">추천</button></a></li>&nbsp;&nbsp;&nbsp;
 						<li class="nav-item"><a class="nav-link"
-							href="<%=request.getContextPath() %>/userpage/${User.userIdx}"><button
+							href="${pageContext.request.contextPath}/userpage/${User.userIdx}"><button
 									class="btn btn-success navbar-btn">마이페이지</button></a></li>
 					</ul>
 				</div>
@@ -92,10 +92,10 @@
 
 	<!-- Header - set the background image for the header in the line below -->
 	<header class="py-5 bg-image-full"
-		style="background-image: url('<%=request.getContextPath()%>/resources/jaejin/img/main.png'); min-height: 388px">
+		style="background-image: url('${pageContext.request.contextPath}/resources/jaejin/img/main.png'); min-height: 388px">
 		<div id=test>
 			<img class="img-fluid d-block mx-auto"
-				src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png"
+				src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 				alt="">
 		</div>
 		<!-- <div class="py-5"></div> -->
@@ -107,7 +107,8 @@
 		<div class="container" style="position: relative; top: -65px;">
 			<div class="container2">
 				<form class="form-signin"
-					action="<%=request.getContextPath()%>/search/query" method="GET">
+					action="${pageContext.request.contextPath}/search/query"
+					method="GET">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search"
 							name="query">
@@ -154,10 +155,11 @@
 
 	<!-- Bootstrap core JavaScript -->
 	<script
-		src="<%=request.getContextPath()%>/resources/jaejin/vendor/jquery/jquery.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/jaejin/vendor/jquery/jquery.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/jaejin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
 </html>
+

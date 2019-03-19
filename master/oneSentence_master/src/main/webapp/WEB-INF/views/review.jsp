@@ -14,14 +14,14 @@
 <title>review page</title>
 <!-- Bootstrap core CSS -->
 <link
-	href="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/bootstrap/css/bootstrap.css"
+	href="${pageContext.request.contextPath}/resources/naeun/sentenceList/vendor/bootstrap/css/bootstrap.css"
 	rel="stylesheet">
 <!-- Custom styles for this template -->
 <link
-	href="<%=request.getContextPath()%>/resources/naeun/sentenceList/css/sentenceList.css"
+	href="${pageContext.request.contextPath}/resources/naeun/sentenceList/css/sentenceList.css"
 	rel="stylesheet">
 <link
-	href="<%=request.getContextPath()%>/resources/naeun/sentenceList/css/sentenceList2.css"
+	href="${pageContext.request.contextPath}/resources/naeun/sentenceList/css/sentenceList2.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -34,13 +34,13 @@
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
 	src:
-		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
+		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
 }
 
 @font-face {
 	font-family: 'BMHANNAAir_otf';
 	src:
-		url('<%=request.getContextPath()%>/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
+		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
 }
 
 * {
@@ -326,13 +326,13 @@
 
 	<!-- Bootstrap core JavaScript -->
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/jquery/jquery.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/vendor/jquery/jquery.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/naeun/sentenceList/js/sentencelist2.js"></script>
+		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 
 
 </body>

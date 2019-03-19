@@ -52,7 +52,7 @@
 </style>
 <!-- Custom styles for this template -->
 <link
-	href="<%=request.getContextPath()%>/resources/jaejin/css/signin.css"
+	href="${pageContext.request.contextPath}/resources/jaejin/css/signin.css"
 	rel="stylesheet">
 <link rel="stylesheet prefetch"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">	
@@ -63,7 +63,7 @@
 	<form class="form-signin"
 		action="../update" method="POST">
 		<img class="mb-4"
-			src="<%=request.getContextPath()%>/resources/jaejin/img/logo.png"
+			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">한문장 수정</h1>
 		<input class="hidden" type="text" id="isbn" name="isbn" value="${onesentence.isbn}">

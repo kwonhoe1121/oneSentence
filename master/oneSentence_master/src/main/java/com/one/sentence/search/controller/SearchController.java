@@ -92,13 +92,14 @@ public class SearchController {
 	
 	
 	@RequestMapping(value="/contents")
-	public String getContentsBook(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+	public String getContentsBook(HttpServletRequest request, Model model, String isbn) throws Exception {
+		
+		List<SearchModel> items = service.getSearchModel(isbn);
 		
 		
-		
-		
-		
+//		model.addAttribute("items", items);
 		return "/contents";
 	}
+	
 	
 }
