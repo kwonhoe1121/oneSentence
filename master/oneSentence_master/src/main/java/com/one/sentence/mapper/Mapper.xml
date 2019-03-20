@@ -67,11 +67,11 @@
 	</select>
 
 	<select id="selectUserByUserName"
-		resultType="com.one.sentence.common.vo.UserVo">
-		<!-- select userIdx, userName, userEmail, userPassword from user_info where 
-			userEmail = #{param} -->
-		select * from
-		user_info where userName like #{param};
+		resultType="com.one.sentence.common.vo.UserVo">			
+			select * 
+			from user_info 
+			where userName like #{param} and emailStatus&lt;&gt;'2';
+
 	</select>
 
 
@@ -135,8 +135,13 @@
 		delete from
 		liketo where userIdx=#{userIdx} and oneSentenceIdx=#{oneSentenceIdx}
 	</delete>
-
-
+	
+	<!-- 탈퇴 시 모든 팔로잉 관계 해지 -->
+	<delete id="deleteFollowingRelation" 
+			parameterType="com.one.sentence.common.vo.UserVo">
+		delete from following
+		where userIdx=#{userIdx} or followingUserIdx=#{userIdx};
+	</delete>
 
 	<!-- 은선 매퍼 -->
 	<!-- 한문장 -->

@@ -101,6 +101,7 @@ public class SearchController {
 	@RequestMapping(value="/contentsPage/{isbn}")
 	public String getContentsBook(HttpServletRequest request, Model model,@PathVariable("isbn") String isbn) throws Exception {
 		
+<<<<<<< HEAD
 		//String books = (String)request.getParameter("bookId");
 		
 		System.out.println(isbn);
@@ -110,6 +111,12 @@ public class SearchController {
 		
 		model.addAttribute("bookitems", bookitems);
 		//model.addAttribute("books", books);
+=======
+		List<SearchModel> items = service.getSearchModel(isbn);
+
+		if (items.size() != 0) 
+			model.addAttribute("items", items);
+>>>>>>> 2611be6308f32c14b37b691cefe26f9451ec069a
 		return "/contents";
 	}
 	

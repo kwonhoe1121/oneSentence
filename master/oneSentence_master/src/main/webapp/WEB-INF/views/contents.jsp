@@ -65,26 +65,32 @@
 				src="https://image.aladin.co.kr/product/3994/52/coversum/897199598x_1.jpg"
 				width="150rem" height="200rem">
 			<div id="d" class="bg-white">
-			
+			<c:forEach items="${items}" var="items">
 				<ul>
+<<<<<<< HEAD
 					<li><b style="font-size: 1.2rem">${bookitems.title }</b></li>
 					<li>${bookitems.author }</li>
 					<li>${bookitems.publisher }</li>
+=======
+					<li><b style="font-size: 1.2rem">${items.title}</b></li>
+					<li>${items.author}</li>
+					<li>${items.publisher}</li>
+>>>>>>> 2611be6308f32c14b37b691cefe26f9451ec069a
 					<hr>
 					<li>
 					<form action="./onesentence/insertForm" method="POST">
-						<input type="text" name="isbn" value="8936433598">
-						<input type="text" name="author" value="한강">
-						<input type="text" name="publisher" value="창비">
-						<input type="text" name="bookTitle" value="채식주의자">
-						<input type="text" name="bookGenre" value="드라마">
+						<input type="text" name="isbn" value="${items.isbn}">
+						<input type="text" name="author" value="${items.author}">
+						<input type="text" name="publisher" value="${items.publisher}">
+						<input type="text" name="bookTitle" value="${items.title}">
+						<input type="text" name="bookGenre" value="${items.categoryName}">
 					<button id="btn1" type="submit">
 							<b style="color: white"> + 코멘트작성&nbsp;&nabla;</b>
 					</button>
 					</form>
 					</li>
 				</ul>
-				
+				</c:forEach>
 			</div>
 		</div>
 	</header>
