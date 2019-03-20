@@ -66,7 +66,7 @@
 					 
 						<div class="item">
 							<div class="pad15">
-										 	<a href="../contents/${b.isbn }" id="books">
+										 	<a href="../contentsPage/${b.isbn }" id="books">
 											<input type="text" name="bookId" value="${b.isbn }" >
 	   										<img src="${b.cover}" 
 	   										alt="book_1" class="img-fluid img-rounded book_img" name="books" >
