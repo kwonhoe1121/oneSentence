@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.one.sentence.common.vo.UserVo;
 import com.one.sentence.search.model.SearchModel;
+import com.one.sentence.search.service.SearchAladdinOneService;
 import com.one.sentence.search.service.SearchAladdinService;
 import com.one.sentence.search.service.SearchAladdinService2;
 import com.one.sentence.search.service.SearchHashtagService;
@@ -34,6 +35,9 @@ public class SearchController {
 
 	@Autowired
 	private SearchAladdinService2 servicetwo;
+	
+	@Autowired
+	private SearchAladdinOneService serviceone;
 
 	@RequestMapping(value = "/search/query", method = RequestMethod.GET)
 	public String getQuery(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
@@ -94,17 +98,17 @@ public class SearchController {
 	}
 	
 	
-	@RequestMapping(value="/contents/{isbn}")
+	@RequestMapping(value="/contentsPage/{isbn}")
 	public String getContentsBook(HttpServletRequest request, Model model,@PathVariable("isbn") String isbn) throws Exception {
 		
 		//String books = (String)request.getParameter("bookId");
 		
 		System.out.println(isbn);
-//		List<SearchModel> bookitems = service.getSearchModel(query);
+		List<SearchModel> bookitems = serviceone.getSearchModel(isbn);
 //		List<SearchModel> books = service.getSearchModel(bookId);
+		System.out.println(bookitems);
 		
-		
-//		model.addAttribute("book items", bookitems);
+		model.addAttribute("bookitems", bookitems);
 		//model.addAttribute("books", books);
 		return "/contents";
 	}

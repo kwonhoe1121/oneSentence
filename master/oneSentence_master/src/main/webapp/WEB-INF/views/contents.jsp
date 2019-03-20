@@ -56,19 +56,20 @@
 	<header class="bg-white">
 		<div>
 			<img
-				src="${pageContext.request.contextPath}/resources/eunseon/contents/img/contents.jpg"
+				src="https://image.aladin.co.kr/product/3994/52/coversum/897199598x_1.jpg"
 				width="100%" height="300rem" style="filter: blur(5px)">
+				<%-- <p>${bookitems.cover }</p> --%>
 		</div>
 		<div id="d2" class="container">
 			<img id="photo"
-				src="${pageContext.request.contextPath}/resources/eunseon/contents/img/contents.jpg"
+				src="https://image.aladin.co.kr/product/3994/52/coversum/897199598x_1.jpg"
 				width="150rem" height="200rem">
 			<div id="d" class="bg-white">
 			
 				<ul>
-					<li><b style="font-size: 1.2rem">채식주의자</b></li>
-					<li>한강</li>
-					<li>창비</li>
+					<li><b style="font-size: 1.2rem">${bookitems.title }</b></li>
+					<li>${bookitems.author }</li>
+					<li>${bookitems.publisher }</li>
 					<hr>
 					<li>
 					<form action="./onesentence/insertForm" method="POST">
@@ -98,21 +99,19 @@
 					href="#" class="a1"><b>더보기</b></a>
 				<hr>
 				<ul>
-					<li>채식주의자</li>
-					<li>한강</li>
-					<li>2007/ 대한민국/ 247p</li>
+					<li>${bookitems.title }</li>
+					<li>${bookitems. author }</li>
+					<li>${bookitems. pubDate }/ ${bookitems.itemPage }p</li>
 					<br>
 					<li>
-						<p>2016년 맨부커상(Man Booker International Prize) 수상작. 10년 전 작가
-							한강은 '내 여자의 열매'라는 단편소설을 썼다. 한 여자가 아파트 베란다에서 식물이 되고, 함께 살던 남자는 그녀를
-							화분에 심는 이야기였다. '채식주의자'는 언젠가 그 변주를 쓰고 싶다는 바람에서...</p>
+						<p>${bookitems.description }...</p>
 					</li>
 				</ul>
 				<hr>
 				&nbsp;&nbsp;&nbsp;<span style="font-size: 1rem">목차</span><a href="#"
 					class="a1"><b>더보기</b></a>
 				<hr>
-				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> <a href="./onesentence/list/contents/8936433598"
+				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> <a href="./onesentence/list/contents/${bookitems.isbn}"
 					class="a1"><b>더보기</b></a>
 			</div>
 		</div>
@@ -140,7 +139,7 @@
 							23:10</span><br> <span
 							style="padding-left: 2rem; font-size: 1.5rem;">Lorem ipsum
 							dolor sit amet, consectetur adipisicing elit</span><br> <span
-							style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
+							style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>${bookitems.title },
 								한강, 창비, p128 에서.. </i></span><br>
 						<hr>
 						<span
