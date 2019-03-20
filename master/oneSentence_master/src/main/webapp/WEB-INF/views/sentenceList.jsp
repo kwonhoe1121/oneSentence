@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="include/mainHeader2.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -60,9 +61,10 @@ $().ready(function(d, s, id) {
 </script>
 </head>
 <body>
-
-	<%@include file="include/mainHeader.jsp"%>
-
+	
+	<%-- <%@include file="include/mainHeader.jsp"%> --%>
+	<header style="height:60px"></header>
+	
 	<!-- Page Content -->
 	<div class="container">
 		<!-- Post Content Column -->

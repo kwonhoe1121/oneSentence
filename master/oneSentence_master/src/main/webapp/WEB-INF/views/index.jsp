@@ -18,6 +18,9 @@
 	href="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
+<%-- <link href="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/css/bootstap.min.css" 
+	rel="stylesheet"> --%>
+
 <!-- Custom styles for this template -->
 <link
 	href="${pageContext.request.contextPath}/resources/jaejin/css/full-width-pics.css"
@@ -27,6 +30,31 @@
 <link
 	href="${pageContext.request.contextPath}/resources/jaejin/css/custom.css"
 	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
+
+<style>
+@font-face {
+	font-family: 'BMHANNAAir_ttf';
+	src:
+		url('${pageContext.request.contextPath}/resources/naeun/user/font/BMHANNAAir_ttf.ttf');
+}
+
+@font-face {
+	font-family: 'BMHANNAAir_otf';
+	src:
+		url('${pageContext.request.contextPath}/resources/naeun/user/font/BMHANNAAir_otf.otf');
+}
+
+* {
+	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
+}
+</style>
+
 </head>
 
 <body>
@@ -53,9 +81,11 @@
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
 						<!-- 로그인, 회원가입 버튼. -->
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login"><button
+						<li class="nav-item"><a class="nav-link"
+							href="${pageContext.request.contextPath}/login"><button
 									class="btn navbar-btn">로그인</button></a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/register"><button
+						<li class="nav-item"><a class="nav-link"
+							href="${pageContext.request.contextPath}/register"><button
 									class="btn btn-success navbar-btn">회원가입</button></a></li>
 					</ul>
 				</div>

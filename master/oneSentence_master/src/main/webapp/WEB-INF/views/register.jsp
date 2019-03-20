@@ -26,6 +26,12 @@
 	rel="stylesheet"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+	
+<!-- Custom styles for this template, 폰트관련 -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
 
 <style>
 .bd-placeholder-img {
@@ -41,6 +47,23 @@
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
+}
+
+/* 폰트관련. */
+@font-face {
+	font-family: 'BMHANNAAir_ttf';
+	src:
+		url('${pageContext.request.contextPath}/resources/naeun/user/font/BMHANNAAir_ttf.ttf');
+}
+
+@font-face {
+	font-family: 'BMHANNAAir_otf';
+	src:
+		url('${pageContext.request.contextPath}/resources/naeun/user/font/BMHANNAAir_otf.otf');
+}
+
+* {
+	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
 </style>
 <!-- Custom styles for this template -->
@@ -58,7 +81,8 @@
 
 
 	<form class="form-signin"
-		action="${pageContext.request.contextPath}/user/register" method="POST">
+		action="${pageContext.request.contextPath}/user/register"
+		method="POST">
 		<img class="mb-4"
 			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72">
@@ -88,39 +112,47 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script> -->
 	<script src="https://code.jquery.com/jquery-1.10.0.js"></script>
 	<script type="text/javascript">
-	//email focusout
-	$("#inputEmail").on("focusout", function() {
-		/* alert("userEmail focusout"); */
-		var userEmail = $("#inputEmail").val();
-		console.log(userEmail);
+		//email focusout
+		$("#inputEmail")
+				.on(
+						"focusout",
+						function() {
+							/* alert("userEmail focusout"); */
+							var userEmail = $("#inputEmail").val();
+							console.log(userEmail);
 
-		$.ajax({
-			type : "POST",
-			url : "${pageContext.request.contextPath}/users/emailCheck",
-			data : JSON.stringify({
-				"userEmail" : userEmail
-			}),
-			dataType : "json",
-			contentType : "application/json; charset=UTf-8",
-			success : function(data) {
-				console.log(data);
-				console.log(data.emailCheck);
-				console.log($("#inputEmail"));
-				if(data.overrapedEmail === "이메일 중복입니다." || data.overrapedEmail === "이메일 사용 가능합니다.") {
-					$("#inputEmail").after("<div id='emailCheck'>" + data.overrapedEmail + "</div>");
-				}
-			},
-			error : function(error) {
-				console.log("에러발생: " + error);
-			}
+							$
+									.ajax({
+										type : "POST",
+										url : "${pageContext.request.contextPath}/users/emailCheck",
+										data : JSON.stringify({
+											"userEmail" : userEmail
+										}),
+										dataType : "json",
+										contentType : "application/json; charset=UTf-8",
+										success : function(data) {
+											console.log(data);
+											console.log(data.emailCheck);
+											console.log($("#inputEmail"));
+											if (data.overrapedEmail === "이메일 중복입니다."
+													|| data.overrapedEmail === "이메일 사용 가능합니다.") {
+												$("#inputEmail")
+														.after(
+																"<div id='emailCheck'>"
+																		+ data.overrapedEmail
+																		+ "</div>");
+											}
+										},
+										error : function(error) {
+											console.log("에러발생: " + error);
+										}
 
+									});
+						});
+		//다시 focusin시 삭제.
+		$("#inputEmail").on("focusin", function() {
+			$("#emailCheck").remove();
 		});
-	});
-	//다시 focusin시 삭제.
-	$("#inputEmail").on("focusin", function() {
-		$("#emailCheck").remove();	
-	});
-	
 	</script>
 </body>
 

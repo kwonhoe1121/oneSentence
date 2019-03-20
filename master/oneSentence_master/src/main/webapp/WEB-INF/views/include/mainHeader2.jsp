@@ -13,13 +13,13 @@
 
 <title>한문장 메인 헤더</title>
 
-<%-- <link
+<link
 	href="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet"> --%>
-<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-<%-- <link
+	rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link
 	href="${pageContext.request.contextPath}/resources/jaejin/css/custom.css"
-	rel="stylesheet"> --%>
+	rel="stylesheet">
 </head>
 
 <body>
@@ -34,11 +34,6 @@
 				<!-- <div class="container2"> -->
 
 				<form class="navbar-form naver-right">
-					<!-- <div class="searchBox" class="form-group">
-                            <label for="search" class="sr-only">검색:</label>
-                            <input type="text" class="form-control" placeholder="검색어 입력" value="">
-                            <button type="submit"></button>
-                        </div> -->
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search">
 						<div class="input-group-btn">
@@ -81,25 +76,25 @@
 				<a class="navbar-brand"
 					href="${pageContext.request.contextPath}/indexPage">한문장</a>
 				<!-- <div class="container"> -->
-				<div class="container2">
+				<!-- <div class="container2"> -->
 
-					<form class="navbar-form naver-right">
-						<!-- <div class="searchBox" class="form-group">
-                                <label for="search" class="sr-only">검색:</label>
-                                <input type="text" class="form-control" placeholder="검색어 입력" value="">
-                                <button type="submit"></button>
-                            </div> -->
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search">
-							<div class="input-group-btn">
-								<button class="btn btn-default" type="submit">
-									<i class="glyphicon glyphicon-search"></i>
-								</button>
-							</div>
+				<form class="navbar-form naver-right">
+					<!-- <div class="searchBox" class="form-group">
+                            <label for="search" class="sr-only">검색:</label>
+                            <input type="text" class="form-control" placeholder="검색어 입력" value="">
+                            <button type="submit"></button>
+                        </div> -->
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
 						</div>
-					</form>
+					</div>
+				</form>
 
-				</div>
+				<!-- </div> -->
 				<!-- </div> -->
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"

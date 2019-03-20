@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <%@include file="include/mainHeader.jsp"%> --%>
+<%@include file="include/mainHeader2.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +46,7 @@
 </head>
 <body>
 
-	<%@include file="include/mainHeader2.jsp"%>
+	<%-- <%@include file="include/mainHeader2.jsp"%> --%>
 	
 	<div id="header">
 		<a href="../indexPage"><i class="fa fa-home fa-2x"
