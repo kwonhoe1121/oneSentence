@@ -203,7 +203,6 @@
 	<%-- <c:when test="${fn:length(hashtagitems) > 0 }"> --%>
 	<c:when test="${fn:length(oneSentenceList) > 0 }">
 	<!-- <div class="hashtagsearch">
-
 		<h2 class="h2">
 			<strong>한문장 검색결과</strong><a href=""><span class="more"><strong>더보기</strong></span></a>
 		</h2> -->
@@ -289,7 +288,6 @@
 						})
 				})
 			}
-
 			function updateClick(idx) {
 				var url = "../../onesentence/popup/" + idx;
 				var popupOption = "width=700,height=600";
@@ -351,7 +349,6 @@
 		
 		/* like status in oneSentence */
 		function showLikedSentenceStatus() {
-
 			console.log($(".newdiv").find(".oneSentenceIdx"));
 			/* console.log($(".newdiv")); */
 			

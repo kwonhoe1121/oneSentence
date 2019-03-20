@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="utf-8">
@@ -37,7 +36,7 @@
 		<c:redirect url="${referer}" />
 	</c:if> --%>
 
-	<%-- <jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
+	<%-- <%@include file="include/mainHeader.jsp"%> --%>
 
 	<!-- Navigation -->
 	<!-- 로그인 전 -->

@@ -61,7 +61,7 @@ $().ready(function(d, s, id) {
 </head>
 <body>
 
-	<%-- <%@include file="include/mainHeader.jsp"%> --%>
+	<%@include file="include/mainHeader.jsp"%>
 
 	<!-- Page Content -->
 	<div class="container">

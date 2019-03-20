@@ -18,6 +18,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/naeun/user/vendor/bootstrap/css/bootstrap.css"
 	rel="stylesheet">
+	
 <!-- Custom styles for this template -->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -44,7 +45,9 @@
 
 </head>
 <body>
-	<%-- <%@include file="include/mainHeader.jsp"%> --%>
+
+	<%@include file="include/mainHeader2.jsp"%>
+	
 	<div id="header">
 		<a href="../indexPage"><i class="fa fa-home fa-2x"
 			aria-hidden="true"></i></a>
