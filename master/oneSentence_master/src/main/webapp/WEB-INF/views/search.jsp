@@ -50,7 +50,16 @@
 	a:visited { color: black; text-decoration: none;}
 	a:hover { color: black; text-decoration: none;}
 </style>
+<script>
+$().ready(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=302606807116615";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 
+</script>
 </head>
 <body>
 
@@ -213,7 +222,7 @@
 	<h2 class="h2">
 			<strong>한문장 검색결과</strong><a href=""><span class="more"><strong>더보기</strong></span></a>
 		</h2>
-	<c:forEach items="${oneSentenceList}" var="onesentence" begin="0" end="5" step="1">
+	<c:forEach items="${oneSentenceList}" var="onesentence" begin="0" end="4" step="1">
 				<div class="newdiv" style="background-color:#f6f5f4;border:1px solid lightgrey;font-size:1.5rem">
 					<span style="color: darkgray; padding-right: 1rem"
 						class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>

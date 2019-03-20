@@ -184,6 +184,7 @@ public class oneSentenceController {
 
 	@RequestMapping("/onesentence/list/contents/{isbn}")
 	public String selectOnesententceListByIsbn(@PathVariable("isbn") String isbn, Model model) {
+		if(isbn!=null) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByIsbn(isbn);
 		List<ShowOnesentence> oneSentenceList2 = oneService.showOneSentenceListByIsbnWithoutlike(isbn);
 		oneSentenceList.addAll(oneSentenceList2);
@@ -202,7 +203,7 @@ public class oneSentenceController {
 			showOneSentence.setHashtag(hash);
 			hash = "";
 		}
-		model.addAttribute("oneSentenceList", oneSentenceList);
+		model.addAttribute("oneSentenceList", oneSentenceList);}
 		return "sentenceList";
 
 	}
