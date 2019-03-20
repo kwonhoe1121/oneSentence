@@ -84,7 +84,6 @@
 					</li>
 				</ul>
 				</c:forEach>
-				
 			</div>
 		</div>
 	</header>
