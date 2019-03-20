@@ -84,7 +84,7 @@ public class TestController {
 
 		System.out.println("getSearchMorePage method");
 
-		return "searchMore";
+		return "/search/searchMore";
 	}
 
 	@RequestMapping(value = "/review", method = RequestMethod.GET)

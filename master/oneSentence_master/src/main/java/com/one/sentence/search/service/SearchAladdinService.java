@@ -29,7 +29,7 @@ public class SearchAladdinService {
 		hm.put("Query", URLEncoder.encode(searchWord, "UTF-8"));
 		hm.put("Sort", "Accuracy");
 		hm.put("QueryType", "Keyword");
-		hm.put("MaxResults", "10");
+		hm.put("MaxResults", "100");
 		hm.put("start", "1");
 		hm.put("SearchTarget", "Book");
 		hm.put("output", "xml");

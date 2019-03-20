@@ -24,7 +24,7 @@
 	<i class="fa fa-book fa-3x" aria-hidden="true"></i>
 	<h1>도서 더보기</h1>
 	<hr>
-	<div class="bookmore">
+	<div class="bookmore" id="bookscroll" hidden="true">
 	<c:forEach items="${items}" var="b">
 		<div class="book_div">
 		
@@ -41,53 +41,29 @@
 			<hr>
 		</div>
 		</c:forEach>
-		<div class="book_div">
-			<img
-				src="<%=request.getContextPath()%>/resources/dahye/search/img/book1.jpg"
-				alt="book_1" class="img-fluid img-rounded book_img">
-			<p class="ptitle">
-				<strong>강아지와고양이</strong>
-			</p>
-			<p class="ptext_01">김철수</p>
-			<p class="ptext_01">강아지출판사</p>
-			<p class="ptext_01">2019</p>
-			<hr>
-		</div>
-		<div class="book_div">
-			<img
-				src="<%=request.getContextPath()%>/resources/dahye/search/img/book1.jpg"
-				alt="book_1" class="img-fluid img-rounded book_img">
-			<p class="ptitle">
-				<strong>강아지와고양이</strong>
-			</p>
-			<p class="ptext_01">김철수</p>
-			<p class="ptext_01">강아지출판사</p>
-			<p class="ptext_01">2019</p>
-			<hr>
-		</div>
-		<img
-			src="<%=request.getContextPath()%>/resources/dahye/search/img/book1.jpg"
-			alt="book_1" class="img-fluid img-rounded book_img">
-		<p class="ptitle">
-			<strong>강아지와고양이</strong>
-		</p>
-		<p class="ptext_01">김철수</p>
-		<p class="ptext_01">강아지출판사</p>
-		<p class="ptext_01">2019</p>
-		<hr>
-		<div class="book_div">
-			<img
-				src="<%=request.getContextPath()%>/resources/dahye/search/img/book1.jpg"
-				alt="book_1" class="img-fluid img-rounded book_img">
-			<p class="ptitle">
-				<strong>강아지와고양이</strong>
-			</p>
-			<p class="ptext_01">김철수</p>
-			<p class="ptext_01">강아지출판사</p>
-			<p class="ptext_01">2019</p>
-			<hr>
-		</div>
 	</div>
+	<script>
+
+	var bookmore = document.getElementsByClassName('bookmore');
+	bookmore[0].hidden = false;
+	bookmore[1].hidden = false;
+	bookmore[2].hidden = false;
+	bookmore[3].hidden = false;
+	bookmore[4].hidden = false;
+	bookmore[5].hidden = false;
+	
+	var b =5;
+	$(window).scroll(function(){
+		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+			bookmore[++b].hidden=false;
+		}
+		
+		
+	})
+	
+	</script>
+	
+	
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/dahye/searchMore/js/searchmore.js"></script>
