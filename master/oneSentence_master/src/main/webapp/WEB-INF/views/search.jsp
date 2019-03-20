@@ -65,7 +65,7 @@
 					 
 					 
 						<div class="item">
-<<<<<<< HEAD
+
 							<div class="pad15" id="bookdiv">
 										 	<a href="../contentsPage/${b.isbn }" id="books">
 											<input type="text" name="bookId" value="${b.isbn }" hidden="true">
@@ -73,7 +73,7 @@
 							<div class="pad15">
 										 	<a href="../contentsPage/${b.isbn }" id="books">
 											<input type="text" name="bookId" value="${b.isbn }" >
->>>>>>> 2611be6308f32c14b37b691cefe26f9451ec069a
+
 	   										<img src="${b.cover}" 
 	   										alt="book_1" class="img-fluid img-rounded book_img" name="books" >
 	   								
