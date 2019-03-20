@@ -46,7 +46,6 @@ public class SearchController {
 	
 	@RequestMapping(value = "/search/query", method = RequestMethod.GET)
 	public String getQuery(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
-//		String query = (String) request.getParameter("search");
 		System.out.println("query: " + query);
 		List<SearchModel> items = service.getSearchModel(query);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);

@@ -20,17 +20,17 @@
 	a:visited { color: black; text-decoration: none;}
 	a:hover { color: black; text-decoration: none;}
 </style>
-
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 
 
-	<i class="fa fa-book fa-3x" aria-hidden="true"></i>
-	<h1>도서 더보기</h1>
+	<i class="fa fa-book fa-2x" aria-hidden="true"></i>
+	<h2>도서 더보기</h2>
 	<hr>
-	<div class="bookmore">
+	<div class="bookmore" id="bookscroll" >
 	<c:forEach items="${items}" var="b">
-		<div class="book_div">
+		<div class="book_div" hideen="true">
 			<a href="../contentsPage/${b.isbn }" id="books">
 			<img
 				src="${b.cover}"
@@ -45,56 +45,28 @@
 			<hr>
 		</div>
 		</c:forEach>
-		<div class="book_div">
-			<img
-				src="<%=request.getContextPath()%>/resources/dahye/search/img/book1.jpg"
-				alt="book_1" class="img-fluid img-rounded book_img">
-			<p class="ptitle">
-				<strong>강아지와고양이</strong>
-			</p>
-			<p class="ptext_01">김철수</p>
-			<p class="ptext_01">강아지출판사</p>
-			<p class="ptext_01">2019</p>
-			<hr>
-		</div>
-		<div class="book_div">
-			<img
-				src="<%=request.getContextPath()%>/resources/dahye/search/img/book1.jpg"
-				alt="book_1" class="img-fluid img-rounded book_img">
-			<p class="ptitle">
-				<strong>강아지와고양이</strong>
-			</p>
-			<p class="ptext_01">김철수</p>
-			<p class="ptext_01">강아지출판사</p>
-			<p class="ptext_01">2019</p>
-			<hr>
-		</div>
-		<img
-			src="<%=request.getContextPath()%>/resources/dahye/search/img/book1.jpg"
-			alt="book_1" class="img-fluid img-rounded book_img">
-		<p class="ptitle">
-			<strong>강아지와고양이</strong>
-		</p>
-		<p class="ptext_01">김철수</p>
-		<p class="ptext_01">강아지출판사</p>
-		<p class="ptext_01">2019</p>
-		<hr>
-		<div class="book_div">
-			<img
-				src="<%=request.getContextPath()%>/resources/dahye/search/img/book1.jpg"
-				alt="book_1" class="img-fluid img-rounded book_img">
-			<p class="ptitle">
-				<strong>강아지와고양이</strong>
-			</p>
-			<p class="ptext_01">김철수</p>
-			<p class="ptext_01">강아지출판사</p>
-			<p class="ptext_01">2019</p>
-			<hr>
-		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/resources/dahye/searchMore/js/searchmore.js"></script>
+	<script>
+
+	var book_div = document.getElementsByClassName('book_div');
+	book_div[0].hidden = false;
+	book_div[1].hidden = false;
+	book_div[2].hidden = false;
+	book_div[3].hidden = false;
+	book_div[4].hidden = false;
+	book_div[5].hidden = false;
+	
+	var b =5;
+	$(window).scroll(function() {
+		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+			book_div[++b].hidden=false;
+		}
+		
+		
+	})
+	
+	</script>
+	
 
 </body>
 </html>
