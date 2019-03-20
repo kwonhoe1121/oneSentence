@@ -81,9 +81,9 @@
 
 	<form class="form-signin"
 		action="${pageContext.request.contextPath}/user/login" method="POST">
-		<img class="mb-4"
+		<a href="${pageContext.request.contextPath}/"><img class="mb-4"
 			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
-			alt="" width="72" height="72">
+			alt="" width="72" height="72"></a>
 		<h1 class="h3 mb-3 font-weight-normal">로그인</h1>
 		<label for="inputEmail" class="sr-only">Email address</label> <input
 			type="email" id="inputEmail" name="userEmail" class="form-control"

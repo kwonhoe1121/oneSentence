@@ -29,7 +29,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 			<div class="container">
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/indexPage">한문장</a>
+					href="${pageContext.request.contextPath}/">한문장</a>
 				<!-- <div class="container"> -->
 				<!-- <div class="container2"> -->
 
@@ -74,7 +74,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 			<div class="container">
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/indexPage">한문장</a>
+					href="${pageContext.request.contextPath}/">한문장</a>
 				<!-- <div class="container"> -->
 				<!-- <div class="container2"> -->
 

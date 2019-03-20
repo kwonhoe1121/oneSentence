@@ -72,7 +72,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/indexPage">한문장</a>
+					href="${pageContext.request.contextPath}/">한문장</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -98,7 +98,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/indexPage">한문장</a>
+					href="${pageContext.request.contextPath}/">한문장</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
 					aria-expanded="false" aria-label="Toggle navigation">

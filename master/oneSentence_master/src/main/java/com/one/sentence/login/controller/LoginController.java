@@ -76,7 +76,7 @@ public class LoginController {
 		if (referer.equals("http://localhost:8090/sentence/register")
 				|| referer.equals("http://localhost:8090/sentence/user/logout")
 				|| referer.equals("http://localhost:8090/sentence/user/withdraw")) {
-			return "index";
+			return "redirect:/";
 		}
 
 		return "login";
@@ -89,7 +89,7 @@ public class LoginController {
 		// 세션 종료.
 		session.invalidate();
 		System.out.println("로그아웃!");
-		return "index";
+		return "redirect:/";
 	}
 
 }

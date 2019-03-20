@@ -28,7 +28,7 @@ public class RegisterController {
 	@Inject
 	SecurityService securityService;
 
-	@RequestMapping(value = "register", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String requestRegisterForm(HttpSession session, @RequestHeader String referer) {
 
 		System.out.println("referer: " + referer);
@@ -55,7 +55,7 @@ public class RegisterController {
 //			session.setAttribute("complete", true);
 			// 자동로그인
 //			session.setAttribute("User", user);
-			return "index";
+			return "redirect:/";
 		}
 
 		System.out.println(user + "return 전");
@@ -95,7 +95,7 @@ public class RegisterController {
 		//유저 세션 없애기.
 		session.invalidate();
 		
-		return "index";
+		return "redirect:/";
 	}
 	
 }

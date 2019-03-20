@@ -83,9 +83,9 @@
 	<form class="form-signin"
 		action="${pageContext.request.contextPath}/user/register"
 		method="POST">
-		<img class="mb-4"
+		<a href="${pageContext.request.contextPath}/"><img class="mb-4"
 			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
-			alt="" width="72" height="72">
+			alt="" width="72" height="72"></a>
 		<h1 class="h3 mb-3 font-weight-normal">회원가입</h1>
 		<label for="inputName" class="sr-only">User name</label> <input
 			type="text" id="inputName" name="userName" class="form-control"
