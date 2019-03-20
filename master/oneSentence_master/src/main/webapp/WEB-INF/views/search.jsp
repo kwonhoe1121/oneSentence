@@ -83,7 +83,7 @@ $().ready(function(d, s, id) {
 					 
 						<div class="item">
 
-							<div class="pad15" id="bookdiv" style="height:26rem;">
+							<div class="pad15" id="bookdiv" style="height:26rem;overflow:scroll">
 										 	<a href="../contentsPage/${b.isbn }" id="books">
 											<input type="text" name="bookId" value="${b.isbn }" hidden="true">
 
@@ -134,7 +134,7 @@ $().ready(function(d, s, id) {
 					 <input type="text" name="bookId" value="${b2.isbn }" hidden="true">
 						<div class="item">
 						
-							<div class="pad15" style="height:26rem;color:black;">
+							<div class="pad15" style="height:26rem;color:black;overflow:scroll;">
 								<img
 									src="${b2.cover }"
 									alt="book_1" class="img-fluid img-rounded book_img" style="width:8rem;height:12rem">

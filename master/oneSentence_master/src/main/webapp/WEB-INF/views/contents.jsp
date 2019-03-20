@@ -48,6 +48,16 @@
 
 
 </style>
+<script>
+$().ready(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=302606807116615";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+</script>
 </head>
 
 <body>
@@ -123,12 +133,13 @@
 		</div>
 		
 		<div class="row"
-			style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; padding-top: 0px">
+			style=" padding-top: 0px">
 			<div class="col-md-11 mb-5" style="padding-left: 5rem">
-				<div class="card h-100">
+				<div class="card h-100" style="border:none;">
 				
 				<c:forEach items="${oneSentenceList}" var="onesentence" begin="0" end="4" step="1">
-					<div class="card-body">
+					<div class="card-body" style="margin-bottom:2rem;border-radius: 10px;border:1px solid lightgray;">
+						<input type="text" id="session" value="${User.userIdx}" hidden="true">
 						&nbsp;<span style="color: darkgray"  class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>&nbsp;&nbsp;
 						<!--한문장번호-->
 						<a href="#" style="color: black"><i class="fa fa-user icon">
@@ -194,13 +205,36 @@
 		src="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script
+		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
 		$('#description img').hide();
 		var $html = $('#description').html();
 		var indexOfbr = $html.indexOf('<br>');
 		var substring =$html.substring(indexOfbr+4);
-		$('#description').html(substring);			
+		$('#description').html(substring);	
+		
+		function share(idx) {
+			FB.ui({
+			method : 'share_open_graph',
+			action_type : 'og.shares',
+			action_properties : JSON.stringify({
+						object : {
+							'og:url' : 'http://127.0.0.1/sentence/onesentence/one/'
+									+ idx,
+							'og:title' : '한문장',
+							'og:description' : '한문장내용',
+							'og:image' : 'http://image.kmib.co.kr/online_image/2018/0906/611211110012661971_2.jpg'
+						}
+					})
+			})
+		}
+
+		function updateClick(idx) {
+			var url = "../../onesentence/popup/" + idx;
+			var popupOption = "width=700,height=600";
+			window.open(url, "한문장수정하기", popupOption);
+		}
 	</script>
 </body>
 

@@ -140,6 +140,7 @@ public class SearchController {
 			oneSentenceList.addAll(oneService.selectOnesentenceListByoneSentenceIdxAndIsbnOther(user.getUserIdx(), user2, isbn));}
 		}else {
 			oneSentenceList = oneService.showOneSentenceListByIsbn(isbn);
+			oneSentenceList.addAll(oneService.showOneSentenceListByIsbnWithoutlike(isbn));
 		}
 		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
 		String hash="";
