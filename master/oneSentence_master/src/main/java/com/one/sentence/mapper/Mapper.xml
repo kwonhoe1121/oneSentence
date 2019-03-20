@@ -67,11 +67,11 @@
 	</select>
 
 	<select id="selectUserByUserName"
-		resultType="com.one.sentence.common.vo.UserVo">
-		<!-- select userIdx, userName, userEmail, userPassword from user_info where 
-			userEmail = #{param} -->
-		select * from
-		user_info where userName like #{param};
+		resultType="com.one.sentence.common.vo.UserVo">			
+			select * 
+			from user_info 
+			where userName like #{param} and emailStatus&lt;&gt;'2';
+
 	</select>
 
 
