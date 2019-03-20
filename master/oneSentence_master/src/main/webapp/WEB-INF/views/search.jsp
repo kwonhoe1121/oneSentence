@@ -70,7 +70,7 @@
 										 	<a href="../contentsPage/${b.isbn }" id="books">
 											<input type="text" name="bookId" value="${b.isbn }" hidden="true">
 
-							<div class="pad15">
+						
 										 	<a href="../contentsPage/${b.isbn }" id="books">
 											<input type="text" name="bookId" value="${b.isbn }" >
 
