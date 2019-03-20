@@ -15,7 +15,11 @@
 	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
-
+<style>
+	a:link { color: black; text-decoration: none;}
+	a:visited { color: black; text-decoration: none;}
+	a:hover { color: black; text-decoration: none;}
+</style>
 
 </head>
 <body>
@@ -27,7 +31,7 @@
 	<div class="bookmore">
 	<c:forEach items="${items}" var="b">
 		<div class="book_div">
-		
+			<a href="../contentsPage/${b.isbn }" id="books">
 			<img
 				src="${b.cover}"
 				alt="book_1" class="img-fluid img-rounded book_img">
@@ -37,7 +41,7 @@
 			<p class="ptext_01">${b.author }</p>
 			<p class="ptext_01">${b.publisher }</p>
 			<p class="ptext_01"><c:out value="${fn:substring(b.pubDate,5,16)}"/></p>
-		
+			</a>
 			<hr>
 		</div>
 		</c:forEach>
