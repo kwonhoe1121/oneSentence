@@ -135,8 +135,13 @@
 		delete from
 		liketo where userIdx=#{userIdx} and oneSentenceIdx=#{oneSentenceIdx}
 	</delete>
-
-
+	
+	<!-- 탈퇴 시 모든 팔로잉 관계 해지 -->
+	<delete id="deleteFollowingRelation" 
+			parameterType="com.one.sentence.common.vo.UserVo">
+		delete from following
+		where userIdx=#{userIdx} or followingUserIdx=#{userIdx};
+	</delete>
 
 	<!-- 은선 매퍼 -->
 	<!-- 한문장 -->

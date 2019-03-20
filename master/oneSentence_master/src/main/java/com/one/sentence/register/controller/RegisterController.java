@@ -89,6 +89,9 @@ public class RegisterController {
 		//유저 탈퇴 상태로 변경
 		service.withdrawUser(user);
 		
+		//유저 팔로잉 관계 끊기
+		service.cutFollwing(user);
+		
 		//유저 세션 없애기.
 		session.invalidate();
 		

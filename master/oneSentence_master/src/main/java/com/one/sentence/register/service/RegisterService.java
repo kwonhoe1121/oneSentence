@@ -31,8 +31,13 @@ public class RegisterService implements IRegisterService {
 
 	@Override
 	public int withdrawUser(UserVo user) {
-		dao.updateEmailStatus(user);
-		return 0;
+		return dao.updateEmailStatus(user);
 	}
+
+	@Override
+	public int cutFollwing(UserVo user) {
+		return dao.deleteFollowingRelation(user);
+	}
+	
 
 }

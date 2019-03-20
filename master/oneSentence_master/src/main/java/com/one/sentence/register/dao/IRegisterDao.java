@@ -9,5 +9,7 @@ public interface IRegisterDao {
 	public UserVo selectUserByEmail(String email);
 
 	public int updateEmailStatus(UserVo user);
+	
+	public int deleteFollowingRelation(UserVo user);
 
 }
