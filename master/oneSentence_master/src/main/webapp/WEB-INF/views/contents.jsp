@@ -57,7 +57,7 @@
 		<div>
 <c:forEach items="${items}" var="items">
 			<img
-				src="${items.cover}" width="100%" height="300rem" style="filter: blur(5px)">
+				src="${items.cover}" width="100%" height="300rem" style="filter: blur(2px)">
 		</div>
 		<div id="d2" class="container">
 

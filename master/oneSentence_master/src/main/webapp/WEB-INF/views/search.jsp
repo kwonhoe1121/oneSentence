@@ -119,7 +119,7 @@
 					
 						
 					 	
-					 <a href="../contents">
+					 <a href="a href="../contentsPage/${b.isbn }" id="books"">
 						<div class="item">
 						
 							<div class="pad15">
