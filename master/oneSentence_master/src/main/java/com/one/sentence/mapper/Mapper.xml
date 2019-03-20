@@ -240,6 +240,18 @@
 		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc;
 	</select>
 	
+	<select id="selectOnesentenceListByHashtag"
+		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
+		select o.userIdx,u.userName,
+		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
+		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
+		b, user_info u
+		where b.isbn=o.isbn and u.userIdx=o.userIdx
+		and o.oneSentenceIdx in(select oneSentenceIdx from hashtag where hashtag like #{hashtag})
+        group by
+		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc
+	</select>
+	
 	<select id="selectOnesentenceByoneSentenceIdxAndIsbnMy"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,

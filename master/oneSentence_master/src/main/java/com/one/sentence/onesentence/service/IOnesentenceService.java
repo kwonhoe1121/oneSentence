@@ -14,6 +14,7 @@ public interface IOnesentenceService {
 	public List<ShowOnesentence> showOneSentenceListByIsbn(String isbn);
 	public List<ShowOnesentence> showOneSentenceListByIsbnWithoutlike(String isbn);
 	public List<ShowOnesentence> showOneSentenceListForLiketo(int userIdx); 
+	public List<ShowOnesentence> showOnesentenceListByHashtag(String hashtag);
 	public ShowOnesentence showOneSentenceByoneSentenceIdx(int oneSentenceIdx);
 	public OneSentence showOneSentenceModel(int oneSentenceIdx);
 	
