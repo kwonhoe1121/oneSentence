@@ -48,18 +48,29 @@
 
 
 </style>
+<script>
+$().ready(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=302606807116615";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+</script>
 </head>
 
 <body>
 	<%-- <jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
 	<!-- Header -->
-	<header class="bg-white">
-		<div>
+	
+		
 <c:forEach items="${items}" var="items">
+<header class="bg-white">
 			<img
 				src="${items.cover}" width="100%" height="300rem" style="filter: blur(2px)">
-		</div>
+		
 		<div id="d2" class="container">
 
 			<img id="photo"
@@ -108,48 +119,63 @@
 						<p id="description">${items.description}...</p>
 					</li>
 				</ul>
-					</c:forEach>			
+								
 				<hr>
 				&nbsp;&nbsp;&nbsp;<span style="font-size: 1rem">목차</span><a href="#"
 					class="a1"><b>더보기</b></a>
 				<hr>
-				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> <a href="./onesentence/list/contents/8936433598"
+				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> 
+				<a href="../onesentence/list/contents/${items.isbn}"
 					class="a1"><b>더보기</b></a>
 			</div>
+			
 		</div>
+		
 		<div class="row"
-			style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; padding-top: 0px">
+			style=" padding-top: 0px">
 			<div class="col-md-11 mb-5" style="padding-left: 5rem">
-				<div class="card h-100">
-					<div class="card-body">
-						&nbsp;<span style="color: darkgray"  class="oneSentenceIdx">1</span>&nbsp;&nbsp;
+				<div class="card h-100" style="border:none;">
+				
+				<c:forEach items="${oneSentenceList}" var="onesentence" begin="0" end="4" step="1">
+					<div class="card-body" style="margin-bottom:2rem;border-radius: 10px;border:1px solid lightgray;">
+						<input type="text" id="session" value="${User.userIdx}" hidden="true">
+						&nbsp;<span style="color: darkgray"  class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>&nbsp;&nbsp;
 						<!--한문장번호-->
 						<a href="#" style="color: black"><i class="fa fa-user icon">
-								신짱구1</i></a> <span class="eventA"
+								${onesentence.userName}</i></a> <span class="eventA"
 							style="float: right; padding-right: 1rem; color: darkgray"><i
-							class="fa fa-ellipsis-v icon"></i></span>
+							class="fa fa-ellipsis-v icon"></i></span><input type="text"
+						class="userIdx" value="${onesentence.userIdx}" hidden="true">
 						<center>
 							<div class="divmodal">
-								<!--#modal>에 아이콘누른 누른 유저에 따라 <a>태그 붙이는 이벤트 필요함-->
-								<div class="all" style="background-color: #3b5998;">
-									<a href="#"><i class="fa fa-send-o icon"></i></a>
-								</div>
+								<div class="all">
+								<a href="#" onclick="share(${onesentence.oneSentenceIdx})"
+									id="share"><i class="fa fa-send-o icon"></i></a>
+							</div>
+							<div class="my">
+								<a href="#" id="updateBtn"
+									onclick="updateClick(${onesentence.oneSentenceIdx})"><i
+									class="fa fa-reply icon"></i></a>
+							</div>
+							<div class="my">
+								<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}"
+									id="deleteBtn"><i class="fa fa-remove icon"></i></a>
+							</div>
 							</div>
 						</center>
 						<span
-							style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">2019.3.12
-							23:10</span><br> <span
-							style="padding-left: 2rem; font-size: 1.5rem;">Lorem ipsum
-							dolor sit amet, consectetur adipisicing elit</span><br> <span
-							style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>채식주의자,
-								한강, 창비, p128 에서.. </i></span><br>
+							style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br> <span
+							style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br> <span
+							style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>${onesentence.bookTitle},
+								${onesentence.author}, ${onesentence.publisher},
+						${onesentence.page} 에서..  </i></span><br>
 						<hr>
 						<span
-							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">#봉미선
-							#흰둥이</span> <span
+							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">${onesentence.hashtag}</span> <span
 							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
-							class="fa fa-heart-o"> 11</i></span>
+							class="fa fa-heart-o"> ${onesentence.likeTotal}</i></span>
 					</div>
+				</c:forEach>
 				</div>
 			</div>
 			
@@ -157,9 +183,9 @@
 		</div>
 		<!-- /.row -->
 
-	</div>
-	<!-- /.container -->
 
+	<!-- /.container -->
+</c:forEach>
 	<!-- Footer -->
 	<footer class="py-5 bg-white" style="padding: 1rem">
 		<div class="container">
@@ -178,13 +204,36 @@
 		src="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script
+		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
 		$('#description img').hide();
 		var $html = $('#description').html();
 		var indexOfbr = $html.indexOf('<br>');
 		var substring =$html.substring(indexOfbr+4);
-		$('#description').html(substring);			
+		$('#description').html(substring);	
+		
+		function share(idx) {
+			FB.ui({
+			method : 'share_open_graph',
+			action_type : 'og.shares',
+			action_properties : JSON.stringify({
+						object : {
+							'og:url' : 'http://127.0.0.1/sentence/onesentence/one/'
+									+ idx,
+							'og:title' : '한문장',
+							'og:description' : '한문장내용',
+							'og:image' : 'http://image.kmib.co.kr/online_image/2018/0906/611211110012661971_2.jpg'
+						}
+					})
+			})
+		}
+
+		function updateClick(idx) {
+			var url = "../../onesentence/popup/" + idx;
+			var popupOption = "width=700,height=600";
+			window.open(url, "한문장수정하기", popupOption);
+		}
 	</script>
 </body>
 

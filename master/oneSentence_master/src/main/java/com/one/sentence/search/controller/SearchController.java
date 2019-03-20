@@ -1,10 +1,12 @@
 package com.one.sentence.search.controller;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -119,14 +121,46 @@ public class SearchController {
 	
 	
 	@RequestMapping(value="/contentsPage/{isbn}")
-	public String getContentsBook(HttpServletRequest request, Model model,@PathVariable("isbn") String isbn) throws Exception {
-		
+	public String getContentsBook(HttpSession session,HttpServletRequest request, Model model,@PathVariable("isbn") String isbn) throws Exception {
+		if(isbn!=null) {
 		List<SearchModel> items = service.getSearchModel(isbn);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(isbn);
+		List<ShowOnesentence> oneSentenceList = new ArrayList<ShowOnesentence>();
+		UserVo user = (UserVo) session.getAttribute("User");
+		ShowOnesentence sentence= new ShowOnesentence();
+		if(user!=null) {
+			sentence=oneService.selectOnesentenceByoneSentenceIdxAndIsbnMy(user.getUserIdx(), isbn);
+			if(sentence!=null) {
+			oneSentenceList.add(sentence);}
+			
+			sentence = oneService.selectOnesentenceByoneSentenceIdxAndIsbnFollowing(user.getUserIdx(), isbn);
+			if(sentence!=null) {
+			int user2 = sentence.getUserIdx();
+			oneSentenceList.add(sentence);			
+			oneSentenceList.addAll(oneService.selectOnesentenceListByoneSentenceIdxAndIsbnOther(user.getUserIdx(), user2, isbn));}
+		}else {
+			oneSentenceList = oneService.showOneSentenceListByIsbn(isbn);
+			oneSentenceList.addAll(oneService.showOneSentenceListByIsbnWithoutlike(isbn));
+		}
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		String hash="";
+		while (it2.hasNext()) {
+			sentence = it2.next();
+			sentence.setLikeTotal(oneService.showLikeTotal(sentence.getOneSentenceIdx()));
 
-		if (items.size() != 0 || itemstwo.size() != 0)
+			List<String> hList = oneService.showHashtagList(sentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			sentence.setHashtag(hash);
+			hash = "";
+		}
+		if (items.size() != 0 || itemstwo.size() != 0||oneSentenceList.size()!=0) {
 			model.addAttribute("items", items);
 			model.addAttribute("itemtwo", itemstwo);
+			model.addAttribute("oneSentenceList", oneSentenceList);
+		}}
 		return "/contents";
 	}
 	
