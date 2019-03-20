@@ -98,9 +98,11 @@ public class SearchController {
 	public String getContentsBook(HttpServletRequest request, Model model,@PathVariable("isbn") String isbn) throws Exception {
 		
 		List<SearchModel> items = service.getSearchModel(isbn);
+		List<SearchModel> itemstwo = servicetwo.getSearchModel(isbn);
 
-		if (items.size() != 0) 
+		if (items.size() != 0 || itemstwo.size() != 0)
 			model.addAttribute("items", items);
+			model.addAttribute("itemtwo", itemstwo);
 		return "/contents";
 	}
 	

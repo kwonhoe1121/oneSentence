@@ -71,9 +71,6 @@
 											<input type="text" name="bookId" value="${b.isbn }" hidden="true">
 
 						
-										 	<a href="../contentsPage/${b.isbn }" id="books">
-											<input type="text" name="bookId" value="${b.isbn }" >
-
 	   										<img src="${b.cover}" 
 	   										alt="book_1" class="img-fluid img-rounded book_img" name="books" >
 	   								
@@ -113,13 +110,11 @@
 					id="MultiCarousel" data-interval="1000">
 					<div class="MultiCarousel-inner">
 					 <c:forEach items="${itemtwo}" var="b2">
-					 	<c:catch var="text">
-					 	<c:set var="textValue" value="${b2.pubDate }"/>
-					 	<c:out value="${fn:substring(textValue,3,8)}"/>
-					
+			
 						
 					 	
-					 <a href="a href="../contentsPage/${b.isbn }" id="books"">
+					 <a href="../contentsPage/${b2.isbn }" id="books">
+					 <input type="text" name="bookId" value="${b2.isbn }" hidden="true">
 						<div class="item">
 						
 							<div class="pad15">
@@ -136,7 +131,7 @@
 							</div>
 						</div>
 						</a>
-						</c:catch>
+				
 					</c:forEach>
 					
 					</div>
