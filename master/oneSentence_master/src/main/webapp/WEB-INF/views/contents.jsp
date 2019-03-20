@@ -84,7 +84,7 @@
 					</form>
 					</li>
 				</ul>
-				</c:forEach>
+
 			</div>
 		</div>
 	</header>
@@ -99,16 +99,15 @@
 					href="#" class="a1"><b>더보기</b></a>
 				<hr>
 				<ul>
-					<li>채식주의자</li>
-					<li>한강</li>
-					<li>2007/ 대한민국/ 247p</li>
+					<li>${items.title}</li>
+					<li>${items.author}</li>
+					<li>${items.pubDate}/ ${items.itemPage}p</li>
 					<br>
 					<li>
-						<p>2016년 맨부커상(Man Booker International Prize) 수상작. 10년 전 작가
-							한강은 '내 여자의 열매'라는 단편소설을 썼다. 한 여자가 아파트 베란다에서 식물이 되고, 함께 살던 남자는 그녀를
-							화분에 심는 이야기였다. '채식주의자'는 언젠가 그 변주를 쓰고 싶다는 바람에서...</p>
+						<p>${items.description}...</p>
 					</li>
 				</ul>
+					</c:forEach>			
 				<hr>
 				&nbsp;&nbsp;&nbsp;<span style="font-size: 1rem">목차</span><a href="#"
 					class="a1"><b>더보기</b></a>
