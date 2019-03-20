@@ -45,6 +45,8 @@
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
+
+
 </style>
 </head>
 
@@ -104,7 +106,7 @@
 					<li>${items.pubDate}/ ${items.itemPage}p</li>
 					<br>
 					<li>
-						<p>${items.description}...</p>
+						<p id="description">${items.description}...</p>
 					</li>
 				</ul>
 					</c:forEach>			
@@ -178,6 +180,14 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+
+	<script>
+		$('#description img').hide();
+		var $html = $('#description').html();
+		var indexOfbr = $html.indexOf('<br>');
+		var substring =$html.substring(indexOfbr+4);
+		$('#description').html(substring);			
+	</script>
 </body>
 
 </html>
