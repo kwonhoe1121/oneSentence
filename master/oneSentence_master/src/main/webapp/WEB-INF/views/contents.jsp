@@ -60,11 +60,11 @@
 				width="100%" height="300rem" style="filter: blur(5px)">
 		</div>
 		<div id="d2" class="container">
+		<c:forEach items="${items}" var="items">
 			<img id="photo"
-				src="${pageContext.request.contextPath}/resources/eunseon/contents/img/contents.jpg"
+				src="${items.cover}"
 				width="150rem" height="200rem">
-			<div id="d" class="bg-white">
-			<c:forEach items="${items}" var="items">
+			<div id="d" class="bg-white">			
 				<ul>
 					<li><b style="font-size: 1.2rem">${items.title}</b></li>
 					<li>${items.author}</li>
