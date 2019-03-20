@@ -9,5 +9,7 @@ public interface IRegisterService {
 	public boolean isUser(String email);
 
 	public int withdrawUser(UserVo user);
+	
+	public int cutFollwing(UserVo user);
 
 }

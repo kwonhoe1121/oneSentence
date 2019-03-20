@@ -27,8 +27,12 @@ public class RegisterDao implements IRegisterDao {
 
 	@Override
 	public int updateEmailStatus(UserVo user) {
-		sqlSession.update(namespace + ".updateEmailStatus", user);
-		return 0;
+		return sqlSession.update(namespace + ".updateEmailStatus", user);
+	}
+
+	@Override
+	public int deleteFollowingRelation(UserVo user) {
+		return sqlSession.update(namespace + ".deleteFollowingRelation", user);
 	}
 
 }
