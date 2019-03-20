@@ -20,17 +20,17 @@
 	a:visited { color: black; text-decoration: none;}
 	a:hover { color: black; text-decoration: none;}
 </style>
-
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 
 
-	<i class="fa fa-book fa-3x" aria-hidden="true"></i>
-	<h1>도서 더보기</h1>
+	<i class="fa fa-book fa-2x" aria-hidden="true"></i>
+	<h2>도서 더보기</h2>
 	<hr>
-	<div class="bookmore" id="bookscroll" hidden="true">
+	<div class="bookmore" id="bookscroll" >
 	<c:forEach items="${items}" var="b">
-		<div class="book_div">
+		<div class="book_div" hideen="true">
 			<a href="../contentsPage/${b.isbn }" id="books">
 			<img
 				src="${b.cover}"
@@ -48,18 +48,18 @@
 	</div>
 	<script>
 
-	var bookmore = document.getElementsByClassName('bookmore');
-	bookmore[0].hidden = false;
-	bookmore[1].hidden = false;
-	bookmore[2].hidden = false;
-	bookmore[3].hidden = false;
-	bookmore[4].hidden = false;
-	bookmore[5].hidden = false;
+	var book_div = document.getElementsByClassName('book_div');
+	book_div[0].hidden = false;
+	book_div[1].hidden = false;
+	book_div[2].hidden = false;
+	book_div[3].hidden = false;
+	book_div[4].hidden = false;
+	book_div[5].hidden = false;
 	
 	var b =5;
-	$(window).scroll(function(){
+	$(window).scroll(function() {
 		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-			bookmore[++b].hidden=false;
+			book_div[++b].hidden=false;
 		}
 		
 		
@@ -67,10 +67,6 @@
 	
 	</script>
 	
-	
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/resources/dahye/searchMore/js/searchmore.js"></script>
 
 </body>
 </html>
