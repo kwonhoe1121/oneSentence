@@ -22,7 +22,7 @@ import com.one.sentence.search.model.SearchModel;
 public class SearchAladdinService {
 	
 	private static final String BASE_URL = "http://www.aladdin.co.kr/ttb/api/ItemSearch.aspx?";
-
+	//http://www.aladin.co.kr/ttb/api/ItemLookUp.aspx?ttbkey=[TTBKey]&itemIdType=ISBN&ItemId=[도서의ISBN]&output=xml&Version=20131101&OptResult=ebookList,usedList,reviewList
 	public static String GetUrl(String searchWord) throws Exception {
 		Map<String,String> hm = new HashMap<String,String>();
 		hm.put("ttbkey", "ttbshin_oi1259001");
@@ -64,6 +64,7 @@ class SearchServiceHandlerone extends DefaultHandler {
 	private SearchModel currentItem;
 	private boolean inItemElement = false;
 	private String tempValue;
+	private int tempValue2;
 
 	public SearchServiceHandlerone( ){
 		Items = new ArrayList<SearchModel>();
@@ -94,6 +95,9 @@ class SearchServiceHandlerone extends DefaultHandler {
 			tempValue = "";
 		}
 		else if (localName.equals("description")) {
+			tempValue = "";
+		}
+		else if (localName.equals("itemPage")) {
 			tempValue = "";
 		}
 
@@ -133,6 +137,9 @@ class SearchServiceHandlerone extends DefaultHandler {
 			}
 			else if (localName.equals("description")) {
 				currentItem.description = tempValue;
+			}
+			else if (localName.equals("itemPage")) {
+				currentItem.itemPage = tempValue2;
 			}
 
 			

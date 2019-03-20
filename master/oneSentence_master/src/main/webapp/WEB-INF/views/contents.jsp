@@ -55,16 +55,17 @@
 	<!-- Header -->
 	<header class="bg-white">
 		<div>
+<c:forEach items="${items}" var="items">
 			<img
-				src="${pageContext.request.contextPath}/resources/eunseon/contents/img/contents.jpg"
-				width="100%" height="300rem" style="filter: blur(5px)">
+				src="${items.cover}" width="100%" height="300rem" style="filter: blur(5px)">
 		</div>
 		<div id="d2" class="container">
-		<c:forEach items="${items}" var="items">
+
 			<img id="photo"
 				src="${items.cover}"
 				width="150rem" height="200rem">
-			<div id="d" class="bg-white">			
+			<div id="d" class="bg-white">
+			
 				<ul>
 					<li><b style="font-size: 1.2rem">${items.title}</b></li>
 					<li>${items.author}</li>

@@ -10,7 +10,7 @@ public class SearchModel {
 	public String categoryName;
 	public String pubDate;
 	public String description;
-
+	public int itemPage;
 	
 	
 	public String getCover() {
@@ -61,13 +61,19 @@ public class SearchModel {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	public int getItemPage() {
+		return itemPage;
+	}
+	public void setItemPage(int itemPage) {
+		this.itemPage = itemPage;
+	}
 	@Override
 	public String toString() {
 		return "SearchModel [cover=" + cover + ", title=" + title + ", publisher=" + publisher + ", author=" + author
 				+ ", isbn=" + isbn + ", categoryName=" + categoryName + ", pubDate=" + pubDate + ", description="
-				+ description + "]";
+				+ description + ", itemPage=" + itemPage + "]";
 	}
+	
 	
 
 	
