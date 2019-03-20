@@ -135,4 +135,10 @@ public class OnesentenceService implements IOnesentenceService {
 		return dao.selectOnesentenceListByIsbnWithoutlike(isbn);
 	}
 
+	@Override
+	public List<ShowOnesentence> showOnesentenceListByHashtag(String hashtag) {
+		// TODO Auto-generated method stub
+		return dao.selectOnesentenceListByHashtag(hashtag);
+	}
+
 }

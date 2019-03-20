@@ -148,6 +148,11 @@ public class OnesentenceDao implements IOnesentenceDao{
 		return sqlSession.selectList(namespace+".selectOnesentenceListByIsbnWithoutlike", isbn);
 	}
 
+	@Override
+	public List<ShowOnesentence> selectOnesentenceListByHashtag(String hashtag) {
+		return sqlSession.selectList(namespace+".selectOnesentenceListByHashtag", hashtag);
+	}
+
 	
 
 	
