@@ -180,7 +180,6 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
 	<script>
 		$('#description img').hide();
 		var $html = $('#description').html();
