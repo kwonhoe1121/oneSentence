@@ -135,7 +135,9 @@ $().ready(function(d, s, id) {
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
 	
-		showLikedSentenceStatus();
+		<c:if test="${User ne null}">
+			showLikedSentenceStatus();
+		</c:if>
 	
 		var href = window.location.href;
 		console.log(href);
@@ -184,6 +186,7 @@ $().ready(function(d, s, id) {
 				window.open(url, "한문장수정하기", popupOption);
 			}
 			/* click like button  */
+			<c:if test="${User ne null}">
 			$(".like").on("click", function (data){
 				
 				/* alert("like button click!!"); */
@@ -235,6 +238,7 @@ $().ready(function(d, s, id) {
 			    })
 				
 			});
+			</c:if>
 			
 			/* like status in oneSentence */
 			function showLikedSentenceStatus() {
