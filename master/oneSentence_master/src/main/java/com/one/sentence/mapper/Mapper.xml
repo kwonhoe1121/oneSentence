@@ -169,21 +169,9 @@
 		select o.userIdx,u.userName,
 		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
 		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
-		b, user_info u,liketo l
-		where b.isbn=o.isbn and u.userIdx=o.userIdx  and o.isbn =#{isbn} and o.oneSentenceIdx=l.oneSentenceIdx
-		 group by o.oneSentenceIdx order by count(l.oneSentenceIdx) desc
-	</select>
-	<select id="selectOnesentenceListByIsbnWithoutlike"
-		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
-		select o.userIdx,u.userName,
-		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,o.isbn,
-		b.bookTitle, b.author, b.publisher,count(l.oneSentenceIdx) from one_sentence o, book b,
-		user_info u,liketo l
-		where b.isbn=o.isbn and u.userIdx=o.userIdx and
-		 o.oneSentenceIdx not in(select oneSentenceIdx from liketo)
-		and o.isbn=#{isbn}
-		group by o.oneSentenceIdx order by
-		o.oneSentenceRegisteredTime desc
+		b, user_info u
+		where b.isbn=o.isbn and u.userIdx=o.userIdx  and o.isbn =#{isbn} 
+		 group by o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc
 	</select>
 	
 	<select id="selectOnesentenceListByuserIdx"
@@ -257,31 +245,41 @@
 		select o.userIdx,u.userName,
 		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,o.isbn,
 		b.bookTitle, b.author, b.publisher from one_sentence o, book b,
-		user_info u,liketo l
-		where b.isbn=o.isbn and u.userIdx=o.userIdx and
-		l.oneSentenceIdx=o.oneSentenceIdx
+		user_info u
+		where b.isbn=o.isbn and u.userIdx=o.userIdx
 		and u.userIdx=#{userIdx} and
 		o.isbn=#{isbn}
 		group by o.oneSentenceIdx order by
-		count(l.oneSentenceIdx) desc limit 0,1;
+		 o.oneSentenceRegisteredTime desc limit 0,1;
 	</select>
 	<select id="selectOnesentenceByoneSentenceIdxAndIsbnFollowing"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
 		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
 		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
-		b, user_info u,liketo l
-		where b.isbn=o.isbn and u.userIdx=o.userIdx and
-		l.oneSentenceIdx=o.oneSentenceIdx
+		b, user_info u
+		where b.isbn=o.isbn and u.userIdx=o.userIdx
 		and u.userIdx in(select
 		followingUserIdx from following where
 		userIdx=#{userIdx})
 		and
 		o.isbn=#{isbn}
 		group by o.oneSentenceIdx order by
-		count(l.oneSentenceIdx) desc limit 0,1
+		o.oneSentenceRegisteredTime desc limit 0,1
 	</select>
 	<select id="selectOnesentenceListByoneSentenceIdxAndIsbnOther"
+		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
+		select o.userIdx,u.userName,
+		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
+		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
+		b, user_info u
+		where b.isbn=o.isbn and u.userIdx=o.userIdx
+		 and u.userIdx not
+		in(#{userIdx1},#{userIdx2}) and o.isbn=#{isbn}
+		group by
+		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc limit 0,5;
+	</select>
+	<select id="selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
 		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
@@ -289,12 +287,10 @@
 		b, user_info u,liketo l
 		where b.isbn=o.isbn and u.userIdx=o.userIdx and
 		l.oneSentenceIdx=o.oneSentenceIdx
-		and u.userIdx not
-		in(#{userIdx1},#{userIdx2}) and o.isbn=#{isbn})
+		and u.userIdx !=#{userIdx} and o.isbn=#{isbn}
 		group by
-		o.oneSentenceIdx order by count(l.oneSentenceIdx) desc limit 0,5;
+		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc limit 0,5;
 	</select>
-
 	<update id="updateOnesentence"
 		parameterType="com.one.sentence.common.vo.OneSentence">
 		update one_sentence

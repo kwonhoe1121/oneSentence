@@ -12,7 +12,6 @@ public interface IOnesentenceService {
 	public List<ShowOnesentence> showOneSentenceList();
 	public List<ShowOnesentence> showOneSentenceListByuserIdx(int userIdx);
 	public List<ShowOnesentence> showOneSentenceListByIsbn(String isbn);
-	public List<ShowOnesentence> showOneSentenceListByIsbnWithoutlike(String isbn);
 	public List<ShowOnesentence> showOneSentenceListForLiketo(int userIdx); 
 	public List<ShowOnesentence> showOnesentenceListByHashtag(String hashtag);
 	public ShowOnesentence showOneSentenceByoneSentenceIdx(int oneSentenceIdx);
@@ -21,7 +20,9 @@ public interface IOnesentenceService {
 	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, String isbn);
 	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnFollowing(int userIdx, String isbn);
 	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1,int userIdx2, String isbn);
+	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing(int userIdx,String isbn);
 	
+	 
 	public void changeOneSentence(int oneSentenceIdx, String oneSentence, String page, String isbn);
 	public int removeOneSentence(int oneSentenceIdx);
 	

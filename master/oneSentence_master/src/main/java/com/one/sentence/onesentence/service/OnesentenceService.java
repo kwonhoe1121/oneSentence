@@ -130,15 +130,18 @@ public class OnesentenceService implements IOnesentenceService {
 		return dao.selectOnesentenceListByIsbn(isbn);
 	}
 
-	@Override
-	public List<ShowOnesentence> showOneSentenceListByIsbnWithoutlike(String isbn) {
-		return dao.selectOnesentenceListByIsbnWithoutlike(isbn);
-	}
+
 
 	@Override
 	public List<ShowOnesentence> showOnesentenceListByHashtag(String hashtag) {
 		// TODO Auto-generated method stub
 		return dao.selectOnesentenceListByHashtag(hashtag);
+	}
+
+	@Override
+	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing(int userIdx, String isbn) {
+		// TODO Auto-generated method stub
+		return dao.selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing(userIdx, isbn);
 	}
 
 }
