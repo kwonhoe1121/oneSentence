@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@include file="/WEB-INF/views/include/mainHeader.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -113,7 +114,7 @@ $().ready(function(d, s, id) {
 				<ul>
 					<li>${items.title}</li>
 					<li>${items.author}</li>
-					<li>${items.pubDate}/ <c:forEach items="${items3}" var="items3">${items3.itemPage}</c:forEach>p</li>
+					<li><c:out value="${fn:substring(items.pubDate,5,16)}"/>/ <c:forEach items="${items3}" var="items3">${items3.itemPage}</c:forEach>p</li>
 					<br>
 					<li>
 						<p id="description">${items.description}...</p>
@@ -122,7 +123,12 @@ $().ready(function(d, s, id) {
 								
 				<hr>
 				&nbsp;&nbsp;&nbsp;<span style="font-size: 1rem">목차</span><a href="#"
-					class="a1"><b>더보기</b></a>
+					class="a1">
+					<b>더보기</b></a>
+				<hr>
+				<ul>
+						<li><c:forEach items="${items3}" var="items3">${items3.toc}</c:forEach></li>
+					</ul>
 				<hr>
 				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> 
 				<a href="${pageContext.request.contextPath}/onesentence/list/contents/${items.isbn}"
