@@ -245,7 +245,7 @@ $().ready(function(d, s, id) {
 					<span
 						style="float: right; padding-right: 2rem; color: darkgray">${onesentence.bookTitle},
 						${onesentence.author}, ${onesentence.publisher},
-						${onesentence.page} 에서..
+						p.${onesentence.page} 에서..
 					</span><br>
 					<hr>
 					<span class="hashtag" style="padding-left:2rem">${onesentence.hashtag}</span> <span
@@ -253,8 +253,7 @@ $().ready(function(d, s, id) {
 							${onesentence.likeTotal}</i></span>
 				</div>
 			</c:forEach>
-			</div>
-	
+			</div>	
 	</c:when>
 	<c:otherwise>
 	<h3 class="onesentenfail">한문장 조회결과가 없습니다.</h3>
