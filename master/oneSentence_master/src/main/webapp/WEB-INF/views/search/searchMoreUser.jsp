@@ -28,27 +28,8 @@
 	<header style="height:60px"></header>
 	
 	<h1>사용자</h1>
-	<hr>
-	
-<%-- 	<c:forEach items="${useritems }" var="userSearch">
-	<div class="user_search">
-		<div class="line">
-		 	<div class="imgline">
-			<img
-				src="<%=request.getContextPath()%>/resources/dahye/search/img/userimgpng.png"
-				alt="user_1"
-				class="<%=request.getContextPath()%>/resources/dahye/search/img-circle user_img">
-			</div>
-			<span class="usertext">${userSearch }</span>
-			 
-			 
-		</div>
-	</div>
-	<hr>
-	</c:forEach> --%>
-
-	
-	 	<c:forEach items="${userInfo }" var="userSearch">
+	<hr>	
+	 <c:forEach items="${userInfo }" var="userSearch">
 	<div class="user_search">
 		<div class="line">
 		 	<div class="imgline">

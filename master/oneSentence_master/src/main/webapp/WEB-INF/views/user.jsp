@@ -49,7 +49,7 @@
 	<%-- <%@include file="include/mainHeader2.jsp"%> --%>
 	
 	<div id="header">
-		<a href="../indexPage"><i class="fa fa-home fa-2x"
+		<a href="${pageContext.request.contextPath}"><i class="fa fa-home fa-2x"
 			aria-hidden="true"></i></a>
 	</div>
 
@@ -87,11 +87,11 @@
 				</div>
 
 				<h4 class="card-header" id="part3">
-					<a href="preference/${uservo.userIdx }">취향분석(링크)</a>
+					<a href="${pageContext.request.contextPath}/userpage/preference/${uservo.userIdx }">취향분석(링크)</a>
 				</h4>
 				<div class="card-header" id="part4">
 					<h4 class="bold">
-						<a href="../followingnews/news/${uservo.userIdx }">친구소식(링크)</a>
+						<a href="${pageContext.request.contextPath}/followingnews/news/${uservo.userIdx }">친구소식(링크)</a>
 					</h4>
 					<h5>팔로우 한 친구들의 소식을 받아볼 수 있습니다.</h5>
 				</div>
