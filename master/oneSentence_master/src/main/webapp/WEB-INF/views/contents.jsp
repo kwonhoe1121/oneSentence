@@ -122,13 +122,15 @@ $().ready(function(d, s, id) {
 				</ul>
 								
 				<hr>
-				&nbsp;&nbsp;&nbsp;<span style="font-size: 1rem">목차</span><a href="#"
+				&nbsp;&nbsp;&nbsp;<span style= "cursor:pointer;" "font-size: 1rem;" id="toc">목차</span><a href="#"
 					class="a1">
 					<b>더보기</b></a>
+				<div class="tocul" >
 				<hr>
 				<ul>
 						<li><c:forEach items="${items3}" var="items3">${items3.toc}</c:forEach></li>
-					</ul>
+				</ul>
+				</div>
 				<hr>
 				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> 
 				<a href="${pageContext.request.contextPath}/onesentence/list/contents/${items.isbn}"
@@ -213,6 +215,15 @@ $().ready(function(d, s, id) {
 <script
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
+		$('#toc').click(function(){
+			$('.tocul').toggle('slow');
+			
+			
+			
+		})
+		
+	
+	
 		$('#description img').hide();
 		var $html = $('#description').html();
 		var indexOfbr = $html.indexOf('<br>');
