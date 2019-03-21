@@ -20,8 +20,10 @@ import com.one.sentence.common.vo.UserVo;
 import com.one.sentence.onesentence.model.ShowOnesentence;
 import com.one.sentence.onesentence.service.OnesentenceService;
 import com.one.sentence.search.model.SearchModel;
+import com.one.sentence.search.model.TestModel;
 import com.one.sentence.search.service.SearchAladdinService;
 import com.one.sentence.search.service.SearchAladdinService2;
+import com.one.sentence.search.service.SearchBookPageService;
 import com.one.sentence.search.service.SearchHashtagService;
 import com.one.sentence.search.service.SearchUserService;
 
@@ -43,6 +45,12 @@ public class SearchController {
 
 	@Inject
 	private OnesentenceService oneService;
+	
+	
+	@Autowired
+	private SearchBookPageService service3;
+	
+	
 	
 	@RequestMapping(value = "/search/query", method = RequestMethod.GET)
 	public String getQuery(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
@@ -126,6 +134,9 @@ public class SearchController {
 		List<SearchModel> items = service.getSearchModel(isbn);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(isbn);
 		List<ShowOnesentence> oneSentenceList = new ArrayList<ShowOnesentence>();
+		
+		List<TestModel> items3 = service3.getTestModel(isbn);
+		
 		UserVo user = (UserVo) session.getAttribute("User");
 		ShowOnesentence sentence= new ShowOnesentence();
 		if(user!=null) {
@@ -156,11 +167,13 @@ public class SearchController {
 			sentence.setHashtag(hash);
 			hash = "";
 		}
-		if (items.size() != 0 || itemstwo.size() != 0||oneSentenceList.size()!=0) {
+		if (items.size() != 0 || itemstwo.size() != 0||oneSentenceList.size()!=0 || items3.size() != 0) {
 			model.addAttribute("items", items);
 			model.addAttribute("itemtwo", itemstwo);
 			model.addAttribute("oneSentenceList", oneSentenceList);
-		}}
+			model.addAttribute("items3", items3);
+		}System.out.println("items3"+items3);}
+		
 		return "/contents";
 	}
 	

@@ -86,9 +86,9 @@
 		<input
 			type="password" id="checkNewPassword" name="checkNewPassword" class="form-control" placeholder="비밀번호 확인"><br>
 			
-		<label for="userName" class="sr-only">userIntroduction</label> 
+		<label for="userIntroduction" class="sr-only">userIntroduction</label> 
 		<input
-			type="text" id="userName" name="userName" class="form-control"
+			type="text" id="userIntroduction" name="userIntroduction" class="form-control"
 			value="${user_info.userIntroduction}" ><br>	
 			<br><br>
 		

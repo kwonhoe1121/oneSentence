@@ -1,10 +1,4 @@
 $().ready(function () {
-	var form = document.getElementsByTagName('form')
-	form[0].elements.author.hidden=true;
-	form[0].elements.isbn.hidden=true;
-	form[0].elements.bookTitle.hidden=true;
-	form[0].elements.publisher.hidden=true;
-	form[0].elements.bookGenre.hidden=true;
 	$('.my').hide();
     $('.all').hide();
 

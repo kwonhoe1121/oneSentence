@@ -84,12 +84,12 @@ $().ready(function(d, s, id) {
 					<li>${items.publisher}</li>
 					<hr>
 					<li>
-					<form action="./onesentence/insertForm" method="POST">
-						<input type="text" name="isbn" value="${items.isbn}">
-						<input type="text" name="author" value="${items.author}">
-						<input type="text" name="publisher" value="${items.publisher}">
-						<input type="text" name="bookTitle" value="${items.title}">
-						<input type="text" name="bookGenre" value="${items.categoryName}">
+					<form action="${pageContext.request.contextPath}/onesentence/insertForm" method="POST">
+						<input type="text" name="isbn" value="${items.isbn}" hidden="true">
+						<input type="text" name="author" value="${items.author}" hidden="true">
+						<input type="text" name="publisher" value="${items.publisher}" hidden="true">
+						<input type="text" name="bookTitle" value="${items.title}" hidden="true">
+						<input type="text" name="bookGenre" value="${items.categoryName}" hidden="true">
 					<button id="btn1" type="submit">
 							<b style="color: white"> + 코멘트작성&nbsp;&nabla;</b>
 					</button>
@@ -113,7 +113,7 @@ $().ready(function(d, s, id) {
 				<ul>
 					<li>${items.title}</li>
 					<li>${items.author}</li>
-					<li>${items.pubDate}/ ${items.itemPage}p</li>
+					<li>${items.pubDate}/ <c:forEach items="${items3}" var="items3">${items3.itemPage}</c:forEach>p</li>
 					<br>
 					<li>
 						<p id="description">${items.description}...</p>
@@ -154,7 +154,7 @@ $().ready(function(d, s, id) {
 							</div>
 							<div class="my">
 								<a href="#" id="updateBtn"
-									onclick="updateClick(${onesentence.oneSentenceIdx})"><i
+									onclick ="updateClick(${onesentence.oneSentenceIdx})"><i
 									class="fa fa-reply icon"></i></a>
 							</div>
 							<div class="my">
@@ -168,7 +168,7 @@ $().ready(function(d, s, id) {
 							style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br> <span
 							style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>${onesentence.bookTitle},
 								${onesentence.author}, ${onesentence.publisher},
-						${onesentence.page} 에서..  </i></span><br>
+						p.${onesentence.page} 에서..  </i></span><br>
 						<hr>
 						<span
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">${onesentence.hashtag}</span> <span

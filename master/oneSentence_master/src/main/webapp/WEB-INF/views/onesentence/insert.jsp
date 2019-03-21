@@ -78,7 +78,7 @@ font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 
 <body class="text-center">
 	<form class="form-signin"
-		action="./insert" method="POST">
+		action="${pageContext.request.contextPath}/onesentence/insert" method="POST">
 		<img class="mb-4"
 			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72">
@@ -119,7 +119,7 @@ font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script> -->
 <script>
 $().ready(function(){
-$('.hidden').hide();
+/* $('.hidden').hide(); */
 	
 	
 $('#findAtPhoto').on('click',function(){
