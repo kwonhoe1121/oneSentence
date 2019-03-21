@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@include file="/WEB-INF/views/include/mainHeader.jsp"%>
+<%@include file="/WEB-INF/views/include/mainHeader.jsp"%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
