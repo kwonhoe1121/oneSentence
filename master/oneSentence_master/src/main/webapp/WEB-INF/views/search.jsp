@@ -47,6 +47,9 @@
 	a:link { color: black; text-decoration: none;}
 	a:visited { color: black; text-decoration: none;}
 	a:hover { color: black; text-decoration: none;}
+	.pad15 p{
+		font-size:1rem;
+	}
 </style>
 <script>
 $().ready(function(d, s, id) {
@@ -68,8 +71,8 @@ $().ready(function(d, s, id) {
 	<c:when test="${fn:length(items) > 0 }">
 
 	<div class="all2">
-		<h2 class="h2">
-			<strong>통합 검색 결과</strong><a href="${pageContext.request.contextPath}/search/searchMore?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
+		<h2 class="h2" style="font-size: 1.5rem;">
+			<strong>통합 검색 결과</strong><a href="${pageContext.request.contextPath}/search/searchMore?query=${param.query}"><span class="more" style="font-size: 1rem;"><strong>더보기</strong></span></a>
 		</h2>
 
 		<div class="container">
@@ -82,20 +85,20 @@ $().ready(function(d, s, id) {
 					 
 						<div class="item">
 
-							<div class="pad15" id="bookdiv" style="height:26rem;overflow:scroll">
+							<div class="pad15" id="bookdiv" style="height:20rem;overflow:scroll">
 										 	<a href="${pageContext.request.contextPath}/contentsPage/${b.isbn }" id="books">
 											<input type="text" name="bookId" value="${b.isbn }" hidden="true">
 
 						
 	   										<img src="${b.cover}" 
-	   										alt="book_1" class="img-fluid img-rounded book_img" name="books" style="width:8rem;height:12rem">
+	   										alt="book_1" class="img-fluid img-rounded book_img" name="books" style="width:6rem;height:9rem;margin-bottom: 0.5rem;">
 	   										
-		   									<p class="ptitle" name="books">
+		   									<p class="ptitle" name="books" class="bookfont">
 											<strong>${b.title }</strong>
 											</p>
-											<p class="ptext_01" name="books">${b.author }</p>
-											<p class="ptext_01" name="books">${b.publisher }</p>
-											<p class="ptext_01" name="books"><c:out value="${fn:substring(b.pubDate,5,16)}"/></p>
+											<p class="ptext_01" name="books" class="bookfont">${b.author }</p>
+											<p class="ptext_01" name="books" class="bookfont">${b.publisher }</p>
+											<p class="ptext_01" name="books" class="bookfont"><c:out value="${fn:substring(b.pubDate,5,16)}"/></p>
 					
 	
 							</div>
@@ -117,8 +120,8 @@ $().ready(function(d, s, id) {
 	<hr>
 
 	<div class="book_lank">
-		<h2 class="h2">
-			<strong>인기순</strong><a href="${pageContext.request.contextPath}/search/searchMoreBest?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
+		<h2 class="h2" style="font-size: 1.5rem;">
+			<strong>인기순</strong><a href="${pageContext.request.contextPath}/search/searchMoreBest?query=${param.query}"><span class="more" style="font-size: 1rem;"><strong>더보기</strong></span></a>
 		</h2>
 		<div class="container">
 			<div class="row">
@@ -133,16 +136,16 @@ $().ready(function(d, s, id) {
 					 <input type="text" name="bookId" value="${b2.isbn }" hidden="true">
 						<div class="item">
 						
-							<div class="pad15" style="height:26rem;color:black;overflow:scroll;">
+							<div class="pad15" style="height:20rem;color:black;overflow:scroll;">
 								<img
 									src="${b2.cover }"
-									alt="book_1" class="img-fluid img-rounded book_img" style="width:8rem;height:12rem">
-								<p class="ptitle">
+									alt="book_1" class="img-fluid img-rounded book_img" style="width:6rem;height:9rem;margin-bottom: 0.5rem;">
+								<p class="ptitle" class="bookfont">
 									<strong>${b2.title }</strong>
 								</p>
-								<p class="ptext_01">${b2.author }</p>
-								<p class="ptext_01">${b2.publisher }</p>
-								<p class="ptext_01"><c:out value="${fn:substring(b2.pubDate,5,16)}"/></p>
+								<p class="ptext_01" class="bookfont">${b2.author }</p>
+								<p class="ptext_01" class="bookfont">${b2.publisher }</p>
+								<p class="ptext_01" class="bookfont"><c:out value="${fn:substring(b2.pubDate,5,16)}"/></p>
 								
 							</div>
 						</div>
@@ -170,8 +173,8 @@ $().ready(function(d, s, id) {
 
 	<c:when test="${fn:length(useritems) > 0 }">
 	<div class="user_search">
-		<h2 class="h2">
-			<strong>사용자</strong><a href="${pageContext.request.contextPath}/search/searchMoreUser?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
+		<h2 class="h2" style="font-size: 1.5rem;">
+			<strong>사용자</strong><a href="${pageContext.request.contextPath}/search/searchMoreUser?query=${param.query}"><span class="more" style="font-size: 1rem;"><strong>더보기</strong></span></a>
 		</h2>
 		
 		<div class="line">
@@ -189,7 +192,7 @@ $().ready(function(d, s, id) {
 			 </div>
 			 </c:when>
 			 <c:otherwise>
-			 		<h3>사용자 조회된 결과가 없습니다.</h3>
+			 		<h3 style="font-size: 1.5rem;">사용자 조회된 결과가 없습니다.</h3>
 			 </c:otherwise>
 			</c:choose> 
 		</div>
@@ -206,11 +209,11 @@ $().ready(function(d, s, id) {
 <div class="container">
 		<!-- Post Content Column -->
 		
-	<h2 class="h2">
-			<strong>한문장 검색결과</strong><a href=""><span class="more"><strong>더보기</strong></span></a>
+	<h2 class="h2" style="font-size: 1.5rem;">
+			<strong>한문장 검색결과</strong><a href=""><span class="more" style="font-size: 1rem;"><strong>더보기</strong></span></a>
 		</h2>
 	<c:forEach items="${oneSentenceList}" var="onesentence" begin="0" end="4" step="1">
-				<div class="newdiv" style="background-color:#f6f5f4;border:1px solid lightgrey;font-size:1.5rem">
+				<div class="newdiv" style="background-color:#f6f5f4;border:1px solid lightgrey;">
 					<span style="color: darkgray; padding-right: 1rem"
 						class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>
 					<!--한문장번호-->
@@ -230,23 +233,24 @@ $().ready(function(d, s, id) {
 									class="fa fa-reply icon"></i></a>
 							</div>
 							<div class="my">
-								<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}"
+								<a href="${pageContext.request.contextPath}/onesentence/delete/${onesentence.oneSentenceIdx}"
 									id="deleteBtn"><i class="fa fa-remove icon"></i></a>
 							</div>
 
 						</div>
 					</center>
 					<span
-						style="padding-left: 2rem; font-size: 1rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
-					<span style="padding-left: 2rem; font-size: 2rem;">${onesentence.oneSentence}</span><br>
+						style="padding-left: 2rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
+					<span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br>
 					<span
-						style="float: right; padding-right: 2rem; font-size: 1.5rem; color: darkgray">${onesentence.bookTitle},
+						style="float: right; padding-right: 2rem; color: darkgray">${onesentence.bookTitle},
 						${onesentence.author}, ${onesentence.publisher},
 						p.${onesentence.page} 에서..
+
 					</span><br>
 					<hr>
-					<span class="hashtag" style="font-size:1.2rem;padding-left:2rem">${onesentence.hashtag}</span> <span
-						class="like"><i class="fa fa-heart-o" style="color:red;font-size:1.2rem">
+					<span class="hashtag" style="padding-left:2rem">${onesentence.hashtag}</span> <span
+						class="like"><i class="fa fa-heart-o" style="color:red;">
 							${onesentence.likeTotal}</i></span>
 				</div>
 			</c:forEach>
@@ -285,7 +289,7 @@ $().ready(function(d, s, id) {
 				})
 			}
 			function updateClick(idx) {
-				var url = ${pageContext.request.contextPath}+"/onesentence/popup/" + idx;
+				var url = "${pageContext.request.contextPath}/onesentence/popup/" + idx;
 				var popupOption = "width=700,height=600";
 				window.open(url, "한문장수정하기", popupOption);
 			}

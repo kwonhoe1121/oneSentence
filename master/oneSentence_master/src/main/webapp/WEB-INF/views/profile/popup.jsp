@@ -115,7 +115,7 @@ $().ready(function(){
 		if(!(checkNewPassword!==newPassword||userName==null||userName==="")){
 			var result = confirm("수정하시겠습니까?");
 			if(result){
-			$('form').prop('action','../update');
+			$('form').prop('action','${pageContext.request.contextPath}/profile/update');
 			}
 		}else{
 			alert("올바르지 않은 입력입니다.");

@@ -91,7 +91,7 @@ $().ready(function(d, s, id) {
 				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
 				 <span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}.</span><br> <span
 					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray">${onesentence.bookTitle},
-						${onesentence.author}, ${onesentence.publisher}, ${onesentence.page} 에서.. </i></span><br>
+						${onesentence.author}, p.${onesentence.page} 에서.. </i></span><br>
 				<hr>
 				<span class="hashtag">${onesentence.hashtag}</span> <span class="like"><i
 					class="fa fa-heart-o"> ${onesentence.likeTotal}</i></span>
@@ -124,7 +124,7 @@ $().ready(function(d, s, id) {
 	    	})
 	    };
 	    function updateClick(idx){
-	    	var url=${pageContext.request.contextPath}+"/onesentence/popup/"+idx;
+	    	var url="${pageContext.request.contextPath}/onesentence/popup/"+idx;
 	    	var popupOption="width=700,height=600";
 	    	window.open(url,"한문장수정하기",popupOption);	
 	    }
