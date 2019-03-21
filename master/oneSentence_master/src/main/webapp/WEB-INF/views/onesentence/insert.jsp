@@ -119,12 +119,12 @@ font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script> -->
 <script>
 $().ready(function(){
-/* $('.hidden').hide(); */
+ $('.hidden').hide();
 	
 	
 $('#findAtPhoto').on('click',function(){
 	console.log("insert By photo Click");
-	var url="../onesentence/popupForPhoto";
+	var url=${pageContext.request.contextPath}+"/onesentence/popupForPhoto";
 	var popupOption="width=600,height=600";
 	window.open(url,"사진으로 한문장찾기",popupOption);
 });

@@ -61,7 +61,7 @@
 
 <body class="text-center">
 	<form class="form-signin"
-		action="../update" method="POST">
+		action="${pageContext.request.contextPath}/profile/update" method="POST">
 		<img class="mb-4"
 			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72">
