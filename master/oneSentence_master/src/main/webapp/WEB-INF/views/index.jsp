@@ -36,6 +36,9 @@
 	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
+	
+<link rel="stylesheet prefetch"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <style>
 @font-face {
@@ -143,7 +146,7 @@
 							name="query">
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search" name="query"></i>
+								<i class="fa fa-search icon" name="query"></i>
 							</button>
 						</div>
 					</div>

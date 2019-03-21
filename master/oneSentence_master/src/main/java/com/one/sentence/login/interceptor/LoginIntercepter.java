@@ -17,7 +17,7 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
 			Object obj = session.getAttribute("User");
 			if (obj != null) {
 				System.out.println("로그인 상태");
-				response.sendRedirect(request.getContextPath() + "/indexPage");
+				response.sendRedirect(request.getContextPath() + "/");
 				return false;
 			}
 		}

@@ -2,15 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%-- <%@include file="include/mainHeader2.jsp"%> --%>
-<%@ page session="false"%>
+<%@include file="/WEB-INF/views/include/mainHeader.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>search page</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/dahye/search/css/bootstrap.css">
+<%-- <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/dahye/search/css/bootstrap.css"> --%>
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR"
 	rel="stylesheet">
 
@@ -63,6 +62,7 @@ $().ready(function(d, s, id) {
 <body>
 
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
+	<div style="height:60px"></div>
 	
 	<c:choose>
 	<c:when test="${fn:length(items) > 0 }">
