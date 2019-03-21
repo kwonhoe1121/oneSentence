@@ -27,7 +27,7 @@ public interface IOnesentenceDao {
 	public int deleteOnesentence(int oneSentenceIdx);
 	
 	public int insertBook(Book book);
-	public Book selectBookByisbn(String isbn);
+	public int selectBookByisbn(String isbn);
 	
 	public int upUserPoint(int userIdx);
 	public int downUserPoint(int userIdx);

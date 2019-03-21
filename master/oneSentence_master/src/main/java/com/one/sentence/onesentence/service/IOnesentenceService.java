@@ -26,7 +26,7 @@ public interface IOnesentenceService {
 	public int removeOneSentence(int oneSentenceIdx);
 	
 	public void makeBook(Book book); 
-	public Book showBookByisbn(String isbn);
+	public int showBookByisbn(String isbn);
 	
 	public void upUserPoint(int userIdx);
 	public void downUserPoint(int userIdx);
