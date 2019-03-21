@@ -52,6 +52,7 @@
 	float: right;
 	padding-right: 2rem;
 	font-size: 1rem;
+	padding-top:2rem;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -75,6 +76,7 @@ $().ready(function(d, s, id) {
 	<a href="${pageContext.request.contextPath}/onesentence/list/${userIdx}" id="list" class="alink"
 		style="color: #007bff"><i class="fa fa-search icon"> 작성한
 			문장보러가기</i></a>
+
 	<!-- Page Content -->
 	<div class="container">
 		<!-- Post Content Column -->
