@@ -84,12 +84,12 @@ $().ready(function(d, s, id) {
 					<li>${items.publisher}</li>
 					<hr>
 					<li>
-					<form action="./onesentence/insertForm" method="POST">
-						<input type="text" name="isbn" value="${items.isbn}">
-						<input type="text" name="author" value="${items.author}">
-						<input type="text" name="publisher" value="${items.publisher}">
-						<input type="text" name="bookTitle" value="${items.title}">
-						<input type="text" name="bookGenre" value="${items.categoryName}">
+					<form action="${pageContext.request.contextPath}/onesentence/insertForm" method="POST">
+						<input type="text" name="isbn" value="${items.isbn}" hidden="true">
+						<input type="text" name="author" value="${items.author}" hidden="true">
+						<input type="text" name="publisher" value="${items.publisher}" hidden="true">
+						<input type="text" name="bookTitle" value="${items.title}" hidden="true">
+						<input type="text" name="bookGenre" value="${items.categoryName}" hidden="true">
 					<button id="btn1" type="submit">
 							<b style="color: white"> + 코멘트작성&nbsp;&nabla;</b>
 					</button>
@@ -154,7 +154,7 @@ $().ready(function(d, s, id) {
 							</div>
 							<div class="my">
 								<a href="#" id="updateBtn"
-									onclick="updateClick(${onesentence.oneSentenceIdx})"><i
+									onclick ="updateClick(${onesentence.oneSentenceIdx})"><i
 									class="fa fa-reply icon"></i></a>
 							</div>
 							<div class="my">

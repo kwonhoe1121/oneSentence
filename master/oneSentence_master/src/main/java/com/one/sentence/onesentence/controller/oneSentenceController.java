@@ -30,17 +30,16 @@ public class oneSentenceController {
 
 	@RequestMapping(value = "/onesentence/insertForm")
 	public String getForm(HttpServletRequest request) {
-		return "onesentence/insert";
+		return "redirect:/onesentence/insert";
 
 	}
 
 	@RequestMapping(value = "/onesentence/insert", method = RequestMethod.POST)
 	public String insertOnesententce(HttpServletRequest request, @RequestParam("oneSentence") String oneSentence,
-			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx, @RequestParam("isbn") String isbn,
+			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx,
 			Model model) {
-
-		if (oneService.showBookByisbn(isbn) == null) {
-
+		String isbn = (String) request.getParameter("isbn");
+		if (oneService.showBookByisbn(isbn)==0) {
 			Book book = new Book();
 			String author = (String) request.getParameter("author");
 			String bookGenre = (String) request.getParameter("bookGenre");
@@ -106,7 +105,7 @@ public class oneSentenceController {
 
 		model.addAttribute("oneSentenceList", oneSentenceList);
 
-		return "sentenceList";
+		return "redirect:/sentenceList";
 	}
 
 	@RequestMapping("/onesentence/popupForPhoto")
@@ -156,7 +155,7 @@ public class oneSentenceController {
 
 		model.addAttribute("onesentence", onesentence);
 
-		return "onesentence/one";
+		return "redirect:/onesentence/one";
 
 	}
 
@@ -179,7 +178,7 @@ public class oneSentenceController {
 			hash = "";
 		}
 		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "sentenceList";
+		return "redirect:/sentenceList";
 	}
 
 	@RequestMapping("/onesentence/list/contents/{isbn}")
@@ -204,7 +203,7 @@ public class oneSentenceController {
 			hash = "";
 		}
 		model.addAttribute("oneSentenceList", oneSentenceList);}
-		return "sentenceList";
+		return "redirect:/sentenceList";
 
 	}
 	
@@ -229,7 +228,7 @@ public class oneSentenceController {
 		}
 		model.addAttribute("userIdx", idx);
 		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "sentenceList_preference";
+		return "redirect:/sentenceList_preference";
 
 	}
 
@@ -253,7 +252,7 @@ public class oneSentenceController {
 		}
 		model.addAttribute("userIdx", idx);
 		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "sentenceList_preference";
+		return "redirect:/sentenceList_preference";
 
 	}
 
@@ -305,6 +304,6 @@ public class oneSentenceController {
 			hash = "";
 		}
 		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "sentenceList";
+		return "redirect:/sentenceList";
 	}
 }
