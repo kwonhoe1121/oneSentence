@@ -391,6 +391,7 @@ $().ready(function(d, s, id) {
 				}
 				
 			})
+		}
 			
 			//controller에서 현재 로그인한 유저가 좋아요한 기록이 있는지 확인한다
 		
