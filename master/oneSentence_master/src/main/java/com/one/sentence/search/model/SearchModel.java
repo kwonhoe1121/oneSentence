@@ -10,7 +10,9 @@ public class SearchModel {
 	public String categoryName;
 	public String pubDate;
 	public String description;
-	public int startIndex;
+	public String fulldescription;
+	public String toc;
+	public int itemPage;
 	
 	
 	public String getCover() {
@@ -61,18 +63,34 @@ public class SearchModel {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getFulldescription() {
+		return fulldescription;
+	}
+	public void setFulldescription(String fulldescription) {
+		this.fulldescription = fulldescription;
+	}
+	public String getToc() {
+		return toc;
+	}
+	public void setToc(String toc) {
+		this.toc = toc;
+	}
 	public int getItemPage() {
-		return startIndex;
+		return itemPage;
 	}
-	public void setStartIndex(int startIndex) {
-		this.startIndex = startIndex;
+	public void setItemPage(int itemPage) {
+		this.itemPage = itemPage;
 	}
+	
 	@Override
 	public String toString() {
 		return "SearchModel [cover=" + cover + ", title=" + title + ", publisher=" + publisher + ", author=" + author
 				+ ", isbn=" + isbn + ", categoryName=" + categoryName + ", pubDate=" + pubDate + ", description="
-				+ description + ", startIndex=" + startIndex + "]";
+				+ description + ", fulldescription=" + fulldescription + ", toc=" + toc + ", itemPage=" + itemPage
+				+ "]";
 	}
+	
+	
 	
 	
 

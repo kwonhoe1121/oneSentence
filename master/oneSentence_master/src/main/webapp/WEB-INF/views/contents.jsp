@@ -113,7 +113,7 @@ $().ready(function(d, s, id) {
 				<ul>
 					<li>${items.title}</li>
 					<li>${items.author}</li>
-					<li>${items.pubDate}/ ${items.itemPage}p</li>
+					<li>${items.pubDate}/ <c:forEach items="${items3}" var="items3">${items3.itemPage}</c:forEach>p</li>
 					<br>
 					<li>
 						<p id="description">${items.description}...</p>
@@ -168,7 +168,7 @@ $().ready(function(d, s, id) {
 							style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br> <span
 							style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>${onesentence.bookTitle},
 								${onesentence.author}, ${onesentence.publisher},
-						${onesentence.page} 에서..  </i></span><br>
+						p.${onesentence.page} 에서..  </i></span><br>
 						<hr>
 						<span
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">${onesentence.hashtag}</span> <span
