@@ -230,7 +230,7 @@ $().ready(function(d, s, id) {
 									class="fa fa-reply icon"></i></a>
 							</div>
 							<div class="my">
-								<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}"
+								<a href="${pageContext.request.contextPath}/onesentence/delete/${onesentence.oneSentenceIdx}"
 									id="deleteBtn"><i class="fa fa-remove icon"></i></a>
 							</div>
 
@@ -286,7 +286,7 @@ $().ready(function(d, s, id) {
 				})
 			}
 			function updateClick(idx) {
-				var url = ${pageContext.request.contextPath}+"/onesentence/popup/" + idx;
+				var url = "${pageContext.request.contextPath}/onesentence/popup/" + idx;
 				var popupOption = "width=700,height=600";
 				window.open(url, "한문장수정하기", popupOption);
 			}

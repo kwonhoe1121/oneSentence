@@ -124,7 +124,7 @@ $().ready(function(){
 	
 $('#findAtPhoto').on('click',function(){
 	console.log("insert By photo Click");
-	var url=${pageContext.request.contextPath}+"/onesentence/popupForPhoto";
+	var url="${pageContext.request.contextPath}/onesentence/popupForPhoto";
 	var popupOption="width=600,height=600";
 	window.open(url,"사진으로 한문장찾기",popupOption);
 });

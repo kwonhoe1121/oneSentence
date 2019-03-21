@@ -105,7 +105,7 @@ $().ready(function(d, s, id) {
 					<span
 						style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray">${onesentence.bookTitle},
 						${onesentence.author}, ${onesentence.publisher},
-						${onesentence.page} 에서.. </i>
+						${onesentence.page} 에서.. 
 					</span><br>
 					<hr>
 					<span class="hashtag">${onesentence.hashtag}</span> <span
@@ -160,7 +160,7 @@ $().ready(function(d, s, id) {
 			}
 
 			function updateClick(idx) {
-				var url = "../../onesentence/popup/" + idx;
+				var url = "${pageContext.request.contextPath}/onesentence/popup/" + idx;
 				var popupOption = "width=700,height=600";
 				window.open(url, "한문장수정하기", popupOption);
 			}
