@@ -34,6 +34,7 @@ public class SearchAladdinService {
 		hm.put("start", "1");
 		hm.put("SearchTarget", "Book");
 		hm.put("output", "xml");
+		hm.put("OptResult", "Toc");
 
 		StringBuffer sb = new StringBuffer();
 		Iterator<String> iter = hm.keySet().iterator();
@@ -90,18 +91,23 @@ class SearchServiceHandlerone extends DefaultHandler {
 			tempValue = "";
 		} else if (localName.equals("description")) {
 			tempValue = "";
-		} else if (localName.equals("startIndex")) {
+		} else if (localName.equals("fulldescription")) {
 			tempValue = "";
-			System.out.println("ggg");
 		}
-
+		  else if (localName.equals("toc")) {
+				tempValue = "";
+			}
+		  else if (localName.equals("itemPage")) {
+				tempValue = "";
+			}
+		
 	}
 
 	// 1234
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		// System.out.println(ch);
 		tempValue = tempValue + new String(ch, start, length);
-
+	
 	}
 
 	public void endElement(String namespaceURI, String localName, String qName) {
@@ -124,10 +130,14 @@ class SearchServiceHandlerone extends DefaultHandler {
 				currentItem.categoryName = tempValue;
 			} else if (localName.equals("pubDate")) {
 				currentItem.pubDate = tempValue;
+			} else if (localName.equals("fulldescription")) {
+				currentItem.fulldescription = tempValue;
 			} else if (localName.equals("description")) {
 				currentItem.description = tempValue;
-			} else if (localName.equals("startIndex")) {
-				currentItem.startIndex = Integer.parseInt(tempValue);
+			} else if (localName.equals("toc")) {
+				currentItem.toc = tempValue;
+			} else if (localName.equals("itemPage")) {
+				currentItem.itemPage = Integer.parseInt(tempValue);
 				System.out.println("tempValue ::::::::::::::::        " + tempValue);
 			}
 
