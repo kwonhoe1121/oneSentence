@@ -45,6 +45,15 @@
 			<beans:bean
 				class="com.one.sentence.login.interceptor.LoginIntercepter" />
 		</interceptor>
+		<interceptor>
+			<mapping path="/onesentence/insert" />
+			<mapping path="/onesentence/insertForm" />
+			<!-- <exclude-mapping path="/member/memberReg" /> <exclude-mapping path="/member/memberRegForm" 
+				/> <exclude-mapping path="/member/memberLogin" /> <exclude-mapping path="/member/memberLoginForm" 
+				/> <exclude-mapping path="/member/memberModify"/> <exclude-mapping path="/member/memberModifyForm"/> -->
+			<beans:bean
+				class="com.one.sentence.login.interceptor.LoginIntercepter2" />
+		</interceptor>
 	</interceptors>
 
 	<beans:bean id="mailSender"
