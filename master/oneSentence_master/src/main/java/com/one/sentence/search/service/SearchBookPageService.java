@@ -31,7 +31,7 @@ public class SearchBookPageService {
 		hm.put("ItemId", URLEncoder.encode(searchWord, "UTF-8"));
 		hm.put("output", "xml");
 		hm.put("Version", "20131101");
-		hm.put("OptResult", "ebookList,usedList,reviewList");
+		hm.put("OptResult", "ebookList,usedList,reviewList,Toc");
 
 		StringBuffer sb = new StringBuffer();
 		Iterator<String> iter = hm.keySet().iterator();

@@ -89,7 +89,7 @@ $().ready(function(d, s, id) {
 					<span style="color: darkgray; padding-right: 1rem"
 						class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>
 					<!--한문장번호-->
-					<a href="#" style="color: black"><i class="fa fa-user icon">
+					<a href="${pageContext.request.contextPath}/userpage/${onesentence.userIdx}" style="color: black"><i class="fa fa-user icon">
 							${onesentence.userName}</i></a> <span class="eventA"><i
 						class="fa fa-ellipsis-v icon"></i></span> <input type="text"
 						class="userIdx" value="${onesentence.userIdx}" hidden="true">
@@ -108,7 +108,6 @@ $().ready(function(d, s, id) {
 								<a href="${pageContext.request.contextPath}/onesentence/delete/${onesentence.oneSentenceIdx}"
 									id="deleteBtn"><i class="fa fa-remove icon"></i></a>
 							</div>
-
 						</div>
 					</center>
 					<span

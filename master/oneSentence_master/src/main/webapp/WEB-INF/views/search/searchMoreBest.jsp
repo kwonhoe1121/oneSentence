@@ -22,8 +22,8 @@
 <body>
 	<header style="height:60px"></header>
 
-	<i class="fa fa-book fa-3x" aria-hidden="true"></i>
-	<h1>도서 더보기</h1>
+	<i class="fa fa-book fa-2x" aria-hidden="true"></i>
+	<h2 style="font-size : 1.5rem;">도서 더보기</h2>
 	<hr>
 	<div class="bookmore">
 	<c:forEach items="${itemstwo}" var="b2">
