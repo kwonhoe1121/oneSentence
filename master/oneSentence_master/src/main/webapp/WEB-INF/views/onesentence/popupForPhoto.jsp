@@ -56,7 +56,7 @@
 
 <body class="text-center">
 	<form class="form-signin"
-		action="getSentence" method="POST" enctype="multipart/form-data">
+		action="${pageContext.request.contextPath}/onesentence/getSentence" method="POST" enctype="multipart/form-data">
 		<img class="mb-4"
 			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72">

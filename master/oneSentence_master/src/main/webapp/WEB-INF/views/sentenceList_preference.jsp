@@ -69,10 +69,10 @@ $().ready(function(d, s, id) {
 <body>
 
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
-	<a href="../liketo/${userIdx}" id="liketo" class="alink"
+	<a href="${pageContext.request.contextPath}/onesentence/liketo/${userIdx}" id="liketo" class="alink"
 		style="color: #007bff"><i class="fa fa-search icon"> 좋아요한
 			문장보러가기</i></a>
-	<a href="../list/${userIdx}" id="list" class="alink"
+	<a href="${pageContext.request.contextPath}/onesentence/list/${userIdx}" id="list" class="alink"
 		style="color: #007bff"><i class="fa fa-search icon"> 작성한
 			문장보러가기</i></a>
 	<!-- Page Content -->
@@ -115,7 +115,7 @@ $().ready(function(d, s, id) {
 					<span
 						style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray">${onesentence.bookTitle},
 						${onesentence.author}, ${onesentence.publisher},
-						${onesentence.page} 에서.. </i>
+						${onesentence.page} 에서.. 
 					</span><br>
 					<hr>
 					<span class="hashtag">${onesentence.hashtag}</span> <span
@@ -179,7 +179,7 @@ $().ready(function(d, s, id) {
 			}
 
 			function updateClick(idx) {
-				var url = "../../onesentence/popup/" + idx;
+				var url = ${pageContext.request.contextPath}+"/onesentence/popup/" + idx;
 				var popupOption = "width=700,height=600";
 				window.open(url, "한문장수정하기", popupOption);
 			}

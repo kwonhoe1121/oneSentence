@@ -297,7 +297,7 @@ $().ready(function(d, s, id) {
 				})
 			}
 			function updateClick(idx) {
-				var url = "../../onesentence/popup/" + idx;
+				var url = ${pageContext.request.contextPath}+"/onesentence/popup/" + idx;
 				var popupOption = "width=700,height=600";
 				window.open(url, "한문장수정하기", popupOption);
 			}
