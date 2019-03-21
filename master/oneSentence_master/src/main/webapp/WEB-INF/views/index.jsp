@@ -55,6 +55,9 @@
 }
 </style>
 
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 </head>
 
 <body>
@@ -142,7 +145,7 @@
 						<input type="text" class="form-control" placeholder="Search"
 							name="query">
 						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
+							<button class="btn btn-default" type="submit" onclick="send(this.form)">
 								<i class="glyphicon glyphicon-search" name="query"></i>
 							</button>
 						</div>
@@ -188,6 +191,30 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+	
+		/* 검색창에 입력안했을경우 */
+		<script type="text/javascript">
+
+		function send(theform){ //form 을 받는다.
+
+		if(theform.query.value==""){
+
+		//받은 form 의 input text name인s search의 value 가 빈칸일때.
+
+		alert("검색어를 입력 하세요.");
+
+		theform.query.focus(); //text 창으로 커서
+
+		return false;
+
+		}
+
+		theform.submit();
+
+		}
+	
+	
+	</script>
 </body>
 
 </html>

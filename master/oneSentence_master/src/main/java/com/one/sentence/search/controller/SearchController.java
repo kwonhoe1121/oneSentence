@@ -54,7 +54,7 @@ public class SearchController {
 		//List<String> hashtagitems = serviceHashtag.selectHashsearchList('%' + request.getParameter("query") + '%');
 		List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag('%' + request.getParameter("query") + '%');
 		
-		if (items.size() != 0 ||oneSentenceList.size()!=0|| useritems.size() != 0 || userInfo.size() != 0) {
+		if (items.size() != 0 ||oneSentenceList.size()!=0|| useritems.size() != 0 || userInfo.size() != 0 || request.getParameter(query) != null) {
 			model.addAttribute("items", items);
 			model.addAttribute("itemtwo", itemstwo);
 			model.addAttribute("useritems", useritems);
@@ -65,7 +65,7 @@ public class SearchController {
 			System.out.println("items" + itemstwo);
 			System.out.println("useritems" + useritems);
 			//System.out.println("hashtagitems" + hashtagitems);
-			
+			System.out.println("넘기는값 : " + request.getParameter(query));
 			Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
 			ShowOnesentence showOneSentence;
 			String hash = "";

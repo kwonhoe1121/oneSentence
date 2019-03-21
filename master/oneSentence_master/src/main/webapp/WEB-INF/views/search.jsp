@@ -409,7 +409,8 @@ $().ready(function(d, s, id) {
 		
 			//서버로 부터 받은 oneSentenceIdx 문장에다가 하트표시한다.(반복문)
 			
-		}
+			
+		
  
 	</script>	
 	
