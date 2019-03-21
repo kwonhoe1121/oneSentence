@@ -69,7 +69,7 @@ $().ready(function(d, s, id) {
 
 	<div class="all2">
 		<h2 class="h2">
-			<strong>통합 검색 결과</strong><a href="../search/searchMore?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
+			<strong>통합 검색 결과</strong><a href="${pageContext.request.contextPath}/search/searchMore?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
 		</h2>
 
 		<div class="container">
@@ -83,7 +83,7 @@ $().ready(function(d, s, id) {
 						<div class="item">
 
 							<div class="pad15" id="bookdiv" style="height:26rem;overflow:scroll">
-										 	<a href="../contentsPage/${b.isbn }" id="books">
+										 	<a href="${pageContext.request.contextPath}/contentsPage/${b.isbn }" id="books">
 											<input type="text" name="bookId" value="${b.isbn }" hidden="true">
 
 						
@@ -118,7 +118,7 @@ $().ready(function(d, s, id) {
 
 	<div class="book_lank">
 		<h2 class="h2">
-			<strong>인기순</strong><a href="../search/searchMoreBest?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
+			<strong>인기순</strong><a href="${pageContext.request.contextPath}/search/searchMoreBest?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
 		</h2>
 		<div class="container">
 			<div class="row">
@@ -129,7 +129,7 @@ $().ready(function(d, s, id) {
 			
 						
 					 	
-					 <a href="../contentsPage/${b2.isbn }" id="books">
+					 <a href="${pageContext.request.contextPath}/contentsPage/${b2.isbn }" id="books">
 					 <input type="text" name="bookId" value="${b2.isbn }" hidden="true">
 						<div class="item">
 						
@@ -171,32 +171,21 @@ $().ready(function(d, s, id) {
 	<c:when test="${fn:length(useritems) > 0 }">
 	<div class="user_search">
 		<h2 class="h2">
-			<strong>사용자</strong><a href="../search/searchMoreUser?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
+			<strong>사용자</strong><a href="${pageContext.request.contextPath}/search/searchMoreUser?query=${param.query}"><span class="more"><strong>더보기</strong></span></a>
 		</h2>
 		
 		<div class="line">
-<%-- 		
-		 	<c:forEach items="${useritems }" var="userSearch"></a>
-<!-- 		 	<div class="userdiv" style="float: left;"> -->
-			<img
-				src="<%=request.getContextPath()%>/resources/dahye/search/img/userimgpng.png"
-				alt="user_1"
-				class="<%=request.getContextPath()%>/resources/dahye/search/img-circle user_img">
-				
-			<span class="usertext">${userSearch }</span>
-			</div>
-			 </c:forEach>
- --%>
-			 
-			 	<c:forEach items="${userInfo}" var="userSearch">
+ 			<a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }">
+			<c:forEach items="${userInfo}" var="userSearch">
 			<img
 				src="${pageContext.request.contextPath}/resources/dahye/search/img/userimgpng.png"
 				alt="user_1"
 				class="${pageContext.request.contextPath}/resources/dahye/search/img-circle user_img">
 				
-			<span class="usertext"><a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }">${userSearch.userName}</a></span>
+			<span class="usertext"><a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }">${userSearch.userName}</span>
 
 			 </c:forEach>
+			 </a>
 			 </div>
 			 </c:when>
 			 <c:otherwise>

@@ -34,7 +34,7 @@ public class UserPageController {
 		UserVo uservo = uservice.showUser_infoByuserIdx(userIdx);
 		
 		if(uservo==null || uservo.getEmailStatus().equals("2")) 
-			returnpage= "redirect:/indexPage";
+			returnpage= "redirect:/";
 		else {
 			model.addAttribute("uservo", uservo);
 			

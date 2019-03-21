@@ -32,7 +32,7 @@
 	<div class="bookmore" id="bookscroll" >
 	<c:forEach items="${items}" var="b">
 		<div class="book_div" hideen="true">
-			<a href="../contentsPage/${b.isbn }" id="books">
+			<a href="${pageContext.request.contextPath}/contentsPage/${b.isbn }" id="books">
 			<img
 				src="${b.cover}"
 				alt="book_1" class="img-fluid img-rounded book_img">
