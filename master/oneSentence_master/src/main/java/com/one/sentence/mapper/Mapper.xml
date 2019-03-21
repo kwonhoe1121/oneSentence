@@ -337,13 +337,12 @@
 		where userIdx=${value}
 	</select>
 	<update id="updateUser_info"
-		parameterType="com.one.sentence.common.vo.UserVo">
+		parameterType="hashmap">
 		update user_info set
 		userPassword=#{userPassword},
 		userName=#{userName},
 		userIntroduction=#{userIntroduction}
-		where
-		userIdx='${userIdx}'
+		where userIdx=#{userIdx}
 	</update>
 	<!-- 한문장작성시 user point +1 -->
 	<update id="upUserPoint"
