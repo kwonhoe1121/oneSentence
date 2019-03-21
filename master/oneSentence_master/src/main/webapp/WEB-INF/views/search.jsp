@@ -250,8 +250,7 @@ $().ready(function(d, s, id) {
 							${onesentence.likeTotal}</i></span>
 				</div>
 			</c:forEach>
-			</div>
-	
+			</div>	
 	</c:when>
 	<c:otherwise>
 	<h3 class="onesentenfail">한문장 조회결과가 없습니다.</h3>
