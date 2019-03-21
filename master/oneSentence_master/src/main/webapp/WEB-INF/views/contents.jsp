@@ -125,7 +125,7 @@ $().ready(function(d, s, id) {
 					class="a1"><b>더보기</b></a>
 				<hr>
 				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> 
-				<a href="../onesentence/list/contents/${items.isbn}"
+				<a href="${pageContext.request.contextPath}/onesentence/list/contents/${items.isbn}"
 					class="a1"><b>더보기</b></a>
 			</div>
 			
@@ -158,7 +158,7 @@ $().ready(function(d, s, id) {
 									class="fa fa-reply icon"></i></a>
 							</div>
 							<div class="my">
-								<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}"
+								<a href="${pageContext.request.contextPath}/onesentence/delete/${onesentence.oneSentenceIdx}"
 									id="deleteBtn"><i class="fa fa-remove icon"></i></a>
 							</div>
 							</div>
