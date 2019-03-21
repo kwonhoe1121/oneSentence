@@ -24,11 +24,10 @@ import com.one.sentence.search.model.TestModel;
 import com.one.sentence.search.service.SearchAladdinService;
 import com.one.sentence.search.service.SearchAladdinService2;
 import com.one.sentence.search.service.SearchBookPageService;
-import com.one.sentence.search.service.SearchHashtagService;
 import com.one.sentence.search.service.SearchUserService;
 
 @Controller
-//@RequestMapping("/search")
+
 public class SearchController {
 
 	@Autowired
@@ -37,8 +36,6 @@ public class SearchController {
 	@Autowired
 	private SearchUserService serviceUser;
 
-	@Autowired
-	private SearchHashtagService serviceHashtag;
 
 	@Autowired
 	private SearchAladdinService2 servicetwo;
@@ -49,10 +46,9 @@ public class SearchController {
 	
 	@Autowired
 	private SearchBookPageService service3;
+
 	
-	
-	
-	@RequestMapping(value = "/search/query", method = RequestMethod.GET)
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String getQuery(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
 		System.out.println("query: " + query);
 		List<SearchModel> items = service.getSearchModel(query);
@@ -62,7 +58,7 @@ public class SearchController {
 		//List<String> hashtagitems = serviceHashtag.selectHashsearchList('%' + request.getParameter("query") + '%');
 		List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag('%' + request.getParameter("query") + '%');
 		
-		if (items.size() != 0 ||oneSentenceList.size()!=0|| useritems.size() != 0 || userInfo.size() != 0 || request.getParameter(query) != null) {
+		if (items.size() != 0 ||oneSentenceList.size()!=0|| useritems.size() != 0 || userInfo.size() != 0 || query == null || query.length() == 0) {
 			model.addAttribute("items", items);
 			model.addAttribute("itemtwo", itemstwo);
 			model.addAttribute("useritems", useritems);
@@ -73,7 +69,7 @@ public class SearchController {
 			System.out.println("items" + itemstwo);
 			System.out.println("useritems" + useritems);
 			//System.out.println("hashtagitems" + hashtagitems);
-			System.out.println("넘기는값 : " + request.getParameter(query));
+			System.out.println("넘기는값 : " + query);
 			Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
 			ShowOnesentence showOneSentence;
 			String hash = "";
