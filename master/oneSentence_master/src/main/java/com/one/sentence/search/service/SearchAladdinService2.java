@@ -49,9 +49,9 @@ public class SearchAladdinService2 {
 		String url = GetUrl(searchWord);
 		SearchServiceHandlertwo api = new SearchServiceHandlertwo();
 		api.parseXml(url);
-		for(SearchModel item : api.Items){
-			System.out.println(item.cover + " : " + item.title + item.publisher + item.author + item.isbn + item.categoryName);
-		}
+//		for(SearchModel item : api.Items){
+//			System.out.println(item.cover + " : " + item.title + item.publisher + item.author + item.isbn + item.categoryName);
+//		}
 		
 		return api.Items;
 	}
