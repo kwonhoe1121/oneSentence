@@ -27,7 +27,7 @@
 	
 	<header style="height:60px"></header>
 	
-	<h1>사용자</h1>
+	<h2 "font-size : 1.3rem;">사용자</h2>
 	<hr>	
 	 <c:forEach items="${userInfo }" var="userSearch">
 	<div class="user_search">

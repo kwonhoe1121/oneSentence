@@ -62,7 +62,7 @@ $().ready(function(d, s, id) {
 	
 	<header style="height:60px"></header>
 	
-	<h2>한문장</h2>
+	<h2 style="font-size : 1.5rem;"">한문장</h2>
 	<hr>	
 	<div class="container">
 		<!-- Post Content Column -->

@@ -50,6 +50,7 @@
 	.pad15 p{
 		font-size:1rem;
 	}
+	
 </style>
 <script>
 $().ready(function(d, s, id) {
@@ -164,7 +165,7 @@ $().ready(function(d, s, id) {
 	</div>
 	</c:when>
 	<c:otherwise>
-	<h3 class="booksearchfail">도서 조회결과가 없습니다.</h3>
+	<h3 style="font-size: 1.2rem;" class="booksearchfail">도서 조회결과가 없습니다.</h3>
 	<hr>
 	</c:otherwise>
 	</c:choose>
@@ -192,7 +193,7 @@ $().ready(function(d, s, id) {
 			 </div>
 			 </c:when>
 			 <c:otherwise>
-			 		<h3 style="font-size: 1.5rem;">사용자 조회된 결과가 없습니다.</h3>
+			 		<h3 style="font-size: 1.2rem;">사용자 조회된 결과가 없습니다.</h3>
 			 </c:otherwise>
 			</c:choose> 
 		</div>
@@ -257,7 +258,7 @@ $().ready(function(d, s, id) {
 			</div>	
 	</c:when>
 	<c:otherwise>
-	<h3 class="onesentenfail">한문장 조회결과가 없습니다.</h3>
+	<h3 style="font-size: 1.2rem;" class="onesentenfail">한문장 조회결과가 없습니다.</h3>
 	</c:otherwise>
 	</c:choose>
 	
