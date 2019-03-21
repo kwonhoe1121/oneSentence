@@ -62,7 +62,6 @@ class SearchServiceHandlerone3 extends DefaultHandler {
 	private boolean inItemElement = false;
 	private String tempValue;
 
-
 	public SearchServiceHandlerone3() {
 		Items = new ArrayList<TestModel>();
 	}
