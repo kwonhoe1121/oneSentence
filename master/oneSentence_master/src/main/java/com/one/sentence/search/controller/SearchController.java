@@ -94,6 +94,33 @@ public class SearchController {
 		}
 	}
 
+	@RequestMapping(value="/search/searchMoreSentenceList")
+	public String getSearchMoreSentenceList(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
+		
+		List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag('%' + request.getParameter("query") + '%');
+		
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash = "";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
+		}
+		model.addAttribute("oneSentenceList", oneSentenceList);
+		
+		return "/search/searchMoreSentenceList";
+
+	}
+	
+	
 	@RequestMapping(value="/search/searchMore")
 	public String getSearchMore(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
 		
