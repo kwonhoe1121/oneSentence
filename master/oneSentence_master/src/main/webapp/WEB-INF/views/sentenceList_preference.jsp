@@ -103,7 +103,7 @@ $().ready(function(d, s, id) {
 									class="fa fa-reply icon"></i></a>
 							</div>
 							<div class="my">
-								<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}"
+								<a href="${pageContext.request.contextPath}/onesentence/delete/${onesentence.oneSentenceIdx}"
 									id="deleteBtn"><i class="fa fa-remove icon"></i></a>
 							</div>
 

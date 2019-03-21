@@ -143,14 +143,18 @@ public class OnesentenceDao implements IOnesentenceDao{
 		return sqlSession.selectList(namespace+".selectOnesentenceListByIsbn", isbn);
 	}
 
-	@Override
-	public List<ShowOnesentence> selectOnesentenceListByIsbnWithoutlike(String isbn) {
-		return sqlSession.selectList(namespace+".selectOnesentenceListByIsbnWithoutlike", isbn);
-	}
 
 	@Override
 	public List<ShowOnesentence> selectOnesentenceListByHashtag(String hashtag) {
 		return sqlSession.selectList(namespace+".selectOnesentenceListByHashtag", hashtag);
+	}
+
+	@Override
+	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing(int userIdx, String isbn) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userIdx", userIdx);
+		map.put("isbn", isbn);
+		return sqlSession.selectList(namespace+".selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing", map);
 	}
 
 	

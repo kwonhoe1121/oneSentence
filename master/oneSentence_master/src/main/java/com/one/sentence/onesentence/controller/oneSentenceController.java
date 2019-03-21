@@ -39,8 +39,6 @@ public class oneSentenceController {
 			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx,
 			Model model) {
 		String isbn = (String) request.getParameter("isbn");
-		System.out.println("isbnfffffffffffff"+isbn);
-		System.out.println((oneService.showBookByisbn(isbn)));
 		if (oneService.showBookByisbn(isbn)==0) {
 			Book book = new Book();
 			String author = (String) request.getParameter("author");
@@ -107,7 +105,7 @@ public class oneSentenceController {
 
 		model.addAttribute("oneSentenceList", oneSentenceList);
 
-		return "redirect:/onesentence/list/all";
+		return "redirect:/onesentence/list/contents/"+isbn;
 	}
 
 	@RequestMapping("/onesentence/popupForPhoto")
@@ -187,8 +185,6 @@ public class oneSentenceController {
 	public String selectOnesententceListByIsbn(@PathVariable("isbn") String isbn, Model model) {
 		if(isbn!=null) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByIsbn(isbn);
-		List<ShowOnesentence> oneSentenceList2 = oneService.showOneSentenceListByIsbnWithoutlike(isbn);
-		oneSentenceList.addAll(oneSentenceList2);
 		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
 		ShowOnesentence showOneSentence;
 		String hash = "";

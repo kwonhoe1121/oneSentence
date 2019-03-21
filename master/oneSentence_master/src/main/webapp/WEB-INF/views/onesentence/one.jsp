@@ -83,7 +83,7 @@ $().ready(function(d, s, id) {
 							<a href="#" id="updateBtn" onclick="updateClick(${onesentence.oneSentenceIdx})"><i class="fa fa-reply icon"></i></a>
 						</div>
 						<div class="my">
-							<a href="../../onesentence/delete/${onesentence.oneSentenceIdx}" id="deleteBtn"><i class="fa fa-remove icon"></i></a>
+							<a href="${pageContext.request.contextPath}/onesentence/delete/${onesentence.oneSentenceIdx}" id="deleteBtn"><i class="fa fa-remove icon"></i></a>
 						</div>
 						
 					</div>

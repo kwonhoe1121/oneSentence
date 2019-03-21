@@ -40,9 +40,9 @@
 				<!-- <div class="container"> -->
 				<!-- <div class="container2"> -->
 
-				<form class="navbar-form naver-right">
+				<form class="navbar-form naver-right"  action="${pageContext.request.contextPath}/search">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search">
+						<input type="text" class="form-control" placeholder="Search" name="query">
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit">
 								<i class="fa fa-search icon"></i>
@@ -84,14 +84,14 @@
 				<!-- <div class="container"> -->
 				<!-- <div class="container2"> -->
 
-				<form class="navbar-form naver-right">
+				<form class="navbar-form naver-right" action="${pageContext.request.contextPath}/search">
 					<!-- <div class="searchBox" class="form-group">
                             <label for="search" class="sr-only">검색:</label>
                             <input type="text" class="form-control" placeholder="검색어 입력" value="">
                             <button type="submit"></button>
                         </div> -->
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search">
+						<input type="text" class="form-control" placeholder="Search" name="query">
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit">
 								<i class="fa fa-search icon"></i>

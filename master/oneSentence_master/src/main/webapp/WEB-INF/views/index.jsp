@@ -142,7 +142,7 @@
 		<div class="container" style="position: relative; top: -65px;">
 			<div class="container2">
 				<form class="form-signin"
-					action="${pageContext.request.contextPath}/search/query"
+					action="${pageContext.request.contextPath}/search"
 					method="GET">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search"
@@ -195,7 +195,7 @@
 		src="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	
-		/* 검색창에 입력안했을경우 */
+		  <!-- 검색창에 입력안했을경우 -->
 		<script type="text/javascript">
 
 		function send(theform){ //form 을 받는다.
