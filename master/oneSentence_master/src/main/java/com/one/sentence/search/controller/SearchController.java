@@ -50,7 +50,7 @@ public class SearchController {
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String getQuery(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
-		System.out.println("query: " + query);
+		System.out.println("query: " + query);	
 		List<SearchModel> items = service.getSearchModel(query);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);
 		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
