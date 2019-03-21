@@ -105,7 +105,7 @@ $().ready(function(d, s, id) {
 					<span
 						style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray">${onesentence.bookTitle},
 						${onesentence.author}, ${onesentence.publisher},
-						${onesentence.page} 에서.. </i>
+						p.${onesentence.page} 에서.. </i>
 					</span><br>
 					<hr>
 					<span class="hashtag">${onesentence.hashtag}</span> <span

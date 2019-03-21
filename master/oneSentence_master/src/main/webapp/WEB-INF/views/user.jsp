@@ -45,11 +45,9 @@
 
 </head>
 <body>
-
-	<%-- <%@include file="include/mainHeader2.jsp"%> --%>
 	
 	<div id="header">
-		<a href="${pageContext.request.contextPath}"><i class="fa fa-home fa-2x"
+		<a href="${pageContext.request.contextPath}/indexPage"><i class="fa fa-home fa-2x"
 			aria-hidden="true"></i></a>
 	</div>
 
