@@ -319,16 +319,16 @@
 	<insert id="insertBook"
 		parameterType="com.one.sentence.onesentence.model.Book">
 		insert into
-		book
-		(isbn,bookTitle,bookGenre,author,publisher)
-		value
-		(#{isbn},#{bookTitle},#{bookGenre},#{author},#{publisher})
+		 book
+		 (isbn,bookTitle,bookGenre,author,publisher)
+		 values
+		 (#{isbn},#{bookTitle},#{bookGenre},#{author},#{publisher})
 	</insert>
 
 	<select id="selectBookByisbn"
-		resultType="com.one.sentence.onesentence.model.Book">
-		select * from
-		book where isbn=${value}
+		resultType="Integer">
+		select count(*) from
+		 book where isbn=#{isbn}
 	</select>
 	<!-- 유저 -->
 	<select id="selectUser_infoByuserIdx"
@@ -337,13 +337,12 @@
 		where userIdx=${value}
 	</select>
 	<update id="updateUser_info"
-		parameterType="com.one.sentence.common.vo.UserVo">
+		parameterType="hashmap">
 		update user_info set
 		userPassword=#{userPassword},
 		userName=#{userName},
 		userIntroduction=#{userIntroduction}
-		where
-		userIdx='${userIdx}'
+		where userIdx=#{userIdx}
 	</update>
 	<!-- 한문장작성시 user point +1 -->
 	<update id="upUserPoint"

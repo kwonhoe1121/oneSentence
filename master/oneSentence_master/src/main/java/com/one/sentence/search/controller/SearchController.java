@@ -20,8 +20,10 @@ import com.one.sentence.common.vo.UserVo;
 import com.one.sentence.onesentence.model.ShowOnesentence;
 import com.one.sentence.onesentence.service.OnesentenceService;
 import com.one.sentence.search.model.SearchModel;
+import com.one.sentence.search.model.TestModel;
 import com.one.sentence.search.service.SearchAladdinService;
 import com.one.sentence.search.service.SearchAladdinService2;
+import com.one.sentence.search.service.SearchBookPageService;
 import com.one.sentence.search.service.SearchHashtagService;
 import com.one.sentence.search.service.SearchUserService;
 
@@ -44,6 +46,12 @@ public class SearchController {
 	@Inject
 	private OnesentenceService oneService;
 	
+	
+	@Autowired
+	private SearchBookPageService service3;
+	
+	
+	
 	@RequestMapping(value = "/search/query", method = RequestMethod.GET)
 	public String getQuery(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
 		System.out.println("query: " + query);
@@ -54,7 +62,7 @@ public class SearchController {
 		//List<String> hashtagitems = serviceHashtag.selectHashsearchList('%' + request.getParameter("query") + '%');
 		List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag('%' + request.getParameter("query") + '%');
 		
-		if (items.size() != 0 ||oneSentenceList.size()!=0|| useritems.size() != 0 || userInfo.size() != 0) {
+		if (items.size() != 0 ||oneSentenceList.size()!=0|| useritems.size() != 0 || userInfo.size() != 0 || request.getParameter(query) != null) {
 			model.addAttribute("items", items);
 			model.addAttribute("itemtwo", itemstwo);
 			model.addAttribute("useritems", useritems);
@@ -65,7 +73,7 @@ public class SearchController {
 			System.out.println("items" + itemstwo);
 			System.out.println("useritems" + useritems);
 			//System.out.println("hashtagitems" + hashtagitems);
-			
+			System.out.println("넘기는값 : " + request.getParameter(query));
 			Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
 			ShowOnesentence showOneSentence;
 			String hash = "";
@@ -126,6 +134,9 @@ public class SearchController {
 		List<SearchModel> items = service.getSearchModel(isbn);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(isbn);
 		List<ShowOnesentence> oneSentenceList = new ArrayList<ShowOnesentence>();
+		
+		List<TestModel> items3 = service3.getTestModel(isbn);
+		
 		UserVo user = (UserVo) session.getAttribute("User");
 		ShowOnesentence sentence= new ShowOnesentence();
 		if(user!=null) {
@@ -156,11 +167,13 @@ public class SearchController {
 			sentence.setHashtag(hash);
 			hash = "";
 		}
-		if (items.size() != 0 || itemstwo.size() != 0||oneSentenceList.size()!=0) {
+		if (items.size() != 0 || itemstwo.size() != 0||oneSentenceList.size()!=0 || items3.size() != 0) {
 			model.addAttribute("items", items);
 			model.addAttribute("itemtwo", itemstwo);
 			model.addAttribute("oneSentenceList", oneSentenceList);
-		}}
+			model.addAttribute("items3", items3);
+		}System.out.println("items3"+items3);}
+		
 		return "/contents";
 	}
 	

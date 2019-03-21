@@ -73,7 +73,7 @@ public class OnesentenceDao implements IOnesentenceDao{
 	}
 
 	@Override
-	public Book selectBookByisbn(String isbn) {
+	public int selectBookByisbn(String isbn) {
 		return sqlSession.selectOne(namespace+".selectBookByisbn",isbn);
 	}
 

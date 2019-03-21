@@ -72,7 +72,7 @@ public class OnesentenceService implements IOnesentenceService {
 	}
 
 	@Override
-	public Book showBookByisbn(String isbn) {
+	public int showBookByisbn(String isbn) {
 		return dao.selectBookByisbn(isbn);
 	}
 
