@@ -53,6 +53,7 @@ public class SearchController {
 		System.out.println("query: " + query);
 		List<SearchModel> items = service.getSearchModel(query);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);
+		
 		if(query.equals(" ") || query.equals("")) return "/search/searchFail";
 	
 		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
