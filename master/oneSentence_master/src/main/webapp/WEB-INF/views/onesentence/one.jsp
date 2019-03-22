@@ -74,8 +74,8 @@ $().ready(function(d, s, id) {
 				<!--한문장번호-->
 				<a href="#" style="color: black"><i class="fa fa-user icon">
 						${onesentence.userName}</i></a> <span class="eventA"><i class="fa fa-ellipsis-v icon"></i></span>
-				<center>
-					<div class="divmodal">
+				
+					<div class="divmodal" style="text-align: center;">
 						<div class="all">
 							<a href="#" onclick="share(${onesentence.oneSentenceIdx})" id="share"><i class="fa fa-send-o icon"></i></a>
 						</div>
@@ -87,7 +87,7 @@ $().ready(function(d, s, id) {
 						</div>
 						
 					</div>
-				</center>
+				
 				<span style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
 				 <span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}.</span><br> <span
 					style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray">${onesentence.bookTitle},

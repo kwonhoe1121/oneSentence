@@ -97,8 +97,8 @@ $().ready(function(d, s, id) {
 							${onesentence.userName}</i></a> <span class="eventA"><i
 						class="fa fa-ellipsis-v icon"></i></span> <input type="text"
 						class="userIdx" value="${onesentence.userIdx}" hidden="true">
-					<center>
-						<div class="divmodal">
+					
+						<div class="divmodal" style="text-align: center;">
 							<div class="all">
 								<a href="#" onclick="share(${onesentence.oneSentenceIdx})"
 									id="share"><i class="fa fa-send-o icon"></i></a>
@@ -113,7 +113,7 @@ $().ready(function(d, s, id) {
 									id="deleteBtn"><i class="fa fa-remove icon"></i></a>
 							</div>
 						</div>
-					</center>
+					
 					<span
 						style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
 					<span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br>
