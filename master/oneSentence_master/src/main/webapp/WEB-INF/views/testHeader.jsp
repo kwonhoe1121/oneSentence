@@ -13,7 +13,7 @@
 <title>한문장 메인 헤더</title>
    
     <style>
-        header{
+        wrap{
             width:100%;
 			position:fixed;
 			z-index:1;
@@ -45,11 +45,9 @@
         .fa-search{
         	color:lightgray;
         }
-        a{
-        	font-weight:bold;
-        }
         #logo{
         	margin-right:2rem;
+        	font-weight:bold;
         }
         .fa-user-circle{
         	margin-bottom:0rem;
@@ -63,7 +61,7 @@
 </head>
 <body>
 	<c:if test="${User eq null}">
-	<header>
+	<wrap>
     <table>
         <tr>
             <td></td>          
@@ -85,11 +83,11 @@
             </td>
         </tr>
     </table>
-    </header>
+    </wrap>
    	</c:if>
    	
    	<c:if test="${User ne null}">
-   	<header>
+   	<wrap>
     <table>
         <tr>
             <td></td>
@@ -110,7 +108,7 @@
  			</td>
         </tr>
     </table>
-    </header>
+    </wrap>>
     </c:if>
 </body>
 </html>

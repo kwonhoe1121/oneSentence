@@ -172,8 +172,7 @@ $().ready(function(d, s, id) {
 							style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br> <span
 							style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br> <span
 							style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>${onesentence.bookTitle},
-								${onesentence.author}, ${onesentence.publisher},
-						p.${onesentence.page} 에서..  </i></span><br>
+								${onesentence.author}, p.${onesentence.page} 에서..  </i></span><br>
 						<hr>
 						<span
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">${onesentence.hashtag}</span> <span
