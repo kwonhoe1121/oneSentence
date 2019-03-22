@@ -121,7 +121,7 @@ $().ready(function(d, s, id) {
 				</ul>
 								
 				<hr>
-				&nbsp;&nbsp;&nbsp;<span style= "cursor:pointer;" "font-size: 1rem;" id="toc">목차</span>
+				&nbsp;&nbsp;&nbsp;<span style= "cursor:pointer; font-size: 1.2rem; font-weight:bold;" id="toc">목차</span>
 				<div class="tocul" style= "display: none;" >
 				<hr>
 				<ul>
