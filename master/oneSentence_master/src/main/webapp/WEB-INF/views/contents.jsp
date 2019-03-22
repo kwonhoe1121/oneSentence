@@ -125,7 +125,7 @@ $().ready(function(d, s, id) {
 				&nbsp;&nbsp;&nbsp;<span style= "cursor:pointer;" "font-size: 1rem;" id="toc">목차</span><a href="#"
 					class="a1">
 					<b>더보기</b></a>
-				<div class="tocul" >
+				<div class="tocul" style= "display: none;" >
 				<hr>
 				<ul>
 						<li><c:forEach items="${items3}" var="items3">${items3.toc}</c:forEach></li>
@@ -215,12 +215,14 @@ $().ready(function(d, s, id) {
 <script
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
-		$('#toc').click(function(){
-			$('.tocul').toggle('slow');
-			
-			
-			
-		})
+	$('#toc').click(function () {  
+	    if($(".tocul").css("display") == "none"){   
+	        $('.tocul').show();  
+	    } else {  
+	        $('.tocul').hide();  
+	    }  
+	})
+
 		
 	
 	
