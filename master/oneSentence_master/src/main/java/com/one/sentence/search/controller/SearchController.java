@@ -58,7 +58,6 @@ public class SearchController {
 	
 		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
 		List<UserVo> userInfo = serviceUser.selectUserByUserName('%' + request.getParameter("query") + '%');
-		//List<String> hashtagitems = serviceHashtag.selectHashsearchList('%' + request.getParameter("query") + '%');
 		List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag('%' + request.getParameter("query") + '%');
 		
 		if (items.size() != 0 ||oneSentenceList.size()!=0|| useritems.size() != 0 || userInfo.size() != 0 || query == null || query.length() == 0) {
@@ -66,12 +65,10 @@ public class SearchController {
 			model.addAttribute("itemtwo", itemstwo);
 			model.addAttribute("useritems", useritems);
 			model.addAttribute("userInfo", userInfo);
-			//model.addAttribute("hashtagitems", hashtagitems);
 			System.out.println("검색완료");
 			System.out.println("items" + items);
 			System.out.println("items" + itemstwo);
 			System.out.println("useritems" + useritems);
-			//System.out.println("hashtagitems" + hashtagitems);
 			System.out.println("넘기는값 : " + query);
 			Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
 			ShowOnesentence showOneSentence;
