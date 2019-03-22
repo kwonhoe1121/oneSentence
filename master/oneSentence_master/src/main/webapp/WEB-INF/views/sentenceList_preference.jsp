@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@include file="/WEB-INF/views/include/mainHeader.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -83,7 +84,10 @@ $().ready(function(d, s, id) {
 		<div class="col-lg-8">
 			<!-- Comments Form -->
 			<input type="text" id="session" value="${User.userIdx}" hidden="true">
-
+			
+			<%-- <c:choose>
+			<c:when test="${fn:length(oneSentenceList) > 0} "> --%>
+			
 			<c:forEach items="${oneSentenceList}" var="onesentence">
 				<div class="newdiv" hidden="true">
 					<span style="color: darkgray; padding-right: 1rem"
@@ -123,6 +127,11 @@ $().ready(function(d, s, id) {
 							${onesentence.likeTotal}</i></span>
 				</div>
 			</c:forEach>
+			<%-- </c:when>
+			<c:otherwise>
+				<h3 style="font-size: 1.2rem;padding-top:3rem">한문장 조회결과가 없습니다.</h3>
+			</c:otherwise>
+			</c:choose> --%>
 		</div>
 	</div>
 

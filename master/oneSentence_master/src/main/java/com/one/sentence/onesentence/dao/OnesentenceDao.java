@@ -114,8 +114,8 @@ public class OnesentenceDao implements IOnesentenceDao{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userIdx1", userIdx1);
 		map.put("userIdx2", userIdx2);
-		map.put("isbn", isbn);
-		return sqlSession.selectList(namespace+".selectOnesentenceByoneSentenceIdxAndIsbnOther", map);
+		map.put("isbn", isbn);             
+		return sqlSession.selectList(namespace+".selectOnesentenceListByoneSentenceIdxAndIsbnOther", map);
 	}
 
 	@Override
