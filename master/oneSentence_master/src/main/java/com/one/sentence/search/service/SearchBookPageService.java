@@ -75,12 +75,15 @@ class SearchServiceHandlerone3 extends DefaultHandler {
 		} else if (localName.equals("itemPage")) {
 			tempValue = "";
 		} 
+		else if (localName.equals("title")) {
+			tempValue = "";
+		} 
 	}
 
 	// 1234
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		tempValue = tempValue + new String(ch, start, length);
-		System.out.println(ch);
+	
 
 	}
 
@@ -94,6 +97,9 @@ class SearchServiceHandlerone3 extends DefaultHandler {
 				currentItem.toc = tempValue;
 			} else if (localName.equals("itemPage")) {
 				currentItem.itemPage = tempValue;
+			} 
+			else if (localName.equals("title")) {
+				currentItem.title = tempValue;
 			} 
 
 		}
