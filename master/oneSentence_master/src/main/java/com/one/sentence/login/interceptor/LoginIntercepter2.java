@@ -23,6 +23,7 @@ public class LoginIntercepter2 extends HandlerInterceptorAdapter {
 
 		System.out.println("비로그인 상태");
 		response.sendRedirect(request.getContextPath() + "/login");
+		System.out.println("redirect: /login");
 		return false;
 	}
 }
