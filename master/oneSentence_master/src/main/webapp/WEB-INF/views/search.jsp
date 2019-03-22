@@ -194,12 +194,11 @@ $().ready(function(d, s, id) {
 			 </c:when>
 			 <c:otherwise>
 			 		<h3 style="font-size: 1.2rem;">사용자 조회된 결과가 없습니다.</h3>
-			
+			 </c:otherwise>
+			</c:choose> 
 		</div>
 	</div>
 	<hr>
-	 </c:otherwise>
-	</c:choose> 
 	
 	<c:choose>
 	<%-- <c:when test="${fn:length(hashtagitems) > 0 }"> --%>
@@ -223,8 +222,8 @@ $().ready(function(d, s, id) {
 							${onesentence.userName}</i></a> <span class="eventA"><i
 						class="fa fa-ellipsis-v icon"></i></span> <input type="text"
 						class="userIdx" value="${onesentence.userIdx}" hidden="true">
-					<center>
-						<div class="divmodal">
+					
+						<div class="divmodal" style="text-align: center;">
 							<div class="all">
 								<a href="#" onclick="share(${onesentence.oneSentenceIdx})"
 									id="share"><i class="fa fa-send-o icon"></i></a>
@@ -240,13 +239,14 @@ $().ready(function(d, s, id) {
 							</div>
 
 						</div>
-					</center>
+					
 					<span
 						style="padding-left: 2rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
 					<span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br>
 					<span
 						style="float: right; padding-right: 2rem; color: darkgray">${onesentence.bookTitle},
-						${onesentence.author}, p.${onesentence.page} 에서..
+						${onesentence.author}, ${onesentence.publisher},
+						p.${onesentence.page} 에서..
 
 					</span><br>
 					<hr>
@@ -258,7 +258,7 @@ $().ready(function(d, s, id) {
 			</div>	
 	</c:when>
 	<c:otherwise>
-	<h3 style="font-size: 1.2rem;" class="onesentenfail">한문장 조회결과가 없습니다.</h3>
+		<h3 style="font-size: 1.2rem;" class="onesentenfail">한문장 조회결과가 없습니다.</h3>
 	</c:otherwise>
 	</c:choose>
 	
@@ -270,9 +270,9 @@ $().ready(function(d, s, id) {
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
 	
-			<c:if test="${User ne null}">
-				showLikedSentenceStatus();
-			</c:if>
+		showLikedSentenceStatus();
+			  
+	   
 		
 			function share(idx) {
 				FB.ui({
@@ -296,7 +296,6 @@ $().ready(function(d, s, id) {
 			}
 	    
 		/* click like button  */
-		<c:if test="${User ne null}">
 		$(".like").on("click", function (data){
 			
 			/* alert("like button click!!"); */
@@ -348,7 +347,6 @@ $().ready(function(d, s, id) {
 		    })
 			
 		});
-		</c:if>
 		
 		/* like status in oneSentence */
 		function showLikedSentenceStatus() {

@@ -13,6 +13,9 @@
 
 <title>한문장 메인페이지</title>
 
+<!-- jquery 자동완성 -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/dahye/search/css/jquery.autocomplete.css" />
+
 <!-- Bootstrap core CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
@@ -58,8 +61,6 @@
 }
 </style>
 
-<!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 </head>
 
@@ -147,7 +148,7 @@
 					action="${pageContext.request.contextPath}/search"
 					method="GET">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search"
+						<input type="text" class="form-control searchAuto" placeholder="Search"
 							name="query">
 						<div class="input-group-btn">
 							<button class="btn btn-default" style="background-color: #F6F5F4" type="submit" onclick="send(this.form)">
@@ -195,7 +196,12 @@
 		src="${pageContext.request.contextPath}/resources/jaejin/vendor/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	<!-- 자동완성 jquery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/dahye/search/js/jquery.js"></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/resources/dahye/search/js/jquery.bgiframe.min.js'></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/resources/dahye/search/js/jquery.ajaxQueue.js'></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/resources/dahye/search/js/jquery.autocomplete.js'></script>
 	
 		  <!-- 검색창에 입력안했을경우 -->
 		<script type="text/javascript">
@@ -217,7 +223,63 @@
 		theform.submit();
 
 		}
+		
+		
 	
+	</script>
+	
+
+	<!-- <script type="text/javascript">
+	$(function(){
+		var result=new Array();
+		
+		<c:forEach items="${items3}" var="items3">
+		var json=new Object();
+		
+		
+		json.title="${items3.title}";
+		result.push(json);
+		</c:forEach>
+		
+		alert("booktitleAll : "+JSON.stringify(result));
+	});
+	</script> -->
+	<script>
+	
+	var searchArr = [
+        '가나',
+        '가나쵸콜렛',
+        '갈갈이 삼형제',
+        '북마크',
+        '북까페',
+        '엄마',
+        '아빠',
+        '북소리',
+        '여러분',
+        '소문',
+        '소문난 식당',
+        '나나나',
+        '쇼',
+        '쇼팽',
+        '모나미',
+        '한강',
+        '강강수월래',
+        '강촌',
+        '제주도',
+        '삼총사',
+        '먹보',
+        '먹소리',
+        '수박',
+        '수박 겉핥기'
+    ]; 
+
+
+$(document).ready(function() {
+$(".searchAuto").autocomplete(searchArr,{ 
+matchContains: true,
+selectFirst: false
+});
+});
 	
 	</script>
 </body>
