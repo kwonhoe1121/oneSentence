@@ -245,8 +245,7 @@ $().ready(function(d, s, id) {
 					<span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br>
 					<span
 						style="float: right; padding-right: 2rem; color: darkgray">${onesentence.bookTitle},
-						${onesentence.author}, ${onesentence.publisher},
-						p.${onesentence.page} 에서..
+						${onesentence.author}, p.${onesentence.page} 에서..
 
 					</span><br>
 					<hr>
