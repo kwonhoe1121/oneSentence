@@ -258,7 +258,7 @@ $().ready(function(d, s, id) {
 			</div>	
 	</c:when>
 	<c:otherwise>
-	<h3 style="font-size: 1.2rem;" class="onesentenfail">한문장 조회결과가 없습니다.</h3>
+		<h3 style="font-size: 1.2rem;" class="onesentenfail">한문장 조회결과가 없습니다.</h3>
 	</c:otherwise>
 	</c:choose>
 	
