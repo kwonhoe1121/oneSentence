@@ -28,22 +28,6 @@
 <link rel="stylesheet prefetch"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-
-<style>
-	.test{
-		width:40rem;
-		margin-left:15rem;
-	}
-	table{
-		margin: 0 auto;
-		border : none;
-	}
-	#queryinput{
-		width:30rem;
-	}
-</style>
-
-
 </head>
 
 <body>
@@ -52,43 +36,20 @@
 	<c:if test="${User eq null}">
 		<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 			<div class="container">
-			<div class="test">
-				<table>
-					<tr>
-						<td>
-							<a class="navbar-brand" href="${pageContext.request.contextPath}/">한문장</a>
-						</td>
-						<td>
-							<form class="navbar-form naver-right"  action="${pageContext.request.contextPath}/search">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search" name="query" id="queryinput">
-								<div class="input-group-btn">
-									<button class="btn btn-default" type="submit">
-									</button>
-								</div>
-							</div>
-							</form>
-						</td>
-						<td>
-							<i class="fa fa-search icon"></i>
-						</td>
-					</tr>
-				</table>
-				</div>
-				<%-- <a class="navbar-brand" href="${pageContext.request.contextPath}/">한문장</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/">한문장</a>
 				<!-- <div class="container"> -->
 				<!-- <div class="container2"> -->
 
 				<form class="navbar-form naver-right"  action="${pageContext.request.contextPath}/search">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search" name="query" style="width:35rem; margin-left:11rem;">
+						<input type="text" class="form-control" placeholder="Search" name="query">
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit">
+								<i class="fa fa-search icon"></i>
 							</button>
 						</div>
 					</div>
 				</form>
-				<i class="fa fa-search icon"></i> --%>
 
 				<!-- </div> -->
 				<!-- </div> -->
@@ -130,7 +91,7 @@
                             <button type="submit"></button>
                         </div> -->
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search" name="query" style="width:35rem; margin-left:11rem;">
+						<input type="text" class="form-control" placeholder="Search" name="query">
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit">
 								<i class="fa fa-search icon"></i>
