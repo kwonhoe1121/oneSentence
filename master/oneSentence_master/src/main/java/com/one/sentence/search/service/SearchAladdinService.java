@@ -51,10 +51,10 @@ public class SearchAladdinService {
 		String url = GetUrl(searchWord);
 		SearchServiceHandlerone api = new SearchServiceHandlerone();
 		api.parseXml(url);
-		for (SearchModel item : api.Items) {
-			// System.out.println(item.cover + " : " + item.title + item.publisher +
-			// item.author + item.isbn + item.categoryName + item.description);
-		}
+//		for (SearchModel item : api.Items) {
+//			System.out.println(item.cover + " : " + item.title + item.publisher +
+//			item.author + item.isbn + item.categoryName + item.description);
+//		}
 
 		return api.Items;
 	}

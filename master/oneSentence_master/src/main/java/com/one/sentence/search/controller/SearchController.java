@@ -53,6 +53,9 @@ public class SearchController {
 		System.out.println("query: " + query);
 		List<SearchModel> items = service.getSearchModel(query);
 		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);
+		
+		if(query.equals(" ") || query.equals("")) return "/search/searchFail";
+	
 		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
 		List<UserVo> userInfo = serviceUser.selectUserByUserName('%' + request.getParameter("query") + '%');
 		//List<String> hashtagitems = serviceHashtag.selectHashsearchList('%' + request.getParameter("query") + '%');
@@ -92,6 +95,7 @@ public class SearchController {
 			System.out.println("검색결과없음");
 			return "/search/searchFail";
 		}
+		
 	}
 
 	@RequestMapping(value="/search/searchMoreSentenceList")

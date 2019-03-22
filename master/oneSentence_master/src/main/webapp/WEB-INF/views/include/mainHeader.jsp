@@ -42,7 +42,7 @@
 
 				<form class="navbar-form naver-right"  action="${pageContext.request.contextPath}/search">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search" name="query">
+						<input type="text" class="form-control " placeholder="Search" name="query" >
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit">
 								<i class="fa fa-search icon"></i>
@@ -91,7 +91,7 @@
                             <button type="submit"></button>
                         </div> -->
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search" name="query">
+						<input type="text" class="form-control" placeholder="Search" name="query" >
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit">
 								<i class="fa fa-search icon"></i>

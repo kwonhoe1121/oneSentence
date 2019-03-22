@@ -28,25 +28,26 @@
 <link rel="stylesheet prefetch"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/eunseon/contents/js/contents.js"></script>
+<%-- <script
+	src="${pageContext.request.contextPath}/resources/eunseon/contents/js/contents.js"></script> --%>
 <style>
 @font-face {
 	font-family: 'BMHANNAAir_ttf';
 	src:
 		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
 }
-
 @font-face {
 	font-family: 'BMHANNAAir_otf';
 	src:
 		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
 }
-
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
 
+/* 재진 */
+.like {
+}
 
 </style>
 <script>
@@ -57,7 +58,6 @@ $().ready(function(d, s, id) {
     js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=302606807116615";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-
 </script>
 </head>
 
@@ -122,13 +122,15 @@ $().ready(function(d, s, id) {
 				</ul>
 								
 				<hr>
-				&nbsp;&nbsp;&nbsp;<span style="font-size: 1rem">목차</span><a href="#"
+				&nbsp;&nbsp;&nbsp;<span style= "cursor:pointer;" "font-size: 1rem;" id="toc">목차</span><a href="#"
 					class="a1">
 					<b>더보기</b></a>
+				<div class="tocul" style= "display: none;" >
 				<hr>
 				<ul>
 						<li><c:forEach items="${items3}" var="items3">${items3.toc}</c:forEach></li>
-					</ul>
+				</ul>
+				</div>
 				<hr>
 				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> 
 				<a href="${pageContext.request.contextPath}/onesentence/list/contents/${items.isbn}"
@@ -178,7 +180,7 @@ $().ready(function(d, s, id) {
 						<hr>
 						<span
 							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">${onesentence.hashtag}</span> <span
-							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"><i
+							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red" class="like"><i
 							class="fa fa-heart-o"> ${onesentence.likeTotal}</i></span>
 					</div>
 				</c:forEach>
@@ -213,6 +215,16 @@ $().ready(function(d, s, id) {
 <script
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
+
+	$('#toc').click(function () {  
+	    if($(".tocul").css("display") == "none"){   
+	        $('.tocul').show();  
+	    } else {  
+	        $('.tocul').hide();  
+	    }  
+	})
+
+	
 		$('#description img').hide();
 		var $html = $('#description').html();
 		var indexOfbr = $html.indexOf('<br>');
@@ -234,12 +246,124 @@ $().ready(function(d, s, id) {
 					})
 			})
 		}
-
 		function updateClick(idx) {
 			var url = "${pageContext.request.contextPath}/onesentence/popup/" + idx;
 			var popupOption = "width=700,height=600";
 			window.open(url, "한문장수정하기", popupOption);
 		}
+		
+		/* click like button  */
+		<c:if test="${User ne null}">
+		$(".like").on("click", function (data){
+			
+			/* alert("like button click!!"); */
+			console.log(data);
+			/* var $this = $("this"); */
+			/* oneSentenceIdx 값 가져오기. */
+			var oneSentenceIdx = $(this).parent("div").find("span").html();
+			//좋아요 카운트
+			var likeCnt = $(this).find("i")[0].innerText;
+			console.log(oneSentenceIdx);
+		    //하트 아이콘 변경. & count 증가.
+			console.log($(this).find("i")[0].innerText);
+		   	
+		    if($(this).find("i")[0].className === "fa fa-heart") {
+				$(this).find("i")[0].className = "fa fa-heart-o";
+				//하트 개수 감소.
+				if(likeCnt !== "0") {				
+					likeCnt = likeCnt - 1;
+				}
+				$(this).find("i")[0].innerText = likeCnt;
+			} else {
+				$(this).find("i")[0].className = "fa fa-heart";
+				//하트 개수 증가.
+				likeCnt = Number(likeCnt) + 1;
+				console.log(likeCnt);
+				$(this).find("i")[0].innerText = "";
+				$(this).find("i")[0].innerText = likeCnt;
+			}
+			
+			//ajax처리 해서 서버 요청.
+			 $.ajax({
+	        	type: "POST",
+	       		url: "${pageContext.request.contextPath}/user/clickLike",
+	       		data: JSON.stringify({
+	            "oneSentenceIdx": oneSentenceIdx
+		        }),
+		        dataType: "text",
+		        contentType: "application/json; charset=UTf-8",
+		        success: function (data) {
+		            console.log("좋아요 요청 성공!");
+		            // alert("좋아요 클릭 반영 성공!!");
+		            
+		            //좋아요 아이콘 이미지 토글로 변경시킨다.
+		        },
+		        error: function () {
+		            console.log("에러발생!!")
+		            // alert("에러발생!!");
+		        }
+		    })
+			
+		});
+		</c:if>
+		
+		/* like status in oneSentence */
+		function showLikedSentenceStatus() {
+
+			console.log($(".card-body").find(".oneSentenceIdx"));
+			console.log($(".card-body"));
+			
+			//oneSentenceIdx 값 모두 가져오기.
+			var oneSentenceIdx = [];
+		 	for(var i = 0; i < $(".card-body").find(".oneSentenceIdx").length; i += 1) {
+				oneSentenceIdx[i] = $(".card-body").find(".oneSentenceIdx")[i].innerText;
+			}
+			console.log(oneSentenceIdx);
+			
+			var requestData = {"oneSentenceIdx" : oneSentenceIdx}
+			
+			//oneSentenceIdx값 모두 가져다가 서버로 넘긴다. (배열에 담아서)
+		
+			$.ajax({
+				type: "GET",
+				url: "${pageContext.request.contextPath}/user/isLiked",
+				data: requestData,
+				dataType: "json",
+				contentType: "application/json; charset=UTf-8",
+				success: function(data) {
+					console.log("좋아요 상태 확인 요청 성공!");
+					/* console.log(data); */
+					//div 객체 모두 가져온다.
+					/* console.log(newdiv); */
+					var cardDiv = $(".card-body"); 
+				/* 	newdiv[0].childNodes[26].firstChild.className = "fa fa-heart"; */
+					// 반복문 돌려서 oneSentenceIdx 값과 data의 값을 비교한다.
+  					for(var i = 0; i < cardDiv.length; i += 1) {
+						/* console.log(newdiv[i].childNodes[1].innerText); */
+					 	for(var j = 0; j < data.length; j += 1){
+							//일치하면 하트 색깔 바꾼다.
+							if(Number(cardDiv[i].childNodes[3].innerText) === Number(data[j])) {
+								cardDiv[i].childNodes[27].firstChild.className = "fa fa-heart";
+								/* break; */
+							}			
+						}
+					} 
+					
+				},
+				error: function(request,status,error) {
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+				
+			})
+			
+			//controller에서 현재 로그인한 유저가 좋아요한 기록이 있는지 확인한다
+		
+			//좋아요 기록이 있는 oneSentenceIdx 값만 다시 view페이지로 넘긴다.
+		
+			//서버로 부터 받은 oneSentenceIdx 문장에다가 하트표시한다.(반복문)
+			
+		}
+
 	</script>
 </body>
 

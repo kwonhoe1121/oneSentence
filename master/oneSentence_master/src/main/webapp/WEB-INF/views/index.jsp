@@ -115,9 +115,11 @@
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/onesentence/list/all"><button
 									class="btn navbar-btn">추천</button></a></li>&nbsp;&nbsp;&nbsp;
-						<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/userpage/${User.userIdx}"><button
-									class="btn btn-success navbar-btn">마이페이지</button></a></li>
+						<li class="nav-item">
+							<a class="nav-link"
+								href="${pageContext.request.contextPath}/userpage/${User.userIdx}"><button
+									class="btn btn-success navbar-btn">마이페이지</button></a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -148,7 +150,7 @@
 						<input type="text" class="form-control" placeholder="Search"
 							name="query">
 						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit" onclick="send(this.form)">
+							<button class="btn btn-default" style="background-color: #F6F5F4" type="submit" onclick="send(this.form)">
 								<i class="fa fa-search icon" name="query"></i>
 							</button>
 						</div>
@@ -175,10 +177,10 @@
 	</section>
 
 	<!-- Footer -->
-	<footer class="py-5 bg-success">
+	<footer class="py-5" style="background-color:#F6F5F4">
 		<div class="container">
 			<div class="container2">
-				<p class="m-0 text-center text-white">
+				<p class="m-0 text-center text-black">
 					You can join our project with
 					https://github.com/kwonhoe1121/oneSentence <br> This is the
 					final project in bitcamp
