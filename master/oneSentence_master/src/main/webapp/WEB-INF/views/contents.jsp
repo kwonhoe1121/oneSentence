@@ -108,8 +108,7 @@ $().ready(function(d, s, id) {
 		<div class="row"
 			style="border-top-left-radius: 10px; border-top-right-radius: 10px;" id="basicData">
 			<div class="col-md-12 mb-5" >
-				<br> &nbsp;&nbsp;&nbsp; <b style="font-size: 1.2rem">기본정보</b> <a
-					href="#" class="a1"><b>더보기</b></a>
+				<br> &nbsp;&nbsp;&nbsp; <b style="font-size: 1.2rem">기본정보</b>
 				<hr>
 				<ul>
 					<li>${items.title}</li>
@@ -122,9 +121,7 @@ $().ready(function(d, s, id) {
 				</ul>
 								
 				<hr>
-				&nbsp;&nbsp;&nbsp;<span style= "cursor:pointer;" "font-size: 1rem;" id="toc">목차</span><a href="#"
-					class="a1">
-					<b>더보기</b></a>
+				&nbsp;&nbsp;&nbsp;<span style= "cursor:pointer;" "font-size: 1rem;" id="toc">목차</span>
 				<div class="tocul" style= "display: none;" >
 				<hr>
 				<ul>
