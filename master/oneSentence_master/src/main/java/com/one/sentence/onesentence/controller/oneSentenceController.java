@@ -1,10 +1,12 @@
 package com.one.sentence.onesentence.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.one.sentence.common.vo.Hashtag;
 import com.one.sentence.common.vo.OneSentence;
 import com.one.sentence.onesentence.model.Book;
+import com.one.sentence.onesentence.model.GoogleTtsApi;
 import com.one.sentence.onesentence.model.GoogleVisionApi;
 import com.one.sentence.onesentence.model.ShowOnesentence;
 import com.one.sentence.onesentence.service.OnesentenceService;
@@ -34,11 +37,13 @@ public class oneSentenceController {
 
 	}
 
+	
 	@RequestMapping(value = "/onesentence/insert", method = RequestMethod.POST)
 	public String insertOnesententce(HttpServletRequest request, @RequestParam("oneSentence") String oneSentence,
 			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx,
 			Model model) {
 		String isbn = (String) request.getParameter("isbn");
+
 		if (oneService.showBookByisbn(isbn)==0) {
 			Book book = new Book();
 			String author = (String) request.getParameter("author");
@@ -53,7 +58,7 @@ public class oneSentenceController {
 			book.setPublisher(publisher);
 			oneService.makeBook(book);
 		}
-
+		
 		OneSentence onesentence = new OneSentence();
 		onesentence.setIsbn(isbn);
 		onesentence.setOneSentence(oneSentence);
@@ -102,7 +107,17 @@ public class oneSentenceController {
 			showOneSentence.setHashtag(hash);
 			hash = "";
 		}
-
+		//구글 tts api
+		String uri = "/resources";
+		String dir = request.getSession().getServletContext().getRealPath(uri);
+		String gender = (String) request.getParameter("gender");
+		GoogleTtsApi tts = new GoogleTtsApi();
+		try {
+			tts.makeMp3(oneSentenceIdx, oneSentence, oneService.showBookTitleByisbn(isbn), gender, dir+"\\eunseon\\mp3Folder");
+			} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		model.addAttribute("oneSentenceList", oneSentenceList);
 
 		return "redirect:/onesentence/list/contents/"+isbn;
@@ -117,14 +132,14 @@ public class oneSentenceController {
 	public String getSentenceByPhoto(HttpServletRequest request, Model model,
 			@RequestParam("photo") MultipartFile file) {
 
-		String uri = "/upload";
+		String uri = "/resources";
 		String dir = request.getSession().getServletContext().getRealPath(uri);
 		String fileName = file.getOriginalFilename();
-		System.out.println(dir + "\\" + fileName);
+		System.out.println(dir + "\\eunseon\\upload\\" + fileName);
 
 		if (!file.isEmpty()) {
 			try {
-				file.transferTo(new File(dir, fileName));
+				file.transferTo(new File(dir+"\\eunseon\\upload\\", fileName));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -132,7 +147,7 @@ public class oneSentenceController {
 		} else {
 			System.out.println("error");
 		}
-		String oneSentenceListByPhoto = GoogleVisionApi.getSentence(dir + "\\" + fileName);
+		String oneSentenceListByPhoto = GoogleVisionApi.getSentence(dir + "\\eunseon\\upload\\" + fileName);
 		model.addAttribute("OneSentenceList", oneSentenceListByPhoto);
 		return "onesentence/chooseSentence";
 
@@ -277,7 +292,9 @@ public class oneSentenceController {
 	}
 
 	@RequestMapping("/onesentence/delete/{idx}")
-	public String deleteOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model) {
+	public String deleteOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model,
+			HttpServletRequest request
+			) {
 
 		OneSentence onesentence = oneService.showOneSentenceModel(idx);
 		int userIdx = onesentence.getUserIdx();
@@ -301,7 +318,28 @@ public class oneSentenceController {
 			showOneSentence.setHashtag(hash);
 			hash = "";
 		}
+		String uri = "/resources";
+		String dir = request.getSession().getServletContext().getRealPath(uri);
+		File mp3 = new File( dir+"\\eunseon\\mp3Folder",idx+".mp3");
+		if(mp3.exists()) {
+			mp3.delete();}
+		
 		model.addAttribute("oneSentenceList", oneSentenceList);
 		return "redirect:/onesentence/list/all";
 	}
+	@RequestMapping("/onesentence/play/{idx}")
+	public String playOneSentence(@PathVariable("idx") int idx, Model model) {
+		model.addAttribute("oneSentenceIdx",idx);
+		return "onesentence/mp3Play";
+	}
+	@RequestMapping("/onesentence/playlist")
+	public String playerList(Model model) {
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(444);
+		list.add(448);
+		list.add(449);
+		model.addAttribute("oneSentenceIdxList", list);
+		return "onesentence/mp3PlayList";
+	}
+	
 }

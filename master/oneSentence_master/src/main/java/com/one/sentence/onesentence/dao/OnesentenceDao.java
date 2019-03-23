@@ -157,6 +157,12 @@ public class OnesentenceDao implements IOnesentenceDao{
 		return sqlSession.selectList(namespace+".selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing", map);
 	}
 
+	@Override
+	public String selectBookTitleByisbn(String isbn) {
+		// TODO Auto-generated method stub 
+		return sqlSession.selectOne(namespace+".selectBookTitleByisbn", isbn);
+	}
+
 	
 
 	

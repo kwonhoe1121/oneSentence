@@ -28,6 +28,7 @@ public interface IOnesentenceService {
 	
 	public void makeBook(Book book); 
 	public int showBookByisbn(String isbn);
+	public String showBookTitleByisbn(String isbn);
 	
 	public void upUserPoint(int userIdx);
 	public void downUserPoint(int userIdx);

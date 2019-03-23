@@ -144,4 +144,10 @@ public class OnesentenceService implements IOnesentenceService {
 		return dao.selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing(userIdx, isbn);
 	}
 
+	@Override
+	public String showBookTitleByisbn(String isbn) {
+		// TODO Auto-generated method stub
+		return dao.selectBookTitleByisbn(isbn);
+	}
+
 }

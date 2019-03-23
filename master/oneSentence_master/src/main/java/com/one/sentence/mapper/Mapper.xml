@@ -326,6 +326,12 @@
 		select count(*) from
 		 book where isbn=#{isbn}
 	</select>
+	<select id="selectBookTitleByisbn"
+		resultType="java.lang.String">
+		select bookTitle from
+		 book where isbn=#{isbn}
+	</select>
+	
 	<!-- 유저 -->
 	<select id="selectUser_infoByuserIdx"
 		resultType="com.one.sentence.common.vo.UserVo">
