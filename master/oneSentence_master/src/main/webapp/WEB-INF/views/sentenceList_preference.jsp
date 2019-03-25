@@ -81,7 +81,7 @@ $().ready(function(d, s, id) {
 	<!-- Page Content -->
 	<div class="container">
 		<!-- Post Content Column -->
-		<div class="col-lg-8">
+		<div class="col-lg-8" style="padding-top:3rem">
 			<!-- Comments Form -->
 			<input type="text" id="session" value="${User.userIdx}" hidden="true">
 			

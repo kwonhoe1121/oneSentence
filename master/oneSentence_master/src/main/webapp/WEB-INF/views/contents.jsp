@@ -83,6 +83,7 @@ $().ready(function(d, s, id) {
 					<li><b style="font-size: 1.2rem">${items.title}</b></li>
 					<li>${items.author}</li>
 					<li>${items.publisher}</li>
+					<li><a href="${pageContext.request.contextPath}/onesentence/playlist/contents/${items.isbn}">한문장 듣기</a></li>
 					<hr>
 					<li>
 					<form action="${pageContext.request.contextPath}/onesentence/insertForm" method="POST">

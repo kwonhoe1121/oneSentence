@@ -37,14 +37,12 @@ public class oneSentenceController {
 
 	}
 
-	
 	@RequestMapping(value = "/onesentence/insert", method = RequestMethod.POST)
 	public String insertOnesententce(HttpServletRequest request, @RequestParam("oneSentence") String oneSentence,
-			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx,
-			Model model) {
+			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx, Model model) {
 		String isbn = (String) request.getParameter("isbn");
 
-		if (oneService.showBookByisbn(isbn)==0) {
+		if (oneService.showBookByisbn(isbn) == 0) {
 			Book book = new Book();
 			String author = (String) request.getParameter("author");
 			String bookGenre = (String) request.getParameter("bookGenre");
@@ -58,7 +56,7 @@ public class oneSentenceController {
 			book.setPublisher(publisher);
 			oneService.makeBook(book);
 		}
-		
+
 		OneSentence onesentence = new OneSentence();
 		onesentence.setIsbn(isbn);
 		onesentence.setOneSentence(oneSentence);
@@ -73,17 +71,17 @@ public class oneSentenceController {
 		String hashtag1 = (String) request.getParameter("hashtag1");
 		String hashtag2 = (String) request.getParameter("hashtag2");
 		String hashtag3 = (String) request.getParameter("hashtag3");
-		
-		if (!(hashtag1 == null||hashtag1.equals(""))) {
+
+		if (!(hashtag1 == null || hashtag1.equals(""))) {
 			Hashtag tag = new Hashtag();
 			tag.setHashtag(hashtag1);
 			tag.setOneSentenceIdx(oneSentenceIdx);
 			oneService.makeHashtag(tag);
-			if (!(hashtag2 == null||hashtag2.equals(""))) {
+			if (!(hashtag2 == null || hashtag2.equals(""))) {
 				tag.setHashtag(hashtag2);
 				tag.setOneSentenceIdx(oneSentenceIdx);
 				oneService.makeHashtag(tag);
-				if (!(hashtag3 == null||hashtag3.equals(""))) {
+				if (!(hashtag3 == null || hashtag3.equals(""))) {
 					tag.setHashtag(hashtag3);
 					tag.setOneSentenceIdx(oneSentenceIdx);
 					oneService.makeHashtag(tag);
@@ -107,20 +105,22 @@ public class oneSentenceController {
 			showOneSentence.setHashtag(hash);
 			hash = "";
 		}
-		//구글 tts api
+
+		// 구글 tts api
 		String uri = "/resources";
 		String dir = request.getSession().getServletContext().getRealPath(uri);
 		String gender = (String) request.getParameter("gender");
 		GoogleTtsApi tts = new GoogleTtsApi();
 		try {
-			tts.makeMp3(oneSentenceIdx, oneSentence, oneService.showBookTitleByisbn(isbn), gender, dir+"\\eunseon\\mp3Folder");
-			} catch (Exception e) {
+			tts.makeMp3(oneSentenceIdx, oneSentence, oneService.showBookTitleByisbn(isbn), gender,
+					dir + "\\eunseon\\mp3Folder");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		model.addAttribute("oneSentenceList", oneSentenceList);
 
-		return "redirect:/onesentence/list/contents/"+isbn;
+		return "redirect:/onesentence/list/contents/" + isbn;
 	}
 
 	@RequestMapping("/onesentence/popupForPhoto")
@@ -139,7 +139,7 @@ public class oneSentenceController {
 
 		if (!file.isEmpty()) {
 			try {
-				file.transferTo(new File(dir+"\\eunseon\\upload\\", fileName));
+				file.transferTo(new File(dir + "\\eunseon\\upload\\", fileName));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -198,29 +198,29 @@ public class oneSentenceController {
 
 	@RequestMapping("/onesentence/list/contents/{isbn}")
 	public String selectOnesententceListByIsbn(@PathVariable("isbn") String isbn, Model model) {
-		if(isbn!=null) {
-		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByIsbn(isbn);
-		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
-		ShowOnesentence showOneSentence;
-		String hash = "";
-		while (it2.hasNext()) {
-			showOneSentence = it2.next();
-			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+		if (isbn != null) {
+			List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByIsbn(isbn);
+			Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+			ShowOnesentence showOneSentence;
+			String hash = "";
+			while (it2.hasNext()) {
+				showOneSentence = it2.next();
+				showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
 
-			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
-			Iterator<String> it = hList.iterator();
-			while (it.hasNext()) {
-				hash += "#" + it.next() + " ";
+				List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+				Iterator<String> it = hList.iterator();
+				while (it.hasNext()) {
+					hash += "#" + it.next() + " ";
+				}
+				showOneSentence.setHashtag(hash);
+				hash = "";
 			}
-			showOneSentence.setHashtag(hash);
-			hash = "";
+			model.addAttribute("oneSentenceList", oneSentenceList);
 		}
-		model.addAttribute("oneSentenceList", oneSentenceList);}
 		return "sentenceList";
 
 	}
-	
-	
+
 	@RequestMapping("/onesentence/list/{idx}")
 	public String selectOnesententceListByuserIdx(@PathVariable("idx") int idx, Model model) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByuserIdx(idx);
@@ -280,6 +280,18 @@ public class oneSentenceController {
 		String isbn = (String) request.getParameter("isbn");
 		oneService.changeOneSentence(oneSentenceIdx, oneSentence, page, isbn);
 
+		// 구글 tts api
+		String uri = "/resources";
+		String dir = request.getSession().getServletContext().getRealPath(uri);
+		String gender = (String) request.getParameter("gender");
+		GoogleTtsApi tts = new GoogleTtsApi();
+		try {
+			tts.makeMp3(oneSentenceIdx, oneSentence, oneService.showBookTitleByisbn(isbn), gender,
+					dir + "\\eunseon\\mp3Folder");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return "onesentence/popupfinish";
 	}
 
@@ -293,8 +305,7 @@ public class oneSentenceController {
 
 	@RequestMapping("/onesentence/delete/{idx}")
 	public String deleteOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model,
-			HttpServletRequest request
-			) {
+			HttpServletRequest request) {
 
 		OneSentence onesentence = oneService.showOneSentenceModel(idx);
 		int userIdx = onesentence.getUserIdx();
@@ -320,26 +331,53 @@ public class oneSentenceController {
 		}
 		String uri = "/resources";
 		String dir = request.getSession().getServletContext().getRealPath(uri);
-		File mp3 = new File( dir+"\\eunseon\\mp3Folder",idx+".mp3");
-		if(mp3.exists()) {
-			mp3.delete();}
-		
+		File mp3 = new File(dir + "\\eunseon\\mp3Folder", idx + ".mp3");
+		if (mp3.exists()) {
+			mp3.delete();
+		}
+
 		model.addAttribute("oneSentenceList", oneSentenceList);
 		return "redirect:/onesentence/list/all";
 	}
+
 	@RequestMapping("/onesentence/play/{idx}")
 	public String playOneSentence(@PathVariable("idx") int idx, Model model) {
-		model.addAttribute("oneSentenceIdx",idx);
+		model.addAttribute("oneSentenceIdx", idx);
 		return "onesentence/mp3Play";
 	}
-	@RequestMapping("/onesentence/playlist")
-	public String playerList(Model model) {
-		List<Integer> list = new ArrayList<Integer>();
-		list.add(444);
-		list.add(448);
-		list.add(449);
-		model.addAttribute("oneSentenceIdxList", list);
+	@RequestMapping("/onesentence/playlist/contents/{isbn}")
+	public String playList(@PathVariable("isbn") String isbn, Model model) {
+		List<Integer> oneSentenceIdxList = new ArrayList<Integer>();
+		List<ShowOnesentence> list = oneService.showOneSentenceListByIsbn(isbn);
+		Iterator<ShowOnesentence> it = list.iterator();
+		ShowOnesentence oneSentence;
+		while(it.hasNext()) {
+			oneSentence = it.next();
+			oneSentenceIdxList.add(oneSentence.getOneSentenceIdx());
+		}
+		model.addAttribute("oneSentenceIdxList", oneSentenceIdxList);
 		return "onesentence/mp3PlayList";
 	}
 	
-}
+	
+	@RequestMapping("/playAll") //모든 한문장 mp3파일 만들기
+	public void playall(HttpServletRequest request) {
+		ShowOnesentence oneSentence ;
+		String uri = "/resources";
+		String dir = request.getSession().getServletContext().getRealPath(uri);
+		GoogleTtsApi tts = new GoogleTtsApi();
+		
+		String[] gArr = {"female", "male"};
+		int[] arr = {411,409,419,418,414,3,4,5};
+			for(int j=0;j<arr.length;j++) {
+			oneSentence = oneService.showOneSentenceByoneSentenceIdx(arr[j]);
+			int i = (int)Math.round(Math.random()*2);
+			try {
+				tts.makeMp3(arr[j], oneSentence.getOneSentence(), oneSentence.getBookTitle(), gArr[i],
+						dir + "\\eunseon\\mp3Folder");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	}

@@ -77,7 +77,15 @@
 			for="oneSentence" class="sr-only">OneSentence</label> <input
 			type="text" id="oneSentence" name="oneSentence" class="form-control"
 			 value="${onesentence.oneSentence}" required autofocus>
-			<br><br>
+			<br>
+			<label for="gender" style="font-weight:bolder;margin-left:2rem;float:left;">목소리 선택</label>
+		<input
+			type="radio" name="gender" value="male" style="margin-left:-3rem;" checked="checked">male
+		<input
+			type="radio" name="gender" value="female">female<br><br>
+			
+			
+			<br>
 		
 		<button class="btn btn-lg btn-success btn-block" type="submit">수정완료</button>
 	</form>

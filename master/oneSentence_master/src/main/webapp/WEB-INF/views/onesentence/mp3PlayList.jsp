@@ -10,13 +10,13 @@
 <body>
 <h3>mp3재생</h3>
 <c:forEach items="${oneSentenceIdxList}" var="list">
-<audio controls autoplay>
+<audio controls>
 
 <source class="play" src="${pageContext.request.contextPath}/resources/eunseon/mp3Folder/${list}.mp3" type="audio/mpeg">
 <%-- 	<source src="${pageContext.request.contextPath}/resources/eunseon/mp3Folder/${oneSentenceIdx}.mp3" type="audio/ogg">
 	<source src="${pageContext.request.contextPath}/resources/eunseon/mp3Folder/${oneSentenceIdx}.mp3" type="audio/wav"> --%>
 
-</audio>
+</audio><br>
 </c:forEach>
 </body>
 </html>
