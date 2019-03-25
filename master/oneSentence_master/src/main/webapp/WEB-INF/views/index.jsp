@@ -228,8 +228,35 @@
 	
 	</script>
 	
-	
-	<script>
+	<script type="text/javascript">
+ 
+$(document).ready(function() {
+ $("#searchAuto").autocomplete({
+ source : function(request, response) {
+ 
+ $.ajax({
+ 
+ url : "/index",
+ type : "get",
+ dataType : "json",
+ data: request,
+ 
+ success : function(data) {
+ 
+ var result = data;
+ response(result);
+ },
+ 
+ error : function(data) {
+ alert("에러가 발생하였습니다.")
+ 			}
+ 		});
+ 	}
+ });
+});
+</script>
+
+<!-- 	<script>
 	
 	$(function(){
 		$( "#searchAuto" ).autocomplete({
@@ -237,10 +264,11 @@
 			//jquery Ajax로 비동기 통신한 후 
 			//json객체를 서버에서 내려받아서 리스트 뽑는 작업
 		$.ajax({ 
-			url: "searchJson.jsp", //호출할 URL 
+			type: "get",
+			url: "/searchJson.jsp", //호출할 URL 
 			dataType: "json", //우선 jsontype json으로 
 			data: { // parameter 값이다. 여러개를 줄수도 있다. 
-			//request.term >> 이거 자체가 text박스내에 입력된 값이다. 
+			//request.term = $("#searchAuto").val()
 			searchValue: request.term 
 			},
 			success: function( result ) { //return 된것을 response() 함수내에 다음과 같이 정의해서 뽑아온다. 
@@ -265,44 +293,8 @@
 	}); 
 })
 
-
-
-/* 	var searchArr = [
-        '가나',
-        '가나쵸콜렛',
-        '갈갈이 삼형제',
-        '북마크',
-        '북까페',
-        '엄마',
-        '아빠',
-        '북소리',
-        '여러분',
-        '소문',
-        '소문난 식당',
-        '나나나',
-        '쇼',
-        '쇼팽',
-        '모나미',
-        '한강',
-        '강강수월래',
-        '강촌',
-        '제주도',
-        '삼총사',
-        '먹보',
-        '먹소리',
-        '수박',
-        '수박 겉핥기'
-    ]; 
-
-
-$(document).ready(function() {
-$(".searchAuto").autocomplete(searchArr,{ 
-matchContains: true,
-selectFirst: false
-	});
-}); */
 	
-	</script>
+	</script> -->
 </body>
 
 </html>

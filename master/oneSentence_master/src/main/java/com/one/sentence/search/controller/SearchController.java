@@ -1,13 +1,17 @@
 package com.one.sentence.search.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -203,5 +207,23 @@ public class SearchController {
 		return "/contents";
 	}
 	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	 public void AutoTest(HttpServletRequest request, Model model, 
+	 HttpServletResponse resp, ShowOnesentence dto) throws IOException {
+	 
+	 String result = request.getParameter("query");
+	 
+	 List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag(result); //result값이 포함되어 있는 emp테이블의 네임을 리턴
+	 
+	 JSONArray ja = new JSONArray();
+	 for (int i = 0; i < oneSentenceList.size(); i++) {
+	 ja.add(oneSentenceList.get(i).getHashtag());
+	 }
+	 
+	 PrintWriter out = resp.getWriter();
+	 
+	 out.print(ja.toString());
+	 
+	 }
 	
 }
