@@ -149,7 +149,7 @@
 					method="GET">
 					<div class="input-group">
 						<input type="text" class="form-control searchAuto" placeholder="Search"
-							name="query">
+							name="query" id="searchAuto">
 						<div class="input-group-btn">
 							<button class="btn btn-default" style="background-color: #F6F5F4" type="submit" onclick="send(this.form)">
 								<i class="fa fa-search icon" name="query"></i>
@@ -210,7 +210,7 @@
 
 		if(theform.query.value==""){
 
-		//받은 form 의 input text name인s search의 value 가 빈칸일때.
+		//받은 form 의 input text name인 search의 value 가 빈칸일때.
 
 		alert("검색어를 입력 하세요.");
 
@@ -228,25 +228,46 @@
 	
 	</script>
 	
-
-	<!-- <script type="text/javascript">
-	$(function(){
-		var result=new Array();
-		
-		<c:forEach items="${items3}" var="items3">
-		var json=new Object();
-		
-		
-		json.title="${items3.title}";
-		result.push(json);
-		</c:forEach>
-		
-		alert("booktitleAll : "+JSON.stringify(result));
-	});
-	</script> -->
+	
 	<script>
 	
-	var searchArr = [
+	$(function(){
+		$( "#searchAuto" ).autocomplete({
+		source : function( request, response ) {
+			//jquery Ajax로 비동기 통신한 후 
+			//json객체를 서버에서 내려받아서 리스트 뽑는 작업
+		$.ajax({ 
+			url: "searchJson.jsp", //호출할 URL 
+			dataType: "json", //우선 jsontype json으로 
+			data: { // parameter 값이다. 여러개를 줄수도 있다. 
+			//request.term >> 이거 자체가 text박스내에 입력된 값이다. 
+			searchValue: request.term 
+			},
+			success: function( result ) { //return 된것을 response() 함수내에 다음과 같이 정의해서 뽑아온다. 
+				response( 
+					$.map( result, function( item ) { 
+						return {
+						// label : 화면에 보여지는 텍스트
+						// value : 실제 text태그에 들어갈 값
+							label : item.data,
+							value : item.data
+						}
+					})
+				);
+			}
+		});
+	},
+		//최소 몇자 이상되면 통신을 시작하겠다라는 옵션
+		minLength : 2,
+		// 자동완성 목록에서 특정 값 선택시 처리하는 동작 구현
+		// 구현없으면 단순 text태그내에 값이 들어간다.
+		select: function( event, ui ) {} 
+	}); 
+})
+
+
+
+/* 	var searchArr = [
         '가나',
         '가나쵸콜렛',
         '갈갈이 삼형제',
@@ -278,8 +299,8 @@ $(document).ready(function() {
 $(".searchAuto").autocomplete(searchArr,{ 
 matchContains: true,
 selectFirst: false
-});
-});
+	});
+}); */
 	
 	</script>
 </body>
