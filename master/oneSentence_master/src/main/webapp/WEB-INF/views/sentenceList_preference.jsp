@@ -70,6 +70,8 @@ $().ready(function(d, s, id) {
 </head>
 <body>
 
+	<header style="height:60px"></header>
+
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
 	<a href="${pageContext.request.contextPath}/onesentence/liketo/${userIdx}" id="liketo" class="alink"
 		style="color: #007bff"><i class="fa fa-search icon"> 좋아요한

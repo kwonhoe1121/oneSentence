@@ -212,6 +212,10 @@ $().ready(function(d, s, id) {
 <script
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
+	
+	<c:if test="${User ne null}">
+		showLikedSentenceStatus();
+	</c:if>
 
 	$('#toc').click(function () {  
 	    if($(".tocul").css("display") == "none"){   
