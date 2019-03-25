@@ -96,7 +96,6 @@ public class SearchController {
 			System.out.println("검색결과없음");
 			return "/search/searchFail";
 		}
-		
 	}
 
 	@RequestMapping(value="/search/searchMoreSentenceList")

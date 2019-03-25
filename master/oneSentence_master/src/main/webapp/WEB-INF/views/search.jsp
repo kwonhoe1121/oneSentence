@@ -270,10 +270,10 @@ $().ready(function(d, s, id) {
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
 	
-		showLikedSentenceStatus();
+		<c:if test="${User ne null}">
+			showLikedSentenceStatus();
+		</c:if>
 			  
-	   
-		
 			function share(idx) {
 				FB.ui({
 				method : 'share_open_graph',
@@ -296,6 +296,7 @@ $().ready(function(d, s, id) {
 			}
 	    
 		/* click like button  */
+		<c:if test="${User ne null}">
 		$(".like").on("click", function (data){
 			
 			/* alert("like button click!!"); */
@@ -347,6 +348,7 @@ $().ready(function(d, s, id) {
 		    })
 			
 		});
+		</c:if>
 		
 		/* like status in oneSentence */
 		function showLikedSentenceStatus() {

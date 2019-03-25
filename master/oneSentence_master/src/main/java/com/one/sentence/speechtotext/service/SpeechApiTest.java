@@ -25,7 +25,7 @@ public class SpeechApiTest {
 			// 오디오 파일에 대한 설정부분
 			RecognitionConfig config = RecognitionConfig.newBuilder()
 					.setEncoding(RecognitionConfig.AudioEncoding.LINEAR16).setSampleRateHertz(16000)
-					.setLanguageCode("en-US").build();
+					.setLanguageCode("ko_KR").build();
 
 			RecognitionAudio audio = getRecognitionAudio(filePath); // Audio 파일에 대한 RecognitionAudio 인스턴스 생성
 			RecognizeResponse response = speech.recognize(config, audio); // 요청에 대한 응답

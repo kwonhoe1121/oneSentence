@@ -79,8 +79,6 @@ public class NLTest {
 			System.out.println("DependencyEdge");
 			System.out.printf("\tHeadTokenIndex: %d\n", token.getDependencyEdge().getHeadTokenIndex());
 			System.out.printf("\tLabel: %s\n\n", token.getDependencyEdge().getLabel());
-
 		}
 	}
-
 }
