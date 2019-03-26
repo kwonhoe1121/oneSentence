@@ -242,6 +242,13 @@
 			<version>1.64.0</version>
 		</dependency>
 
+		<!-- Google Cloud Speech API -->
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-speech</artifactId>
+			<version>0.80.0-beta</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
