@@ -68,7 +68,12 @@
 					<a href="#" onclick="setting()"><i class="fa fa-cog fa-2x"
 						aria-hidden="true"></i></a>
 					<div id="settingDiv" aria-hidden="true">
-						<a href="${pageContext.request.contextPath}/user/logout">로그아웃</a><br>
+						<c:set var="logout" value="logout" scope="session"/>
+						
+						<c:if test="${uservo.emailStatus} eq '3' ">
+							<c:set var="logout" value="kakaologout" scope="session"/>
+						</c:if>
+						<a href="${pageContext.request.contextPath}/user/${logout}">로그아웃</a><br>
 						<a href="${pageContext.request.contextPath}/user/withdraw">회원탈퇴</a>
 
 					</div>

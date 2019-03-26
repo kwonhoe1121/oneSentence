@@ -71,9 +71,21 @@
 			select * 
 			from user_info 
 			where userName like #{param} and emailStatus&lt;&gt;'2';
-
+	</select>
+	
+	<select id="selectUserByUserEmail"
+		resultType="com.one.sentence.common.vo.UserVo">			
+			select * 
+			from user_info 
+			where userEmail=#{userEmail};
 	</select>
 
+	<insert id="insertKakaoUser"
+		parameterType="com.one.sentence.common.vo.UserVo">
+		insert into user_info
+		(userName, userEmail, emailStatus)
+		value ( #{userName}, #{userEmail}, #{emailStatus} )
+	</insert>
 
 
 	<!-- 재진 매퍼 -->

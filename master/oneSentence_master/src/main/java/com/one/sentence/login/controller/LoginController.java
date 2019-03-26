@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.one.sentence.common.service.SecurityService;
 import com.one.sentence.common.vo.UserVo;
+import com.one.sentence.kakaologin.controller.KakaoLoginController;
 import com.one.sentence.login.service.LoginService;
 
 @Controller
@@ -85,7 +86,13 @@ public class LoginController {
 	// 로그아웃 controller
 	@RequestMapping("/user/logout")
 	public String requestLogout(HttpSession session) {
+		UserVo user = (UserVo) session.getAttribute("User");
+		if(user.getEmailStatus().equals("3")) {
+			KakaoLoginController logout = new KakaoLoginController();
+			logout.kakaoLogout(session.getAttribute("access_token").toString());
+		}
 
+		
 		// 세션 종료.
 		session.invalidate();
 		System.out.println("로그아웃!");
