@@ -10,8 +10,26 @@ public class OneSentence {
 	private String oneSentenceRegisteredTime;
 	private int userIdx;
 	private String isbn;
-
 	private List<OneSentence> oneSentenceList;
+
+	public OneSentence() {}
+	public OneSentence(String oneSentence, String page, int userIdx, String isbn) {
+		this.oneSentence = oneSentence;
+		this.page = page;
+		this.userIdx = userIdx;
+		this.isbn = isbn;
+	}
+
+	public OneSentence(int oneSentenceIdx, String oneSentence, String page, String oneSentenceRegisteredTime,
+			int userIdx, String isbn) {
+		this.oneSentenceIdx = oneSentenceIdx;
+		this.oneSentence = oneSentence;
+		this.page = page;
+		this.oneSentenceRegisteredTime = oneSentenceRegisteredTime;
+		this.userIdx = userIdx;
+		this.isbn = isbn;
+	}
+
 
 	public int getOneSentenceIdx() {
 		return oneSentenceIdx;

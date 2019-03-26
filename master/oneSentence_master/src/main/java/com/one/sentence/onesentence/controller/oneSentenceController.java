@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,46 +29,30 @@ import com.one.sentence.onesentence.model.GoogleVisionApi;
 import com.one.sentence.onesentence.model.ShowOnesentence;
 import com.one.sentence.onesentence.service.OnesentenceService;
 
+@RequestMapping("/onesentence")
 @Controller
 public class oneSentenceController {
 
 	@Inject
 	OnesentenceService oneService;
 
-	@RequestMapping(value = "/onesentence/insertForm")
+	@RequestMapping(value = "/insertForm")
 	public String getForm(HttpServletRequest request) {
 		return "onesentence/insert";
 
 	}
-
-	@RequestMapping(value = "/onesentence/insert", method = RequestMethod.POST)
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insertOnesententce(HttpServletRequest request, @RequestParam("oneSentence") String oneSentence,
 			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx, Model model) {
 		String isbn = (String) request.getParameter("isbn");
 
 		if (oneService.showBookByisbn(isbn) == 0) {
-			Book book = new Book();
-			String author = (String) request.getParameter("author");
-			String bookGenre = (String) request.getParameter("bookGenre");
-			String bookTitle = (String) request.getParameter("bookTitle");
-			String publisher = (String) request.getParameter("publisher");
-
-			book.setIsbn(isbn);
-			book.setAuthor(author);
-			book.setBookGenre(bookGenre);
-			book.setBookTitle(bookTitle);
-			book.setPublisher(publisher);
+			Book book = new Book(isbn, (String) request.getParameter("bookTitle"),(String) request.getParameter("bookGenre"),(String) request.getParameter("author"), (String) request.getParameter("publisher"));
 			oneService.makeBook(book);
 		}
 
-		OneSentence onesentence = new OneSentence();
-		onesentence.setIsbn(isbn);
-		onesentence.setOneSentence(oneSentence);
-		onesentence.setPage(page);
-		onesentence.setUserIdx(userIdx);
-
+		OneSentence onesentence = new OneSentence(oneSentence, page, userIdx, isbn);
 		oneService.upUserPoint(userIdx);
-
 		oneService.makeOneSentence(onesentence);
 
 		int oneSentenceIdx = oneService.findOneSentenceIdx(userIdx, isbn, oneSentence);
@@ -122,13 +110,70 @@ public class oneSentenceController {
 
 		return "redirect:/onesentence/list/contents/" + isbn;
 	}
-
-	@RequestMapping("/onesentence/popupForPhoto")
+	
+	@GetMapping("/{idx}")
+	public String selectOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model) {
+		ShowOnesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);
+		int oneSentenceIdx = onesentence.getOneSentenceIdx();
+		List<String> hashtagList = oneService.showHashtagList(oneSentenceIdx);
+		String hashtag = "";
+		Iterator<String> it = hashtagList.iterator();
+		while (it.hasNext()) {
+			hashtag += ("#" + it.next() + " ");
+		}
+		onesentence.setHashtag(hashtag);
+		
+		int likeTotal = oneService.showLikeTotal(oneSentenceIdx);
+		onesentence.setLikeTotal(likeTotal);
+		
+		model.addAttribute("onesentence", onesentence);
+		
+		return "onesentence/one";
+		
+	}
+	
+	@DeleteMapping("/{idx}")
+	public String deleteOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model,
+			HttpServletRequest request) {
+		
+		OneSentence onesentence = oneService.showOneSentenceModel(idx);
+		int userIdx = onesentence.getUserIdx();
+		oneService.downUserPoint(userIdx);
+		
+		oneService.removeOneSentence(idx);
+		
+		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash = "";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+			
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
+		}
+		String uri = "/resources";
+		String dir = request.getSession().getServletContext().getRealPath(uri);
+		File mp3 = new File(dir + "\\eunseon\\mp3Folder", idx + ".mp3");
+		if (mp3.exists()) {
+			mp3.delete();
+		}
+		
+		model.addAttribute("oneSentenceList", oneSentenceList);
+		return "redirect:/onesentence/list/all";
+	}
+	@RequestMapping("/popupForPhoto")
 	public String insertOnesentenceByPhoto() {
 		return "onesentence/popupForPhoto";
 	}
 
-	@RequestMapping("/onesentence/getSentence")
+	@RequestMapping("/getSentence")
 	public String getSentenceByPhoto(HttpServletRequest request, Model model,
 			@RequestParam("photo") MultipartFile file) {
 
@@ -153,28 +198,9 @@ public class oneSentenceController {
 
 	}
 
-	@RequestMapping("/onesentence/one/{idx}")
-	public String selectOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model) {
-		ShowOnesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);
-		int oneSentenceIdx = onesentence.getOneSentenceIdx();
-		List<String> hashtagList = oneService.showHashtagList(oneSentenceIdx);
-		String hashtag = "";
-		Iterator<String> it = hashtagList.iterator();
-		while (it.hasNext()) {
-			hashtag += ("#" + it.next() + " ");
-		}
-		onesentence.setHashtag(hashtag);
-
-		int likeTotal = oneService.showLikeTotal(oneSentenceIdx);
-		onesentence.setLikeTotal(likeTotal);
-
-		model.addAttribute("onesentence", onesentence);
-
-		return "onesentence/one";
-
-	}
-
-	@RequestMapping("/onesentence/list/all")
+	
+	
+	@RequestMapping("/list/all")
 	public String selectOnesententceList(Model model) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
 		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
@@ -196,7 +222,7 @@ public class oneSentenceController {
 		return "sentenceList";
 	}
 
-	@RequestMapping("/onesentence/list/contents/{isbn}")
+	@RequestMapping("/list/contents/{isbn}")
 	public String selectOnesententceListByIsbn(@PathVariable("isbn") String isbn, Model model) {
 		if (isbn != null) {
 			List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByIsbn(isbn);
@@ -221,7 +247,7 @@ public class oneSentenceController {
 
 	}
 
-	@RequestMapping("/onesentence/list/{idx}")
+	@RequestMapping("/list/{idx}")
 	public String selectOnesententceListByuserIdx(@PathVariable("idx") int idx, Model model) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListByuserIdx(idx);
 		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
@@ -245,7 +271,7 @@ public class oneSentenceController {
 
 	}
 
-	@RequestMapping("/onesentence/liketo/{idx}")
+	@RequestMapping("/liketo/{idx}")
 	public String selectOnesententceListForLiketo(@PathVariable("idx") int idx, Model model) {
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceListForLiketo(idx);
 		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
@@ -269,7 +295,7 @@ public class oneSentenceController {
 
 	}
 
-	@RequestMapping("/onesentence/update")
+	@RequestMapping("/update")
 	public String updateOnesentenceByOnesentenceIdx(Model model, HttpServletRequest request) {
 		String oneSentence = (String) request.getParameter("oneSentence");
 
@@ -303,49 +329,14 @@ public class oneSentenceController {
 		return "onesentence/popup";
 	}
 
-	@RequestMapping("/onesentence/delete/{idx}")
-	public String deleteOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model,
-			HttpServletRequest request) {
+	
 
-		OneSentence onesentence = oneService.showOneSentenceModel(idx);
-		int userIdx = onesentence.getUserIdx();
-		oneService.downUserPoint(userIdx);
-
-		oneService.removeOneSentence(idx);
-
-		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
-		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
-		ShowOnesentence showOneSentence;
-		String hash = "";
-		while (it2.hasNext()) {
-			showOneSentence = it2.next();
-			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
-
-			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
-			Iterator<String> it = hList.iterator();
-			while (it.hasNext()) {
-				hash += "#" + it.next() + " ";
-			}
-			showOneSentence.setHashtag(hash);
-			hash = "";
-		}
-		String uri = "/resources";
-		String dir = request.getSession().getServletContext().getRealPath(uri);
-		File mp3 = new File(dir + "\\eunseon\\mp3Folder", idx + ".mp3");
-		if (mp3.exists()) {
-			mp3.delete();
-		}
-
-		model.addAttribute("oneSentenceList", oneSentenceList);
-		return "redirect:/onesentence/list/all";
-	}
-
-	@RequestMapping("/onesentence/play/{idx}")
+	@RequestMapping("play/{idx}")
 	public String playOneSentence(@PathVariable("idx") int idx, Model model) {
 		model.addAttribute("oneSentenceIdx", idx);
 		return "onesentence/mp3Play";
 	}
-	@RequestMapping("/onesentence/playlist/contents/{isbn}")
+	@RequestMapping("playlist/contents/{isbn}")
 	public String playList(@PathVariable("isbn") String isbn, Model model) {
 		List<Integer> oneSentenceIdxList = new ArrayList<Integer>();
 		List<ShowOnesentence> list = oneService.showOneSentenceListByIsbn(isbn);
@@ -360,7 +351,7 @@ public class oneSentenceController {
 	}
 	
 	
-	@RequestMapping("/playAll") //모든 한문장 mp3파일 만들기
+	/*@RequestMapping("/playAll") //모든 한문장 mp3파일 만들기
 	public void playall(HttpServletRequest request) {
 		ShowOnesentence oneSentence ;
 		String uri = "/resources";
@@ -379,5 +370,5 @@ public class oneSentenceController {
 				e.printStackTrace();
 			}
 		}
-	}
+	}*/
 	}
