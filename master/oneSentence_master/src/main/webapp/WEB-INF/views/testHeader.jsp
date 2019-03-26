@@ -108,7 +108,7 @@
  			</td>
         </tr>
     </table>
-    </wrap>>
+    </wrap>
     </c:if>
 </body>
 </html>
