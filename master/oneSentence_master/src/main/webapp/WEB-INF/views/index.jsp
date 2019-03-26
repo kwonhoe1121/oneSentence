@@ -13,9 +13,9 @@
 
 <title>한문장 메인페이지</title>
 
-<!-- jquery 자동완성 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/dahye/search/css/jquery.autocomplete.css" />
 
+<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/dahye/search/css/jquery.autocomplete.css" /> --%>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <!-- Bootstrap core CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
@@ -149,7 +149,7 @@
 					method="GET">
 					<div class="input-group">
 						<input type="text" class="form-control searchAuto" placeholder="Search"
-							name="query" id="searchAuto">
+							name="query" id="dahye">
 						<div class="input-group-btn">
 							<button class="btn btn-default" style="background-color: #F6F5F4" type="submit" onclick="send(this.form)">
 								<i class="fa fa-search icon" name="query"></i>
@@ -198,10 +198,9 @@
 		src="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- 자동완성 jquery -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/dahye/search/js/jquery.js"></script>
-	<script type='text/javascript' src='${pageContext.request.contextPath}/resources/dahye/search/js/jquery.bgiframe.min.js'></script>
-	<script type='text/javascript' src='${pageContext.request.contextPath}/resources/dahye/search/js/jquery.ajaxQueue.js'></script>
-	<script type='text/javascript' src='${pageContext.request.contextPath}/resources/dahye/search/js/jquery.autocomplete.js'></script>
+	<script src="http://code.jquery.com/jquery-1.7.js"	type="text/javascript"></script>
+	<script	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+	
 	
 		  <!-- 검색창에 입력안했을경우 -->
 		<script type="text/javascript">
@@ -230,30 +229,42 @@
 	
 	<script type="text/javascript">
  
-$(document).ready(function() {
- $("#searchAuto").autocomplete({
+	
+	
+	
+	
+ $(document).ready(function() {
+
+ $("#dahye").autocomplete({
+	 // 문자열 가져온다.
+
  source : function(request, response) {
- 
+	 console.log(request.term);
+	 var searchValue = request.term;
+	 var jsonData = {"searchValue" : searchValue};
+	 console.log(jsonData);
  $.ajax({
  
- url : "/index",
- type : "get",
+ url : "${pageContext.request.contextPath}/index",
+ type : "POST",
  dataType : "json",
- data: request,
+ data: JSON.stringify({
+	 "searchValue" : searchValue}), // request.term (text 박스내에 입력된 값)
+ contentType: "application/json; charset=UTf-8",  
  
  success : function(data) {
- 
- var result = data;
- response(result);
+	 console.log("요청들어옴");
+ 		var result = data;
+ 		response(result);
  },
  
  error : function(data) {
- alert("에러가 발생하였습니다.")
+ alert("에러가 발생하였습니다.") 
  			}
  		});
  	}
  });
-});
+}); 
 </script>
 
 <!-- 	<script>
