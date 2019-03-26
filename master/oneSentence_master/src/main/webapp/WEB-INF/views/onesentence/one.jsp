@@ -83,7 +83,8 @@ $().ready(function(d, s, id) {
 							<a href="#" id="updateBtn" onclick="updateClick(${onesentence.oneSentenceIdx})"><i class="fa fa-reply icon"></i></a>
 						</div>
 						<div class="my">
-							<a href="${pageContext.request.contextPath}/onesentence/delete/${onesentence.oneSentenceIdx}" id="deleteBtn"><i class="fa fa-remove icon"></i></a>
+							<a href="#"  onclick="deleteClick(${onesentence.oneSentenceIdx})"
+							><i class="fa fa-remove icon"></i></a>
 						</div>
 						
 					</div>
@@ -128,7 +129,22 @@ $().ready(function(d, s, id) {
 	    	var popupOption="width=700,height=600";
 	    	window.open(url,"한문장수정하기",popupOption);	
 	    }
-	
+	    function deleteClick(idx){
+			var arr = {id: idx};
+			$.ajax({
+				url: '${pageContext.request.contextPath}/onesentence/'+idx,
+				type:'DELETE',
+				data : JSON.stringify(arr),
+				contentType:'application/json;charset=utf-8',
+				async:true,
+				success: function(msg){
+					window.location.reload();
+				},error:function(){
+					console.log('error');
+					window.location.reload();
+				}
+			});
+		}
 	
 	</script>
 </body>

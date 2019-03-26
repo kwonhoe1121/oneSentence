@@ -29,6 +29,7 @@
 	
 	var k =0;
 	function next(){
+		++k;
 		if(k<play.length){
 		play[k].play();
 		}

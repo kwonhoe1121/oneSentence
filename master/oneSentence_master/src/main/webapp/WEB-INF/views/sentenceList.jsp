@@ -163,7 +163,7 @@ $().ready(function(d, s, id) {
 			}
 
 			function updateClick(idx) {
-				var url = "../../onesentence/popup/" + idx;
+				var url = "${pageContext.request.contextPath}/onesentence/popup/" + idx;
 				var popupOption = "width=700,height=600";
 				window.open(url, "한문장수정하기", popupOption);
 			}
@@ -174,12 +174,13 @@ $().ready(function(d, s, id) {
 					url: '${pageContext.request.contextPath}/onesentence/'+idx,
 					type:'DELETE',
 					data : JSON.stringify(arr),
-					contentType:'appliation/json;charset=utf-8',
-					async:false,
+					contentType:'application/json;charset=utf-8',
+					async:true,
 					success: function(msg){
-						console.log('delete success');
+						window.location.reload();
 					},error:function(){
 						console.log('error');
+						window.location.reload();
 					}
 				});
 			}

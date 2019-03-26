@@ -102,24 +102,32 @@
 				잃어버리셨나요?</a> <br> <br> 계정이 없으신가요? <a
 				href="${pageContext.request.contextPath}/register">회원가입</a>
 		</p>
+		<div id="naver_id_login"></div>
 	</form>
+	
 	<!-- bootstrap core JavaScript   -->
 	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script> -->
 	<script src="https://code.jquery.com/jquery-1.10.0.js"></script>
-
+	<script type="text/javascript"
+		src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+		charset="utf-8"></script>
 	<script type="text/javascript">
+		var naver_id_login = new naver_id_login("cPTP4WjJyJpuaIOiZ61K",
+				"http://localhost/sentence/login/naver/callback");
+		var state = naver_id_login.getUniqState();
+		naver_id_login.setButton("white", 2, 40);
+		naver_id_login.setDomain("http://localhost/sentence/login");
+		naver_id_login.setState(state);
+		naver_id_login.setPopup();
+		naver_id_login.init_naver_id_login();
 		//email focusout
-		$("#inputEmail")
-				.on(
-						"focusout",
-						function() {
+		$("#inputEmail").on("focusout",function() {
 							/* alert("userEmail focusout"); */
 							var userEmail = $("#inputEmail").val();
 							console.log(userEmail);
 
-							$
-									.ajax({
+							$.ajax({
 										type : "POST",
 										url : "${pageContext.request.contextPath}/users/emailCheck",
 										data : JSON.stringify({
@@ -151,10 +159,7 @@
 		});
 
 		//password focusout
-		$("#inputPassword")
-				.on(
-						"focusout",
-						function() {
+		$("#inputPassword").on("focusout",function() {
 							/* alert("userPassword focusout"); */
 							console.log("userPassword focusout");
 

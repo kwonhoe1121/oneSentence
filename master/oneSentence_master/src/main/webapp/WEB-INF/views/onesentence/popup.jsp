@@ -87,7 +87,7 @@
 			
 			<br>
 		
-		<button class="btn btn-lg btn-success btn-block" type="submit">수정완료</button>
+		<button class="btn btn-lg btn-success btn-block" type="button" id="updateBtn">수정완료</button>
 	</form>
 
 	<!-- bootstrap core JavaScript   -->
@@ -96,6 +96,29 @@
 <script>
 $().ready(function(){
 	$('.hidden').hide();
+	
+	$('#updateBtn').on('click',function(){
+		var arr = { isbn:$('#isbn').val(), oneSentenceIdx:$('#oneSentenceIdx').val(), oneSentence:$('#oneSentence').val()
+				, page:$('#page').val(), gender:$('input:checked').val()};
+		alert(JSON.stringify(arr));
+		$.ajax({
+			url:'${pageContext.request.contextPath}/onesentence/'+$('#oneSentenceIdx').val(),
+			type:'PUT',
+			data:JSON.stringify(arr),
+			dataType:'json',
+			contentType:'application/json; charset=utf-8',
+			async:true,
+			success:function(msg){
+				opener.parent.location.reload();
+				window.close();
+			},error:function(){
+				opener.parent.location.reload();
+				window.close(); 
+			}
+		});
+		
+	});
+	
 });
 </script>
 </body>

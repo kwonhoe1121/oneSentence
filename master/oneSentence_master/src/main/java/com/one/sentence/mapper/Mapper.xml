@@ -379,6 +379,23 @@
 		liketo where oneSentenceIdx=#{oneSentenceIdx}
 	</select>
 
+	<select id="selectNaverUserByEmail"
+		resultType="com.one.sentence.common.vo.UserVo">
+		select * 
+		from user_info 
+		where userEmail = #{param} and emailStatus = '4'
+	</select>
+	<insert id="insertNaverUser"
+		parameterType="com.one.sentence.common.vo.UserVo"
+		useGeneratedKeys="true" keyProperty="userIdx">
+		insert into user_info
+		(userName,
+		userEmail,
+		userPassword,emailStatus)
+		value ( #{userName}, #{userEmail},
+		#{userPassword},#{emailStatus} )
+	</insert>
+
 	<!-- 다혜 매퍼 -->
 
 	<select id="selectUserList" resultType="java.lang.String">
