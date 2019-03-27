@@ -16,14 +16,14 @@ import com.one.sentence.userpage.service.UserPageService;
 public class UserPageController {
 
 	@Autowired
-	UserPageService uservice;
+	UserPageService service;
 
 	@RequestMapping("/userpage/{userIdx}")
 	public String CheckFollowingState(Model model, @PathVariable("userIdx") int userIdx, HttpSession session) {
 		String returnpage="";
 		
 		//유저페이지 계정 정보 가져옴
-		UserVo uservo = uservice.showUser_infoByuserIdx(userIdx);
+		UserVo uservo = service.showUser_infoByuserIdx(userIdx);
 		
 		if(uservo==null || uservo.getEmailStatus().equals("2")) 
 			returnpage= "redirect:/";
@@ -59,7 +59,7 @@ public class UserPageController {
 					following.setUserIdx(loginIdx);
 					following.setFollowingUserIdx(userIdx);
 
-					Object followingstate = uservice.checkFollowingState(following);
+					Object followingstate = service.checkFollowingState(following);
 
 					if (followingstate != null) { // 이미 팔로잉 되어있음
 						model.addAttribute("followingstate", "팔로잉");
@@ -73,7 +73,7 @@ public class UserPageController {
 			}
 		
 			//footer 한문장 사이트에 등록된 문장 개수
-			int countAllSentences = uservice.countAllSentences();
+			int countAllSentences = service.countAllSentences();
 			model.addAttribute("countAllSentences", countAllSentences);
 			
 			return returnpage;

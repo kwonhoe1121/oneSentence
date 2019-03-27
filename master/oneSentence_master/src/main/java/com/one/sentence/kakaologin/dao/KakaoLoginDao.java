@@ -9,7 +9,7 @@ import com.one.sentence.common.vo.UserVo;
 
 
 @Repository
-public class CheckKakaoUserDao implements ICheckKakaoUserDao{
+public class KakaoLoginDao implements IKakaoLoginDao{
 
 	@Inject
 	private SqlSessionTemplate sqlSession;
@@ -20,4 +20,10 @@ public class CheckKakaoUserDao implements ICheckKakaoUserDao{
 	public UserVo selectUserByUserEmail(String userEmail) {
 		return sqlSession.selectOne(namespace + ".selectUserByUserEmail", userEmail);
 	}	
+	
+	@Override
+	public int insertKakaoUser(UserVo uservo) {
+		return sqlSession.update(namespace + ".insertKakaoUser", uservo);
+	}	
 }
+

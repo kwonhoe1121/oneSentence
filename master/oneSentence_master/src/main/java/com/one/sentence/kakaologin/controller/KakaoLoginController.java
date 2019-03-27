@@ -24,18 +24,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.one.sentence.common.vo.UserVo;
-import com.one.sentence.kakaologin.service.CheckKakaoUserService;
-import com.one.sentence.kakaologin.service.RegisterKakaoUserService;
+import com.one.sentence.kakaologin.service.KakaoLoginService;
 
 @Controller
 public class KakaoLoginController {
 
 	@Autowired
-	private RegisterKakaoUserService rservice;
-	
-	@Autowired
-	private CheckKakaoUserService cservice;
-	
+	private KakaoLoginService service;	
 	
 	// 사용자 토큰은 얻은 code를 이용해서 POST 방식으로 요청해야한다 (cf.뷰에서 Ajax로 요청하거나 컨트롤러에서 요청하면 된다.)
 	// 다음은 컨트롤러에서 요청하기 위한 함수
@@ -54,9 +49,9 @@ public class KakaoLoginController {
 		String nickname = properties.path("nickname").asText();
 		
 		// 이미 user_info 테이블에 등록 되어있나 확인
-		if(cservice.checkKakaoUser(id) != null) {
+		if(service.checkKakaoUser(id) != null) {
 			// 되어있으면 로그인 처리
-			UserVo loginuser = cservice.checkKakaoUser(id);			
+			UserVo loginuser = service.checkKakaoUser(id);			
 			session.setAttribute("User",loginuser);			
 		}
 		else {// 안되어있으면 등록 후 로그인 처리
@@ -65,8 +60,8 @@ public class KakaoLoginController {
 			uservo.setUserName(nickname);
 			uservo.setEmailStatus("3");
 			
-			rservice.registerKakaoUser(uservo);
-			UserVo loginuser = cservice.checkKakaoUser(id);			
+			service.registerKakaoUser(uservo);
+			UserVo loginuser = service.checkKakaoUser(id);			
 			session.setAttribute("User",loginuser);		
 		}
 
