@@ -26,12 +26,12 @@ public class PreferenceService implements IPreferenceService{
 	
 	@Override
 	public int countSentenceByUserIdx(int userIdx) {
-		return dao.countSentenceByUserIdx(userIdx);
+		return dao.selectTheNumberOfSentencesByUserIdx(userIdx);
 	}
 	
 	@Override
 	public int countAllUsers() {
-		return dao.countAllUsers();
+		return dao.selectTheNumberOfUsers();
 	}
 
 	@Override

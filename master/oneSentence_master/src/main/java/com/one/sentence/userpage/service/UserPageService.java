@@ -20,12 +20,12 @@ public class UserPageService implements IUserPageService {
 	
 	@Override
 	public int countAllSentences() {
-		return dao.countAllSentences();
+		return dao.selectTheNumberOfSentences();
 	}
 
 	@Override
 	public int countSentenceByUserIdx(int userIdx) {
-		return dao.countSentenceByUserIdx(userIdx);
+		return dao.selectTheNumberOfSentencesByUserIdx(userIdx);
 	}
 
 	@Override

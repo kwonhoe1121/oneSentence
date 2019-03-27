@@ -29,13 +29,13 @@ public class PreferenceDao implements IPreferenceDao{
 	}
 	
 	@Override
-	public int countSentenceByUserIdx(int userIdx) {
-		return sqlSession.selectOne(namespace+".countSentenceByUserIdx", userIdx);
+	public int selectTheNumberOfSentencesByUserIdx(int userIdx) {
+		return sqlSession.selectOne(namespace+".selectTheNumberOfSentencesByUserIdx", userIdx);
 	}
 	
 	@Override
-	public int countAllUsers() {
-		return sqlSession.selectOne(namespace+".countAllUsers");
+	public int selectTheNumberOfUsers() {
+		return sqlSession.selectOne(namespace+".selectTheNumberOfUsers");
 	}
 
 	@Override

@@ -22,13 +22,13 @@ public class UserPageDao implements IUserPageDao{
 	}
 	
 	@Override
-	public int countAllSentences() {
-		return sqlSession.selectOne(namespace+".countAllSentences");
+	public int selectTheNumberOfSentences() {
+		return sqlSession.selectOne(namespace+".selectTheNumberOfSentences");
 	}
 
 	@Override
-	public int countSentenceByUserIdx(int userIdx) {
-		return sqlSession.selectOne(namespace+".countSentenceByUserIdx", userIdx);
+	public int selectTheNumberOfSentencesByUserIdx(int userIdx) {
+		return sqlSession.selectOne(namespace+".selectTheNumberOfSentencesByUserIdx", userIdx);
 	}
 
 	@Override

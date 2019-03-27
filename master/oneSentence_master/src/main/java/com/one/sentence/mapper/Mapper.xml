@@ -40,13 +40,13 @@
 		followingUserIdx = #{followingUserIdx};
 	</delete>
 	
-	<select id="countAllSentences"
+	<select id="selectTheNumberOfSentences"
 		resultType="int">
 		select count(*)
 		from one_sentence;
 	</select>
 
-	<select id="countAllUsers"
+	<select id="selectTheNumberOfUsers"
 		resultType="int">
 		select count(*)
 		from user_info;
@@ -59,7 +59,7 @@
 		where userPoint >= (select userPoint from user_info where userIdx=#{userIdx});
 	</select>
 
-	<select id="countSentenceByUserIdx"
+	<select id="selectTheNumberOfSentencesByUserIdx"
 		resultType="int">
 		select count(*)
 		from one_sentence
