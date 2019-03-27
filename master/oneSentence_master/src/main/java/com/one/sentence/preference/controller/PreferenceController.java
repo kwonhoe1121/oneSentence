@@ -42,25 +42,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.one.sentence.common.vo.UserVo;
-import com.one.sentence.countsentence.service.CountSentenceService;
-import com.one.sentence.countuser.service.UserRankService;
 import com.one.sentence.preference.service.PreferenceService;
-import com.one.sentence.userpage.service.UserPageService;
 
 @Controller
 public class PreferenceController {
 
 	@Autowired
 	PreferenceService service;
-	
-	@Autowired
-	UserPageService uservice;
-	
-	@Autowired
-	UserRankService rservice;
-	
-	@Autowired
-	CountSentenceService cservice;
 	
 	@RequestMapping("/userpage/preference/{userIdx}")
 	public String GetHashtaglist(Model model, HttpServletRequest request, @PathVariable("userIdx") int userIdx) {
@@ -74,11 +62,11 @@ public class PreferenceController {
 		model.addAttribute("hashtaglist", hashtaglist);
 		model.addAttribute("userIdx",userIdx);
 		
-		UserVo uservo = uservice.showUser_infoByuserIdx(userIdx);
+		UserVo uservo = service.showUser_infoByuserIdx(userIdx);
 		model.addAttribute("uservo", uservo);
 		
-		int countAllUsers = rservice.countAllUsers();
-		int userRank = rservice.selectUserRank(userIdx);
+		int countAllUsers = service.countAllUsers();
+		int userRank = service.selectUserRank(userIdx);
 		int percent = Math.round(((float)userRank/countAllUsers)*100);
 		model.addAttribute("percent", percent);
 		
@@ -103,7 +91,7 @@ public class PreferenceController {
 			model.addAttribute("comment", "한문장을 더 많이 등록해서 다른 유저들과 함께 감상하세요!");
 		}
 		
-		int countMySentences = cservice.countSentenceByUserIdx(userIdx);
+		int countMySentences = service.countSentenceByUserIdx(userIdx);
 		model.addAttribute("countMySentences", countMySentences);
 		
 		return "preference";
