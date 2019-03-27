@@ -24,21 +24,32 @@
 		limit 0,10;
 	</select>
 
+
+
+
 	<select id="selectFollower"
 		resultType="com.one.sentence.following.model.Following">
 		select * from following where userIdx=#{userIdx} and
 		followingUserIdx=#{followingUserIdx};
 	</select>
 
+
 	<insert id="insertFollower">
 		insert into following(userIdx, followingUserIdx)
 		values(#{userIdx}, #{followingUserIdx});
-	</insert>
+	</insert>	
 
 	<delete id="deleteFollower">
 		delete from following where userIdx=#{userIdx} and
 		followingUserIdx = #{followingUserIdx};
 	</delete>
+
+ 
+	<update id="followingProc" statementType="CALLABLE" parameterType="HashMap">
+		{call followingprocedure(#{p1},#{p2},#{p3})}
+	</update>
+	
+	
 	
 	<select id="selectTheNumberOfSentences"
 		resultType="int">
@@ -86,6 +97,10 @@
 		(userName, userEmail, emailStatus)
 		value ( #{userName}, #{userEmail}, #{emailStatus} )
 	</insert>
+	
+
+	
+	
 
 
 	<!-- 재진 매퍼 -->
