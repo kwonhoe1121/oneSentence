@@ -408,6 +408,23 @@
 		#{userPassword},#{emailStatus} )
 	</insert>
 
+	<!-- 프로시저로 insertOneSentence -->
+	<update id="newSentence" statementType="CALLABLE" parameterType="HashMap">
+		{call newSentence(
+			#{oneSentence,jdbcType=VARCHAR},
+			#{page},
+			#{userIdx},
+			#{isbn,jdbcType=VARCHAR},
+			#{bookTitle,jdbcType=VARCHAR},
+			#{bookGenre,jdbcType=VARCHAR},
+			#{author,jdbcType=VARCHAR},
+			#{publisher,jdbcType=VARCHAR},
+			#{hashtag1,jdbcType=VARCHAR},
+			#{hashtag2,jdbcType=VARCHAR},
+			#{hashtag3,jdbcType=VARCHAR}
+		)}
+	</update>
+
 	<!-- 다혜 매퍼 -->
 
 	<select id="selectUserList" resultType="java.lang.String">

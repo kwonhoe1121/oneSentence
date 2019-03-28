@@ -11,6 +11,7 @@ import com.one.sentence.onesentence.model.ShowOnesentence;
 public interface IOnesentenceDao {
  
 	public int insertOneSentence(OneSentence onesentence);
+	public void insertNewSentence(String oneSentence, int page,int userIdx, String isbn, String bookTitle,String bookGenre,String author, String publisher,String hashtag1, String hashtag2, String hashtag3); //프로시져
 	public List<ShowOnesentence> selectOnesentenceList();
 	public List<ShowOnesentence> selectOnesentenceListByuserIdx(int userIdx);
 	public List<ShowOnesentence> selectOnesentenceListForLiketo(int userIdx);
