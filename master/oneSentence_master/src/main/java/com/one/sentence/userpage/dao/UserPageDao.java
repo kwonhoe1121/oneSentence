@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 import com.one.sentence.common.vo.UserVo;
+import com.one.sentence.following.model.Following;
 
 
 @Repository
@@ -20,6 +21,19 @@ public class UserPageDao implements IUserPageDao{
 		return sqlSession.selectOne(namespace+".selectUser_infoByuserIdx", userIdx);
 	}
 	
+	@Override
+	public int selectTheNumberOfSentences() {
+		return sqlSession.selectOne(namespace+".selectTheNumberOfSentences");
+	}
 
+	@Override
+	public int selectTheNumberOfSentencesByUserIdx(int userIdx) {
+		return sqlSession.selectOne(namespace+".selectTheNumberOfSentencesByUserIdx", userIdx);
+	}
+
+	@Override
+	public Following selectFollower(Following following) {
+		return sqlSession.selectOne(namespace+".selectFollower", following);
+	}
 	
 }

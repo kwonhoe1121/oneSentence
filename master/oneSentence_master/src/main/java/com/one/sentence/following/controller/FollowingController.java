@@ -1,5 +1,8 @@
 package com.one.sentence.following.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +32,21 @@ public class FollowingController {
 		Following following = new Following();
 		following.setUserIdx(loginIdx);
 		following.setFollowingUserIdx(userIdx);
+//		
+//		if(follow==1)
+//			service.startFollowing(following);
+//		else
+//			service.unfollowing(following);			
+//		
 		
-		if(follow==1)
-			service.startFollowing(following);
-		else
-			service.unfollowing(following);			
+		
+		//프로시저로 구현
+		Map<String, Object> followingMap = new HashMap<String, Object>();
+		followingMap.put("p1",follow);
+		followingMap.put("p2",loginIdx);
+		followingMap.put("p3",userIdx);
+		
+		service.followingProc(followingMap);
 
 		return "";
 		}

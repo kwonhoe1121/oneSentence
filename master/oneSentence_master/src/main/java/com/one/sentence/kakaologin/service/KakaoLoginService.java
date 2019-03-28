@@ -4,13 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.one.sentence.common.vo.UserVo;
-import com.one.sentence.kakaologin.dao.RegisterKakaoUserDao;
+import com.one.sentence.kakaologin.dao.KakaoLoginDao;
 
 @Service
-public class RegisterKakaoUserService implements IRegisterKakaoUserService {
+public class KakaoLoginService implements IKakaoLoginService {
 	
 	@Autowired
-	private RegisterKakaoUserDao dao;
+	private KakaoLoginDao dao;
+
+	@Override
+	public UserVo checkKakaoUser(String userEmail) {
+		return dao.selectUserByUserEmail(userEmail);
+	}
 	
 	@Override
 	public int registerKakaoUser(UserVo uservo) {

@@ -1,12 +1,13 @@
 package com.one.sentence.following.service;
 
-import com.one.sentence.following.model.Following;
+import java.util.Map;
 
 
 interface IFollowingService {
 	
-	public Following checkFollowingState(Following following);	
-	public int startFollowing(Following following);	
-	public int unfollowing(Following following);
+//	public Following checkFollowingState(Following following);	
+//	public int startFollowing(Following following);	
+//	public int unfollowing(Following following);
+	public int followingProc(Map<String, Object> followingMap);
 	
 }

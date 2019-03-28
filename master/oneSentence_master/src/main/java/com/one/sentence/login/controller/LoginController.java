@@ -87,13 +87,17 @@ public class LoginController {
 	@RequestMapping("/user/logout")
 	public String requestLogout(HttpSession session) {
 		UserVo user = (UserVo) session.getAttribute("User");
+		
+		// 카카오 회원의 경우 -> 카카오 로그아웃 해줘야함
 		if(user.getEmailStatus().equals("3")) {
+			System.out.println("카카오로그아웃");
+			System.out.println("!!!!!!!"+session.getAttribute("access_token").toString());
 			KakaoLoginController logout = new KakaoLoginController();
 			logout.kakaoLogout(session.getAttribute("access_token").toString());
 		}
 
 		
-		// 세션 종료.
+		// 세션 종료.  
 		session.invalidate();
 		System.out.println("로그아웃!");
 		return "redirect:/";
