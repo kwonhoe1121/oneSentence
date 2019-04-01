@@ -163,6 +163,26 @@ public class OnesentenceDao implements IOnesentenceDao{
 		return sqlSession.selectOne(namespace+".selectBookTitleByisbn", isbn);
 	}
 
+	//프로시저
+	@Override
+	public void insertNewSentence(String oneSentence, int page, int userIdx, String isbn, String bookTitle,
+			String bookGenre, String author, String publisher, String hashtag1, String hashtag2, String hashtag3) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("oneSentence", oneSentence);
+		map.put("page", page);
+		map.put("userIdx", userIdx);
+		map.put("isbn", isbn);
+		map.put("bookTitle", bookTitle);
+		map.put("bookGenre", bookGenre);
+		map.put("author", author);
+		map.put("publisher", publisher);
+		map.put("hashtag1", hashtag1);
+		map.put("hashtag2", hashtag2);
+		map.put("hashtag3", hashtag3);
+		sqlSession.update(namespace+".newSentence",map);
+	}
+
+
 	
 
 	

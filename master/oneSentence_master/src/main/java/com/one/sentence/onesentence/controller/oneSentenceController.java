@@ -43,10 +43,62 @@ public class oneSentenceController {
 		return "onesentence/insert";
 
 	}
-
+	//트랜젝션 처리 유
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insertOnesententce(HttpServletRequest request, @RequestParam("oneSentence") String oneSentence,
-			@RequestParam("page") String page, @RequestParam("userIdx") int userIdx, Model model) {
+	public String insertOnesententce(HttpServletRequest request,
+			@RequestParam("oneSentence") String oneSentence,
+			@RequestParam("page") int page,
+			@RequestParam("userIdx") int userIdx, Model model) {
+		System.out.println("procedure 실행");
+		String isbn = (String) request.getParameter("isbn");
+		String bookTitle = (String) request.getParameter("bookTitle");
+		try{oneService.makeNewSentence(oneSentence, page, userIdx, isbn,bookTitle,(String) request.getParameter("bookGenre")
+				,(String) request.getParameter("author"),(String)request.getParameter("publisher")
+				,(String) request.getParameter("hashtag1"), (String) request.getParameter("hashtag2"), (String) request.getParameter("hashtag3"));
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("makeNewSentence");
+		}
+		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash = "";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
+		}
+		// 구글 tts api
+		String uri = "/resources";
+		String dir = request.getSession().getServletContext().getRealPath(uri);
+		String gender = (String) request.getParameter("gender");
+		GoogleTtsApi tts = new GoogleTtsApi();
+		try {
+			tts.makeMp3(oneService.findOneSentenceIdx(userIdx, isbn, oneSentence), oneSentence, bookTitle, gender,
+					dir + "\\eunseon\\mp3Folder");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("oneSentenceList", oneSentenceList);
+
+		return "redirect:/onesentence/list/contents/" + isbn;
+	}
+
+	
+	//트랜잭션 처리 무
+	/*@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	public String insertOnesententce(HttpServletRequest request,
+			@RequestParam("oneSentence") String oneSentence,
+			@RequestParam("page") String page,
+			@RequestParam("userIdx") int userIdx, Model model) {
 		String isbn = (String) request.getParameter("isbn");
 
 		if (oneService.showBookByisbn(isbn) == 0) {
@@ -115,7 +167,7 @@ public class oneSentenceController {
 
 		return "redirect:/onesentence/list/contents/" + isbn;
 	}
-
+*/
 	@RequestMapping("/one/{idx}")
 	public String selectOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model) {
 		ShowOnesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);

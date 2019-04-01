@@ -150,4 +150,10 @@ public class OnesentenceService implements IOnesentenceService {
 		return dao.selectBookTitleByisbn(isbn);
 	}
 
+	@Override
+	public void makeNewSentence(String oneSentence, int page, int userIdx, String isbn, String bookTitle,
+			String bookGenre, String author, String publisher, String hashtag1, String hashtag2, String hashtag3) {
+		dao.insertNewSentence(oneSentence, page, userIdx, isbn, bookTitle, bookGenre, author, publisher, hashtag1, hashtag2, hashtag3);
+	}
+
 }
