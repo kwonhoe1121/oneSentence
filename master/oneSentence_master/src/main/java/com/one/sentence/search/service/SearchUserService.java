@@ -23,4 +23,6 @@ public class SearchUserService implements ISearchUserService{
 	public List<UserVo> selectUserByUserName(String userName) {
 		return dao.selectUserByUserName(userName);
 	}
+	
+	
 } 

@@ -460,6 +460,19 @@
 
 	</select>
 
+	<select id="selectGoogleUserByUserEmail"
+		resultType="com.one.sentence.common.vo.UserVo">			
+			select * 
+			from user_info 
+			where userEmail=#{userEmail};
+	</select>
+
+	<insert id="insertGoogleUser"
+		parameterType="com.one.sentence.common.vo.UserVo">
+		insert into user_info
+		(userName, userEmail, emailStatus)
+		value ( #{userName}, #{userEmail}, #{emailStatus} )
+	</insert>
 
 
 </mapper>

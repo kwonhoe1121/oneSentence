@@ -19,7 +19,7 @@ import org.xml.sax.helpers.ParserAdapter;
 import com.one.sentence.search.model.SearchModel;
 
 @Service
-public class SearchAladdinService2 {
+public class SearchAladdinBestBookService {
 	
 	private static final String BASE_URL = "http://www.aladdin.co.kr/ttb/api/ItemSearch.aspx?";
 
