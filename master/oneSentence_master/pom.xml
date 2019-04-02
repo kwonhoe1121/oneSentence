@@ -337,6 +337,23 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+			
+			<!--build 파일 .jar로 만들  -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>org.planb.dms.core.DmsMain</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+
 		</plugins>
 	</build>
 </project>
