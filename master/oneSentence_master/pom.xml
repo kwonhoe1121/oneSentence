@@ -86,10 +86,8 @@
 
 		<!-- logback -->
 
-<!-- 		<groupId>ch.qos.logback</groupId>
-		<artifactId>logback-classic</artifactId>
-		<version>1.2.3</version>
-		<scope>test</scope> -->
+		<!-- <groupId>ch.qos.logback</groupId> <artifactId>logback-classic</artifactId> 
+			<version>1.2.3</version> <scope>test</scope> -->
 
 		<!-- @Inject -->
 		<dependency>
@@ -192,6 +190,13 @@
 			<version>1.49.0</version>
 		</dependency>
 
+		<!-- jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.7</version>
+		</dependency>
+
 		<!-- 이메일 발송 세팅 -->
 		<!-- spring-context-support -->
 		<dependency>
@@ -249,12 +254,19 @@
 		</dependency>
 
 
-		<!-- httpclient(카카오) -->
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5.2</version>
-		</dependency>
+       <!-- httpcore(카카오) -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.6</version>
+        </dependency>
+ 
+        <!-- httpclient(카카오) -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
+        </dependency>
 
 		<!-- Google Login -->
 
@@ -264,12 +276,6 @@
 			<version>1.0.0.RELEASE</version>
 		</dependency>
 
-
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5.3</version>
-		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.github.spring-social/spring-social-google -->
 
@@ -284,6 +290,13 @@
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-jar-plugin</artifactId>
 			<version>3.0.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
 		</dependency>
 
 	</dependencies>
@@ -321,23 +334,6 @@
 				<version>1.2.1</version>
 				<configuration>
 					<mainClass>org.test.int1.Main</mainClass>
-				</configuration>
-			</plugin>
-			
-			<!-- 실험. -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<webXml>webapp/WEB-INF/web.xml</webXml>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<warSourceDirectory>webapp</warSourceDirectory>
-					<webXml>webapp/WEB-INF/web.xml</webXml>
 				</configuration>
 			</plugin>
 
