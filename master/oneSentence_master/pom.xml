@@ -5,8 +5,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.one</groupId>
 	<artifactId>sentence</artifactId>
-	<name>bootstrapTest</name>
-	<packaging>war</packaging>
+	<name>oneSentence</name>
+	<packaging>jar</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.8</java-version>
@@ -187,11 +187,11 @@
 
 
 		<!-- jackson-databind -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.7</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- 구글ocr -->
 		<dependency>
@@ -263,13 +263,6 @@
 			<version>4.4.6</version>
 		</dependency>
 
-		<!-- httpclient(카카오) -->
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5.2</version>
-		</dependency>
-
 		<!-- Google Login -->
 
 		<dependency>
@@ -337,22 +330,14 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
-			
-			<!--build 파일 .jar로 만들  -->
-			<plugin>
+
+
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>org.planb.dms.core.DmsMain</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-
+				<version>3.0.2</version>
+			</dependency>
 
 		</plugins>
 	</build>
