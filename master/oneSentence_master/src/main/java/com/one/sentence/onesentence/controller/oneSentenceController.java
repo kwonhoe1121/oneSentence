@@ -7,15 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.one.sentence.common.vo.Hashtag;
 import com.one.sentence.common.vo.OneSentence;
-import com.one.sentence.onesentence.model.Book;
 import com.one.sentence.onesentence.model.GoogleTtsApi;
 import com.one.sentence.onesentence.model.GoogleVisionApi;
 import com.one.sentence.onesentence.model.ShowOnesentence;
@@ -50,11 +45,11 @@ public class oneSentenceController {
 			@RequestParam("page") int page,
 			@RequestParam("userIdx") int userIdx, Model model) {
 		System.out.println("procedure 실행");
-		String isbn = (String) request.getParameter("isbn");
-		String bookTitle = (String) request.getParameter("bookTitle");
-		try{oneService.makeNewSentence(oneSentence, page, userIdx, isbn,bookTitle,(String) request.getParameter("bookGenre")
-				,(String) request.getParameter("author"),(String)request.getParameter("publisher")
-				,(String) request.getParameter("hashtag1"), (String) request.getParameter("hashtag2"), (String) request.getParameter("hashtag3"));
+		String isbn = request.getParameter("isbn");
+		String bookTitle = request.getParameter("bookTitle");
+		try{oneService.makeNewSentence(oneSentence, page, userIdx, isbn,bookTitle, request.getParameter("bookGenre")
+				,request.getParameter("author"), request.getParameter("publisher")
+				,request.getParameter("hashtag1"), request.getParameter("hashtag2"), request.getParameter("hashtag3"));
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("makeNewSentence");
@@ -78,7 +73,7 @@ public class oneSentenceController {
 		// 구글 tts api
 		String uri = "/resources";
 		String dir = request.getSession().getServletContext().getRealPath(uri);
-		String gender = (String) request.getParameter("gender");
+		String gender = request.getParameter("gender");
 		GoogleTtsApi tts = new GoogleTtsApi();
 		try {
 			tts.makeMp3(oneService.findOneSentenceIdx(userIdx, isbn, oneSentence), oneSentence, bookTitle, gender,

@@ -51,14 +51,14 @@ public class profileController {
 	public String updateUser_infoByuserIdx(Model model, HttpServletRequest request)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		System.out.println("userupdate Mapping 연결");
-		String newPassword = (String) request.getParameter("newPassword");
+		String newPassword = request.getParameter("newPassword");
 		System.out.println("newPassword" + newPassword);
 
-		String idx = (String) request.getParameter("userIdx");
+		String idx = request.getParameter("userIdx");
 		int userIdx = Integer.parseInt(idx);
-		String originalPassword = (String) request.getParameter("originalPassword");
-		String userName = (String) request.getParameter("userName");
-		String userIntroduction = (String) request.getParameter("userIntroduction");
+		String originalPassword = request.getParameter("originalPassword");
+		String userName = request.getParameter("userName");
+		String userIntroduction = request.getParameter("userIntroduction");
 
 		if (!(newPassword == null || newPassword.equals(""))) {
 			System.out.println("새로운 패스워드");
