@@ -66,13 +66,30 @@
 	font-family: 'KimNamyun'
 }
 
+@font-face { font-family: 'Handon3gyeopsal600g'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
+
 img{
 	width:18rem;
 	height:3rem;
 }
+
+.logotest{
+	font-family: 'Handon3gyeopsal600g';
+	font-size:2.5rem;
+	text-align:center;
+	color:green;
+	font-weight:bold;
+	margin-bottom:2rem;
+}
+
+a:hover{
+	text-decoration:none;
+}
+
 </style>
 <!-- Custom styles for this template -->
 <link
@@ -89,13 +106,13 @@ img{
 
 	<form class="form-signin"
 		action="${pageContext.request.contextPath}/user/login" method="POST">
-		<a href="${pageContext.request.contextPath}/">
-<%-- 		<img class="mb-4" src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
-			alt="" width="72" height="72"> --%>
-			<div id="test" style="color:black; text-align:center; font-size:2rem; padding-top:3rem">
-    			<div>One Sentence</div>			
-			</div>
-			</a>
+
+ 		<a href="${pageContext.request.contextPath}/"><img class="mb-4" src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
+			alt="" width="72" height="72"></a> --%>
+					<a href="${pageContext.request.contextPath}/">
+						<div  class="logotest">One Sentence</div>
+					</a>
+
 		<h1 class="h3 mb-3 font-weight-normal">로그인</h1>
 		<label for="inputEmail" class="sr-only">Email address</label> <input
 			type="email" id="inputEmail" name="userEmail" class="form-control"
@@ -119,7 +136,7 @@ img{
 		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad0264e1ffef69d01b6778d82c031206&redirect_uri=http://127.0.0.1/sentence/kakaologin&response_type=code"><img style="margin-top:2rem;" src="${pageContext.request.contextPath}/resources/naeun/kakao_account_login_btn_medium_narrow.png"></a>
 		<div id="google_id_login" style="text-align:center"><a href="${google_url}"><img style="margin-top:1rem;width=19rem;" src="${pageContext.request.contextPath}/resources/dahye/google/google-login-button.png"/></a></div>
 		<div id="naver_id_login" style="margin-top:1rem;"></div>		
-	</form>
+
 	
 	<!-- bootstrap core JavaScript   -->
 	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -132,7 +149,7 @@ img{
 		var naver_id_login = new naver_id_login("cPTP4WjJyJpuaIOiZ61K",
 				"http://localhost/sentence/login/naver/callback");
 		var state = naver_id_login.getUniqState();
-		naver_id_login.setButton("white", 3, 48);
+		naver_id_login.setButton("white", 2, 40);
 		naver_id_login.setDomain("http://localhost/sentence/login");
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
