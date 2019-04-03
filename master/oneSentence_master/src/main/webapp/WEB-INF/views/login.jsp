@@ -107,11 +107,9 @@ a:hover{
 	<form class="form-signin"
 		action="${pageContext.request.contextPath}/user/login" method="POST">
 
- 		<a href="${pageContext.request.contextPath}/"><img class="mb-4" src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
-			alt="" width="72" height="72"></a> --%>
-					<a href="${pageContext.request.contextPath}/">
-						<div  class="logotest">One Sentence</div>
-					</a>
+		<a href="${pageContext.request.contextPath}/">
+			<div  class="logotest">One Sentence</div>
+		</a>
 
 		<h1 class="h3 mb-3 font-weight-normal">로그인</h1>
 		<label for="inputEmail" class="sr-only">Email address</label> <input
