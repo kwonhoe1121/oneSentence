@@ -99,7 +99,7 @@
 
 		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad0264e1ffef69d01b6778d82c031206&redirect_uri=http://127.0.0.1/sentence/kakaologin&response_type=code"><img style="margin-top:1rem;" src="${pageContext.request.contextPath}/resources/naeun/kakao_account_login_btn_medium_narrow.png"></a>
 		<div id="google_id_login" style="text-align:center"><a href="${google_url}"><img style="margin-top:1rem;"  width="230" src="${pageContext.request.contextPath}/resources/dahye/google/google-login-button.png"/></a></div>
-		<img id="naver_id_login" style="width:14rem;margin-top:1rem;height:3rem;" src="${pageContext.request.contextPath}/resources/eunseon/contents/img/naver.PNG"></img>
+		<div id="naver_id_login" style="margin-top:1rem;"></div>
 		<p class="mt-5 mb-3 text-muted">
 			<a href="${pageContext.request.contextPath}/mailPage">비밀번호를
 				잃어버리셨나요?</a> <br> <br> 계정이 없으신가요? <a
@@ -119,7 +119,7 @@
 		var naver_id_login = new naver_id_login("cPTP4WjJyJpuaIOiZ61K",
 				"http://localhost/sentence/login/naver/callback");
 		var state = naver_id_login.getUniqState();
-		naver_id_login.setButton("white", 2, 40);
+		naver_id_login.setButton("white", 3, 48);
 		naver_id_login.setDomain("http://localhost/sentence/login");
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
