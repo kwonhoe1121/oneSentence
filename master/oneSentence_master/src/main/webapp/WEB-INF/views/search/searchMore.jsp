@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>searchMore</title>
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR"
 	rel="stylesheet">
 <link rel="stylesheet"

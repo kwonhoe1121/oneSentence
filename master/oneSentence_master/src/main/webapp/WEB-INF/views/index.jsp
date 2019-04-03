@@ -15,6 +15,9 @@
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
 <%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/dahye/search/css/jquery.autocomplete.css" /> --%>
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<!-- Font  -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Serif+KR" rel="stylesheet">
 <!-- Bootstrap core CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
@@ -75,6 +78,14 @@
 	background-color:transparent;
 }
 
+h1 {
+	font-family: 'Do Hyeon', sans-serif;
+	text
+}
+p {
+	font-family: 'Noto Serif KR', serif;
+	font-size : 15px;
+}
 
 
 

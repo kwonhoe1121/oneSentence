@@ -14,7 +14,7 @@
 <meta name="author" content="">
 
 <title>user page</title>
-
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
 <!-- Bootstrap core CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/naeun/user/vendor/bootstrap/css/bootstrap.css"

@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Document</title>
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/dahye/search/css/search.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR"
