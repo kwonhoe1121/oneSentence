@@ -120,7 +120,7 @@
 	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
 	<beans:bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
 		<beans:property name="scope" value="https://www.googleapis.com/auth/plus.login" />
-		<beans:property name="redirectUri" value="http://127.0.0.1/sentence/googlelogin/googlelogin" />
+		<beans:property name="redirectUri" value="http://127.0.0.1/sentence/googleSignInCallback" />
 	</beans:bean>
 
 
