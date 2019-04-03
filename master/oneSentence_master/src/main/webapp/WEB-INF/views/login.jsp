@@ -107,8 +107,6 @@ a:hover{
 	<form class="form-signin"
 		action="${pageContext.request.contextPath}/user/login" method="POST">
 
- 		<a href="${pageContext.request.contextPath}/"><img class="mb-4" src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
-			alt="" width="72" height="72"></a> --%>
 					<a href="${pageContext.request.contextPath}/">
 						<div  class="logotest">One Sentence</div>
 					</a>
