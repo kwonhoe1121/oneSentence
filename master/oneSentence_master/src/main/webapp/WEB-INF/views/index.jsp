@@ -11,9 +11,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>한문장 메인페이지</title>
-
-
+<title>한문장</title>
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
 <%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/dahye/search/css/jquery.autocomplete.css" /> --%>
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <!-- Bootstrap core CSS -->
