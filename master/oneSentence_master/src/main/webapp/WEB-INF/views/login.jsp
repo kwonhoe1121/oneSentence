@@ -97,13 +97,14 @@
             </label>
         </div> -->
 		<button class="btn btn-lg btn-success btn-block" type="submit">로그인</button>
-		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad0264e1ffef69d01b6778d82c031206&redirect_uri=http://127.0.0.1/sentence/kakaologin&response_type=code"><img src="${pageContext.request.contextPath}/resources/naeun/kakao_account_login_btn_medium_narrow.png"></a>
+		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad0264e1ffef69d01b6778d82c031206&redirect_uri=http://127.0.0.1/sentence/kakaologin&response_type=code"><img style="margin-top:1rem;" src="${pageContext.request.contextPath}/resources/naeun/kakao_account_login_btn_medium_narrow.png"></a>
+		<img id="naver_id_login" style="width:14rem;margin-top:1rem;height:3rem;" src="${pageContext.request.contextPath}/resources/eunseon/contents/img/naver.PNG"></img>
 		<p class="mt-5 mb-3 text-muted">
 			<a href="${pageContext.request.contextPath}/mailPage">비밀번호를
 				잃어버리셨나요?</a> <br> <br> 계정이 없으신가요? <a
 				href="${pageContext.request.contextPath}/register">회원가입</a>
 		</p>
-		<div id="naver_id_login"></div>
+		
 	</form>
 	
 	<!-- bootstrap core JavaScript   -->

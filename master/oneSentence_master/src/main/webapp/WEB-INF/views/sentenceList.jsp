@@ -66,7 +66,7 @@ $().ready(function(d, s, id) {
 	<header style="height:60px"></header>
 	
 	<!-- Page Content -->
-	<div class="container">
+	<div class="container" style="margin-top:3rem;">
 		<!-- Post Content Column -->
 		<div class="col-lg-8">
 			<!-- Comments Form -->
