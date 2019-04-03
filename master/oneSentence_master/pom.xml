@@ -254,19 +254,19 @@
 		</dependency>
 
 
-       <!-- httpcore(카카오) -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <version>4.4.6</version>
-        </dependency>
- 
-        <!-- httpclient(카카오) -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.2</version>
-        </dependency>
+		<!-- httpcore(카카오) -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.6</version>
+		</dependency>
+
+		<!-- httpclient(카카오) -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.2</version>
+		</dependency>
 
 		<!-- Google Login -->
 
@@ -338,5 +338,17 @@
 			</plugin>
 
 		</plugins>
+		<!-- maven 빌드시 매퍼 경로 잡기 위해 -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/Mapper.xml</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 </project>
