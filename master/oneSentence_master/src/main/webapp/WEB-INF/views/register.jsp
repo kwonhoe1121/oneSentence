@@ -65,6 +65,23 @@
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
+
+
+@font-face { font-family: 'Handon3gyeopsal600g'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+.logotest{
+	font-family: 'Handon3gyeopsal600g';
+	font-size:2.5rem;
+	text-align:center;
+	color:green;
+	font-weight:bold;
+	margin-bottom:2rem;
+}
+
+a:hover{
+	text-decoration:none;
+}
+
 </style>
 <!-- Custom styles for this template -->
 <link
@@ -83,9 +100,12 @@
 	<form class="form-signin"
 		action="${pageContext.request.contextPath}/user/register"
 		method="POST">
-		<a href="${pageContext.request.contextPath}/"><img class="mb-4"
+<%-- 		<a href="${pageContext.request.contextPath}/"><img class="mb-4"
 			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
-			alt="" width="72" height="72"></a>
+			alt="" width="72" height="72"></a> --%>
+		<a href="${pageContext.request.contextPath}/">					
+			<div  class="logotest">One Sentence</div>
+		</a>			
 		<h1 class="h3 mb-3 font-weight-normal">회원가입</h1>
 		<label for="inputName" class="sr-only">User name</label> <input
 			type="text" id="inputName" name="userName" class="form-control"

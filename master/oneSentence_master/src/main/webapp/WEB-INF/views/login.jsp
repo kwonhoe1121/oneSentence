@@ -62,9 +62,25 @@
 		url('${pageContext.request.contextPath}/resources/naeun/user/font/BMHANNAAir_otf.otf');
 }
 
+@font-face { font-family: 'Handon3gyeopsal600g'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
+
+.logotest{
+	font-family: 'Handon3gyeopsal600g';
+	font-size:2.5rem;
+	text-align:center;
+	color:green;
+	font-weight:bold;
+	margin-bottom:2rem;
+}
+
+a:hover{
+	text-decoration:none;
+}
+
 </style>
 <!-- Custom styles for this template -->
 <link
@@ -81,8 +97,11 @@
 
 	<form class="form-signin"
 		action="${pageContext.request.contextPath}/user/login" method="POST">
-		<a href="${pageContext.request.contextPath}/"><img class="mb-4" src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
-			alt="" width="72" height="72"></a>
+<%-- 		<a href="${pageContext.request.contextPath}/"><img class="mb-4" src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
+			alt="" width="72" height="72"></a> --%>
+					<a href="${pageContext.request.contextPath}/">
+						<div  class="logotest">One Sentence</div>
+					</a>
 		<h1 class="h3 mb-3 font-weight-normal">로그인</h1>
 		<label for="inputEmail" class="sr-only">Email address</label> <input
 			type="email" id="inputEmail" name="userEmail" class="form-control"
@@ -96,16 +115,15 @@
             </label>
         </div> -->
 		<button class="btn btn-lg btn-success btn-block" type="submit">로그인</button>
-
-		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad0264e1ffef69d01b6778d82c031206&redirect_uri=http://127.0.0.1/sentence/kakaologin&response_type=code"><img style="margin-top:1rem;" src="${pageContext.request.contextPath}/resources/naeun/kakao_account_login_btn_medium_narrow.png"></a>
-		<div id="google_id_login" style="text-align:center"><a href="${google_url}"><img style="margin-top:1rem;"  width="230" src="${pageContext.request.contextPath}/resources/dahye/google/google-login-button.png"/></a></div>
-		<div id="naver_id_login" style="margin-top:1rem;"></div>
+		
+		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad0264e1ffef69d01b6778d82c031206&redirect_uri=http://127.0.0.1/sentence/kakaologin&response_type=code"><img src="${pageContext.request.contextPath}/resources/naeun/kakao_account_login_btn_medium_narrow.png"></a>
+		<div id="google_id_login" style="text-align:center"><a href="${google_url}"><img width="230" src="${pageContext.request.contextPath}/resources/dahye/google/google-login-button.png"/></a></div>
 		<p class="mt-5 mb-3 text-muted">
 			<a href="${pageContext.request.contextPath}/mailPage">비밀번호를
 				잃어버리셨나요?</a> <br> <br> 계정이 없으신가요? <a
 				href="${pageContext.request.contextPath}/register">회원가입</a>
 		</p>
-		
+		<div id="naver_id_login"></div>
 	</form>
 	
 	<!-- bootstrap core JavaScript   -->
@@ -119,7 +137,7 @@
 		var naver_id_login = new naver_id_login("cPTP4WjJyJpuaIOiZ61K",
 				"http://localhost/sentence/login/naver/callback");
 		var state = naver_id_login.getUniqState();
-		naver_id_login.setButton("white", 3, 48);
+		naver_id_login.setButton("white", 2, 40);
 		naver_id_login.setDomain("http://localhost/sentence/login");
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
