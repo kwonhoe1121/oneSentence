@@ -56,9 +56,30 @@
 		url('${pageContext.request.contextPath}/resources/naeun/user/font/BMHANNAAir_otf.otf');
 }
 
+@font-face { font-family: 'KimNamyun'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KimNamyun.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+@font-face { font-family: 'GyeonggiBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
+
+#test>div{
+	font-family: 'KimNamyun'
+}
+
+.atag{
+	color:white;
+}
+
+.hbtn{
+	border:1px solid white;
+	background-color:transparent;
+}
+
+
+
+
 </style>
 
 
@@ -79,7 +100,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/">한문장</a>
+					href="${pageContext.request.contextPath}/" style="color:white">한문장</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -90,10 +111,10 @@
 						<!-- 로그인, 회원가입 버튼. -->
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/login"><button
-									class="btn navbar-btn">로그인</button></a></li>
+									class="btn navbar-btn atag">로그인</button></a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/register"><button
-									class="btn btn-success navbar-btn">회원가입</button></a></li>
+									class="btn btn-success navbar-btn hbtn">회원가입</button></a></li>
 					</ul>
 				</div>
 			</div>
@@ -105,7 +126,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/">한문장</a>
+					href="${pageContext.request.contextPath}/" style="color:white">한문장</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -115,11 +136,11 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/onesentence/list/all"><button
-									class="btn navbar-btn">추천</button></a></li>&nbsp;&nbsp;&nbsp;
+									class="btn navbar-btn atag">추천</button></a></li>&nbsp;&nbsp;&nbsp;
 						<li class="nav-item">
 							<a class="nav-link"
 								href="${pageContext.request.contextPath}/userpage/${User.userIdx}"><button
-									class="btn btn-success navbar-btn">마이페이지</button></a>
+									class="btn btn-success navbar-btn hbtn">마이페이지</button></a>
 						</li>
 					</ul>
 				</div>
@@ -129,7 +150,7 @@
 
 
 	<!-- Header - set the background image for the header in the line below -->
-	<header class="py-5 bg-image-full"
+<%-- 	<header class="py-5 bg-image-full"
 		style="background-image: url('${pageContext.request.contextPath}/resources/jaejin/img/main.png'); min-height: 388px">
 		<div id=test>
 			<img class="img-fluid d-block mx-auto"
@@ -137,7 +158,19 @@
 				alt="">
 		</div>
 		<!-- <div class="py-5"></div> -->
-	</header>
+	</header> --%>
+	
+	
+	
+		<header class="py-5 bg-image-full"
+		style="background-image: url('${pageContext.request.contextPath}/resources/naeun/user/img/6.jpg'); min-height: 388px; margin-top:-5rem">
+			<div id="test" style="color:white; text-align:center; font-size:4rem; padding-top:3rem">
+    			<div>One Sentence</div>			
+			</div>
+		<!-- <div class="py-5"></div> -->
+		</header>
+	
+	
 
 	<!-- Content section -->
 	<section class="py-5">

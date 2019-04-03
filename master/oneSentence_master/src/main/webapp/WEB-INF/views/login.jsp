@@ -81,8 +81,7 @@
 
 	<form class="form-signin"
 		action="${pageContext.request.contextPath}/user/login" method="POST">
-		<a href="${pageContext.request.contextPath}/"><img class="mb-4"
-			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
+		<a href="${pageContext.request.contextPath}/"><img class="mb-4" src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
 			alt="" width="72" height="72"></a>
 		<h1 class="h3 mb-3 font-weight-normal">로그인</h1>
 		<label for="inputEmail" class="sr-only">Email address</label> <input
@@ -97,8 +96,9 @@
             </label>
         </div> -->
 		<button class="btn btn-lg btn-success btn-block" type="submit">로그인</button>
-		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad0264e1ffef69d01b6778d82c031206&redirect_uri=http://127.0.0.1/sentence/kakaologin&response_type=code"><img style="margin-top:1rem;" src="${pageContext.request.contextPath}/resources/naeun/kakao_account_login_btn_medium_narrow.png"></a>
-		<img id="naver_id_login" style="width:14rem;margin-top:1rem;height:3rem;" src="${pageContext.request.contextPath}/resources/eunseon/contents/img/naver.PNG"></img>
+
+		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad0264e1ffef69d01b6778d82c031206&redirect_uri=http://127.0.0.1/sentence/kakaologin&response_type=code"><img src="${pageContext.request.contextPath}/resources/naeun/kakao_account_login_btn_medium_narrow.png"></a>
+		<div id="google_id_login" style="text-align:center"><a href="${google_url}"><img width="230" src="${pageContext.request.contextPath}/resources/dahye/google/google-login-button.png"/></a></div>
 		<p class="mt-5 mb-3 text-muted">
 			<a href="${pageContext.request.contextPath}/mailPage">비밀번호를
 				잃어버리셨나요?</a> <br> <br> 계정이 없으신가요? <a

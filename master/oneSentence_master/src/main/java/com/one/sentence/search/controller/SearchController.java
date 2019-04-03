@@ -27,7 +27,7 @@ import com.one.sentence.onesentence.service.OnesentenceService;
 import com.one.sentence.search.model.SearchModel;
 import com.one.sentence.search.model.TestModel;
 import com.one.sentence.search.service.SearchAladdinService;
-import com.one.sentence.search.service.SearchAladdinService2;
+import com.one.sentence.search.service.SearchAladdinBestBookService;
 import com.one.sentence.search.service.SearchBookPageService;
 import com.one.sentence.search.service.SearchUserService;
 
@@ -42,19 +42,19 @@ public class SearchController {
 	private SearchUserService serviceUser;
 
 	@Autowired
-	private SearchAladdinService2 servicetwo;
+	private SearchAladdinBestBookService serviceBestBook;
 
 	@Inject
 	private OnesentenceService oneService;
 
 	@Autowired
-	private SearchBookPageService service3;
+	private SearchBookPageService servicePage;
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String getQuery(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
 		System.out.println("query: " + query);
 		List<SearchModel> items = service.getSearchModel(query);
-		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);
+		List<SearchModel> itemstwo = serviceBestBook.getSearchModel(query);
 
 		if (query.equals(" ") || query.equals(""))
 			return "/search/searchFail";
@@ -140,7 +140,7 @@ public class SearchController {
 	public String getSearchMoreBest(HttpServletRequest request, Model model, @RequestParam String query)
 			throws Exception {
 
-		List<SearchModel> itemstwo = servicetwo.getSearchModel(query);
+		List<SearchModel> itemstwo = serviceBestBook.getSearchModel(query);
 
 		model.addAttribute("itemstwo", itemstwo);
 		return "/search/searchMoreBest";
@@ -163,10 +163,10 @@ public class SearchController {
 			@PathVariable("isbn") String isbn) throws Exception {
 		if (isbn != null) {
 			List<SearchModel> items = service.getSearchModel(isbn);
-			List<SearchModel> itemstwo = servicetwo.getSearchModel(isbn);
+			List<SearchModel> itemstwo = serviceBestBook.getSearchModel(isbn);
 			List<ShowOnesentence> oneSentenceList = new ArrayList<ShowOnesentence>();
 
-			List<TestModel> items3 = service3.getTestModel(isbn);
+			List<TestModel> items3 = servicePage.getTestModel(isbn);
 
 			UserVo user = (UserVo) session.getAttribute("User");
 			ShowOnesentence sentence = new ShowOnesentence();
@@ -221,8 +221,7 @@ public class SearchController {
 			throws IOException {
 		
 		System.out.println("result:" + searchValue);
-		System.out.println("뭔가 이상한데?");
-		System.out.println();
+
 		
 		List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag(searchValue);
 		List<String> resultList = null;
