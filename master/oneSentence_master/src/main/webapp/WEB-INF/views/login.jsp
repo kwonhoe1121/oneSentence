@@ -147,7 +147,7 @@ a:hover{
 		var naver_id_login = new naver_id_login("cPTP4WjJyJpuaIOiZ61K",
 				"http://localhost/sentence/login/naver/callback");
 		var state = naver_id_login.getUniqState();
-		naver_id_login.setButton("white", 2, 40);
+		naver_id_login.setButton("white", 3, 50);
 		naver_id_login.setDomain("http://localhost/sentence/login");
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
