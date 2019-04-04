@@ -48,6 +48,12 @@
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
+/* 추후 삭제. */
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>

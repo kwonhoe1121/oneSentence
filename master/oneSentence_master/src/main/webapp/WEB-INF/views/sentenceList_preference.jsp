@@ -57,6 +57,14 @@
 	font-size: 1rem;
 	padding-top:2rem;
 }
+
+/* 추후 삭제. */
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
@@ -72,7 +80,7 @@ $().ready(function(d, s, id) {
 </head>
 <body>
 
-	<header style="height:60px"></header>
+	<header style="height:60px">
 
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
 	<a href="${pageContext.request.contextPath}/onesentence/liketo/${userIdx}" id="liketo" class="alink"
@@ -81,6 +89,7 @@ $().ready(function(d, s, id) {
 	<a href="${pageContext.request.contextPath}/onesentence/list/${userIdx}" id="list" class="alink"
 		style="color: #007bff"><i class="fa fa-search icon"> 작성한
 			문장보러가기</i></a>
+	</header>
 
 	<!-- Page Content -->
 	<div class="container">
