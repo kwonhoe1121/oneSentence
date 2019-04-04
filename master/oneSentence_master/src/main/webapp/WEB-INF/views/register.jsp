@@ -73,7 +73,7 @@
 	font-family: 'Handon3gyeopsal600g';
 	font-size:2.5rem;
 	text-align:center;
-	color:green;
+	color:primary;
 	font-weight:bold;
 	margin-bottom:2rem;
 }
@@ -121,7 +121,7 @@ a:hover{
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div> -->
-		<button class="btn btn-lg btn-success btn-block" type="submit">회원가입</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>
 		<p class="mt-5 mb-3 text-muted">
 			이미 가입하셨나요? <a href="${pageContext.request.contextPath}/login">로그인</a>
 		</p>

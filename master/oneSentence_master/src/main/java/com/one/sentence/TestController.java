@@ -1,5 +1,7 @@
 package com.one.sentence;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -7,11 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class TestController {
 
+	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+	
+	
 	@RequestMapping(value = "/indexPage", method = RequestMethod.GET)
 	public String getIndexPage() {
 
 		System.out.println("getIndexPage method");
-
+		logger.debug("logger: indexPage");
 		return "index";
 	}
 
@@ -94,13 +99,4 @@ public class TestController {
 
 		return "review";
 	}
-	
-	@RequestMapping(value = "/mailPage", method = RequestMethod.GET)
-	public String getMailPage() {
-		
-		System.out.println("getMailPage method");
-		
-		return "include/mail";
-	}
-	
 }

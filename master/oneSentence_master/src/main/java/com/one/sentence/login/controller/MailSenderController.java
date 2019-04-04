@@ -27,6 +27,11 @@ public class MailSenderController {
 
 	@Inject
 	private SecurityService securityService;
+	
+	@RequestMapping(value="/serachPassword", method = RequestMethod.GET)
+	public String getMailForm() {
+		return "/include/mail";
+	}
 
 	@RequestMapping(value = "/mail/send", method = RequestMethod.POST)
 	public String sendEmailForPassword(@RequestParam String userEmail)
@@ -53,5 +58,4 @@ public class MailSenderController {
 
 		return "login";
 	}
-
 }

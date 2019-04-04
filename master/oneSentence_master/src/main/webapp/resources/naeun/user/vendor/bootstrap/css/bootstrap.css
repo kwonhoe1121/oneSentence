@@ -2425,16 +2425,16 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   background-color: #fff;
-/*  border-color: #458534;*/
+  /* border-color: #458534; */
   border-color: lightgray;
   float:right;
 }
 
 .btn-primary:hover {
-/*
-  background-color: #316C31;
-  border-color: #316C31;
-*/
+
+  /* background-color: #316C31; */
+ /*  border-color: #316C31; */
+
   background-color: lightgray;
   border-color: lightgray;
 }

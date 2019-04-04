@@ -81,7 +81,7 @@ img{
 	font-family: 'Handon3gyeopsal600g';
 	font-size:2.5rem;
 	text-align:center;
-	color:green;
+	color:primary;
 	font-weight:bold;
 	margin-bottom:2rem;
 }
@@ -123,10 +123,10 @@ a:hover{
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div> -->
-		<button class="btn btn-lg btn-success btn-block" type="submit">로그인</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
 
 		<p class="mt-5 mb-3 text-muted">
-			<a href="${pageContext.request.contextPath}/mailPage">비밀번호를
+			<a href="${pageContext.request.contextPath}/login" id="searchPwd">비밀번호를
 				잃어버리셨나요?</a> <br> <br> 계정이 없으신가요? <a
 				href="${pageContext.request.contextPath}/register">회원가입</a>
 		</p>
@@ -143,6 +143,10 @@ a:hover{
 	<script type="text/javascript"
 		src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
 		charset="utf-8"></script>
+		
+	<!-- custom JavaScript by jaejin -->
+	<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/jaejin/js/login.js"></script> --%>
+	
 	<script type="text/javascript">
 		var naver_id_login = new naver_id_login("cPTP4WjJyJpuaIOiZ61K",
 				"http://localhost/sentence/login/naver/callback");
@@ -152,6 +156,7 @@ a:hover{
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
 		naver_id_login.init_naver_id_login();
+		
 		//email focusout
 		$("#inputEmail").on("focusout",function() {
 							/* alert("userEmail focusout"); */
@@ -199,8 +204,7 @@ a:hover{
 							console.log(userEmail);
 							console.log(userPassword);
 
-							$
-									.ajax({
+							$.ajax({
 										type : "POST",
 										url : "${pageContext.request.contextPath}/users/pwdCheck",
 										data : JSON.stringify({
@@ -229,6 +233,15 @@ a:hover{
 								$("#passwordCheck").remove();
 							});
 						});
+		
+		//search Password popup!
+		$('#searchPwd').click(function(){
+			/* alert("click!") */
+			var url="${pageContext.request.contextPath}/serachPassword";
+			var popupOption="width=700,height=600";
+			window.open(url,"send Email",popupOption);
+		});
+	
 	</script>
 
 </body>

@@ -49,11 +49,11 @@
 </head>
 <body>
 	
-<%-- 	<div id="header">
-		<a href="${pageContext.request.contextPath}/indexPage"><i class="fa fa-home fa-2x"
-			aria-hidden="true"></i></a>
+	<div id="header">
+		<%-- <a href="${pageContext.request.contextPath}/indexPage"><i class="fa fa-home fa-2x"
+			aria-hidden="true"></i></a> --%>
 	</div>
- --%>
+
 	<!-- Page Content -->
 	<div class="container">
 

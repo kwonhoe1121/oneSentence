@@ -92,7 +92,7 @@ $().ready(function(d, s, id) {
 						<input type="text" name="publisher" value="${items.publisher}" hidden="true">
 						<input type="text" name="bookTitle" value="${items.title}" hidden="true">
 						<input type="text" name="bookGenre" value="${items.categoryName}" hidden="true">
-					<button id="btn1" type="submit">
+					<button class="btn btn-primary navbar-btn" type="submit">
 							<b style="color: white"> + 코멘트작성&nbsp;&nabla;</b>
 					</button>
 					</form>

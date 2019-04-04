@@ -67,7 +67,7 @@
 									class="btn navbar-btn">로그인</button></a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/register"><button
-									class="btn btn-success navbar-btn">회원가입</button></a></li>
+									class="btn btn-primary navbar-btn">회원가입</button></a></li>
 					</ul>
 
 				</div>
@@ -116,7 +116,7 @@
 									class="btn navbar-btn">추천</button></a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/userpage/${User.userIdx}"><button
-									class="btn btn-success navbar-btn">마이페이지</button></a></li>
+									class="btn btn-primary navbar-btn">마이페이지</button></a></li>
 					</ul>
 				</div>
 			</div>
