@@ -178,27 +178,30 @@ $().ready(function(d, s, id) {
 		<h2 class="h2" style="font-size: 1.5rem;">
 			<strong>사용자</strong><a href="${pageContext.request.contextPath}/search/searchMoreUser?query=${param.query}"><span class="more" style="font-size: 1rem;"><strong>더보기</strong></span></a>
 		</h2>
+	</div>
 		
-		<div class="line">
- 			<a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }">
-			<c:forEach items="${userInfo}" var="userSearch">
-			<img
+		
+			<div id="line">
+ 			
+			<c:forEach items="${userInfo}" var="userSearch" begin="0" end="7">
+			
+			<a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }"><img
 				src="${pageContext.request.contextPath}/resources/dahye/search/img/userimgpng.png"
 				alt="user_1"
-				class="${pageContext.request.contextPath}/resources/dahye/search/img-circle user_img">
+				class="${pageContext.request.contextPath}/resources/dahye/search/img-circle user_img"></a>
 				
-			<span class="usertext"><a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }">${userSearch.userName}</span>
-
+			<span class="usertext"><a href="${pageContext.request.contextPath}/userpage/${userSearch.userIdx }">${userSearch.userName}</a></span>
+		
 			 </c:forEach>
-			 </a>
-			 </div>
+			</div>
+			 
 			 </c:when>
 			 <c:otherwise>
 			 		<h3 style="font-size: 1.2rem;">사용자 조회된 결과가 없습니다.</h3>
 			 </c:otherwise>
 			</c:choose> 
-		</div>
-	</div>
+
+	
 	<hr>
 	
 	<c:choose>

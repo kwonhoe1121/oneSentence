@@ -50,6 +50,9 @@ public class SearchController {
 	@Autowired
 	private SearchBookPageService servicePage;
 
+	
+
+	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String getQuery(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
 		System.out.println("query: " + query);
@@ -61,8 +64,7 @@ public class SearchController {
 
 		List<String> useritems = serviceUser.selectUserList('%' + request.getParameter("query") + '%');
 		List<UserVo> userInfo = serviceUser.selectUserByUserName('%' + request.getParameter("query") + '%');
-		List<ShowOnesentence> oneSentenceList = oneService
-				.showOnesentenceListByHashtag('%' + request.getParameter("query") + '%');
+		List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag('%' + request.getParameter("query") + '%');
 
 		if (items.size() != 0 || oneSentenceList.size() != 0 || useritems.size() != 0 || userInfo.size() != 0
 				|| query == null || query.length() == 0) {

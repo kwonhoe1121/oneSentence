@@ -191,7 +191,7 @@ p {
 					method="GET">
 					<div class="input-group">
 						<input type="text" class="form-control searchAuto" placeholder="Search"
-							name="query" id="dahye">
+							name="query" id="searchAuto">
 						<div class="input-group-btn">
 							<button class="btn btn-default" style="background-color: #F6F5F4" type="submit" onclick="send(this.form)">
 								<i class="fa fa-search icon" name="query"></i>
@@ -274,10 +274,9 @@ p {
 	
 	
 	
-	
  $(document).ready(function() {
 
- $("#dahye").autocomplete({
+ $("#searchAuto").autocomplete({
 	 // 문자열 가져온다.
 
  source : function(request, response) {
