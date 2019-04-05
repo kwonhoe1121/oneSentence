@@ -196,13 +196,11 @@ p {
 				<form class="form-signin"
 					action="${pageContext.request.contextPath}/search" method="GET">
 					<div class="input-group">
-<<<<<<< HEAD
+
 						<input type="text" class="form-control searchAuto" placeholder="Search"
 							name="query" id="searchAuto">
-=======
-						<input type="text" class="form-control searchAuto"
-							placeholder="Search" name="query" id="dahye">
->>>>>>> b575fcfdee736a50c8e751b05acb3fc8fcca0937
+
+
 						<div class="input-group-btn">
 							<button class="btn btn-default" style="background-color: #F6F5F4"
 								type="submit" onclick="send(this.form)">
