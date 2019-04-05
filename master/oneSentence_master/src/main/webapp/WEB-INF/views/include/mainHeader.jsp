@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>한문장 메인 헤더</title>
+<!-- <title>한문장</title> -->
 
 <link
 	href="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
@@ -27,7 +27,22 @@
 	
 <link rel="stylesheet prefetch"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<style>
+        @media(max-width:800px) {
+           	.container3 {
+                width: 150px;
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+			
+			.navbar-brand {
+				/* margin-left: 0px; */
+                margin-right: 0px;
+			}
 
+        }
+
+</style>
 </head>
 
 <body>
@@ -38,7 +53,7 @@
 			<div class="container">
 				<a class="navbar-brand" href="${pageContext.request.contextPath}/">한문장</a>
 				<!-- <div class="container"> -->
-				<!-- <div class="container2"> -->
+				<div class="container3">
 
 				<form class="navbar-form naver-right"  action="${pageContext.request.contextPath}/search">
 					<div class="input-group">
@@ -51,7 +66,7 @@
 					</div>
 				</form>
 
-				<!-- </div> -->
+				</div>
 				<!-- </div> -->
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -67,7 +82,7 @@
 									class="btn navbar-btn">로그인</button></a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/register"><button
-									class="btn btn-success navbar-btn">회원가입</button></a></li>
+									class="btn btn-primary navbar-btn">회원가입</button></a></li>
 					</ul>
 
 				</div>
@@ -82,14 +97,10 @@
 			<div class="container">
 				<a class="navbar-brand" href="${pageContext.request.contextPath}/">한문장</a>
 				<!-- <div class="container"> -->
-				<!-- <div class="container2"> -->
+				<div class="container3">
 
 				<form class="navbar-form naver-right" action="${pageContext.request.contextPath}/search">
-					<!-- <div class="searchBox" class="form-group">
-                            <label for="search" class="sr-only">검색:</label>
-                            <input type="text" class="form-control" placeholder="검색어 입력" value="">
-                            <button type="submit"></button>
-                        </div> -->
+
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search" name="query">
 						<div class="input-group-btn">
@@ -100,7 +111,7 @@
 					</div>
 				</form>
 
-				<!-- </div> -->
+				</div>
 				<!-- </div> -->
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -116,7 +127,7 @@
 									class="btn navbar-btn">추천</button></a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/userpage/${User.userIdx}"><button
-									class="btn btn-success navbar-btn">마이페이지</button></a></li>
+									class="btn btn-primary navbar-btn">마이페이지</button></a></li>
 					</ul>
 				</div>
 			</div>

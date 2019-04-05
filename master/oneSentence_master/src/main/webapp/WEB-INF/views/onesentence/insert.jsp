@@ -12,7 +12,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Jekyll v3.8.5">
-<title>한문장입력 폼</title>
+<title>한문장-한문장 입력 폼</title>
 
 <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/"> -->
 
@@ -74,7 +74,7 @@ font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 	font-family: 'Handon3gyeopsal600g';
 	font-size:2.5rem;
 	text-align:center;
-	color:green;
+	color:primary;
 	font-weight:bold;
 	margin-bottom:2rem;
 }
@@ -136,7 +136,7 @@ a:hover{
 			type="radio" name="gender" value="male" style="margin-left:-3rem;" checked="checked">male
 		<input
 			type="radio" name="gender" value="female">female<br><br>		
-		<button class="btn btn-lg btn-success btn-block" type="submit">작성완료</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">작성완료</button>
 	</form>
 
 	<!-- bootstrap core JavaScript   -->

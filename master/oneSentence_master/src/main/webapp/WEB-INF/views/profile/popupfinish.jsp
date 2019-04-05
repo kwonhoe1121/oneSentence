@@ -11,7 +11,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Jekyll v3.8.5">
-<title>입력완료</title>
+<title>한문장-회원정보 수정 완료 페이지</title>
 
 
 <link

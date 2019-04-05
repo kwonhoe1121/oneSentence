@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration>
 <configuration>
 
 	<appender name="STDOUT"
@@ -12,7 +11,7 @@
 		</encoder>
 	</appender>
 
-	<logger name="com.one.sentence" level="debug" />
+	<logger name="com.one.sentence" level="info" />
 
 	<root level="warn">
 		<appender-ref ref="STDOUT" />

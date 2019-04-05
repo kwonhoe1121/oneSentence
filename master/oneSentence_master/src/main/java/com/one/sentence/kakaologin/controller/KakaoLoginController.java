@@ -80,7 +80,7 @@ public class KakaoLoginController {
 	    //포스트 파라미터의 grant_type이라는 명칭에 authorization_code를 추가한다 아래도 동일
         postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));	 
         postParams.add(new BasicNameValuePair("client_id", "ad0264e1ffef69d01b6778d82c031206"));	 
-        postParams.add(new BasicNameValuePair("redirect_uri", "http://127.0.0.1/sentence/kakaologin")); //예 : http://아이피:포트/최상위폴더/리다이렉션경로	 
+        postParams.add(new BasicNameValuePair("redirect_uri", "http://15.164.87.42/sentence/kakaologin")); //예 : http://아이피:포트/최상위폴더/리다이렉션경로	 
         postParams.add(new BasicNameValuePair("code", autorize_code));
 	        
 	
@@ -178,7 +178,4 @@ public class KakaoLoginController {
 	     return returnNode;
 	     
 	 }
-
-	
-	
 }
