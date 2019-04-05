@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-<h3>mp3재생</h3>
+<h3>한문장-mp3재생목록 페이지</h3>
 <c:forEach items="${oneSentenceIdxList}" var="list">
 <audio controls class="play" onended="next()">
 
