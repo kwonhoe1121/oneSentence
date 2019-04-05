@@ -2423,18 +2423,25 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
-.btn-primary {
+/* 재진수정. */
+.btn-primary1 {
   background-color: #fff;
-/*  border-color: #458534;*/
+  /* border-color: #458534; */
   border-color: lightgray;
   float:right;
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
 .btn-primary:hover {
-/*
-  background-color: #316C31;
-  border-color: #316C31;
-*/
+
+  /* background-color: #316C31; */
+ /*  border-color: #316C31; */
+
   background-color: lightgray;
   border-color: lightgray;
 }

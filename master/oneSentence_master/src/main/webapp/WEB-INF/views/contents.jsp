@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@include file="/WEB-INF/views/include/mainHeader.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -14,8 +14,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Contents page</title>
-<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
+<title>한문장-목록페이지</title>
+<link rel="shortcut icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
 <!-- Bootstrap core CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/bootstrap/css/bootstrap.min.css"
@@ -36,19 +37,21 @@
 	src:
 		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_ttf.ttf');
 }
+
 @font-face {
 	font-family: 'BMHANNAAir_otf';
 	src:
 		url('${pageContext.request.contextPath}/resources/naeun/sentenceList/font/BMHANNAAir_otf.otf');
 }
+
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
 }
 
 /* 재진 */
 .like {
+	
 }
-
 </style>
 <script>
 $().ready(function(d, s, id) {
@@ -65,10 +68,11 @@ $().ready(function(d, s, id) {
 	<%-- <jsp:include page="include/mainHeader.jsp"></jsp:include> --%>
 	<%-- <%@include file="include/mainHeader.jsp"%> --%>
 	<!-- Header -->
+
 	
 		
 <c:forEach items="${items}" var="items">
-<header class="bg-white">
+<header class="bg-white" style="height:37rem">
 			<img
 				src="${items.cover}" width="100%" height="300rem" style="filter: blur(2px)">
 		
@@ -85,112 +89,126 @@ $().ready(function(d, s, id) {
 					<li>${items.publisher}</li>
 					<li><a href="${pageContext.request.contextPath}/onesentence/playlist/contents/${items.isbn}">한문장 듣기</a></li>
 					<hr>
-					<li>
-					<form action="${pageContext.request.contextPath}/onesentence/insertForm" method="POST">
-						<input type="text" name="isbn" value="${items.isbn}" hidden="true">
-						<input type="text" name="author" value="${items.author}" hidden="true">
-						<input type="text" name="publisher" value="${items.publisher}" hidden="true">
-						<input type="text" name="bookTitle" value="${items.title}" hidden="true">
-						<input type="text" name="bookGenre" value="${items.categoryName}" hidden="true">
-					<button id="btn1" type="submit">
-							<b style="color: white"> + 코멘트작성&nbsp;&nabla;</b>
-					</button>
-					</form>
-					</li>
 				</ul>
-
+				<form action="${pageContext.request.contextPath}/onesentence/insertForm" method="POST" style="display:inline-block;margin-top:-1rem">
+						<ul>
+						<li><input type="text" name="isbn" value="${items.isbn}" hidden="true">
+						<li><input type="text" name="author" value="${items.author}" hidden="true">
+						<li><input type="text" name="publisher" value="${items.publisher}" hidden="true">
+						<li><input type="text" name="bookTitle" value="${items.title}" hidden="true">
+						<li><input type="text" name="bookGenre" value="${items.categoryName}" hidden="true">
+					<li><input type="submit" id="btn1" value="+ 코멘트작성" style="color:white;">
+					</ul>
+				</form>
 			</div>
 		</div>
 	</header>
-
+	<div style="background-color:white;height:3rem;display:inline-block;"></div>
 	<!-- Page Content -->
-	<div class="container" style="padding-bottom: 1.5rem;">
+	<div class="container" style="padding-bottom: 1.5rem;margin-top:-5rem;">
 
-		<div class="row"
-			style="border-top-left-radius: 10px; border-top-right-radius: 10px;" id="basicData">
-			<div class="col-md-12 mb-5" >
-				<br> &nbsp;&nbsp;&nbsp; <b style="font-size: 1.2rem">기본정보</b>
-				<hr>
-				<ul>
-					<li>${items.title}</li>
-					<li>${items.author}</li>
-					<li><c:out value="${fn:substring(items.pubDate,5,16)}"/>/ <c:forEach items="${items3}" var="items3">${items3.itemPage}</c:forEach>p</li>
-					<br>
-					<li>
-						<p id="description">${items.description}...</p>
-					</li>
-				</ul>
-								
-				<hr>
-				&nbsp;&nbsp;&nbsp;<span style= "cursor:pointer; font-size: 1.2rem; font-weight:bold;" id="toc">목차</span>
-				<div class="tocul" style= "display: none;" >
-				<hr>
-				<ul>
-						<li><c:forEach items="${items3}" var="items3">${items3.toc}</c:forEach></li>
-				</ul>
 				</div>
-				<hr>
-				&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> 
-				<a href="${pageContext.request.contextPath}/onesentence/list/contents/${items.isbn}"
-					class="a1"><b>더보기</b></a>
 			</div>
-			
-		</div>
-		
-		<div class="row"
-			style=" padding-top: 0px">
-			<div class="col-md-11 mb-5" style="padding-left: 5rem">
-				<div class="card h-100" style="border:none;">
-				
-				<c:forEach items="${oneSentenceList}" var="onesentence" begin="0" end="4" step="1">
-					<div class="card-body" style="margin-bottom:2rem;border-radius: 10px;border:1px solid lightgray;">
-						<input type="text" id="session" value="${User.userIdx}" hidden="true">
-						&nbsp;<span style="color: darkgray"  class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>&nbsp;&nbsp;
-						<!--한문장번호-->
-						<a href="#" style="color: black"><i class="fa fa-user icon">
-								${onesentence.userName}</i></a> <span class="eventA"
-							style="float: right; padding-right: 1rem; color: darkgray"><i
-							class="fa fa-ellipsis-v icon"></i></span><input type="text"
-						class="userIdx" value="${onesentence.userIdx}" hidden="true">
-						
-							<div class="divmodal" style="text-align: center;">
-								<div class="all">
-								<a href="#" onclick="share(${onesentence.oneSentenceIdx})"
-									id="share"><i class="fa fa-send-o icon"></i></a>
-							</div>
-							<div class="my">
-								<a href="#" id="updateBtn"
-									onclick ="updateClick(${onesentence.oneSentenceIdx})"><i
-									class="fa fa-reply icon"></i></a>
-							</div>
-							<div class="my">
-								<a href="#" onclick="deleteClick(${onesentence.oneSentenceIdx})"
-									><i class="fa fa-remove icon"></i></a>
-							</div>
-							</div>
-						
-						<span
-							style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br> <span
-							style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br> <span
-							style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>${onesentence.bookTitle},
-								${onesentence.author}, p.${onesentence.page} 에서..  </i></span><br>
+		</header>
+
+		<!-- Page Content -->
+		<div class="container" style="padding-bottom: 1.5rem;">
+
+			<div class="row"
+				style="border-top-left-radius: 10px; border-top-right-radius: 10px;"
+				id="basicData">
+				<div class="col-md-12 mb-5">
+					<br> &nbsp;&nbsp;&nbsp; <b style="font-size: 1.2rem">기본정보</b>
+					<hr>
+					<ul>
+						<li>${items.title}</li>
+						<li>${items.author}</li>
+						<li><c:out value="${fn:substring(items.pubDate,5,16)}" />/ <c:forEach
+								items="${items3}" var="items3">${items3.itemPage}</c:forEach>p</li>
+						<br>
+						<li>
+							<p id="description">${items.description}...</p>
+						</li>
+					</ul>
+
+					<hr>
+					&nbsp;&nbsp;&nbsp;<span
+						style="cursor: pointer; font-size: 1.2rem; font-weight: bold;"
+						id="toc">목차</span>
+					<div class="tocul" style="display: none;">
 						<hr>
-						<span
-							style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">${onesentence.hashtag}</span> <span
-							style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red" class="like"><i
-							class="fa fa-heart-o"> ${onesentence.likeTotal}</i></span>
+						<ul>
+							<li><c:forEach items="${items3}" var="items3">${items3.toc}</c:forEach></li>
+						</ul>
 					</div>
-				</c:forEach>
+					<hr>
+					&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> <a
+						href="${pageContext.request.contextPath}/onesentence/list/contents/${items.isbn}"
+						class="a1"><b>더보기</b></a>
 				</div>
+
 			</div>
-			
+
+			<div class="row" style="padding-top: 0px">
+				<div class="col-md-11 mb-5" style="padding-left: 5rem">
+					<div class="card h-100" style="border: none;">
+
+						<c:forEach items="${oneSentenceList}" var="onesentence" begin="0"
+							end="4" step="1">
+							<div class="card-body"
+								style="margin-bottom: 2rem; border-radius: 10px; border: 1px solid lightgray;">
+								<input type="text" id="session" value="${User.userIdx}"
+									hidden="true"> &nbsp;<span style="color: darkgray"
+									class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>&nbsp;&nbsp;
+								<!--한문장번호-->
+								<a href="#" style="color: black"><i class="fa fa-user icon">
+										${onesentence.userName}</i></a> <span class="eventA"
+									style="float: right; padding-right: 1rem; color: darkgray"><i
+									class="fa fa-ellipsis-v icon"></i></span><input type="text"
+									class="userIdx" value="${onesentence.userIdx}" hidden="true">
+
+								<div class="divmodal" style="text-align: center;">
+									<div class="all">
+										<a href="#" onclick="share(${onesentence.oneSentenceIdx})"
+											id="share"><i class="fa fa-send-o icon"></i></a>
+									</div>
+									<div class="my">
+										<a href="#" id="updateBtn"
+											onclick="updateClick(${onesentence.oneSentenceIdx})"><i
+											class="fa fa-reply icon"></i></a>
+									</div>
+									<div class="my">
+										<a href="#"
+											onclick="deleteClick(${onesentence.oneSentenceIdx})"><i
+											class="fa fa-remove icon"></i></a>
+									</div>
+								</div>
+
+								<span
+									style="padding-left: 2rem; font-size: 0.8rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
+								<span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br>
+								<span
+									style="float: right; padding-right: 2rem; font-size: 1rem; color: darkgray"><i>${onesentence.bookTitle},
+										${onesentence.author}, p.${onesentence.page} 에서.. </i></span><br>
+								<hr>
+								<span
+									style="color: cadetblue; font-size: 0.9rem; padding-left: 1.5rem">${onesentence.hashtag}</span>
+								<span
+									style="float: right; padding-right: 1rem; font-size: 0.8rem; color: red"
+									class="like"><i class="fa fa-heart-o">
+										${onesentence.likeTotal}</i></span>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+
 			</div>
 		</div>
 		<!-- /.row -->
 
 
-	<!-- /.container -->
-</c:forEach>
+		<!-- /.container -->
+	</c:forEach>
 	<!-- Footer -->
 	<footer class="py-5 bg-white" style="padding: 1rem">
 		<div class="container">
@@ -209,7 +227,7 @@ $().ready(function(d, s, id) {
 		src="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/eunseon/contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
+	<script
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
 	

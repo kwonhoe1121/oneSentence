@@ -25,12 +25,12 @@ public class NaverController {
 	@RequestMapping("/finish")
 	public String naverLogin(HttpSession session, 
 			HttpServletRequest request) {
-		String email =(String)request.getParameter("email");
+		String email =request.getParameter("email");
 		UserVo user = nService.showNaverUser(email);
 		if(user==null) {
 		user = new UserVo();
 		user.setUserEmail(email);
-		user.setUserName((String)request.getParameter("name"));
+		user.setUserName(request.getParameter("name"));
 		user.setUserPassword("");
 		user.setEmailStatus("4");
 		nService.makeNaverUser(user);

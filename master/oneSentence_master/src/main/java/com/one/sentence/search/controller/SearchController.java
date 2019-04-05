@@ -1,16 +1,15 @@
 package com.one.sentence.search.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,8 +25,8 @@ import com.one.sentence.onesentence.model.ShowOnesentence;
 import com.one.sentence.onesentence.service.OnesentenceService;
 import com.one.sentence.search.model.SearchModel;
 import com.one.sentence.search.model.TestModel;
-import com.one.sentence.search.service.SearchAladdinService;
 import com.one.sentence.search.service.SearchAladdinBestBookService;
+import com.one.sentence.search.service.SearchAladdinService;
 import com.one.sentence.search.service.SearchBookPageService;
 import com.one.sentence.search.service.SearchUserService;
 
@@ -219,23 +218,24 @@ public class SearchController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	@ResponseBody
-	public List<String> autoTest(@RequestBody String searchValue, Model model, ShowOnesentence dto)
+	public List<String> autoTest(@RequestBody Map<String, String> searchValue)
 			throws IOException {
 		
-		System.out.println("result:" + searchValue);
-
+		System.out.println("result:" + searchValue.get("searchValue"));
 		
-		List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag(searchValue);
-		List<String> resultList = null;
+		List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag(searchValue.get("searchValue"));
 		System.out.println("oneSentenceList: " + oneSentenceList);
-		//JSONArray ja = new JSONArray();
+
+		List<String> resultList = new ArrayList<>();
 		
 		for (int i = 0; i < oneSentenceList.size(); i++) {
-			resultList.add(oneSentenceList.get(i).getHashtag());
+			resultList.add(oneSentenceList.get(i).getOneSentence());
 		}
+		
 		System.out.println("resultList: " + resultList);
 		
 		return resultList;
+
 	}
 
 }

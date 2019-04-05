@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>sentenceList page</title>
+<title>한문장-한문장페이지</title>
 <!-- Bootstrap core CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/naeun/sentenceList/vendor/bootstrap/css/bootstrap.css"

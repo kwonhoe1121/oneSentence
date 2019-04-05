@@ -12,7 +12,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Jekyll v3.8.5">
-<title>회원정보수정</title>
+<title>한문장-회원정보 더보기 페이지</title>
 
 <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/"> -->
 
@@ -49,6 +49,17 @@
 	float:right;
 	padding-right:1rem;
 }
+.logotest{
+	font-family: 'Handon3gyeopsal600g';
+	font-size:2.5rem;
+	text-align:center;
+	color:primary;
+	font-weight:bold;
+	margin-bottom:2rem;
+}
+a:hover{
+	text-decoration:none;
+}
 </style>
 <!-- Custom styles for this template -->
 <link
@@ -62,9 +73,9 @@
 <body class="text-center">
 	<form class="form-signin"
 		action="${pageContext.request.contextPath}/profile/update" method="POST">
-		<img class="mb-4"
-			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
-			alt="" width="72" height="72">
+		<a href="${pageContext.request.contextPath}/">
+			<div  class="logotest">One Sentence</div>
+		</a>
 		<h1 class="h3 mb-3 font-weight-normal">회원정보 수정</h1>
 		<input class="hidden" type="text" id="userIdx" name="userIdx" value="${user_info.userIdx}">
 		
@@ -92,7 +103,7 @@
 			value="${user_info.userIntroduction}" ><br>	
 			<br><br>
 		
-		<button class="btn btn-lg btn-success btn-block" id="btn">수정완료</button>
+		<button class="btn btn-lg btn-primary btn-block" id="btn">수정완료</button>
 	</form>
 
 	<!-- bootstrap core JavaScript   -->

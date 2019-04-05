@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>한문장 :: 검색페이지</title>
+<title>한문장-검색페이지</title>
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
 <%-- <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/dahye/search/css/bootstrap.css"> --%>

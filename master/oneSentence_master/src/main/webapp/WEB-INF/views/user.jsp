@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>user page</title>
+<title>한문장-유저페이지</title>
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
 <!-- Bootstrap core CSS -->
 <link
@@ -49,11 +49,11 @@
 </head>
 <body>
 	
-<%-- 	<div id="header">
-		<a href="${pageContext.request.contextPath}/indexPage"><i class="fa fa-home fa-2x"
-			aria-hidden="true"></i></a>
+	<div id="header">
+		<%-- <a href="${pageContext.request.contextPath}/indexPage"><i class="fa fa-home fa-2x"
+			aria-hidden="true"></i></a> --%>
 	</div>
- --%>
+
 	<!-- Page Content -->
 	<div class="container">
 
@@ -84,12 +84,12 @@
 					<i class="fa fa-user-circle fa-4x" aria-hidden="true"></i>
 					<h3 class="bold">${uservo.userName}</h3>
 					<input type="submit" value="${followingstate}"
-						class="btn btn-primary" id="follow"> <input type="hidden"
+						class="btn btn-primary1" id="follow"> <input type="hidden"
 						value="${flag}" id="flag"> <input type="hidden"
 						value="${loginIdx}" id="loginIdx"> <input type="hidden"
 						value="${uservo.userIdx}" id="userIdx">
 					<h5>${uservo.userIntroduction}</h5>
-					<input type="submit" value="수정" class="btn btn-primary" id="update">
+					<input type="submit" value="수정" class="btn btn-primary1" id="update">
 				</div>
 
 				<h4 class="card-header" id="part3">

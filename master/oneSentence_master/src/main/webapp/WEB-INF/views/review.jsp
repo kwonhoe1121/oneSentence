@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>review page</title>
+<title>한문장-추천페이지</title>
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
 <!-- Bootstrap core CSS -->
 <link
@@ -47,6 +47,12 @@
 
 * {
 	font-family: 'BMHANNAAir_ttf', 'BMHANNAAir_otf';
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
