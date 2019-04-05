@@ -68,7 +68,7 @@ $().ready(function(d, s, id) {
 	
 		
 <c:forEach items="${items}" var="items">
-<header class="bg-white">
+<header class="bg-white" style="height:37rem">
 			<img
 				src="${items.cover}" width="100%" height="300rem" style="filter: blur(2px)">
 		
@@ -85,26 +85,26 @@ $().ready(function(d, s, id) {
 					<li>${items.publisher}</li>
 					<li><a href="${pageContext.request.contextPath}/onesentence/playlist/contents/${items.isbn}">한문장 듣기</a></li>
 					<hr>
-					<li>
-					<form action="${pageContext.request.contextPath}/onesentence/insertForm" method="POST">
-						<input type="text" name="isbn" value="${items.isbn}" hidden="true">
-						<input type="text" name="author" value="${items.author}" hidden="true">
-						<input type="text" name="publisher" value="${items.publisher}" hidden="true">
-						<input type="text" name="bookTitle" value="${items.title}" hidden="true">
-						<input type="text" name="bookGenre" value="${items.categoryName}" hidden="true">
-					<button id="btn1" type="submit">
-							<b style="color: white"> + 코멘트작성&nbsp;&nabla;</b>
-					</button>
-					</form>
-					</li>
 				</ul>
-
+				<form action="${pageContext.request.contextPath}/onesentence/insertForm" method="POST" style="display:inline-block;margin-top:-1rem">
+						<ul>
+						<li><input type="text" name="isbn" value="${items.isbn}" hidden="true">
+						<li><input type="text" name="author" value="${items.author}" hidden="true">
+						<li><input type="text" name="publisher" value="${items.publisher}" hidden="true">
+						<li><input type="text" name="bookTitle" value="${items.title}" hidden="true">
+						<li><input type="text" name="bookGenre" value="${items.categoryName}" hidden="true">
+<!-- 					<button id="btn1" type="submit">
+							<b style="color: white"> + 코멘트작성&nbsp;&nabla;</b>
+					</button> -->
+					<li><input type="submit" id="btn1" value="+ 코멘트작성" style="color:white;">
+					</ul>
+				</form>
 			</div>
 		</div>
 	</header>
-
+	<div style="background-color:white;height:3rem;display:inline-block;"></div>
 	<!-- Page Content -->
-	<div class="container" style="padding-bottom: 1.5rem;">
+	<div class="container" style="padding-bottom: 1.5rem;margin-top:-5rem;">
 
 		<div class="row"
 			style="border-top-left-radius: 10px; border-top-right-radius: 10px;" id="basicData">
