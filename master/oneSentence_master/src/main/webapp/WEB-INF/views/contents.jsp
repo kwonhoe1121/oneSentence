@@ -88,14 +88,16 @@ $().ready(function(d, s, id) {
 					<li>${items.author}</li>
 					<li>${items.publisher}</li>
 					<li><a href="${pageContext.request.contextPath}/onesentence/playlist/contents/${items.isbn}">한문장 듣기</a></li>
+					<li><i class="fa fa-commenting-o icon" id="chat">채팅방</i></li>
+					<li><input type="text"  id="userName" hidden="true" value="${User.userName}"></li>
 					<hr>
 				</ul>
 				<form action="${pageContext.request.contextPath}/onesentence/insertForm" method="POST" style="display:inline-block;margin-top:-1rem">
 						<ul>
-						<li><input type="text" name="isbn" value="${items.isbn}" hidden="true">
+						<li><input type="text" id="isbn" name="isbn" value="${items.isbn}" hidden="true">
 						<li><input type="text" name="author" value="${items.author}" hidden="true">
 						<li><input type="text" name="publisher" value="${items.publisher}" hidden="true">
-						<li><input type="text" name="bookTitle" value="${items.title}" hidden="true">
+						<li><input type="text" id="bookTitle" name="bookTitle" value="${items.title}" hidden="true">
 						<li><input type="text" name="bookGenre" value="${items.categoryName}" hidden="true">
 					<li><input type="submit" id="btn1" value="+ 코멘트작성" style="color:white;">
 					</ul>
@@ -242,7 +244,25 @@ $().ready(function(d, s, id) {
 	        $('.tocul').hide();  
 	    }  
 	})
-
+	$('#chat').click(function(){
+		var arr = {userName: $('#userName').val(),
+				isbn:$('#isbn').val(), bookTitle:$('#bookTitle').val()};
+		alert(JSON.stringify(arr));
+		$.ajax({
+			url: 'http://127.0.0.1:52273/'+$('#isbn').val(),
+			type:'POST',
+			data:JSON.stringify(arr),
+			dataType:'json',
+			contentType:'application/json; charset=utf-8',
+			async: true,
+			success: function(data){
+				alert(JSON.stringfy(data));
+			},
+			error:function(error){
+				console.log(error);
+			}
+		});
+	});
 	
 		$('#description img').hide();
 		var $html = $('#description').html();
