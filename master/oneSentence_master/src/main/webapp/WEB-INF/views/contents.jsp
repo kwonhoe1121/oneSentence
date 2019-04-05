@@ -248,8 +248,10 @@ $().ready(function(d, s, id) {
 		var arr = {userName: $('#userName').val(),
 				isbn:$('#isbn').val(), bookTitle:$('#bookTitle').val()};
 		alert(JSON.stringify(arr));
+		var url = 'http://127.0.0.1:52273/chat/'+$('#isbn').val()
+		var popupOption = "width=700,height=600";
 		$.ajax({
-			url: 'http://127.0.0.1:52273/'+$('#isbn').val(),
+			url: 'http://127.0.0.1:52273/chat/'+$('#isbn').val(),
 			type:'POST',
 			data:JSON.stringify(arr),
 			dataType:'json',
@@ -257,6 +259,7 @@ $().ready(function(d, s, id) {
 			async: true,
 			success: function(data){
 				alert(JSON.stringfy(data));
+				window.open(url,'채팅방',popupOption);
 			},
 			error:function(error){
 				console.log(error);
