@@ -58,7 +58,7 @@ $().ready(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=302606807116615";
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=418736628946277";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
@@ -279,7 +279,7 @@ $().ready(function(d, s, id) {
 			action_type : 'og.shares',
 			action_properties : JSON.stringify({
 						object : {
-							'og:url' : 'http://127.0.0.1/sentence/onesentence/one/'
+							'og:url' : '${pageContext.request.contextPath}/sentence/onesentence/one/'
 									+ idx,
 							'og:title' : '한문장',
 							'og:description' : '한문장내용',
