@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +24,8 @@ import com.one.sentence.liketo.service.LikeService;
 @RestController
 public class LikeController {
 
+	private static final Logger logger = LoggerFactory.getLogger(LikeController.class);
+	
 	@Inject
 	LikeService service;
 
@@ -32,25 +36,25 @@ public class LikeController {
 
 		// 세션에서 회원 정보를 얻는다.
 		UserVo user = (UserVo) session.getAttribute("User");
-		System.out.println("로그인 하고 있는 유저 정보!" + user);
+		logger.debug("로그인 하고 있는 유저 정보: {}", user);
 
 		// 클릭한 한문장 정보 얻는다.
 		Map<String, Integer> mapIdx = new HashMap<>();
 		mapIdx.put("userIdx", user.getUserIdx());
 		mapIdx.put("oneSentenceIdx", oneSentence.getOneSentenceIdx());
-		System.out.println(mapIdx);
-		System.out.println(service.isLikedTheSentence(mapIdx));
+		logger.debug(mapIdx + "");
+		logger.debug(service.isLikedTheSentence(mapIdx) + "");
 		// 유저가 이 문장에 좋아요 클릭했는지 확인한다.
 		if (!service.isLikedTheSentence(mapIdx)) {
 			service.pushLikeButton(mapIdx);
-			System.out.println("좋아요 표시!!");
+			logger.debug("좋아요 표시!!");
 			return "push like button!";
 		}
 
 		// 아니면 좋아요 클릭 삭제.
 		service.rePushLikeButton(mapIdx);
 
-		System.out.println("좋아요 삭제!!");
+		logger.debug("좋아요 삭제!!");
 
 		return "repush like button!";
 	}
@@ -60,19 +64,19 @@ public class LikeController {
 	@ResponseBody
 	public List<Integer> isLikedSentences(@RequestParam(value = "oneSentenceIdx[]") Integer[] oneSentenceIdx,
 			HttpSession session) {
-		System.out.println("들어왔나?");
+		logger.debug("들어왔나?");
 
 		// 세션에서 회원정보 가져온다.
 		UserVo user = (UserVo) session.getAttribute("User");
-		System.out.println("로그인 하고 있는 유저 정보!" + user);
+		logger.debug("로그인 하고 있는 유저 정보: {}", user);
 
 		Map<String, Integer> mapIdx = new HashMap<>();
 		List<Integer> likedOneSentenceIdx = new ArrayList<>();
 		
 //		for(Integer idx : oneSentenceIdx) {
-//			System.out.println(idx);
+//			logger.debug(idx + "");
 //		}
-		System.out.println(oneSentenceIdx.length);
+		logger.debug(oneSentenceIdx.length + "");
 	
 		// 모든 oneSentenceIdx 와 로그인한 userIdx로 확인 후
 		// likedOneSentenceIdx 에 넣는다.
@@ -87,7 +91,7 @@ public class LikeController {
 			}
 		}
 		
-		System.out.println(likedOneSentenceIdx);
+		logger.debug(likedOneSentenceIdx + "");
 		
 		return likedOneSentenceIdx;
 	}

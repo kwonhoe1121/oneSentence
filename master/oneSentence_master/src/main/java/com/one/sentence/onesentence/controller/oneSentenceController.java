@@ -9,6 +9,8 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,6 +32,8 @@ import com.one.sentence.onesentence.service.OnesentenceService;
 @Controller
 public class oneSentenceController {
 
+	private static final Logger logger = LoggerFactory.getLogger(oneSentenceController.class);
+	
 	@Inject
 	OnesentenceService oneService;
 
@@ -44,7 +48,7 @@ public class oneSentenceController {
 			@RequestParam("oneSentence") String oneSentence,
 			@RequestParam("page") int page,
 			@RequestParam("userIdx") int userIdx, Model model) {
-		System.out.println("procedure 실행");
+		logger.debug("procedure 실행");
 		String isbn = request.getParameter("isbn");
 		String bookTitle = request.getParameter("bookTitle");
 		try{oneService.makeNewSentence(oneSentence, page, userIdx, isbn,bookTitle, request.getParameter("bookGenre")
@@ -52,7 +56,7 @@ public class oneSentenceController {
 				,request.getParameter("hashtag1"), request.getParameter("hashtag2"), request.getParameter("hashtag3"));
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("makeNewSentence");
+			logger.debug("makeNewSentence");
 		}
 		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
 		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
@@ -249,7 +253,7 @@ public class oneSentenceController {
 		String uri = "/resources";
 		String dir = request.getSession().getServletContext().getRealPath(uri);
 		String fileName = file.getOriginalFilename();
-		System.out.println(dir + "\\eunseon\\upload\\" + fileName);
+		logger.debug("{} \\eunseon\\upload\\ {}", dir, fileName);
 
 		if (!file.isEmpty()) {
 			try {
@@ -259,7 +263,7 @@ public class oneSentenceController {
 			}
 
 		} else {
-			System.out.println("error");
+			logger.debug("error");
 		}
 		String oneSentenceListByPhoto = GoogleVisionApi.getSentence(dir + "\\eunseon\\upload\\" + fileName);
 		model.addAttribute("OneSentenceList", oneSentenceListByPhoto);

@@ -10,6 +10,8 @@ import java.util.Map;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -20,6 +22,8 @@ import com.one.sentence.search.model.TestModel;
 
 @Service
 public class SearchBookPageService {
+
+	private static final Logger logger = LoggerFactory.getLogger(SearchBookPageService.class);
 
 	private static final String BASE_URL = "http://www.aladdin.co.kr/ttb/api/ItemLookUp.aspx?";
 
@@ -49,7 +53,7 @@ public class SearchBookPageService {
 		SearchServiceHandlerone3 api = new SearchServiceHandlerone3();
 		api.parseXml(url);
 		for (TestModel item : api.Items) {
-			 System.out.println("item.itemPage = "+item.itemPage+" item.toc = "+ item.toc);
+			logger.debug("item.itemPage = {} item.toc = {}", item.itemPage, item.toc);
 		}
 
 		return api.Items;
@@ -74,16 +78,14 @@ class SearchServiceHandlerone3 extends DefaultHandler {
 			tempValue = "";
 		} else if (localName.equals("itemPage")) {
 			tempValue = "";
-		} 
-		else if (localName.equals("title")) {
+		} else if (localName.equals("title")) {
 			tempValue = "";
-		} 
+		}
 	}
 
 	// 1234
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		tempValue = tempValue + new String(ch, start, length);
-	
 
 	}
 
@@ -97,16 +99,14 @@ class SearchServiceHandlerone3 extends DefaultHandler {
 				currentItem.toc = tempValue;
 			} else if (localName.equals("itemPage")) {
 				currentItem.itemPage = tempValue;
-			} 
-			else if (localName.equals("title")) {
+			} else if (localName.equals("title")) {
 				currentItem.title = tempValue;
-			} 
+			}
 
 		}
 	}
 
 	public void parseXml(String xmlUrl) throws Exception {
-		System.out.println();
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		SAXParser sp = spf.newSAXParser();
 		ParserAdapter pa = new ParserAdapter(sp.getParser());

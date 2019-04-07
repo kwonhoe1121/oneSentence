@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.oauth2.GrantType;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 public class GoogleLoginController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(GoogleLoginController.class);
 
 	/* GoogleLogin */
 	@Autowired
@@ -30,7 +34,7 @@ public class GoogleLoginController {
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
 		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
 
-		System.out.println("구글:" + url);
+		logger.debug("구글: {}", url);
 
 		model.addAttribute("google_url", url);
 
@@ -41,10 +45,9 @@ public class GoogleLoginController {
 	// 구글 Callback호출 메소드
 	@RequestMapping(value = "/oauth2callback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String googleCallback(Model model, @RequestParam String code) throws IOException {
-		System.out.println("googleCallback");
+		logger.debug("googleCallback");
 
 		return "googleSuccess";
 	}
-
 
 }

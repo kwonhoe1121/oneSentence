@@ -52,9 +52,7 @@ public class OnesentenceService implements IOnesentenceService {
 	}
 
 	@Override
-	public void changeOneSentence(int oneSentenceIdx,String oneSentence, String page, String isbn) {
-		System.out.println(isbn);
-	
+	public void changeOneSentence(int oneSentenceIdx,String oneSentence, String page, String isbn) {	
 		dao.updateOneSentence(oneSentenceIdx,oneSentence,page,isbn);
 		
 	}

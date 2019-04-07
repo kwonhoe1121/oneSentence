@@ -10,6 +10,8 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +36,8 @@ import com.one.sentence.search.service.SearchUserService;
 
 public class SearchController {
 
+	private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
+
 	@Autowired
 	private SearchAladdinService service;
 
@@ -51,7 +55,7 @@ public class SearchController {
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String getQuery(HttpServletRequest request, Model model, @RequestParam String query) throws Exception {
-		System.out.println("query: " + query);
+		logger.debug("query: {}", query);
 		List<SearchModel> items = service.getSearchModel(query);
 		List<SearchModel> itemstwo = serviceBestBook.getSearchModel(query);
 
@@ -69,11 +73,11 @@ public class SearchController {
 			model.addAttribute("itemtwo", itemstwo);
 			model.addAttribute("useritems", useritems);
 			model.addAttribute("userInfo", userInfo);
-			System.out.println("검색완료");
-			System.out.println("items" + items);
-			System.out.println("items" + itemstwo);
-			System.out.println("useritems" + useritems);
-			System.out.println("넘기는값 : " + query);
+			logger.debug("검색완료");
+			logger.debug("items: {}", items);
+			logger.debug("itemstwo: {}", itemstwo);
+			logger.debug("useritems: {}", useritems);
+			logger.debug("넘기는값 : {}", query);
 			Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
 			ShowOnesentence showOneSentence;
 			String hash = "";
@@ -93,7 +97,7 @@ public class SearchController {
 
 			return "/search";
 		} else { // 검색결과가 하나도 존재하지 않을경우
-			System.out.println("검색결과없음");
+			logger.debug("검색결과없음");
 			return "/search/searchFail";
 		}
 	}
@@ -208,7 +212,7 @@ public class SearchController {
 				model.addAttribute("oneSentenceList", oneSentenceList);
 				model.addAttribute("items3", items3);
 			}
-			System.out.println("items3" + items3);
+			logger.debug("items3: {}", items3);
 		}
 
 		return "/contents";
@@ -216,22 +220,21 @@ public class SearchController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	@ResponseBody
-	public List<String> autoTest(@RequestBody Map<String, String> searchValue)
-			throws IOException {
-		
-		System.out.println("result:" + searchValue.get("searchValue"));
-		
+	public List<String> autoTest(@RequestBody Map<String, String> searchValue) throws IOException {
+
+		logger.debug("result: {}", searchValue.get("searchValue"));
+
 		List<ShowOnesentence> oneSentenceList = oneService.showOnesentenceListByHashtag(searchValue.get("searchValue"));
-		System.out.println("oneSentenceList: " + oneSentenceList);
+		logger.debug("oneSentenceList: {}", oneSentenceList);
 
 		List<String> resultList = new ArrayList<>();
-		
+
 		for (int i = 0; i < oneSentenceList.size(); i++) {
 			resultList.add(oneSentenceList.get(i).getOneSentence());
 		}
-		
-		System.out.println("resultList: " + resultList);
-		
+
+		logger.debug("resultList: {}", resultList);
+
 		return resultList;
 
 	}
