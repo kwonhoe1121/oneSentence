@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,7 +43,7 @@ public class LoginController {
 	// 세션 유무체크 interceptor에서 처리
 	// 로그인 안되어 있는 상태에서 아래 작업 수행
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
-	public String requestLogin(HttpSession session, Model model, UserVo user)
+	public String requestLogin(HttpSession session, UserVo user)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		logger.debug("로그인체크: {} {}", user.getUserEmail(), user.getUserPassword());
 
@@ -54,7 +53,6 @@ public class LoginController {
 		logger.debug("isUser: {}", service.isUser(encrytInputUser.getUserEmail()));
 		// 이메일 체크
 		if (!service.isUser(encrytInputUser.getUserEmail())) {
-			model.addAttribute("isNotUser", "회원이 아닙니다.");
 			logger.debug("등록된 이메일 없음.");
 			return "login";
 		}
@@ -65,7 +63,6 @@ public class LoginController {
 
 		// 비밀번호 체크
 		if (!encrytInputUser.getUserPassword().equals(registeredUser.getUserPassword())) {
-			model.addAttribute("isNotPassword", "비밀번호가 다릅니다.");
 			logger.debug("비밀번호 불일치!");
 			return "login";
 		}
@@ -78,13 +75,11 @@ public class LoginController {
 		String referer = (String) session.getAttribute("referer");
 		// 다시 생각해보기 책보고 다시 해보기.
 		logger.debug("referer(/user/login): {}", referer);
-		if (referer.equals("http://localhost:8090/sentence/register")
-				|| referer.equals("http://localhost:8090/sentence/user/logout")
-				|| referer.equals("http://localhost:8090/sentence/user/withdraw")) {
+		if (referer.equals("http://15.164.87.42:8080/sentence/register")) {
 			return "redirect:/";
 		}
 
-		return "login";
+		return "redirect:" + referer;
 	}
 
 	// 로그아웃 controller

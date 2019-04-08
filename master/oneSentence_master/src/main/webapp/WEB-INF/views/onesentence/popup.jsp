@@ -49,6 +49,14 @@
 	float:right;
 	padding-right:1rem;
 }
+.logotest{
+	font-family: 'Handon3gyeopsal600g';
+	font-size:2.5rem;
+	text-align:center;
+	color:primary;
+	font-weight:bold;
+	margin-bottom:2rem;
+}
 </style>
 <!-- Custom styles for this template -->
 <link
@@ -62,9 +70,9 @@
 <body class="text-center">
 	<form class="form-signin"
 		action="${pageContext.request.contextPath}/onesentence/update" method="POST">
-		<img class="mb-4"
-			src="${pageContext.request.contextPath}/resources/jaejin/img/logo.png"
-			alt="" width="72" height="72">
+		<a href="${pageContext.request.contextPath}/">
+			<div  class="logotest">One Sentence</div>
+		</a>
 		<h1 class="h3 mb-3 font-weight-normal">한문장 수정</h1>
 		<input class="hidden" type="text" id="isbn" name="isbn" value="${onesentence.isbn}">
 		<input class="hidden" type="text" id="oneSentenceIdx" name="oneSentenceIdx" value="${onesentence.oneSentenceIdx}">
@@ -87,7 +95,7 @@
 			
 			<br>
 		
-		<button class="btn btn-lg btn-success btn-block" type="button" id="updateBtn">수정완료</button>
+		<button class="btn btn-lg btn-primary btn-block" type="button" id="updateBtn">수정완료</button>
 	</form>
 
 	<!-- bootstrap core JavaScript   -->
@@ -98,13 +106,13 @@ $().ready(function(){
 	$('.hidden').hide();
 	
 	$('#updateBtn').on('click',function(){
-		var arr = { isbn:$('#isbn').val(), oneSentenceIdx:$('#oneSentenceIdx').val(), oneSentence:$('#oneSentence').val()
+		var data = { isbn:$('#isbn').val(), oneSentenceIdx:$('#oneSentenceIdx').val(), oneSentence:$('#oneSentence').val()
 				, page:$('#page').val(), gender:$('input:checked').val()};
-		alert(JSON.stringify(arr));
+		/* alert(JSON.stringify(data)); */
 		$.ajax({
 			url:'${pageContext.request.contextPath}/onesentence/'+$('#oneSentenceIdx').val(),
 			type:'PUT',
-			data:JSON.stringify(arr),
+			data:JSON.stringify(data),
 			dataType:'json',
 			contentType:'application/json; charset=utf-8',
 			async:true,

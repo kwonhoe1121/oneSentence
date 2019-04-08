@@ -54,6 +54,11 @@
   background-color: #007bff;
   border-color: #007bff;
 }
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>

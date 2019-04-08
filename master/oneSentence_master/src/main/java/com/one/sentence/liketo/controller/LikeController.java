@@ -85,7 +85,7 @@ public class LikeController {
 			mapIdx.put("userIdx", user.getUserIdx());
 			mapIdx.put("oneSentenceIdx", oneSentenceIdx[i]);
 			
-			//좋아요 클릭되어있으면
+			//좋아요 클릭되어있으면 isLikedTheSentence에 담는다.
 			if (service.isLikedTheSentence(mapIdx)) {
 				likedOneSentenceIdx.add(oneSentenceIdx[i]);
 			}

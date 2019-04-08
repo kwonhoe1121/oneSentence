@@ -144,7 +144,7 @@ $().ready(function(d, s, id) {
 					<hr>
 					&nbsp;&nbsp;&nbsp;<b style="font-size: 1.2rem">코멘트</b> <a
 						href="${pageContext.request.contextPath}/onesentence/list/contents/${items.isbn}"
-						class="a1"><b>더보기</b></a>
+						class="a1"><b style="color: #007bff">더보기</b></a>
 				</div>
 
 			</div>
@@ -213,7 +213,7 @@ $().ready(function(d, s, id) {
 	<footer class="py-5 bg-white" style="padding: 1rem">
 		<div class="container">
 			<br>
-			<p class="m-0 text-center" style="color: #458534">데이터 출처서비스
+			<p class="m-0 text-center" style="color: #007bff">데이터 출처서비스
 				이용약관개인정보 처리방침</p>
 			<p class="m-0 text-center text-black">사업자 등록 번호
 				(211-88-66013)고객센터support@watcha.com © 2011–2019 by Watcha. Inc</p>
@@ -235,6 +235,7 @@ $().ready(function(d, s, id) {
 		showLikedSentenceStatus();
 	</c:if>
 
+	/* 목차 */
 	$('#toc').click(function () {  
 	    if($(".tocul").css("display") == "none"){   
 	        $('.tocul').show();  

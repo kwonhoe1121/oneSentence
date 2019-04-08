@@ -88,7 +88,7 @@ public class oneSentenceController {
 
 		model.addAttribute("oneSentenceList", oneSentenceList);
 
-		return "redirect:/onesentence/list/contents/" + isbn;
+		return "redirect:/contentsPage/" + isbn;
 	}
 
 	
@@ -191,8 +191,8 @@ public class oneSentenceController {
 	@DeleteMapping("/{idx}")
 	public void deleteOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, HttpServletRequest request) {
 
-		OneSentence onesentence = oneService.showOneSentenceModel(idx);
-		int userIdx = onesentence.getUserIdx();
+		OneSentence oneSentence = oneService.showOneSentenceModel(idx);
+		int userIdx = oneSentence.getUserIdx();
 		oneService.downUserPoint(userIdx);
 
 		oneService.removeOneSentence(idx);
