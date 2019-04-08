@@ -268,7 +268,6 @@ p {
 	</script>
 
 	<script type="text/javascript">
-<<<<<<< HEAD
  
 	
 	
@@ -365,7 +364,7 @@ p {
 				}
 			});
 		});
-	</script>
+	</script>-->
 </body>
 
 </html>

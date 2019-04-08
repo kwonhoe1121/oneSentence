@@ -245,11 +245,15 @@ $().ready(function(d, s, id) {
 	    }  
 	})
 	$('#chat').click(function(){
+		var userName = $('#userName').val();
+		
+		if(userName!=null&&userName!=''){
+		
 		var arr = {isbn:$('#isbn').val(), bookTitle:$('#bookTitle').val()
 				,userName: $('#userName').val() };
 		alert(JSON.stringify(arr));
 		var url = 'http://127.0.0.1:52273/chat/';
-		var popupOption = "width=700,height=600";
+		var popupOption = "width=600,height=860,scrollbars=1";
 		$.ajax({
 			url: 'http://127.0.0.1:52273/chat/'+$('#isbn').val(),
 			type:'POST',
@@ -258,13 +262,16 @@ $().ready(function(d, s, id) {
 			contentType:'application/json; charset=utf-8',
 			async: true,
 			success: function(data){
-				alert(JSON.stringfy(data));
-				window.open(url+JSON.stringfy(data),'채팅방',popupOption);
+				alert(JSON.stringify(data));
+				window.open(url+JSON.stringify(data),'채팅방',popupOption);
 			},
 			error:function(error){
 				console.error();
 			}
 		});
+		}else{
+			alert("로그인 이후 사용가능합니다.");
+		}
 	});
 	
 		$('#description img').hide();
