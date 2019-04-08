@@ -245,10 +245,10 @@ $().ready(function(d, s, id) {
 	    }  
 	})
 	$('#chat').click(function(){
-		var arr = {userName: $('#userName').val(),
-				isbn:$('#isbn').val(), bookTitle:$('#bookTitle').val()};
+		var arr = {isbn:$('#isbn').val(), bookTitle:$('#bookTitle').val()
+				,userName: $('#userName').val() };
 		alert(JSON.stringify(arr));
-		var url = 'http://127.0.0.1:52273/chat/'+$('#isbn').val()
+		var url = 'http://127.0.0.1:52273/chat/';
 		var popupOption = "width=700,height=600";
 		$.ajax({
 			url: 'http://127.0.0.1:52273/chat/'+$('#isbn').val(),
@@ -259,10 +259,10 @@ $().ready(function(d, s, id) {
 			async: true,
 			success: function(data){
 				alert(JSON.stringfy(data));
-				window.open(url,'채팅방',popupOption);
+				window.open(url+JSON.stringfy(data),'채팅방',popupOption);
 			},
 			error:function(error){
-				console.log(error);
+				console.error();
 			}
 		});
 	});
