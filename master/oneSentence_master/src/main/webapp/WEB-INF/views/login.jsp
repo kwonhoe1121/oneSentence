@@ -131,7 +131,7 @@ a:hover{
 				href="${pageContext.request.contextPath}/register">회원가입</a>
 		</p>
 		<div style="border:1px solid silver"></div>
-		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad0264e1ffef69d01b6778d82c031206&redirect_uri=http://127.0.0.1/sentence/kakaologin&response_type=code"><img style="margin-top:2rem;" src="${pageContext.request.contextPath}/resources/naeun/kakao_account_login_btn_medium_narrow.png"></a>
+		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad0264e1ffef69d01b6778d82c031206&redirect_uri=http://15.164.87.42/sentence/kakaologin&response_type=code"><img style="margin-top:2rem;" src="${pageContext.request.contextPath}/resources/naeun/kakao_account_login_btn_medium_narrow.png"></a>
 		<div id="google_id_login" style="text-align:center"><a href="${google_url}"><img style="margin-top:1rem;width=19rem;" src="${pageContext.request.contextPath}/resources/dahye/google/google-login-button.png"/></a></div>
 		<div id="naver_id_login" style="margin-top:1rem;"></div>		
 
@@ -149,10 +149,10 @@ a:hover{
 	
 	<script type="text/javascript">
 		var naver_id_login = new naver_id_login("cPTP4WjJyJpuaIOiZ61K",
-				"http://localhost/sentence/login/naver/callback");
+				"http://15.164.87.42/sentence/login/naver/callback");
 		var state = naver_id_login.getUniqState();
 		naver_id_login.setButton("white", 3, 50);
-		naver_id_login.setDomain("http://localhost/sentence/login");
+		naver_id_login.setDomain("http://15.164.87.42/sentence/login");
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
 		naver_id_login.init_naver_id_login();
