@@ -280,6 +280,15 @@ public class oneSentenceController {
 	public String recommendOneSentence(Model model, HttpSession session) {
 		UserVo user = (UserVo) session.getAttribute("User");
 		List<ShowOnesentence> oneSentenceList = oneService.showOtherSentenceList(user.getUserIdx());
+		
+		//sentence list shuffle
+		for(int i = 0; i < oneSentenceList.size(); i += 1) {
+			ShowOnesentence temp = oneSentenceList.get(i);
+			int shuffleNum = (int) (Math.random() * oneSentenceList.size());
+			oneSentenceList.set(i, oneSentenceList.get(shuffleNum));
+			oneSentenceList.set(shuffleNum, temp);
+		}
+		
 		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
 		ShowOnesentence showOneSentence;
 		String hash = "";
