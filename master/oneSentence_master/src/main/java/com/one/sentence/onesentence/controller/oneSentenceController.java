@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.one.sentence.common.vo.OneSentence;
+import com.one.sentence.common.vo.UserVo;
 import com.one.sentence.onesentence.model.GoogleTtsApi;
 import com.one.sentence.onesentence.model.GoogleVisionApi;
 import com.one.sentence.onesentence.model.ShowOnesentence;
@@ -33,7 +35,7 @@ import com.one.sentence.onesentence.service.OnesentenceService;
 public class oneSentenceController {
 
 	private static final Logger logger = LoggerFactory.getLogger(oneSentenceController.class);
-	
+
 	@Inject
 	OnesentenceService oneService;
 
@@ -42,19 +44,19 @@ public class oneSentenceController {
 		return "onesentence/insert";
 
 	}
-	//트랜젝션 처리 유
+
+	// 트랜젝션 처리 유
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insertOnesententce(HttpServletRequest request,
-			@RequestParam("oneSentence") String oneSentence,
-			@RequestParam("page") int page,
-			@RequestParam("userIdx") int userIdx, Model model) {
+	public String insertOnesententce(HttpServletRequest request, @RequestParam("oneSentence") String oneSentence,
+			@RequestParam("page") int page, @RequestParam("userIdx") int userIdx, Model model) {
 		logger.debug("procedure 실행");
 		String isbn = request.getParameter("isbn");
 		String bookTitle = request.getParameter("bookTitle");
-		try{oneService.makeNewSentence(oneSentence, page, userIdx, isbn,bookTitle, request.getParameter("bookGenre")
-				,request.getParameter("author"), request.getParameter("publisher")
-				,request.getParameter("hashtag1"), request.getParameter("hashtag2"), request.getParameter("hashtag3"));
-		}catch(Exception e) {
+		try {
+			oneService.makeNewSentence(oneSentence, page, userIdx, isbn, bookTitle, request.getParameter("bookGenre"),
+					request.getParameter("author"), request.getParameter("publisher"), request.getParameter("hashtag1"),
+					request.getParameter("hashtag2"), request.getParameter("hashtag3"));
+		} catch (Exception e) {
 			e.printStackTrace();
 			logger.debug("makeNewSentence");
 		}
@@ -91,82 +93,62 @@ public class oneSentenceController {
 		return "redirect:/contentsPage/" + isbn;
 	}
 
-	
-	//트랜잭션 처리 무
-	/*@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insertOnesententce(HttpServletRequest request,
-			@RequestParam("oneSentence") String oneSentence,
-			@RequestParam("page") String page,
-			@RequestParam("userIdx") int userIdx, Model model) {
-		String isbn = (String) request.getParameter("isbn");
-
-		if (oneService.showBookByisbn(isbn) == 0) {
-			Book book = new Book(isbn, (String) request.getParameter("bookTitle"),
-					(String) request.getParameter("bookGenre"), (String) request.getParameter("author"),
-					(String) request.getParameter("publisher"));
-			oneService.makeBook(book);
-		}
-
-		OneSentence onesentence = new OneSentence(oneSentence, page, userIdx, isbn);
-		oneService.upUserPoint(userIdx);
-		oneService.makeOneSentence(onesentence);
-
-		int oneSentenceIdx = oneService.findOneSentenceIdx(userIdx, isbn, oneSentence);
-		String hashtag1 = (String) request.getParameter("hashtag1");
-		String hashtag2 = (String) request.getParameter("hashtag2");
-		String hashtag3 = (String) request.getParameter("hashtag3");
-
-		if (!(hashtag1 == null || hashtag1.equals(""))) {
-			Hashtag tag = new Hashtag();
-			tag.setHashtag(hashtag1);
-			tag.setOneSentenceIdx(oneSentenceIdx);
-			oneService.makeHashtag(tag);
-			if (!(hashtag2 == null || hashtag2.equals(""))) {
-				tag.setHashtag(hashtag2);
-				tag.setOneSentenceIdx(oneSentenceIdx);
-				oneService.makeHashtag(tag);
-				if (!(hashtag3 == null || hashtag3.equals(""))) {
-					tag.setHashtag(hashtag3);
-					tag.setOneSentenceIdx(oneSentenceIdx);
-					oneService.makeHashtag(tag);
-				}
-			}
-		}
-
-		List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
-		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
-		ShowOnesentence showOneSentence;
-		String hash = "";
-		while (it2.hasNext()) {
-			showOneSentence = it2.next();
-			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
-
-			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
-			Iterator<String> it = hList.iterator();
-			while (it.hasNext()) {
-				hash += "#" + it.next() + " ";
-			}
-			showOneSentence.setHashtag(hash);
-			hash = "";
-		}
-
-		// 구글 tts api
-		String uri = "/resources";
-		String dir = request.getSession().getServletContext().getRealPath(uri);
-		String gender = (String) request.getParameter("gender");
-		GoogleTtsApi tts = new GoogleTtsApi();
-		try {
-			tts.makeMp3(oneSentenceIdx, oneSentence, oneService.showBookTitleByisbn(isbn), gender,
-					dir + "\\eunseon\\mp3Folder");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		model.addAttribute("oneSentenceList", oneSentenceList);
-
-		return "redirect:/onesentence/list/contents/" + isbn;
-	}
-*/
+	// 트랜잭션 처리 무
+	/*
+	 * @RequestMapping(value = "/insert", method = RequestMethod.POST) public String
+	 * insertOnesententce(HttpServletRequest request,
+	 * 
+	 * @RequestParam("oneSentence") String oneSentence,
+	 * 
+	 * @RequestParam("page") String page,
+	 * 
+	 * @RequestParam("userIdx") int userIdx, Model model) { String isbn = (String)
+	 * request.getParameter("isbn");
+	 * 
+	 * if (oneService.showBookByisbn(isbn) == 0) { Book book = new Book(isbn,
+	 * (String) request.getParameter("bookTitle"), (String)
+	 * request.getParameter("bookGenre"), (String) request.getParameter("author"),
+	 * (String) request.getParameter("publisher")); oneService.makeBook(book); }
+	 * 
+	 * OneSentence onesentence = new OneSentence(oneSentence, page, userIdx, isbn);
+	 * oneService.upUserPoint(userIdx); oneService.makeOneSentence(onesentence);
+	 * 
+	 * int oneSentenceIdx = oneService.findOneSentenceIdx(userIdx, isbn,
+	 * oneSentence); String hashtag1 = (String) request.getParameter("hashtag1");
+	 * String hashtag2 = (String) request.getParameter("hashtag2"); String hashtag3
+	 * = (String) request.getParameter("hashtag3");
+	 * 
+	 * if (!(hashtag1 == null || hashtag1.equals(""))) { Hashtag tag = new
+	 * Hashtag(); tag.setHashtag(hashtag1); tag.setOneSentenceIdx(oneSentenceIdx);
+	 * oneService.makeHashtag(tag); if (!(hashtag2 == null || hashtag2.equals("")))
+	 * { tag.setHashtag(hashtag2); tag.setOneSentenceIdx(oneSentenceIdx);
+	 * oneService.makeHashtag(tag); if (!(hashtag3 == null || hashtag3.equals("")))
+	 * { tag.setHashtag(hashtag3); tag.setOneSentenceIdx(oneSentenceIdx);
+	 * oneService.makeHashtag(tag); } } }
+	 * 
+	 * List<ShowOnesentence> oneSentenceList = oneService.showOneSentenceList();
+	 * Iterator<ShowOnesentence> it2 = oneSentenceList.iterator(); ShowOnesentence
+	 * showOneSentence; String hash = ""; while (it2.hasNext()) { showOneSentence =
+	 * it2.next();
+	 * showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.
+	 * getOneSentenceIdx()));
+	 * 
+	 * List<String> hList =
+	 * oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+	 * Iterator<String> it = hList.iterator(); while (it.hasNext()) { hash += "#" +
+	 * it.next() + " "; } showOneSentence.setHashtag(hash); hash = ""; }
+	 * 
+	 * // 구글 tts api String uri = "/resources"; String dir =
+	 * request.getSession().getServletContext().getRealPath(uri); String gender =
+	 * (String) request.getParameter("gender"); GoogleTtsApi tts = new
+	 * GoogleTtsApi(); try { tts.makeMp3(oneSentenceIdx, oneSentence,
+	 * oneService.showBookTitleByisbn(isbn), gender, dir + "\\eunseon\\mp3Folder");
+	 * } catch (Exception e) { e.printStackTrace(); }
+	 * 
+	 * model.addAttribute("oneSentenceList", oneSentenceList);
+	 * 
+	 * return "redirect:/onesentence/list/contents/" + isbn; }
+	 */
 	@RequestMapping("/one/{idx}")
 	public String selectOnesentenceByOnesentenceIdx(@PathVariable("idx") int idx, Model model) {
 		ShowOnesentence onesentence = oneService.showOneSentenceByoneSentenceIdx(idx);
@@ -290,6 +272,31 @@ public class oneSentenceController {
 			hash = "";
 		}
 		model.addAttribute("oneSentenceList", oneSentenceList);
+		return "sentenceList";
+	}
+
+//	재진 추가 추천 한문장 리스트 ( 자기가 쓴 문장 제외)
+	@RequestMapping("/list/review")
+	public String recommendOneSentence(Model model, HttpSession session) {
+		UserVo user = (UserVo) session.getAttribute("User");
+		List<ShowOnesentence> oneSentenceList = oneService.showOtherSentenceList(user.getUserIdx());
+		Iterator<ShowOnesentence> it2 = oneSentenceList.iterator();
+		ShowOnesentence showOneSentence;
+		String hash = "";
+		while (it2.hasNext()) {
+			showOneSentence = it2.next();
+			showOneSentence.setLikeTotal(oneService.showLikeTotal(showOneSentence.getOneSentenceIdx()));
+
+			List<String> hList = oneService.showHashtagList(showOneSentence.getOneSentenceIdx());
+			Iterator<String> it = hList.iterator();
+			while (it.hasNext()) {
+				hash += "#" + it.next() + " ";
+			}
+			showOneSentence.setHashtag(hash);
+			hash = "";
+		}
+		model.addAttribute("oneSentenceList", oneSentenceList);
+
 		return "sentenceList";
 	}
 

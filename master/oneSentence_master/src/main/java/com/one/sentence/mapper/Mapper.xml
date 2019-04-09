@@ -37,37 +37,38 @@
 	<insert id="insertFollower">
 		insert into following(userIdx, followingUserIdx)
 		values(#{userIdx}, #{followingUserIdx});
-	</insert>	
+	</insert>
 
 	<delete id="deleteFollower">
 		delete from following where userIdx=#{userIdx} and
 		followingUserIdx = #{followingUserIdx};
 	</delete>
 
- 
-	<update id="followingProc" statementType="CALLABLE" parameterType="HashMap">
+
+	<update id="followingProc" statementType="CALLABLE"
+		parameterType="HashMap">
 		{call followingprocedure(#{p1},#{p2},#{p3})}
 	</update>
-	
-	
-	
-	<select id="selectTheNumberOfSentences"
-		resultType="int">
-		select count(*)
+
+
+
+	<select id="selectTheNumberOfSentences" resultType="int">
+		select
+		count(*)
 		from one_sentence;
 	</select>
 
-	<select id="selectTheNumberOfUsers"
-		resultType="int">
+	<select id="selectTheNumberOfUsers" resultType="int">
 		select count(*)
 		from user_info;
 	</select>
-	
-	<select id="selectUserRank"
-		resultType="int">
+
+	<select id="selectUserRank" resultType="int">
 		select count(*)
-		from user_info
-		where userPoint >= (select userPoint from user_info where userIdx=#{userIdx});
+		from
+		user_info
+		where userPoint >= (select userPoint from user_info where
+		userIdx=#{userIdx});
 	</select>
 
 	<select id="selectTheNumberOfSentencesByUserIdx"
@@ -78,17 +79,17 @@
 	</select>
 
 	<select id="selectUserByUserName"
-		resultType="com.one.sentence.common.vo.UserVo">			
-			select * 
-			from user_info 
-			where userName like #{param} and emailStatus&lt;&gt;'2';
+		resultType="com.one.sentence.common.vo.UserVo">
+		select *
+		from user_info
+		where userName like #{param} and emailStatus&lt;&gt;'2';
 	</select>
-	
+
 	<select id="selectUserByUserEmail"
-		resultType="com.one.sentence.common.vo.UserVo">			
-			select * 
-			from user_info 
-			where userEmail=#{userEmail};
+		resultType="com.one.sentence.common.vo.UserVo">
+		select *
+		from user_info
+		where userEmail=#{userEmail};
 	</select>
 
 	<insert id="insertKakaoUser"
@@ -97,10 +98,10 @@
 		(userName, userEmail, emailStatus)
 		value ( #{userName}, #{userEmail}, #{emailStatus} )
 	</insert>
-	
 
-	
-	
+
+
+
 
 
 	<!-- 재진 매퍼 -->
@@ -118,7 +119,7 @@
 
 	<select id="selectUserByEmail"
 		resultType="com.one.sentence.common.vo.UserVo">
-	<!-- 	select userIdx, userName, userEmail, userPassword from user_info where 
+		<!-- select userIdx, userName, userEmail, userPassword from user_info where 
 			userEmail = #{param} -->
 		<!-- select * from user_info where userEmail = #{param} -->
 		<![CDATA[ select * 
@@ -128,18 +129,18 @@
 	</select>
 
 	<delete id="updateEmailStatus"
-			parameterType="com.one.sentence.common.vo.UserVo">
+		parameterType="com.one.sentence.common.vo.UserVo">
 		<!-- delete from user_info where userIdx = #{userIdx} -->
-		update user_info 
-		set emailStatus = '2' 
+		update user_info
+		set emailStatus = '2'
 		where userIdx = #{userIdx}
 	</delete>
 
 	<!-- 한문장 정보 가져오기 -->
 	<select id="selectOneSentence"
 		resultType="com.one.sentence.common.vo.OneSentence">
-		select * 
-		from one_sentence 
+		select *
+		from one_sentence
 		where oneSentenceIdx=#{param}
 	</select>
 
@@ -162,12 +163,13 @@
 		delete from
 		liketo where userIdx=#{userIdx} and oneSentenceIdx=#{oneSentenceIdx}
 	</delete>
-	
+
 	<!-- 탈퇴 시 모든 팔로잉 관계 해지 -->
-	<delete id="deleteFollowingRelation" 
-			parameterType="com.one.sentence.common.vo.UserVo">
+	<delete id="deleteFollowingRelation"
+		parameterType="com.one.sentence.common.vo.UserVo">
 		delete from following
-		where userIdx=#{userIdx} or followingUserIdx=#{userIdx};
+		where userIdx=#{userIdx} or
+		followingUserIdx=#{userIdx};
 	</delete>
 
 	<!-- 은선 매퍼 -->
@@ -188,19 +190,32 @@
 		where b.isbn=o.isbn and u.userIdx=o.userIdx
 		group by
 		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc
-
 	</select>
-	
+
+	<!--추천 한문장(자신이 쓴 문장 제외) -->
+	<select id="selectOnesentenceListOfOthers"
+		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
+		<![CDATA[ select o.userIdx,u.userName,
+		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
+		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
+		b, user_info u
+		where b.isbn=o.isbn and u.userIdx=o.userIdx and u.userIdx <> #{param}
+		group by
+		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc
+		]]>
+	</select>
+
 	<select id="selectOnesentenceListByIsbn"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
 		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
 		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
 		b, user_info u
-		where b.isbn=o.isbn and u.userIdx=o.userIdx  and o.isbn =#{isbn} 
-		 group by o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc
+		where b.isbn=o.isbn and u.userIdx=o.userIdx and o.isbn
+		=#{isbn}
+		group by o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc
 	</select>
-	
+
 	<select id="selectOnesentenceListByuserIdx"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
@@ -213,8 +228,8 @@
 		by o.oneSentenceIdx order by
 		o.oneSentenceRegisteredTime desc
 	</select>
-	
-	
+
+
 	<select id="selectOnesentenceByoneSentenceIdx"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select
@@ -242,19 +257,21 @@
 		group by o.oneSentenceIdx order
 		by l.likeRegisteredTime desc
 	</select>
-	
+
 	<select id="selectOnesentenceListForFollowing"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
 		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
 		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
 		b, user_info u
-		where b.isbn=o.isbn and u.userIdx=o.userIdx 
-         and o.userIdx in(select followingUserIdx from following where userIdx=#{userIdx})
+		where b.isbn=o.isbn and u.userIdx=o.userIdx
+		and o.userIdx in(select followingUserIdx from following where
+		userIdx=#{userIdx})
 		group by
-		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc;
+		o.oneSentenceIdx order by
+		o.oneSentenceRegisteredTime desc;
 	</select>
-	
+
 	<select id="selectOnesentenceListByHashtag"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
@@ -262,11 +279,13 @@
 		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
 		b, user_info u
 		where b.isbn=o.isbn and u.userIdx=o.userIdx
-		and o.oneSentenceIdx in(select oneSentenceIdx from hashtag where hashtag like #{hashtag})
-        group by
+		and
+		o.oneSentenceIdx in(select oneSentenceIdx from hashtag where hashtag
+		like #{hashtag})
+		group by
 		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc
 	</select>
-	
+
 	<select id="selectOnesentenceByoneSentenceIdxAndIsbnMy"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
@@ -274,10 +293,12 @@
 		b.bookTitle, b.author, b.publisher from one_sentence o, book b,
 		user_info u
 		where b.isbn=o.isbn and u.userIdx=o.userIdx
-		and u.userIdx=#{userIdx} and
+		and
+		u.userIdx=#{userIdx} and
 		o.isbn=#{isbn}
-		group by o.oneSentenceIdx order by
-		 o.oneSentenceRegisteredTime desc limit 0,1;
+		group by o.oneSentenceIdx order
+		by
+		o.oneSentenceRegisteredTime desc limit 0,1;
 	</select>
 	<select id="selectOnesentenceByoneSentenceIdxAndIsbnFollowing"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
@@ -286,7 +307,8 @@
 		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
 		b, user_info u
 		where b.isbn=o.isbn and u.userIdx=o.userIdx
-		and u.userIdx in(select
+		and u.userIdx
+		in(select
 		followingUserIdx from following where
 		userIdx=#{userIdx})
 		and
@@ -301,12 +323,13 @@
 		o.isbn, b.bookTitle, b.author, b.publisher from one_sentence o, book
 		b, user_info u
 		where b.isbn=o.isbn and u.userIdx=o.userIdx
-		 and u.userIdx not
+		and u.userIdx not
 		in(#{userIdx1},#{userIdx2}) and o.isbn=#{isbn}
 		group by
 		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc limit 0,5;
 	</select>
-	<select id="selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing"
+	<select
+		id="selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing"
 		resultType="com.one.sentence.onesentence.model.ShowOnesentence">
 		select o.userIdx,u.userName,
 		o.oneSentenceIdx,o.oneSentence,o.page,o.oneSentenceRegisteredTime,
@@ -314,9 +337,11 @@
 		b, user_info u,liketo l
 		where b.isbn=o.isbn and u.userIdx=o.userIdx and
 		l.oneSentenceIdx=o.oneSentenceIdx
-		and u.userIdx !=#{userIdx} and o.isbn=#{isbn}
+		and u.userIdx !=#{userIdx} and
+		o.isbn=#{isbn}
 		group by
-		o.oneSentenceIdx order by o.oneSentenceRegisteredTime desc limit 0,5;
+		o.oneSentenceIdx order by
+		o.oneSentenceRegisteredTime desc limit 0,5;
 	</select>
 	<update id="updateOnesentence"
 		parameterType="com.one.sentence.common.vo.OneSentence">
@@ -342,31 +367,29 @@
 	<insert id="insertBook"
 		parameterType="com.one.sentence.onesentence.model.Book">
 		insert into
-		 book
-		 (isbn,bookTitle,bookGenre,author,publisher)
-		 values
-		 (#{isbn},#{bookTitle},#{bookGenre},#{author},#{publisher})
+		book
+		(isbn,bookTitle,bookGenre,author,publisher)
+		values
+		(#{isbn},#{bookTitle},#{bookGenre},#{author},#{publisher})
 	</insert>
 
-	<select id="selectBookByisbn"
-		resultType="Integer">
+	<select id="selectBookByisbn" resultType="Integer">
 		select count(*) from
-		 book where isbn=#{isbn}
+		book where isbn=#{isbn}
 	</select>
-	<select id="selectBookTitleByisbn"
-		resultType="java.lang.String">
-		select bookTitle from
-		 book where isbn=#{isbn}
+	<select id="selectBookTitleByisbn" resultType="java.lang.String">
+		select bookTitle
+		from
+		book where isbn=#{isbn}
 	</select>
-	
+
 	<!-- 유저 -->
 	<select id="selectUser_infoByuserIdx"
 		resultType="com.one.sentence.common.vo.UserVo">
 		select * from user_info
 		where userIdx=${value}
 	</select>
-	<update id="updateUser_info"
-		parameterType="hashmap">
+	<update id="updateUser_info" parameterType="hashmap">
 		update user_info set
 		userPassword=#{userPassword},
 		userName=#{userName},
@@ -408,8 +431,8 @@
 
 	<select id="selectNaverUserByEmail"
 		resultType="com.one.sentence.common.vo.UserVo">
-		select * 
-		from user_info 
+		select *
+		from user_info
 		where userEmail = #{param} and emailStatus = '4'
 	</select>
 	<insert id="insertNaverUser"
@@ -424,19 +447,20 @@
 	</insert>
 
 	<!-- 프로시저로 insertOneSentence -->
-	<update id="newSentence" statementType="CALLABLE" parameterType="HashMap">
+	<update id="newSentence" statementType="CALLABLE"
+		parameterType="HashMap">
 		{call newSentence(
-			#{oneSentence,jdbcType=VARCHAR},
-			#{page},
-			#{userIdx},
-			#{isbn,jdbcType=VARCHAR},
-			#{bookTitle,jdbcType=VARCHAR},
-			#{bookGenre,jdbcType=VARCHAR},
-			#{author,jdbcType=VARCHAR},
-			#{publisher,jdbcType=VARCHAR},
-			#{hashtag1,jdbcType=VARCHAR},
-			#{hashtag2,jdbcType=VARCHAR},
-			#{hashtag3,jdbcType=VARCHAR}
+		#{oneSentence,jdbcType=VARCHAR},
+		#{page},
+		#{userIdx},
+		#{isbn,jdbcType=VARCHAR},
+		#{bookTitle,jdbcType=VARCHAR},
+		#{bookGenre,jdbcType=VARCHAR},
+		#{author,jdbcType=VARCHAR},
+		#{publisher,jdbcType=VARCHAR},
+		#{hashtag1,jdbcType=VARCHAR},
+		#{hashtag2,jdbcType=VARCHAR},
+		#{hashtag3,jdbcType=VARCHAR}
 		)}
 	</update>
 
@@ -478,10 +502,10 @@
 	</select>
 
 	<select id="selectGoogleUserByUserEmail"
-		resultType="com.one.sentence.common.vo.UserVo">			
-			select * 
-			from user_info 
-			where userEmail=#{userEmail};
+		resultType="com.one.sentence.common.vo.UserVo">
+		select *
+		from user_info
+		where userEmail=#{userEmail};
 	</select>
 
 	<insert id="insertGoogleUser"

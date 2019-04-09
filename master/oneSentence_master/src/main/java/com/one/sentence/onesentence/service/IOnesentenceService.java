@@ -11,6 +11,7 @@ public interface IOnesentenceService {
 	public void makeOneSentence(OneSentence onesentence);
 	public void makeNewSentence(String oneSentence, int page,int userIdx, String isbn, String bookTitle,String bookGenre,String author, String publisher,String hashtag1, String hashtag2, String hashtag3);
 	public List<ShowOnesentence> showOneSentenceList();
+	public List<ShowOnesentence> showOtherSentenceList(int userIdx);
 	public List<ShowOnesentence> showOneSentenceListByuserIdx(int userIdx);
 	public List<ShowOnesentence> showOneSentenceListByIsbn(String isbn);
 	public List<ShowOnesentence> showOneSentenceListForLiketo(int userIdx); 

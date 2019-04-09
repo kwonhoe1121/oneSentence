@@ -154,7 +154,7 @@ p {
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/onesentence/list/all"><button
+							href="${pageContext.request.contextPath}/onesentence/list/review"><button
 									class="btn navbar-btn atag">추천</button></a></li>&nbsp;&nbsp;&nbsp;
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/userpage/${User.userIdx}"><button
