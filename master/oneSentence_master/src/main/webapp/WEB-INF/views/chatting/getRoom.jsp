@@ -9,17 +9,37 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="http://127.0.0.1:52273/socket.io/socket.io.js"></script>
 <script>
         $().ready(function() {
-            $('#oldChat').hide();
-            
-            /* $.ajax({
-            	url:''
-            });
-             */
-            
-            var socket = io.connect('http://127.0.0.1:52273');
+        	var come = document.getElementById('come');
+        	$.ajax({
+        		url:'http://127.0.0.1:52273/chatRoom/'+$('#isbn').val(),
+        		type:'GET',
+        		dataType:'json',
+        		contentType:'application/json; charset=utf-8',
+        		async:true,
+        		success:function(data){
+        			console.log('zzzzzzzzzzzzzz');
+        			console.log(JSON.stringify(data));
+        			var arr = JSON.stringify(data).split(',');
+        			console.dir(arr);
+        			var json = JSON.stringify(data);
+        			var come = '';
+        			come + '<c:forEach items="'+JSON.parse(json)+'" var="list">';
+                   	come += '<p><b>${list.userName}</b></p>';
+                   	come += '<p>${list.message}</p>';
+                   	come += '<p>${list.time}</p>';
+                    come += ' </c:forEach>';
+        			$(come).appendTo('#come');
+        		},
+        		error:function(error){
+        			console.error();
+        		}
+        		
+        	});
+        	});
+        	
+            /* var socket = io.connect();
             //이벤트 연결
             var room = $('#isbn').val();
             socket.emit('join',room);
@@ -58,7 +78,7 @@
                     document.getElementById('message').value = '';    
                 }
             });
-        });
+        }); */
 
     </script>
 </head>
@@ -71,14 +91,16 @@
        </div>
        
        <div data-role="content">
-          <div data-role="collapsible">
+          <div data-role="collapsible"  id="oldChat">
            <h1 data-icon="arrow-d">이전 대화보기</h1>
-           <c:forEach items="${oldChatList}" var="list">
+           <div id="come"></div>
+            <%-- <c:forEach items="<%=data %>" var="list">
            	<p><b>${list.userName}</b></p>
            	<p>${list.message}</p>
            	<p>${list.time}</p>
-           </c:forEach>
-
+           </c:forEach> --%>
+<!-- 			<P>이전대화</P>
+			<P>이전대화2</P> -->
        		</div>
            <ul id="content2" style="list-style: none"></ul>
        </div>

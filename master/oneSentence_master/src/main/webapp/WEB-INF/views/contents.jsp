@@ -89,6 +89,7 @@ $().ready(function(d, s, id) {
 					<li>${items.publisher}</li>
 					<li><a href="${pageContext.request.contextPath}/onesentence/playlist/contents/${items.isbn}">한문장 듣기</a></li>
 					<li><i class="fa fa-commenting-o icon" id="chat">채팅방</i></li>
+					<li><span id="chat3">채팅방3</span></li>
 					<li><input type="text"  id="userName" hidden="true" value="${User.userName}"></li>
 					<hr>
 				</ul>
@@ -272,6 +273,13 @@ $().ready(function(d, s, id) {
 		}else{
 			alert("로그인 이후 사용가능합니다.");
 		}
+	});
+$('#chat3').click(function(){
+		
+		var params =$('#isbn').val()+':'+$('#bookTitle').val()+':'+$('#userName').val();
+		var url = "${pageContext.request.contextPath}/getroom3/" + params;
+		var popupOption="width=600,height=860,scrollbars=1";
+		window.open(url, "채팅페이지", popupOption);
 	});
 	
 		$('#description img').hide();
