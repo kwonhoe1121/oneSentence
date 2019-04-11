@@ -11,14 +11,7 @@
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script src="http://127.0.0.1:52273/socket.io/socket.io.js"></script>
 <script>
-        $().ready(function() {
-            $('#oldChat').hide();
-            
-            /* $.ajax({
-            	url:''
-            });
-             */
-            
+        $().ready(function() {       
             var socket = io.connect('http://127.0.0.1:52273');
             //이벤트 연결
             var room = $('#isbn').val();
