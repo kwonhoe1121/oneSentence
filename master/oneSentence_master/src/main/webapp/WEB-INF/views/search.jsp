@@ -266,6 +266,8 @@ $().ready(function(d, s, id) {
 	</c:otherwise>
 	</c:choose>
 	
+	<input type="hidden" id="paramquery" value="${param.query}">
+	
 	<script
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/vendor/jquery/jquery.min.js"></script>
 	<script
@@ -429,6 +431,24 @@ $().ready(function(d, s, id) {
 			
 		
  
+	</script>
+	
+	<!-- 인기검색어 -->
+	<script>	
+	var $query = $('#paramquery').val();
+	
+	$.ajax({
+		url:'http://127.0.0.1:3000/keywords',
+		type:'GET',
+		data: {q:$query},
+		contentType: "application/json; charset=UTF-8",
+		success:function(data){  
+			console.log("ajax 성공 : " + data)
+		},		
+		error:function(jqXHR, textStatus, errorThrown){
+			console.log("ajax 실패 : " + errorThrown)
+		}
+	});
 	</script>	
 	
 </body>

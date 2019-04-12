@@ -113,6 +113,10 @@ input{
 #autoc li:hover{
  	background-color:#F2F2F2;
 }
+#binfo{
+	float:right;
+	color:gray;
+}
 
 a:link { color: black; text-decoration: none;}
 a:visited { color: black; text-decoration: none;}
@@ -225,6 +229,7 @@ a:visited { color: black; text-decoration: none;}
 							</button>
 						</div>
 					</div>
+					<!-- 나은 자동완성 -->
 					<div>
 						<ul id="autoc"></ul>
 					</div>					
@@ -313,7 +318,7 @@ a:visited { color: black; text-decoration: none;}
     				});
         			
         			for(var i=0; i<data.length; i++){
-        				$('#autoc').append('<li><a href="${pageContext.request.contextPath}/contentsPage/'+data[i].isbn+'">'+data[i].oneSentence+'</a></li>');
+        				$('#autoc').append('<a href="${pageContext.request.contextPath}/contentsPage/'+data[i].isbn+'"><li>'+data[i].oneSentence+'<div id="binfo">['+data[i].bookTitle+'], '+data[i].publisher+'</div></li></a>');
         			}
         		},
         		
