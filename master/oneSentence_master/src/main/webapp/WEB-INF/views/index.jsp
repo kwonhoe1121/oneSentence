@@ -99,6 +99,24 @@ p {
 	font-family: 'Noto Serif KR', serif;
 	font-size: 15px;
 }
+
+
+input{
+    width:20rem;
+}
+
+#autoc li{
+     list-style:none;
+     margin:0.3rem 0;
+     padding:0 0.5rem;
+}
+#autoc li:hover{
+ 	background-color:silver;
+}
+
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+
 </style>
 
 
@@ -198,8 +216,7 @@ p {
 					<div class="input-group">
 
 						<input type="text" class="form-control searchAuto" placeholder="Search"
-							name="query" id="searchAuto">
-
+							name="query" id="searchAuto">	
 
 						<div class="input-group-btn">
 							<button class="btn btn-default" style="background-color: #F6F5F4"
@@ -208,6 +225,9 @@ p {
 							</button>
 						</div>
 					</div>
+					<div>
+						<ul id="autoc"></ul>
+					</div>					
 				</form>
 			</div>
 		</div>
@@ -266,10 +286,51 @@ p {
 			theform.submit();
 		}
 	</script>
-
-	<script type="text/javascript">
- 
 	
+	
+	<!-- 나은 자동완성 -->
+	<script>
+	document.getElementById('searchAuto').onkeyup = function(){
+        $('ul').empty();
+        
+        // 변수를 선언합니다.
+        var text = document.getElementById('searchAuto').value;
+        
+        if(text.length!=0){
+        	$('ul').show();
+        	
+        	$.ajax({
+        		url:'http://127.0.0.1:3000/',
+        		type:'GET',
+        		data: {k:text},
+        		contentType: "application/json; charset=UTF-8",
+        		success:function(data){  
+        			$('#autoc').css({
+        				'border':'1px solid silver',
+    		    		'width':'100%',
+    		    		'border-top': 'transparent',
+    		    		'padding':'0rem'
+    				});
+        			
+        			for(var i=0; i<data.length; i++){
+        				$('#autoc').append('<li><a href="${pageContext.request.contextPath}/contentsPage/'+data[i].isbn+'">'+data[i].oneSentence+'</a></li>');
+        			}
+        		},
+        		
+        		error:function(jqXHR, textStatus, errorThrown){
+        			console.log("ajax 실패 : " + errorThrown)
+        		}
+        	});
+       } else{
+    	   $('ul').hide();
+       }
+         
+	};    	
+	</script>	
+	
+	
+<!-- 
+	<script type="text/javascript">
 	
 	
  $(document).ready(function() {
@@ -305,7 +366,7 @@ p {
  });
 }); 
 </script>
-
+ -->
 <!-- 	<script>
 	
 	$(function(){
