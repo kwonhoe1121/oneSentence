@@ -111,7 +111,7 @@ input{
      padding:0 0.5rem;
 }
 #autoc li:hover{
- 	background-color:silver;
+ 	background-color:#F2F2F2;
 }
 
 a:link { color: black; text-decoration: none;}
