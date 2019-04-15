@@ -88,7 +88,9 @@ $().ready(function(d, s, id) {
 					<li>${items.author}</li>
 					<li>${items.publisher}</li>
 					<li><a href="${pageContext.request.contextPath}/onesentence/playlist/contents/${items.isbn}">한문장 듣기</a></li>
-					<li><i class="fa fa-commenting-o icon" id="chat">채팅방</i></li>
+					<li><i class="fa fa-commenting-o icon" id="chat">채팅방1</i></li>
+					<li><i class="fa fa-commenting-o icon" id="chat2">채팅방2</i></li>
+					<li><i class="fa fa-commenting-o icon" id="chat3">채팅방3</i></li>
 					<li><input type="text"  id="userName" hidden="true" value="${User.userName}"></li>
 					<hr>
 				</ul>
@@ -245,11 +247,15 @@ $().ready(function(d, s, id) {
 	    }  
 	})
 	$('#chat').click(function(){
-		var arr = {userName: $('#userName').val(),
-				isbn:$('#isbn').val(), bookTitle:$('#bookTitle').val()};
+		var userName = $('#userName').val();
+		
+		if(userName!=null&&userName!=''){
+		
+		var arr = {isbn:$('#isbn').val(), bookTitle:$('#bookTitle').val()
+				,userName: $('#userName').val() };
 		alert(JSON.stringify(arr));
-		var url = 'http://127.0.0.1:52273/chat/'+$('#isbn').val()
-		var popupOption = "width=700,height=600";
+		var url = 'http://127.0.0.1:52273/chat/';
+		var popupOption = "width=600,height=860,scrollbars=1";
 		$.ajax({
 			url: 'http://127.0.0.1:52273/chat/'+$('#isbn').val(),
 			type:'POST',
@@ -258,15 +264,43 @@ $().ready(function(d, s, id) {
 			contentType:'application/json; charset=utf-8',
 			async: true,
 			success: function(data){
-				alert(JSON.stringfy(data));
-				window.open(url,'채팅방',popupOption);
+				alert(JSON.stringify(data));
+				window.open(url+JSON.stringify(data),'채팅방',popupOption);
 			},
 			error:function(error){
-				console.log(error);
+				console.error();
 			}
 		});
+		}else{
+			alert("로그인 이후 사용가능합니다.");
+		}
 	});
 	
+	$('#chat2').click(function(){
+		var userName = $('#userName').val();		
+		if(userName!=null&&userName!=''){
+		var params =$('#isbn').val()+':'+$('#bookTitle').val()+':'+userName;
+		var url = "${pageContext.request.contextPath}/getroom/" + params;
+		var popupOption="width=600,height=860,scrollbars=1";
+		window.open(url, "채팅페이지", popupOption);
+		}else{
+			alert("로그인 이후 사용가능합니다.");
+		}
+	});
+	
+	$('#chat3').click(function(){
+		var userName = $('#userName').val();		
+		if(userName!=null&&userName!=''){
+		var params =$('#isbn').val()+':'+$('#bookTitle').val()+':'+userName;
+		var url = "${pageContext.request.contextPath}/getroom3/" + params;
+		var popupOption="width=600,height=860,scrollbars=1";
+		window.open(url, "채팅페이지", popupOption);
+		}else{
+			alert("로그인 이후 사용가능합니다.");
+		}
+	});
+	
+
 		$('#description img').hide();
 		var $html = $('#description').html();
 		var indexOfbr = $html.indexOf('<br>');

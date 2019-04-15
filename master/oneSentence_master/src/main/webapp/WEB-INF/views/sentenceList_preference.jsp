@@ -303,7 +303,7 @@ $().ready(function(d, s, id) {
 					url: "${pageContext.request.contextPath}/user/isLiked",
 					data: requestData,
 					dataType: "json",
-					contentType: "application/json; charset=UTf-8",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					success: function(data) {
 						console.log("좋아요 상태 확인 요청 성공!");
 						/* console.log(data); */

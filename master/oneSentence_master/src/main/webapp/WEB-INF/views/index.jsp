@@ -99,6 +99,28 @@ p {
 	font-family: 'Noto Serif KR', serif;
 	font-size: 15px;
 }
+
+
+input{
+    width:20rem;
+}
+
+#autoc li{
+     list-style:none;
+     margin:0.3rem 0;
+     padding:0 0.5rem;
+}
+#autoc li:hover{
+ 	background-color:#F2F2F2;
+}
+#binfo{
+	float:right;
+	color:gray;
+}
+
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+
 </style>
 
 
@@ -198,8 +220,7 @@ p {
 					<div class="input-group">
 
 						<input type="text" class="form-control searchAuto" placeholder="Search"
-							name="query" id="searchAuto">
-
+							name="query" id="searchAuto">	
 
 						<div class="input-group-btn">
 							<button class="btn btn-default" style="background-color: #F6F5F4"
@@ -208,6 +229,10 @@ p {
 							</button>
 						</div>
 					</div>
+					<!-- 나은 자동완성 -->
+					<div>
+						<ul id="autoc"></ul>
+					</div>					
 				</form>
 			</div>
 		</div>
@@ -266,11 +291,58 @@ p {
 			theform.submit();
 		}
 	</script>
+<<<<<<< HEAD
 
 	<script type="text/javascript">
 
  
+=======
+>>>>>>> a0450824fe20ab8316f64da25927bb1a37458f2b
 	
+	
+	<!-- 나은 자동완성 -->
+	<script>
+	document.getElementById('searchAuto').onkeyup = function(){
+        $('ul').empty();
+        
+        // 변수를 선언합니다.
+        var text = document.getElementById('searchAuto').value;
+        
+        if(text.length!=0){
+        	$('ul').show();
+        	
+        	$.ajax({
+        		url:'http://127.0.0.1:3000/',
+        		type:'GET',
+        		data: {k:text},
+        		contentType: "application/json; charset=UTF-8",
+        		success:function(data){  
+        			$('#autoc').css({
+        				'border':'1px solid silver',
+    		    		'width':'100%',
+    		    		'border-top': 'transparent',
+    		    		'padding':'0rem'
+    				});
+        			
+        			for(var i=0; i<data.length; i++){
+        				$('#autoc').append('<a href="${pageContext.request.contextPath}/contentsPage/'+data[i].isbn+'"><li>'+data[i].oneSentence+'<div id="binfo">['+data[i].bookTitle+'], '+data[i].publisher+'</div></li></a>');
+        			}
+        		},
+        		
+        		error:function(jqXHR, textStatus, errorThrown){
+        			console.log("ajax 실패 : " + errorThrown)
+        		}
+        	});
+       } else{
+    	   $('ul').hide();
+       }
+         
+	};    	
+	</script>	
+	
+	
+<!-- 
+	<script type="text/javascript">
 	
 	
  $(document).ready(function() {
@@ -306,7 +378,70 @@ p {
  });
 }); 
 </script>
+<<<<<<< HEAD
 
+=======
+ -->
+<!-- 	<script>
+	
+	$(function(){
+		$( "#searchAuto" ).autocomplete({
+		source : function( request, response ) {
+			//jquery Ajax로 비동기 통신한 후 
+			//json객체를 서버에서 내려받아서 리스트 뽑는 작업
+		$.ajax({ 
+			type: "get",
+			url: "/searchJson.jsp", //호출할 URL 
+			dataType: "json", //우선 jsontype json으로 
+			data: { // parameter 값이다. 여러개를 줄수도 있다. 
+			//request.term = $("#searchAuto").val()
+			searchValue: request.term 
+			},
+			success: function( result ) { //return 된것을 response() 함수내에 다음과 같이 정의해서 뽑아온다. 
+				response( 
+					$.map( result, function( item ) { 
+						return {
+						// label : 화면에 보여지는 텍스트
+						// value : 실제 text태그에 들어갈 값
+							label : item.data,
+							value : item.data
+=======
+		$(document).ready(function() {
+			$("#dahye").autocomplete({
+				// 문자열 가져온다.
+				source : function(request, response) {
+					console.log(request.term);
+					var searchValue = request.term;
+					var jsonData = {
+						"searchValue" : searchValue
+					};
+					console.log(jsonData);
+					$.ajax({
+
+						url : "${pageContext.request.contextPath}/index",
+						type : "POST",
+						dataType : "json",
+						data : JSON.stringify({
+							"searchValue" : searchValue
+						}), // request.term (text 박스내에 입력된 값)
+						contentType : "application/json; charset=UTf-8",
+
+						success : function(data) {
+							console.log("요청들어옴");
+							var result = data;
+							response(result);
+						},
+
+						error : function(data) {
+							alert("에러가 발생하였습니다.")
+>>>>>>> b575fcfdee736a50c8e751b05acb3fc8fcca0937
+						}
+					});
+				}
+			});
+		});
+	</script>-->
+>>>>>>> a0450824fe20ab8316f64da25927bb1a37458f2b
 </body>
 
 </html>
