@@ -268,7 +268,7 @@ p {
 	</script>
 
 	<script type="text/javascript">
-<<<<<<< HEAD
+
  
 	
 	
@@ -307,65 +307,6 @@ p {
 }); 
 </script>
 
-<!-- 	<script>
-	
-	$(function(){
-		$( "#searchAuto" ).autocomplete({
-		source : function( request, response ) {
-			//jquery Ajax로 비동기 통신한 후 
-			//json객체를 서버에서 내려받아서 리스트 뽑는 작업
-		$.ajax({ 
-			type: "get",
-			url: "/searchJson.jsp", //호출할 URL 
-			dataType: "json", //우선 jsontype json으로 
-			data: { // parameter 값이다. 여러개를 줄수도 있다. 
-			//request.term = $("#searchAuto").val()
-			searchValue: request.term 
-			},
-			success: function( result ) { //return 된것을 response() 함수내에 다음과 같이 정의해서 뽑아온다. 
-				response( 
-					$.map( result, function( item ) { 
-						return {
-						// label : 화면에 보여지는 텍스트
-						// value : 실제 text태그에 들어갈 값
-							label : item.data,
-							value : item.data
-=======
-		$(document).ready(function() {
-			$("#dahye").autocomplete({
-				// 문자열 가져온다.
-				source : function(request, response) {
-					console.log(request.term);
-					var searchValue = request.term;
-					var jsonData = {
-						"searchValue" : searchValue
-					};
-					console.log(jsonData);
-					$.ajax({
-
-						url : "${pageContext.request.contextPath}/index",
-						type : "POST",
-						dataType : "json",
-						data : JSON.stringify({
-							"searchValue" : searchValue
-						}), // request.term (text 박스내에 입력된 값)
-						contentType : "application/json; charset=UTf-8",
-
-						success : function(data) {
-							console.log("요청들어옴");
-							var result = data;
-							response(result);
-						},
-
-						error : function(data) {
-							alert("에러가 발생하였습니다.")
->>>>>>> b575fcfdee736a50c8e751b05acb3fc8fcca0937
-						}
-					});
-				}
-			});
-		});
-	</script>
 </body>
 
 </html>
