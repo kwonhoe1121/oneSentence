@@ -149,10 +149,10 @@ a:hover{
 	
 	<script type="text/javascript">
 		var naver_id_login = new naver_id_login("cPTP4WjJyJpuaIOiZ61K",
-				"http://15.164.87.42/sentence/login/naver/callback");
+				"http://13.125.242.234:8080/oneSentence_master/login/naver/callback");
 		var state = naver_id_login.getUniqState();
 		naver_id_login.setButton("white", 3, 50);
-		naver_id_login.setDomain("http://15.164.87.42/sentence/login");
+		naver_id_login.setDomain("http://13.125.242.234:8080/oneSentence_master/login");
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
 		naver_id_login.init_naver_id_login();

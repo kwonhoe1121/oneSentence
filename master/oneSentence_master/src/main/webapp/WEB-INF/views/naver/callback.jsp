@@ -13,7 +13,7 @@
 	<input style="border: none;background-color: white;font-size: xx-large;text-decoration: underline;" type="submit" value="로그인하시겠습니까?">
 </form>
 <script type="text/javascript">
-  var naver_id_login = new naver_id_login("cPTP4WjJyJpuaIOiZ61K", "http://localhost/sentence/login/naver/callback");
+  var naver_id_login = new naver_id_login("cPTP4WjJyJpuaIOiZ61K", "http://13.125.242.234:8080/oneSentence_master/login/naver/callback");
   // 접근 토큰 값 출력
   /* alert(naver_id_login.oauthParams.access_token); */
   
