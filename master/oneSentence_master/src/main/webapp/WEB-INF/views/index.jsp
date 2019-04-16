@@ -291,13 +291,6 @@ a:visited { color: black; text-decoration: none;}
 			theform.submit();
 		}
 	</script>
-<<<<<<< HEAD
-
-	<script type="text/javascript">
-
- 
-=======
->>>>>>> a0450824fe20ab8316f64da25927bb1a37458f2b
 	
 	
 	<!-- 나은 자동완성 -->
@@ -441,7 +434,7 @@ a:visited { color: black; text-decoration: none;}
 			});
 		});
 	</script>-->
->>>>>>> a0450824fe20ab8316f64da25927bb1a37458f2b
+
 </body>
 
 </html>
