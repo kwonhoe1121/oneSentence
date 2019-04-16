@@ -87,7 +87,7 @@ $().ready(function(d, s, id) {
 					<li><b style="font-size: 1.2rem">${items.title}</b></li>
 					<li>${items.author}</li>
 					<li>${items.publisher}</li>
-					<li><a href="${pageContext.request.contextPath}/onesentence/playlist/contents/${items.isbn}">한문장 듣기</a></li>
+					<li><i class="fa fa-volume-up icon" id="player">한문장 듣기</i></li>
 					<li><i class="fa fa-commenting-o icon" id="chat">채팅방1</i></li>
 					<li><i class="fa fa-commenting-o icon" id="chat2">채팅방2</i></li>
 					<li><i class="fa fa-commenting-o icon" id="chat3">채팅방3</i></li>
@@ -246,6 +246,12 @@ $().ready(function(d, s, id) {
 	        $('.tocul').hide();  
 	    }  
 	})
+	$('#player').click(function(){
+		var isbn = $('#isbn').val();
+		var url = "${pageContext.request.contextPath}/onesentence/playlist/contents/" + isbn;
+		var popupOption="width=600,height=860,scrollbars=1";
+		window.open(url, "한문장플레이어", popupOption);
+	});
 	$('#chat').click(function(){
 		var userName = $('#userName').val();
 		
