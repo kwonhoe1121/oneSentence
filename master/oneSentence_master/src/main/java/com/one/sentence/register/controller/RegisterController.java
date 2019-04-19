@@ -7,6 +7,8 @@ import java.security.NoSuchAlgorithmException;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -22,6 +24,8 @@ import com.one.sentence.register.service.RegisterService;
 @SessionAttributes("UserVo")
 public class RegisterController {
 
+	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
+	
 	@Inject
 	private RegisterService service;
 
@@ -31,7 +35,7 @@ public class RegisterController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String requestRegisterForm(HttpSession session, @RequestHeader String referer) {
 
-		System.out.println("referer: " + referer);
+		logger.debug("referer: {}", referer);
 
 		session.setAttribute("referer", referer);
 
@@ -41,24 +45,24 @@ public class RegisterController {
 	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
 	public String requestRegistration(UserVo user, Model model, HttpSession session)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
-		System.out.println(user + "등록 전");
+		logger.debug("{} 등록 전", user);
 
 		// id, pwd 암호화.
 		user = securityService.encryptUserInfo(user);
 
-		System.out.println("암호화 이후 유저 정보: " + user);
+		logger.debug("암호화 이후 유저 정보: {}", user);
 
 		// 유저 등록.
 		if (service.registerUser(user) != -1) {
 			service.registerUser(user);
-			System.out.println("회원가입 완료!");
+			logger.debug("회원가입 완료!");
 //			session.setAttribute("complete", true);
 			// 자동로그인
 //			session.setAttribute("User", user);
 			return "redirect:/";
 		}
 
-		System.out.println(user + "return 전");
+		logger.debug("{} return 전", user);
 		return "register";
 	}
 
@@ -84,7 +88,7 @@ public class RegisterController {
 	public String requestWithdrawal(HttpSession session) {
 		//로그인한 회원 정보 가져오기.
 		UserVo user = (UserVo) session.getAttribute("User");
-		System.out.println("로그인 회원 정보: " + user);
+		logger.debug("로그인 회원 정보: {}", user);
 		
 		//유저 탈퇴 상태로 변경
 		service.withdrawUser(user);

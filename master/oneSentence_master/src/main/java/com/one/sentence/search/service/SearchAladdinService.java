@@ -51,10 +51,6 @@ public class SearchAladdinService {
 		String url = GetUrl(searchWord);
 		SearchServiceHandlerone api = new SearchServiceHandlerone();
 		api.parseXml(url);
-//		for (SearchModel item : api.Items) {
-//			System.out.println(item.cover + " : " + item.title + item.publisher +
-//			item.author + item.isbn + item.categoryName + item.description);
-//		}
 
 		return api.Items;
 	}
@@ -65,7 +61,6 @@ class SearchServiceHandlerone extends DefaultHandler {
 	private SearchModel currentItem;
 	private boolean inItemElement = false;
 	private String tempValue;
-
 
 	public SearchServiceHandlerone() {
 		Items = new ArrayList<SearchModel>();
@@ -93,21 +88,19 @@ class SearchServiceHandlerone extends DefaultHandler {
 			tempValue = "";
 		} else if (localName.equals("fulldescription")) {
 			tempValue = "";
+		} else if (localName.equals("toc")) {
+			tempValue = "";
+		} else if (localName.equals("itemPage")) {
+			tempValue = "";
 		}
-		  else if (localName.equals("toc")) {
-				tempValue = "";
-			}
-		  else if (localName.equals("itemPage")) {
-				tempValue = "";
-			}
-		
+
 	}
 
 	// 1234
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		// System.out.println(ch);
 		tempValue = tempValue + new String(ch, start, length);
-	
+
 	}
 
 	public void endElement(String namespaceURI, String localName, String qName) {

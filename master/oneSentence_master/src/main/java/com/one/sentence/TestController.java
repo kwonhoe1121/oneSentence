@@ -16,7 +16,10 @@ public class TestController {
 	public String getIndexPage() {
 
 		System.out.println("getIndexPage method");
-		logger.debug("logger: indexPage");
+		logger.warn("logger(warn): indexPage");
+		logger.info("logger(info): indexPage");
+		logger.debug("logger(debug): indexPage");
+		logger.trace("logger(trace): indexPage");
 		return "index";
 	}
 

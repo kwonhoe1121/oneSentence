@@ -14,91 +14,95 @@ import com.one.sentence.common.vo.OneSentence;
 import com.one.sentence.onesentence.model.Book;
 import com.one.sentence.onesentence.model.ShowOnesentence;
 
- 
 @Repository
-public class OnesentenceDao implements IOnesentenceDao{
+public class OnesentenceDao implements IOnesentenceDao {
 
 	@Inject
 	private SqlSessionTemplate sqlSession;
-	
-	private String namespace="com.one.sentence.mapper.Mapper";
-	
+
+	private String namespace = "com.one.sentence.mapper.Mapper";
+
 	@Override
 	public int insertOneSentence(OneSentence onesentence) {
-		return sqlSession.insert(namespace+".insertOnesentence", onesentence);
+		return sqlSession.insert(namespace + ".insertOnesentence", onesentence);
 	}
 
 	@Override
 	public List<ShowOnesentence> selectOnesentenceList() {
-		return sqlSession.selectList(namespace+".selectOnesentenceList");
+		return sqlSession.selectList(namespace + ".selectOnesentenceList");
+	}
+	//재진 추가.
+	@Override
+	public List<ShowOnesentence> selectOnesentenceListOfOthers(int userIdx) {
+		return sqlSession.selectList(namespace + ".selectOnesentenceListOfOthers", userIdx);
 	}
 
 	@Override
 	public List<ShowOnesentence> selectOnesentenceListByuserIdx(int userIdx) {
-		return sqlSession.selectList(namespace+".selectOnesentenceListByuserIdx",userIdx);
+		return sqlSession.selectList(namespace + ".selectOnesentenceListByuserIdx", userIdx);
 	}
-	
+
 	@Override
 	public List<ShowOnesentence> selectOnesentenceListForLiketo(int userIdx) {
-		return sqlSession.selectList(namespace+".selectOnesentenceForliketo",userIdx);
+		return sqlSession.selectList(namespace + ".selectOnesentenceForliketo", userIdx);
 	}
-	
+
 	@Override
-	public int updateOneSentence(int oneSentenceIdx,String oneSentence, String page, String isbn) {
+	public int updateOneSentence(int oneSentenceIdx, String oneSentence, String page, String isbn) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("oneSentenceIdx", oneSentenceIdx);
 		map.put("oneSentence", oneSentence);
 		map.put("page", page);
 		map.put("isbn", isbn);
-		return sqlSession.update(namespace+".updateOnesentence", map);
+		return sqlSession.update(namespace + ".updateOnesentence", map);
 	}
 
 	@Override
 	public int deleteOnesentence(int oneSentenceIdx) {
-		return sqlSession.delete(namespace+".deleteOnesentence",oneSentenceIdx);
+		return sqlSession.delete(namespace + ".deleteOnesentence", oneSentenceIdx);
 	}
 
 	@Override
 	public ShowOnesentence selectOnesentenceByoneSentenceIdx(int oneSentenceIdx) {
-		return sqlSession.selectOne(namespace+".selectOnesentenceByoneSentenceIdx", oneSentenceIdx);
+		return sqlSession.selectOne(namespace + ".selectOnesentenceByoneSentenceIdx", oneSentenceIdx);
 	}
+
 	@Override
 	public OneSentence selectOnesentenceModel(int oneSentenceIdx) {
-		return sqlSession.selectOne(namespace+".selectOnesentenceModel", oneSentenceIdx);
+		return sqlSession.selectOne(namespace + ".selectOnesentenceModel", oneSentenceIdx);
 	}
 
 	@Override
 	public int insertBook(Book book) {
-		return sqlSession.insert(namespace+".insertBook",book);
+		return sqlSession.insert(namespace + ".insertBook", book);
 	}
 
 	@Override
 	public int selectBookByisbn(String isbn) {
-		return sqlSession.selectOne(namespace+".selectBookByisbn",isbn);
+		return sqlSession.selectOne(namespace + ".selectBookByisbn", isbn);
 	}
 
 	@Override
 	public int upUserPoint(int userIdx) {
-		return sqlSession.update(namespace+".upUserPoint", userIdx);
+		return sqlSession.update(namespace + ".upUserPoint", userIdx);
 	}
 
 	@Override
 	public int downUserPoint(int userIdx) {
-		return sqlSession.update(namespace+".downUserPoint", userIdx);
+		return sqlSession.update(namespace + ".downUserPoint", userIdx);
 	}
 
 	@Override
 	public int insertHashtag(Hashtag tag) {
-		return sqlSession.insert(namespace+".insertHashtag", tag);
+		return sqlSession.insert(namespace + ".insertHashtag", tag);
 	}
-
 
 	@Override
 	public ShowOnesentence selectOnesentenceByoneSentenceIdxAndIsbnMy(int userIdx, String isbn) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userIdx", userIdx);
 		map.put("isbn", isbn);
-		return sqlSession.selectOne(namespace+".selectOnesentenceByoneSentenceIdxAndIsbnMy", map);
+		return sqlSession.selectOne(namespace + ".selectOnesentenceByoneSentenceIdxAndIsbnMy", map);
 	}
 
 	@Override
@@ -106,26 +110,27 @@ public class OnesentenceDao implements IOnesentenceDao{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userIdx", userIdx);
 		map.put("isbn", isbn);
-		return sqlSession.selectOne(namespace+".selectOnesentenceByoneSentenceIdxAndIsbnFollowing", map);
+		return sqlSession.selectOne(namespace + ".selectOnesentenceByoneSentenceIdxAndIsbnFollowing", map);
 	}
 
 	@Override
-	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1, int userIdx2, String isbn) {
+	public List<ShowOnesentence> selectOnesentenceListByoneSentenceIdxAndIsbnOther(int userIdx1, int userIdx2,
+			String isbn) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userIdx1", userIdx1);
 		map.put("userIdx2", userIdx2);
-		map.put("isbn", isbn);             
-		return sqlSession.selectList(namespace+".selectOnesentenceListByoneSentenceIdxAndIsbnOther", map);
+		map.put("isbn", isbn);
+		return sqlSession.selectList(namespace + ".selectOnesentenceListByoneSentenceIdxAndIsbnOther", map);
 	}
 
 	@Override
 	public List<String> selectHashtagList(int oneSentenceIdx) {
-		return sqlSession.selectList(namespace+".selectHashtagListForOneSentence", oneSentenceIdx);
+		return sqlSession.selectList(namespace + ".selectHashtagListForOneSentence", oneSentenceIdx);
 	}
 
 	@Override
 	public int selectLikeTotal(int oneSentenceIdx) {
-		return sqlSession.selectOne(namespace+".selectLikeTotal", oneSentenceIdx);
+		return sqlSession.selectOne(namespace + ".selectLikeTotal", oneSentenceIdx);
 	}
 
 	@Override
@@ -134,19 +139,18 @@ public class OnesentenceDao implements IOnesentenceDao{
 		map.put("userIdx", userIdx);
 		map.put("isbn", isbn);
 		map.put("oneSentence", oneSentence);
-		return sqlSession.selectOne(namespace+".findOneSentenceIdx", map);
+		return sqlSession.selectOne(namespace + ".findOneSentenceIdx", map);
 
 	}
 
 	@Override
 	public List<ShowOnesentence> selectOnesentenceListByIsbn(String isbn) {
-		return sqlSession.selectList(namespace+".selectOnesentenceListByIsbn", isbn);
+		return sqlSession.selectList(namespace + ".selectOnesentenceListByIsbn", isbn);
 	}
-
 
 	@Override
 	public List<ShowOnesentence> selectOnesentenceListByHashtag(String hashtag) {
-		return sqlSession.selectList(namespace+".selectOnesentenceListByHashtag", hashtag);
+		return sqlSession.selectList(namespace + ".selectOnesentenceListByHashtag", hashtag);
 	}
 
 	@Override
@@ -154,16 +158,16 @@ public class OnesentenceDao implements IOnesentenceDao{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userIdx", userIdx);
 		map.put("isbn", isbn);
-		return sqlSession.selectList(namespace+".selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing", map);
+		return sqlSession.selectList(namespace + ".selectOnesentenceListByoneSentenceIdxAndIsbnOtherNoFollwing", map);
 	}
 
 	@Override
 	public String selectBookTitleByisbn(String isbn) {
-		// TODO Auto-generated method stub 
-		return sqlSession.selectOne(namespace+".selectBookTitleByisbn", isbn);
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".selectBookTitleByisbn", isbn);
 	}
 
-	//프로시저
+	// 프로시저
 	@Override
 	public void insertNewSentence(String oneSentence, int page, int userIdx, String isbn, String bookTitle,
 			String bookGenre, String author, String publisher, String hashtag1, String hashtag2, String hashtag3) {
@@ -179,11 +183,7 @@ public class OnesentenceDao implements IOnesentenceDao{
 		map.put("hashtag1", hashtag1);
 		map.put("hashtag2", hashtag2);
 		map.put("hashtag3", hashtag3);
-		sqlSession.update(namespace+".newSentence",map);
+		sqlSession.update(namespace + ".newSentence", map);
 	}
 
-
-	
-
-	
 }

@@ -7,6 +7,8 @@ import java.security.NoSuchAlgorithmException;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,8 @@ import com.one.sentence.profile.service.ProfileService;
 @Controller
 public class profileController {
 
+	private static final Logger logger = LoggerFactory.getLogger(profileController.class);
+	
 	@Inject
 	ProfileService profileService;
 
@@ -50,9 +54,10 @@ public class profileController {
 	@RequestMapping("/profile/update")
 	public String updateUser_infoByuserIdx(Model model, HttpServletRequest request)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
-		System.out.println("userupdate Mapping 연결");
+		logger.debug("userupdate Mapping 연결");
 		String newPassword = request.getParameter("newPassword");
-		System.out.println("newPassword" + newPassword);
+		logger.debug("newPassword: {}", newPassword);
+		logger.debug("newPassword" + newPassword);
 
 		String idx = request.getParameter("userIdx");
 		int userIdx = Integer.parseInt(idx);
@@ -61,11 +66,11 @@ public class profileController {
 		String userIntroduction = request.getParameter("userIntroduction");
 
 		if (!(newPassword == null || newPassword.equals(""))) {
-			System.out.println("새로운 패스워드");
+			logger.debug("새로운 패스워드");
 			profileService.changeUser_info(userIdx, securityService.encryptUserPassword(newPassword), userName,
 					userIntroduction);
 		} else {
-			System.out.println("원래 패스워드");
+			logger.debug("원래 패스워드");
 			profileService.changeUser_info(userIdx, originalPassword, userName, userIntroduction);
 		}
 

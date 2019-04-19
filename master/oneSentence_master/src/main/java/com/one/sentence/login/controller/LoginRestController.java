@@ -8,6 +8,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +22,8 @@ import com.one.sentence.login.service.LoginService;
 @RestController
 public class LoginRestController {
 
+	private static final Logger logger = LoggerFactory.getLogger(LoginRestController.class);
+	
 	@Inject
 	LoginService service;
 
@@ -34,7 +38,7 @@ public class LoginRestController {
 
 		Map<String, String> map = new HashMap<>();
 
-		System.out.println(inputUser);
+		logger.debug(inputUser + "");
 
 		// 암호화
 		String encrytUserEmail = securityService.encryptUserEmail(inputUser.getUserEmail());
@@ -62,7 +66,7 @@ public class LoginRestController {
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		Map<String, String> map = new HashMap<>();
 
-		System.out.println(inputUser);
+		logger.debug(inputUser + "");
 
 		// 유저 정보 암호화
 		UserVo encrytedUser = securityService.encryptUserInfo(inputUser);
@@ -86,8 +90,8 @@ public class LoginRestController {
 //	@ResponseBody
 //	public List<Map<String, String>> restLogin(@RequestBody UserVo inputUser) {
 //
-//		System.out.println("ajax 요청 시작!");
-//		System.out.println(inputUser);
+//		logger.debug("ajax 요청 시작!");
+//		logger.debug(inputUser + "");
 //		List<Map<String, String>> list = new ArrayList<>();
 //		Map<String, String> map = new HashMap<String, String>();
 //		// id 일치여부 확인

@@ -11,8 +11,9 @@
 		</encoder>
 	</appender>
 
-	<logger name="com.one.sentence" level="info" />
+	<logger name="com.one.sentence" level="warn" />
 
+	<!-- logger 지정 이외에는 root level 적용 -->
 	<root level="warn">
 		<appender-ref ref="STDOUT" />
 	</root>

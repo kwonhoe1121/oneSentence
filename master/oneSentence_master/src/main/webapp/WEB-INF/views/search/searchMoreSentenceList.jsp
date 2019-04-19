@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>한문장-한문장 더보기 페이지</title>
-<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/jaejin/img/favicon.ico">
 <link
 	href="${pageContext.request.contextPath}/resources/jaejin/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -16,7 +17,7 @@
 	rel="stylesheet">
 <link
 	href="${pageContext.request.contextPath}/resources/naeun/sentenceList/css/sentenceList2.css"
-	rel="stylesheet">	
+	rel="stylesheet">
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -27,7 +28,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/dahye/search/css/search.css">
 <link rel="stylesheet prefetch"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">	
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <style>
@@ -60,60 +61,58 @@ $().ready(function(d, s, id) {
 </script>
 </head>
 <body>
-	
-	<header style="height:60px"></header>
-	
-	<h2 style="font-size : 1.5rem;"">한문장</h2>
-	<hr>	
+
+	<header style="height: 60px"></header>
+
+	<h2 style="font-size: 1.5rem;"">한문장</h2>
+	<hr>
 	<div class="container">
 		<!-- Post Content Column -->
-		
 
-	<c:forEach items="${oneSentenceList}" var="onesentence" >
-				<div class="newdiv" style="background-color:#f6f5f4;border:1px solid lightgrey;">
-					<span style="color: darkgray; padding-right: 1rem"
-						class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>
-					<!--한문장번호-->
-					<a href="#" ><i class="fa fa-user icon" style="color: black">
-							${onesentence.userName}</i></a> <span class="eventA"><i
-						class="fa fa-ellipsis-v icon"></i></span> <input type="text"
-						class="userIdx" value="${onesentence.userIdx}" hidden="true">
-					<center>
-						<div class="divmodal">
-							<div class="all">
-								<a href="#" onclick="share(${onesentence.oneSentenceIdx})"
-									id="share"><i class="fa fa-send-o icon"></i></a>
-							</div>
-							<div class="my">
-								<a href="#" id="updateBtn"
-									onclick="updateClick(${onesentence.oneSentenceIdx})"><i
-									class="fa fa-reply icon"></i></a>
-							</div>
-							<div class="my">
-								<a href="${pageContext.request.contextPath}/onesentence/delete/${onesentence.oneSentenceIdx}"
-									id="deleteBtn"><i class="fa fa-remove icon"></i></a>
-							</div>
 
+		<c:forEach items="${oneSentenceList}" var="onesentence">
+			<div class="newdiv"
+				style="background-color: #f6f5f4; border: 1px solid lightgrey;">
+				<span style="color: darkgray; padding-right: 1rem"
+					class="oneSentenceIdx">${onesentence.oneSentenceIdx}</span>
+				<!--한문장번호-->
+				<a href="#"><i class="fa fa-user icon" style="color: black">
+						${onesentence.userName}</i></a> <span class="eventA"><i
+					class="fa fa-ellipsis-v icon"></i></span> <input type="text"
+					class="userIdx" value="${onesentence.userIdx}" hidden="true">
+				<center>
+					<div class="divmodal">
+						<div class="all">
+							<a href="#" onclick="share(${onesentence.oneSentenceIdx})"
+								id="share"><i class="fa fa-send-o icon"></i></a>
 						</div>
-					</center>
-					<span
-						style="padding-left: 2rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
-					<span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br>
-					<span
-						style="float: right; padding-right: 2rem; color: darkgray">${onesentence.bookTitle},
-						${onesentence.author}, ${onesentence.publisher},
-						p.${onesentence.page} 에서..
+						<div class="my">
+							<a href="#" id="updateBtn"
+								onclick="updateClick(${onesentence.oneSentenceIdx})"><i
+								class="fa fa-reply icon"></i></a>
+						</div>
+						<div class="my">
+							<a
+								href="${pageContext.request.contextPath}/onesentence/delete/${onesentence.oneSentenceIdx}"
+								id="deleteBtn"><i class="fa fa-remove icon"></i></a>
+						</div>
 
-					</span><br>
-					<hr>
-					<span class="hashtag" style="padding-left:2rem">${onesentence.hashtag}</span> <span
-						class="like"><i class="fa fa-heart-o" style="color:red;">
-							${onesentence.likeTotal}</i></span>
-				</div>
-			</c:forEach>
-			</div>	
+					</div>
+				</center>
+				<span style="padding-left: 2rem; color: darkgray">${onesentence.oneSentenceRegisteredTime}</span><br>
+				<span style="padding-left: 2rem; font-size: 1.5rem;">${onesentence.oneSentence}</span><br>
+				<span style="float: right; padding-right: 2rem; color: darkgray">${onesentence.bookTitle},
+					${onesentence.author}, ${onesentence.publisher},
+					p.${onesentence.page} 에서.. </span><br>
+				<hr>
+				<span class="hashtag" style="padding-left: 2rem">${onesentence.hashtag}</span>
+				<span class="like"><i class="fa fa-heart-o"
+					style="color: red;"> ${onesentence.likeTotal}</i></span>
+			</div>
+		</c:forEach>
+	</div>
 
-	
+
 	<script
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/vendor/jquery/jquery.min.js"></script>
 	<script
@@ -122,9 +121,9 @@ $().ready(function(d, s, id) {
 		src="${pageContext.request.contextPath}/resources/naeun/sentenceList/js/sentencelist2.js"></script>
 	<script>
 	
-		showLikedSentenceStatus();
-			  
-	   
+		<c:if test="${User ne null}">
+			showLikedSentenceStatus();
+		</c:if>
 		
 			function share(idx) {
 				FB.ui({
@@ -148,6 +147,7 @@ $().ready(function(d, s, id) {
 			}
 	    
 		/* click like button  */
+		<c:if test="${User ne null}">
 		$(".like").on("click", function (data){
 			
 			/* alert("like button click!!"); */
@@ -199,6 +199,7 @@ $().ready(function(d, s, id) {
 		    })
 			
 		});
+		</c:if>
 		
 		/* like status in oneSentence */
 		function showLikedSentenceStatus() {
@@ -258,7 +259,7 @@ $().ready(function(d, s, id) {
 			
 		
  
-	</script>	
+	</script>
 
 </body>
 </html>

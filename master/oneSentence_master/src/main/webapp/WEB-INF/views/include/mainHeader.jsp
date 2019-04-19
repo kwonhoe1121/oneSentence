@@ -123,7 +123,7 @@
 						<!-- 추천, 마이페이지. -->
 
 						<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/onesentence/list/all"><button
+							href="${pageContext.request.contextPath}/onesentence/list/review"><button
 									class="btn navbar-btn">추천</button></a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/userpage/${User.userIdx}"><button
