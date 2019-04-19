@@ -281,7 +281,7 @@ public class oneSentenceController {
 		UserVo user = (UserVo) session.getAttribute("User");
 		List<ShowOnesentence> oneSentenceList = oneService.showOtherSentenceList(user.getUserIdx());
 		
-		//sentence list shuffle
+		// shuffle sentence list
 		for(int i = 0; i < oneSentenceList.size(); i += 1) {
 			ShowOnesentence temp = oneSentenceList.get(i);
 			int shuffleNum = (int) (Math.random() * oneSentenceList.size());

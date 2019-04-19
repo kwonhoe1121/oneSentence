@@ -22,6 +22,4 @@ public class FollowingNewsDao implements IFollowingNewsDao{
 	public List<ShowOnesentence> selectOneSentenceListForFollowing(int userIdx) {
 		return sqlSession.selectList(namespace+".selectOnesentenceListForFollowing", userIdx);
 	}
-	
-	
 }
