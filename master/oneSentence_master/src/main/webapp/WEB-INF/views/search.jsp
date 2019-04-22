@@ -433,7 +433,7 @@ $().ready(function(d, s, id) {
  
 	</script>
 	
-	<!-- 인기검색어 -->
+	<!-- 사용자 검색어 mongodb에 저장 -->
 	<script>	
 	var $query = $('#paramquery').val();
 	
